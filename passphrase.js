@@ -1,23 +1,87 @@
-let WORDS=[];let SEP=' ';
-const statusEl=document.getElementById('ppStatus');
-const display=document.getElementById('ppDisplay');
-const genBtn=document.getElementById('ppGenerate');
-const copyBtn=document.getElementById('ppCopy');
-const copied=document.getElementById('ppCopied');
-const slider=document.getElementById('wordCount');
-const wcVal=document.getElementById('wordCountValue');
-const entropyEl=document.getElementById('ppEntropy');
-const strengthFill=document.getElementById('ppStrength');
-function setStatus(t){if(statusEl) statusEl.textContent=t;}
-async function loadWords(){try{setStatus('Loading word list…');const res=await fetch('/wordlist.json',{cache:'force-cache'});if(!res.ok) throw new Error('fetch failed '+res.status);const arr=await res.json();WORDS=Array.isArray(arr)?arr:[];setStatus(`Loaded ${WORDS.length.toLocaleString()} words.`);}catch(e){setStatus('Word list not found yet — it will appear automatically after the next GitHub Action run. Try again soon.');WORDS=[];}}
-function entropyBits(words,choices){return (Math.log2(choices)||0)*words;}
-function updateEntropy(words){const bits=entropyBits(words,Math.max(WORDS.length,1));entropyEl.textContent=Number(bits.toFixed(1))+' bits';strengthFill.className='strength-fill';if(bits<50) strengthFill.classList.add('weak');else if(bits<80) strengthFill.classList.add('medium');else strengthFill.classList.add('strong');}
-function choice(max){const arr=new Uint32Array(1);crypto.getRandomValues(arr);return arr[0]%max;}
-function generate(){const n=parseInt(slider.value,10);if(!WORDS.length){setStatus('Word list not loaded.');return;}const picked=[];for(let i=0;i<n;i++){picked.push(WORDS[choice(WORDS.length)]);}const out=picked.join(SEP);display.textContent=out;display.classList.add('generated');updateEntropy(n);}
-function copy(){const text=display.textContent||'';if(!text) return;navigator.clipboard.writeText(text).catch(()=>{const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();});copied.classList.add('show');setTimeout(()=>copied.classList.remove('show'),2000);}
-wcVal.textContent=slider.value;
-slider.addEventListener('input',()=>{wcVal.textContent=slider.value;updateEntropy(parseInt(slider.value,10));});
-document.querySelectorAll('button[data-sep]').forEach(btn=>btn.addEventListener('click',()=>{SEP=btn.getAttribute('data-sep');generate();}));
-genBtn.addEventListener('click',generate);
-copyBtn.addEventListener('click',copy);
-window.addEventListener('load',async()=>{await loadWords();updateEntropy(parseInt(slider.value,10));});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Generate memorable, secure passphrases from a large, profanity-filtered word list. All local, private, and free." />
+  <link rel="canonical" href="https://strongpasswordgenerator.dev/passphrase.html" />
+  <title>Passphrase Generator — Memorable & Secure</title>
+
+  <!-- Perf: preconnect for AdSense/doubleclick -->
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Secure Passphrase Generator" />
+  <meta property="og:description" content="Create 4–8 word passphrases from a profanity-filtered list. Generated locally in your browser." />
+  <meta property="og:url" content="https://strongpasswordgenerator.dev/passphrase.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Secure Passphrase Generator" />
+  <meta name="twitter:description" content="Create 4–8 word passphrases from a profanity-filtered list. Generated locally in your browser." />
+
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+  </script>
+
+  <!-- Google AdSense - Auto Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <h1>🧩 Passphrase Generator</h1>
+        <div style="display:flex;gap:14px;">
+          <a class="nav" href="/index.html">Passwords</a>
+          <a class="nav" href="/passphrase.html">Passphrases</a>
+        </div>
+      </nav>
+      <p class="subtitle">Create <strong>4–8 word</strong> passphrases from a large, profanity-filtered list (default 8 words)</p>
+    </header>
+
+    <main>
+      <div class="password-display-section">
+        <div class="password-display" id="ppDisplay">Click "Generate Passphrase" to start</div>
+        <div class="button-group">
+          <button class="btn btn-primary" id="ppGenerate">Generate Passphrase</button>
+          <button class="btn btn-secondary" id="ppCopy">Copy</button>
+        </div>
+        <div class="copy-notification" id="ppCopied">Copied to clipboard! ✓</div>
+      </div>
+
+      <div class="options-section">
+        <h2>Options</h2>
+        <div class="option">
+          <label for="wordCount">Words: <span id="wordCountValue">8</span></label>
+          <input id="wordCount" type="range" min="4" max="8" value="8" />
+        </div>
+        <div class="option"><label for="separator">Separator</label></div>
+        <div class="button-group">
+          <button class="btn" data-sep=" ">space</button>
+          <button class="btn" data-sep="-">-</button>
+          <button class="btn" data-sep="_">_</button>
+          <button class="btn" data-sep=".">.</button>
+        </div>
+
+        <div class="strength-meter">
+          <p>Estimated Entropy: <strong id="ppEntropy">–</strong></p>
+          <div class="strength-bar"><div class="strength-fill" id="ppStrength"></div></div>
+          <p style="font-size:.9em;color:#4a5568;margin-top:8px">Tip: 6–8 words are very strong for most uses.</p>
+        </div>
+
+        <p id="ppStatus" style="margin-top:12px;color:#4a5568"></p>
+      </div>
+    </main>
+
+    <footer><p>© 2025 strongpasswordgenerator.dev</p></footer>
+  </div>
+
+  <script defer src="/passphrase.js"></script>
+</body>
+</html>
