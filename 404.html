@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, follow" />
+  <title>Page not found — strongpasswordgenerator.dev</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#667eea" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <h1>404 — Page not found</h1>
+        <div style="display:flex;gap:14px;">
+          <a class="nav" href="/index.html">Passwords</a>
+          <a class="nav" href="/passphrase.html">Passphrases</a>
+          <a class="nav" href="/faq.html">FAQ</a>
+        </div>
+      </nav>
+      <p class="subtitle">The page you’re looking for doesn’t exist.</p>
+    </header>
+
+    <main>
+      <div class="password-display-section">
+        <div class="password-display">Try one of these instead:</div>
+        <div class="button-group">
+          <a class="btn btn-primary" href="/index.html">Go to Password Generator</a>
+          <a class="btn btn-secondary" href="/passphrase.html">Go to Passphrase Generator</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 strongpasswordgenerator.dev</p>
+    </footer>
+  </div>
+</body>
+</html>
