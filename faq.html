@@ -24,16 +24,17 @@
   <link rel="manifest" href="/manifest.webmanifest" />
   <meta name="theme-color" content="#667eea" />
 
+  <!-- Service worker -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
     }
   </script>
 
-  <!-- Google AdSense - Auto Ads -->
+  <!-- Auto Ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696" crossorigin="anonymous"></script>
 
-  <!-- FAQPage structured data for rich results -->
+  <!-- FAQPage structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -125,28 +126,20 @@
       <div class="info-section">
         <h2>Do you store or see my passwords or passphrases?</h2>
         <p>No. All generation happens locally in your browser using the Web Crypto API. Nothing is uploaded or logged.</p>
-
         <h2>How are passwords generated?</h2>
         <p>We use <strong>window.crypto.getRandomValues</strong> to securely sample characters from your selected sets (uppercase, lowercase, numbers, symbols). You can choose length from 8–64.</p>
-
         <h2>Is this safe for important accounts?</h2>
         <p>Yes—when combined with best practices: long, unique secrets, a reputable password manager, and multi-factor authentication (2FA/MFA). Never reuse passwords.</p>
-
         <h2>Why use passphrases?</h2>
         <p>Random multi-word passphrases can deliver high entropy while being easier to remember. We recommend <strong>6–8 words</strong> for most users.</p>
-
         <h2>What word list do you use? Do you filter offensive words?</h2>
         <p>Our GitHub Action builds <code>wordlist.json</code> from a large English vocabulary and removes offensive terms before publishing. The status line on the passphrase page shows how many words are loaded.</p>
-
         <h2>What is entropy?</h2>
-        <p>Entropy (in bits) quantifies unpredictability. Each extra bit doubles the number of possibilities. Our passphrase page estimates entropy as <em>words × log2(wordListSize)</em>.</p>
-
+        <p>Entropy (in bits) quantifies unpredictability. Each extra bit doubles the number of possibilities. Our passphrase page estimates entropy as <em>words × log₂(wordListSize)</em>.</p>
         <h2>Do you track me?</h2>
         <p>We do not run first-party analytics. We show ads via Google AdSense, which may set cookies per Google’s policies. See our <a href="/privacy.html">Privacy Policy</a>.</p>
-
         <h2>Does it work offline?</h2>
         <p>Yes, core pages and assets are cached by a service worker after your first visit.</p>
-
         <h2>Can I contribute ideas or report an issue?</h2>
         <p>Absolutely—open an issue on the GitHub repo or contact us via the site footer links.</p>
       </div>
