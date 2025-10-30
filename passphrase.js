@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Generate memorable, secure passphrases from a large, profanity-filtered word list. All local, private, and free." />
+  <meta name="description" content="Generate memorable, secure passphrases from a large, profanity‑filtered word list. All local, private, and free." />
   <link rel="canonical" href="https://strongpasswordgenerator.dev/passphrase.html" />
   <title>Passphrase Generator — Memorable & Secure</title>
 
@@ -13,15 +13,16 @@
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Secure Passphrase Generator" />
-  <meta property="og:description" content="Create 4–8 word passphrases from a profanity-filtered list. Generated locally in your browser." />
+  <meta property="og:description" content="Create 4–8 word passphrases from a profanity‑filtered list. Generated locally in your browser." />
   <meta property="og:url" content="https://strongpasswordgenerator.dev/passphrase.html" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Secure Passphrase Generator" />
-  <meta name="twitter:description" content="Create 4–8 word passphrases from a profanity-filtered list. Generated locally in your browser." />
+  <meta name="twitter:description" content="Create 4–8 word passphrases from a profanity‑filtered list. Generated locally in your browser." />
 
   <link rel="stylesheet" href="/styles.css" />
   <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#667eea" />
 
   <script>
     if ('serviceWorker' in navigator) {
@@ -40,9 +41,10 @@
         <div style="display:flex;gap:14px;">
           <a class="nav" href="/index.html">Passwords</a>
           <a class="nav" href="/passphrase.html">Passphrases</a>
+          <a class="nav" href="/faq.html">FAQ</a>
         </div>
       </nav>
-      <p class="subtitle">Create <strong>4–8 word</strong> passphrases from a large, profanity-filtered list (default 8 words)</p>
+      <p class="subtitle">Create <strong>4–8 word</strong> passphrases from a large, profanity‑filtered list (default 8 words)</p>
     </header>
 
     <main>
@@ -68,20 +70,21 @@
           <button class="btn" data-sep="_">_</button>
           <button class="btn" data-sep=".">.</button>
         </div>
-
         <div class="strength-meter">
           <p>Estimated Entropy: <strong id="ppEntropy">–</strong></p>
-          <div class="strength-bar"><div class="strength-fill" id="ppStrength"></div></div>
+          <div class="strength-bar">
+            <div class="strength-fill" id="ppStrength"></div>
+          </div>
           <p style="font-size:.9em;color:#4a5568;margin-top:8px">Tip: 6–8 words are very strong for most uses.</p>
         </div>
-
         <p id="ppStatus" style="margin-top:12px;color:#4a5568"></p>
       </div>
     </main>
 
-    <footer><p>© 2025 strongpasswordgenerator.dev</p></footer>
+    <footer>
+      <p>© 2025 strongpasswordgenerator.dev</p>
+    </footer>
   </div>
-
   <script defer src="/passphrase.js"></script>
 </body>
 </html>
