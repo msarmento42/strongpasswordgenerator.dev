@@ -3,38 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free strong password generator. Generate secure, random passwords instantly.">
-  <title>Strong Password Generator — Create Secure Passwords Instantly</title>
-  <link rel="canonical" href="https://strongpasswordgenerator.dev">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Strong Password Generator">
-  <meta property="og:description" content="Generate strong, random passwords in your browser — nothing uploaded.">
-  <meta property="og:url" content="https://strongpasswordgenerator.dev">
+  <meta name="description" content="Free secure password generator. Create strong, random passwords instantly with customizable length and character options. No signup required.">
+  <meta name="keywords" content="password generator, strong password, random password, secure password, password maker">
+  <title>Free Password Generator - Create Strong & Secure Passwords Instantly</title>
   <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://strongpasswordgenerator.dev/">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#667eea">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+  </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>🔐 Strong Password Generator</h1>
-      <p class="subtitle">Create strong, random passwords in seconds — generated locally in your browser</p>
-      
-<nav style="margin:16px 0;">
-  <a href="/" style="margin-right:12px;">Generator</a>
-  <a href="/strength-checker.html" style="margin-right:12px;">Strength Checker</a>
-  <a href="/passphrase.html" style="margin-right:12px;">Passphrase Generator</a>
-  <a href="/guide-strong-passwords.html" style="margin-right:12px;">Guide</a>
-  <a href="/pm-comparison.html" style="margin-right:12px;">Password Managers</a>
-  <a href="/enable-2fa.html" style="margin-right:12px;">Enable 2FA</a>
-  <a href="/breach-checklist.html" style="margin-right:12px;">Breach Checklist</a>
-  <a href="/about.html" style="margin-right:12px;">About</a>
-  <a href="/contact.html">Contact</a>
-</nav>
-
+      <nav style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <h1>🔐 Secure Password Generator</h1>
+        <div style="display:flex;gap:14px;">
+          <a class="nav" href="/index.html">Passwords</a>
+          <a class="nav" href="/passphrase.html">Passphrases</a>
+        </div>
+      </nav>
+      <p class="subtitle">Create strong, random passwords in seconds</p>
     </header>
-
     <main>
       <div class="password-display-section">
         <div class="password-display" id="passwordDisplay">Click "Generate Password" to start</div>
@@ -44,47 +38,42 @@
         </div>
         <div class="copy-notification" id="copyNotification">Copied to clipboard! ✓</div>
       </div>
-
       <div class="options-section">
         <h2>Customize Your Password</h2>
         <div class="option">
           <label for="length">Password Length: <span id="lengthValue">16</span></label>
-          <input type="range" id="length" min="8" max="64" value="16" aria-label="Password length slider">
+          <input type="range" id="length" min="8" max="64" value="16">
         </div>
-        <div class="option"><label><input type="checkbox" id="uppercase" checked> Include Uppercase Letters (A–Z)</label></div>
-        <div class="option"><label><input type="checkbox" id="lowercase" checked> Include Lowercase Letters (a–z)</label></div>
-        <div class="option"><label><input type="checkbox" id="numbers" checked> Include Numbers (0–9)</label></div>
-        <div class="option"><label><input type="checkbox" id="symbols" checked> Include Symbols (!@#$%^&*)</label></div>
-        <div class="option"><label><input type="checkbox" id="excludeSimilar"> Exclude similar characters (0/O, 1/l/I)</label></div>
+        <div class="option"><label><input type="checkbox" id="uppercase" checked>Include Uppercase Letters (A-Z)</label></div>
+        <div class="option"><label><input type="checkbox" id="lowercase" checked>Include Lowercase Letters (a-z)</label></div>
+        <div class="option"><label><input type="checkbox" id="numbers" checked>Include Numbers (0-9)</label></div>
+        <div class="option"><label><input type="checkbox" id="symbols" checked>Include Symbols (!@#$%^&*)</label></div>
         <div class="strength-meter">
           <p>Password Strength: <strong id="strengthText">Strong</strong></p>
           <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
         </div>
-        <p style="margin-top:12px;">Need a memorable option? Try the <a href="/passphrase.html">Passphrase Generator</a>. Want to test an existing password? Use the <a href="/strength-checker.html">Strength Checker</a>.</p>
+      </div>
+      <div class="info-section">
+        <h2>Why Use a Strong Password?</h2>
+        <ul>
+          <li>At least 12–16 characters long</li>
+          <li>A mix of uppercase, lowercase, numbers, and symbols</li>
+          <li>Unique for each account</li>
+          <li>Not based on personal information</li>
+          <li>Changed regularly</li>
+        </ul>
+        <h3>How This Generator Works</h3>
+        <p>We use the browser’s <strong>Web Crypto API</strong> to generate cryptographically secure random passwords. It’s all local in your browser—no data ever leaves your device.</p>
       </div>
     </main>
-
     <footer>
-      <p>&copy; 2025 StrongPasswordGenerator.dev. All passwords generated locally — your privacy is guaranteed.</p>
-      <p style="margin-top:10px;font-size:0.9em;">
-        <a href="/privacy.html" style="color:#81e6d9;">Privacy</a> •
-        <a href="/terms.html" style="color:#81e6d9;">Terms</a>
+      <p>© 2025 strongpasswordgenerator.dev — All generation happens locally in your browser.</p>
+      <p style="margin-top:10px;font-size:.9em;">
+        <a href="/privacy.html" style="color:#81e6d9;">Privacy Policy</a> | 
+        <a href="/terms.html" style="color:#81e6d9;">Terms of Service</a>
       </p>
     </footer>
   </div>
-  <div id="consentBanner" class="consent-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-    <div>We use Google AdSense which may use cookies for ads. <a href="/privacy.html">Learn more</a>.</div>
-    <button id="consentBtn" class="btn btn-secondary" style="min-width:auto;">Got it</button>
-  </div>
   <script src="/script.js"></script>
-  
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
-
 </body>
 </html>
