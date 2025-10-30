@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strength Checker — StrongPasswordGenerator.dev</title>
+  <link rel="canonical" href="https://strongpasswordgenerator.dev/strength-checker.html">
+  <link rel="stylesheet" href="/styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Strength Checker</h1>
+      
+<nav style="margin:16px 0;">
+  <a href="/" style="margin-right:12px;">Generator</a>
+  <a href="/strength-checker.html" style="margin-right:12px;">Strength Checker</a>
+  <a href="/passphrase.html" style="margin-right:12px;">Passphrase Generator</a>
+  <a href="/guide-strong-passwords.html" style="margin-right:12px;">Guide</a>
+  <a href="/pm-comparison.html" style="margin-right:12px;">Password Managers</a>
+  <a href="/enable-2fa.html" style="margin-right:12px;">Enable 2FA</a>
+  <a href="/breach-checklist.html" style="margin-right:12px;">Breach Checklist</a>
+  <a href="/about.html" style="margin-right:12px;">About</a>
+  <a href="/contact.html">Contact</a>
+</nav>
+
+    </header>
+    <main style="padding:40px 30px;">
+      
+<div class="info-section">
+  <p>Paste a password below to estimate its strength and entropy. Nothing is uploaded — this runs in your browser.</p>
+  <textarea id="pwIn" rows="3" style="width:100%;padding:12px;border:2px solid #e1e8ed;border-radius:8px;margin:8px 0;"></textarea>
+  <div class="strength-meter" style="margin-top:8px;">
+    <p>Estimated Strength: <strong id="scoreLabel">—</strong></p>
+    <div class="strength-bar"><div class="strength-fill" id="scoreBar"></div></div>
+    <p style="margin-top:8px;">Estimated entropy: <span id="entropy">0</span> bits</p>
+    <p id="advice" style="margin-top:6px;"></p>
+  </div>
+</div>
+<script>
+function estimateEntropy(pw){
+  if(!pw) return 0;
+  let pool=0;
+  if(/[a-z]/.test(pw)) pool+=26;
+  if(/[A-Z]/.test(pw)) pool+=26;
+  if(/[0-9]/.test(pw)) pool+=10;
+  if(/[^a-zA-Z0-9]/.test(pw)) pool+=33;
+  if(pool===0) return 0;
+  return Math.round(pw.length * Math.log2(pool));
+}
+const bar=document.getElementById('scoreBar');
+const label=document.getElementById('scoreLabel');
+const entropyEl=document.getElementById('entropy');
+const advice=document.getElementById('advice');
+document.getElementById('pwIn').addEventListener('input',e=>{
+  const pw=e.target.value;
+  const H=estimateEntropy(pw);
+  entropyEl.textContent=H;
+  bar.className='strength-fill';
+  if(H<40){bar.classList.add('weak'); label.textContent='Weak'; advice.textContent='Use at least 12–16 chars and add more character types.';}
+  else if(H<60){bar.classList.add('medium'); label.textContent='Medium'; advice.textContent='Increase length and include uppercase, lowercase, numbers, and symbols.';}
+  else {bar.classList.add('strong'); label.textContent='Strong'; advice.textContent='Nice. Consider a passphrase for memorability.';}
+});
+</script>
+
+    </main>
+    <footer><p>&copy; 2025 StrongPasswordGenerator.dev</p></footer>
+  </div>
+  
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
+
+</body>
+</html>
