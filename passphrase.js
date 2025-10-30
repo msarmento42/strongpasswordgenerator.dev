@@ -1,90 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Generate memorable, secure passphrases from a large, profanity‑filtered word list. All local, private, and free." />
-  <link rel="canonical" href="https://strongpasswordgenerator.dev/passphrase.html" />
-  <title>Passphrase Generator — Memorable & Secure</title>
+// Simple fallback list in case wordlist.json is unavailable
+const fallbackWords = ["alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliet"];
 
-  <!-- Perf: preconnect for AdSense/doubleclick -->
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+// Global variables
+let wordList = fallbackWords;
+let selectedSeparator = " ";
+const wordCountSlider = document.getElementById("wordCount");
+const wordCountValue = document.getElementById("wordCountValue");
+const ppDisplay = document.getElementById("ppDisplay");
+const ppEntropy = document.getElementById("ppEntropy");
+const ppStrength = document.getElementById("ppStrength");
+const ppStatus = document.getElementById("ppStatus");
+const sepButtons = document.querySelectorAll(".button-group .btn[data-sep]");
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Secure Passphrase Generator" />
-  <meta property="og:description" content="Create 4–8 word passphrases from a profanity‑filtered list. Generated locally in your browser." />
-  <meta property="og:url" content="https://strongpasswordgenerator.dev/passphrase.html" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Secure Passphrase Generator" />
-  <meta name="twitter:description" content="Create 4–8 word passphrases from a profanity‑filtered list. Generated locally in your browser." />
-
-  <link rel="stylesheet" href="/styles.css" />
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <meta name="theme-color" content="#667eea" />
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+// Load wordlist.json (prefer 70k/50k), else fallback to EFF, else fallbackWords
+async function loadWordList() {
+  // Try wordlist.json first
+  try {
+    const resp = await fetch("/wordlist.json", { cache: "no-store" });
+    if (resp.ok) {
+      const data = await resp.json();
+      if (Array.isArray(data) && data.length > 10000) {
+        wordList = data;
+        ppStatus.textContent = `Loaded ${data.length} words.`;
+        return;
+      }
     }
-  </script>
+  } catch (err) {
+    console.warn("wordlist.json fetch failed", err);
+  }
 
-  <!-- Google AdSense - Auto Ads -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696" crossorigin="anonymous"></script>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <nav style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
-        <h1>🧩 Passphrase Generator</h1>
-        <div style="display:flex;gap:14px;">
-          <a class="nav" href="/index.html">Passwords</a>
-          <a class="nav" href="/passphrase.html">Passphrases</a>
-          <a class="nav" href="/faq.html">FAQ</a>
-        </div>
-      </nav>
-      <p class="subtitle">Create <strong>4–8 word</strong> passphrases from a large, profanity‑filtered list (default 8 words)</p>
-    </header>
+  // Fallback to EFF list
+  try {
+    const resp = await fetch("/assets/eff_large_wordlist.txt");
+    if (resp.ok) {
+      const text = await resp.text();
+      const lines = text.trim().split(/\s+/).filter(w => /^[a-zA-Z]+$/.test(w));
+      if (lines.length > 5000) {
+        wordList = lines;
+        ppStatus.textContent = `Loaded ${lines.length} words (EFF list).`;
+        return;
+      }
+    }
+  } catch (err) {
+    console.warn("EFF list fetch failed", err);
+  }
 
-    <main>
-      <div class="password-display-section">
-        <div class="password-display" id="ppDisplay">Click "Generate Passphrase" to start</div>
-        <div class="button-group">
-          <button class="btn btn-primary" id="ppGenerate">Generate Passphrase</button>
-          <button class="btn btn-secondary" id="ppCopy">Copy</button>
-        </div>
-        <div class="copy-notification" id="ppCopied">Copied to clipboard! ✓</div>
-      </div>
+  // Fallback to built‑in list
+  ppStatus.textContent = `Loaded fallback list (${fallbackWords.length} words).`;
+}
 
-      <div class="options-section">
-        <h2>Options</h2>
-        <div class="option">
-          <label for="wordCount">Words: <span id="wordCountValue">8</span></label>
-          <input id="wordCount" type="range" min="4" max="8" value="8" />
-        </div>
-        <div class="option"><label for="separator">Separator</label></div>
-        <div class="button-group">
-          <button class="btn" data-sep=" ">space</button>
-          <button class="btn" data-sep="-">-</button>
-          <button class="btn" data-sep="_">_</button>
-          <button class="btn" data-sep=".">.</button>
-        </div>
-        <div class="strength-meter">
-          <p>Estimated Entropy: <strong id="ppEntropy">–</strong></p>
-          <div class="strength-bar">
-            <div class="strength-fill" id="ppStrength"></div>
-          </div>
-          <p style="font-size:.9em;color:#4a5568;margin-top:8px">Tip: 6–8 words are very strong for most uses.</p>
-        </div>
-        <p id="ppStatus" style="margin-top:12px;color:#4a5568"></p>
-      </div>
-    </main>
+// Secure random integer [0, max)
+function secureRandomInt(max) {
+  const array = new Uint32Array(1);
+  window.crypto.getRandomValues(array);
+  return array[0] % max;
+}
 
-    <footer>
-      <p>© 2025 strongpasswordgenerator.dev</p>
-    </footer>
-  </div>
-  <script defer src="/passphrase.js"></script>
-</body>
-</html>
+// Generate the passphrase
+function generatePassphrase() {
+  const count = parseInt(wordCountSlider.value, 10) || 8;
+  const words = [];
+  for (let i = 0; i < count; i++) {
+    const idx = secureRandomInt(wordList.length);
+    words.push(wordList[idx].toLowerCase());
+  }
+  const phrase = words.join(selectedSeparator);
+  ppDisplay.textContent = phrase;
+
+  // Entropy calculation (bits)
+  const baseEntropy = Math.log2(wordList.length) * count;
+  ppEntropy.textContent = `${Math.round(baseEntropy)} bits`;
+
+  // Visual strength meter (weak <40, medium <60, strong >=60)
+  ppStrength.className = "strength-fill";
+  if (baseEntropy < 40) {
+    ppStrength.classList.add("weak");
+  } else if (baseEntropy < 60) {
+    ppStrength.classList.add("medium");
+  } else {
+    ppStrength.classList.add("strong");
+  }
+
+  // Update slider display
+  wordCountValue.textContent = count;
+}
+
+// Copy function
+async function copyPassphrase() {
+  const text = ppDisplay.textContent;
+  if (!text) return;
+  try {
+    await navigator.clipboard.writeText(text);
+    showNotification();
+  } catch {
+    // Fallback for older browsers
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = 0;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    showNotification();
+  }
+}
+
+function showNotification() {
+  const note = document.getElementById("ppCopied");
+  note.classList.add("show");
+  setTimeout(() => note.classList.remove("show"), 2000);
+}
+
+// Event listeners
+document.getElementById("ppGenerate").addEventListener("click", generatePassphrase);
+document.getElementById("ppCopy").addEventListener("click", copyPassphrase);
+wordCountSlider.addEventListener("input", () => {
+  wordCountValue.textContent = wordCountSlider.value;
+});
+sepButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    selectedSeparator = btn.getAttribute("data-sep");
+    // Highlight active separator button
+    sepButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    generatePassphrase();
+  });
+});
+
+// Load the word list on page load
+window.addEventListener("load", () => {
+  loadWordList().then(generatePassphrase);
+});
