@@ -42,6 +42,7 @@
         <div style="display:flex;gap:14px;">
           <a class="nav" href="/index.html">Passwords</a>
           <a class="nav" href="/passphrase.html">Passphrases</a>
+          <a class="nav" href="/faq.html">FAQ</a>
         </div>
       </nav>
       <p class="subtitle">Create strong, random passwords in seconds</p>
@@ -59,20 +60,19 @@
 
       <div class="options-section">
         <h2>Customize Your Password</h2>
-
         <div class="option">
           <label for="length">Password Length: <span id="lengthValue">16</span></label>
           <input type="range" id="length" min="8" max="64" value="16" />
         </div>
-
-        <div class="option"><label><input type="checkbox" id="uppercase" checked />Include Uppercase Letters (A-Z)</label></div>
-        <div class="option"><label><input type="checkbox" id="lowercase" checked />Include Lowercase Letters (a-z)</label></div>
-        <div class="option"><label><input type="checkbox" id="numbers" checked />Include Numbers (0-9)</label></div>
+        <div class="option"><label><input type="checkbox" id="uppercase" checked />Include Uppercase Letters (A‑Z)</label></div>
+        <div class="option"><label><input type="checkbox" id="lowercase" checked />Include Lowercase Letters (a‑z)</label></div>
+        <div class="option"><label><input type="checkbox" id="numbers" checked />Include Numbers (0‑9)</label></div>
         <div class="option"><label><input type="checkbox" id="symbols" checked />Include Symbols (!@#$%^&*)</label></div>
-
         <div class="strength-meter">
           <p>Password Strength: <strong id="strengthText">Strong</strong></p>
-          <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+          <div class="strength-bar">
+            <div class="strength-fill" id="strengthFill"></div>
+          </div>
         </div>
       </div>
 
@@ -85,7 +85,6 @@
           <li>Not based on personal information</li>
           <li>Changed regularly</li>
         </ul>
-
         <h3>How This Generator Works</h3>
         <p>We use the browser’s <strong>Web Crypto API</strong> to generate cryptographically secure random passwords. It’s all local in your browser—no data ever leaves your device.</p>
       </div>
@@ -99,7 +98,6 @@
       </p>
     </footer>
   </div>
-
   <script src="/script.js"></script>
 </body>
 </html>
