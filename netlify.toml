@@ -1,15 +1,14 @@
 [[headers]]
   for = "/*"
   [headers.values]
-  # Content-Security-Policy
   Content-Security-Policy = """
 default-src 'self';
-script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagservices.com https://www.googletagmanager.com https://googleads.g.doubleclick.net;
+script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagservices.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com;
 style-src 'self' 'unsafe-inline';
-img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;
 font-src 'self' data:;
-connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
-frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net;
+connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;
+frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.google.com;
 frame-ancestors 'none';
 base-uri 'self';
 form-action 'self';
@@ -22,7 +21,6 @@ upgrade-insecure-requests;
   Permissions-Policy = "geolocation=(), microphone=(), camera=()"
   Cache-Control = "public, max-age=0, must-revalidate"
 
-# Cache static assets longer (optional)
 [[headers]]
   for = "/styles.css"
   [headers.values]
@@ -43,7 +41,6 @@ upgrade-insecure-requests;
   [headers.values]
   Cache-Control = "public, max-age=31536000, immutable"
 
-# Avoid long caching of wordlist (it updates via Actions)
 [[headers]]
   for = "/wordlist.json"
   [headers.values]
