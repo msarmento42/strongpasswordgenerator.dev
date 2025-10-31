@@ -3,44 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, follow" />
-  <title>Page not found — strongpasswordgenerator.dev</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://strongpasswordgenerator.dev/404.html" />
+  <title>404 — Page not found</title>
+
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+
+  <meta property="og:title" content="Page not found — strongpasswordgenerator.dev" />
+  <meta property="og:description" content="Sorry, the page you’re looking for doesn’t exist. Try our password or passphrase generators instead." />
+  <meta property="og:url" content="https://strongpasswordgenerator.dev/404.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Page not found — strongpasswordgenerator.dev" />
+  <meta name="twitter:description" content="Sorry, the page you’re looking for doesn’t exist. Try our password or passphrase generators instead." />
+
   <link rel="stylesheet" href="/styles.css" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <meta name="theme-color" content="#667eea" />
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
-    }
-  </script>
+  <script>if('serviceWorker'in navigator){addEventListener('load',()=>navigator.serviceWorker.register('/sw.js'))}</script>
+
+  <!-- Optional: AdSense on 404 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <nav style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
-        <h1>404 — Page not found</h1>
-        <div style="display:flex;gap:14px;">
-          <a class="nav" href="/index.html">Passwords</a>
-          <a class="nav" href="/passphrase.html">Passphrases</a>
-          <a class="nav" href="/faq.html">FAQ</a>
-        </div>
-      </nav>
-      <p class="subtitle">The page you’re looking for doesn’t exist.</p>
-    </header>
-
-    <main>
-      <div class="password-display-section">
-        <div class="password-display">Try one of these instead:</div>
-        <div class="button-group">
-          <a class="btn btn-primary" href="/index.html">Go to Password Generator</a>
-          <a class="btn btn-secondary" href="/passphrase.html">Go to Passphrase Generator</a>
-        </div>
+<div class="container">
+  <header>
+    <nav style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+      <h1>404 — Page not found</h1>
+      <div style="display:flex;gap:14px;">
+        <a class="nav" href="/index.html">Passwords</a>
+        <a class="nav" href="/passphrase.html">Passphrases</a>
+        <a class="nav" href="/strength-checker.html">Strength Checker</a>
+        <a class="nav" href="/faq.html">FAQ</a>
       </div>
-    </main>
+    </nav>
+    <p class="subtitle">Let’s get you to the right place</p>
+  </header>
 
-    <footer>
-      <p>© 2025 strongpasswordgenerator.dev</p>
-    </footer>
-  </div>
+  <main class="info-section" style="padding:40px 30px;">
+    <h2>Try these:</h2>
+    <ul>
+      <li><a href="/index.html">Strong Password Generator</a></li>
+      <li><a href="/passphrase.html">Passphrase Generator</a></li>
+      <li><a href="/strength-checker.html">Password Strength Checker</a></li>
+      <li><a href="/enable-2fa.html">Enable Two-Factor Authentication</a></li>
+      <li><a href="/breach-checklist.html">Data Breach Checklist</a></li>
+      <li><a href="/pm-comparison.html">Password Manager Comparison</a></li>
+      <li><a href="/guide-strong-passwords.html">Guide: Strong Passwords & Passphrases</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+    </ul>
+  </main>
+
+  <footer><p>© 2025 strongpasswordgenerator.dev</p></footer>
+</div>
 </body>
 </html>
