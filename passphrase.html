@@ -2,79 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Generate memorable, secure passphrases from a large, profanity-filtered word list. All local, private, and free." />
+  <meta name="description" content="Generate memorable, secure passphrases using a large word list. All generation happens locally in your browser." />
   <link rel="canonical" href="https://strongpasswordgenerator.dev/passphrase.html" />
   <title>Passphrase Generator — Memorable & Secure</title>
 
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
-
-  <meta property="og:title" content="Secure Passphrase Generator" />
-  <meta property="og:description" content="Create 4–8 word passphrases from a profanity-filtered list. Generated locally in your browser." />
-  <meta property="og:url" content="https://strongpasswordgenerator.dev/passphrase.html" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Secure Passphrase Generator" />
-  <meta name="twitter:description" content="Create 4–8 word passphrases from a profanity-filtered list. Generated locally in your browser." />
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
 
   <link rel="stylesheet" href="/styles.css" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <meta name="theme-color" content="#667eea" />
   <script>if('serviceWorker'in navigator){addEventListener('load',()=>navigator.serviceWorker.register('/sw.js'))}</script>
 
+  <!-- Consent Mode (must be before AdSense) -->
+  <script src="/consent.js"></script>
+
+  <!-- AdSense Auto Ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <nav style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
-        <h1>🧩 Passphrase Generator</h1>
-        <div style="display:flex;gap:14px;">
-          <a class="nav" href="/index.html">Passwords</a>
-          <a class="nav" href="/passphrase.html">Passphrases</a>
-          <a class="nav" href="/strength-checker.html">Strength Checker</a>
-          <a class="nav" href="/faq.html">FAQ</a>
-        </div>
-      </nav>
-      <p class="subtitle">Create <strong>4–8 word</strong> passphrases from a large, profanity-filtered list (default 8 words)</p>
-    </header>
+<div class="container">
+  <header>
+    <nav style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+      <h1>🔐 Passphrase Generator</h1>
+      <div style="display:flex;gap:14px;">
+        <a class="nav" href="/index.html">Passwords</a>
+        <a class="nav" href="/passphrase.html">Passphrases</a>
+        <a class="nav" href="/strength-checker.html">Strength Checker</a>
+        <a class="nav" href="/faq.html">FAQ</a>
+      </div>
+    </nav>
+    <p class="subtitle">Memorable phrases. Strong security.</p>
+  </header>
 
-    <main>
-      <div class="password-display-section">
-        <div class="password-display" id="ppDisplay">Click "Generate Passphrase" to start</div>
-        <div class="button-group">
-          <button class="btn btn-primary" id="ppGenerate">Generate Passphrase</button>
-          <button class="btn btn-secondary" id="ppCopy">Copy</button>
-        </div>
-        <div class="copy-notification" id="ppCopied">Copied to clipboard! ✓</div>
+  <main>
+    <div class="password-display-section">
+      <div class="password-display" id="ppDisplay">Click "Generate" to start</div>
+      <div class="button-group">
+        <button class="btn btn-primary" id="ppGenBtn">Generate</button>
+        <button class="btn btn-secondary" id="ppCopyBtn">Copy</button>
+      </div>
+      <div class="copy-notification" id="ppCopyNote">Copied to clipboard! ✓</div>
+    </div>
+
+    <div class="options-section">
+      <h2>Customize Your Passphrase</h2>
+      <div class="option">
+        <label for="ppCount">Words: </label>
+        <select id="ppCount" style="margin-left:8px;padding:6px;border:1px solid #e1e8ed;border-radius:6px;">
+          <option>4</option><option>5</option><option selected>6</option><option>7</option><option>8</option>
+        </select>
       </div>
 
-      <div class="options-section">
-        <h2>Options</h2>
-        <div class="option">
-          <label for="wordCount">Words: <span id="wordCountValue">8</span></label>
-          <input id="wordCount" type="range" min="4" max="8" value="8" />
-        </div>
-        <div class="option"><label for="separator">Separator</label></div>
-        <div class="button-group">
-          <button class="btn" data-sep=" ">space</button>
-          <button class="btn" data-sep="-">-</button>
-          <button class="btn" data-sep="_">_</button>
-          <button class="btn" data-sep=".">.</button>
-        </div>
+      <div class="option"><label><input type="checkbox" id="ppTitleCase" checked> Title-case words</label></div>
+      <div class="option"><label><input type="checkbox" id="ppHyphens" checked> Use hyphens between words</label></div>
+      <div class="option"><label><input type="checkbox" id="ppNumber"> Add a number at the end</label></div>
+      <div class="option"><label><input type="checkbox" id="ppSymbol"> Add a symbol at the end</label></div>
 
-        <div class="strength-meter">
-          <p>Estimated Entropy: <strong id="ppEntropy">–</strong></p>
-          <div class="strength-bar"><div class="strength-fill" id="ppStrength"></div></div>
-          <p style="font-size:.9em;color:#4a5568;margin-top:8px">Tip: 6–8 words are very strong for most uses.</p>
-        </div>
+      <p style="color:#4a5568;margin-top:12px;">We use a large curated word list (locally) and filter out offensive words automatically.</p>
+    </div>
+  </main>
 
-        <p id="ppStatus" style="margin-top:12px;color:#4a5568"></p>
-      </div>
-    </main>
+  <footer><p>© 2025 strongpasswordgenerator.dev — All generation happens locally in your browser.</p></footer>
+</div>
 
-    <footer><p>© 2025 strongpasswordgenerator.dev</p></footer>
-  </div>
-  <script defer src="/passphrase.js"></script>
+<script src="/passphrase.js"></script>
 </body>
 </html>
