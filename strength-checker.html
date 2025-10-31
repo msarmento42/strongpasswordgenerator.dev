@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Check the strength of any password with our free tool. Get instant feedback and tips to improve your security." />
+  <link rel="canonical" href="https://strongpasswordgenerator.dev/strength-checker.html" />
+  <title>Password Strength Checker</title>
+
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+
+  <meta property="og:title" content="Password Strength Checker" />
+  <meta property="og:description" content="Check the strength of any password with our free tool. Get instant feedback and tips to improve your security." />
+  <meta property="og:url" content="https://strongpasswordgenerator.dev/strength-checker.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Password Strength Checker" />
+  <meta name="twitter:description" content="Check the strength of any password with our free tool. Get instant feedback and tips to improve your security." />
+
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#667eea" />
+
+  <script>if('serviceWorker'in navigator){addEventListener('load',()=>navigator.serviceWorker.register('/sw.js'))}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+  <header>
+    <nav style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+      <h1>🔍 Password Strength Checker</h1>
+      <div style="display:flex;gap:14px;">
+        <a class="nav" href="/index.html">Passwords</a>
+        <a class="nav" href="/passphrase.html">Passphrases</a>
+        <a class="nav" href="/strength-checker.html">Strength Checker</a>
+        <a class="nav" href="/faq.html">FAQ</a>
+      </div>
+    </nav>
+    <p class="subtitle">Check your password’s strength and get suggestions to improve it</p>
+  </header>
+
+  <main>
+    <div class="options-section">
+      <h2>Enter a Password</h2>
+      <input type="password" id="scInput" placeholder="Type or paste a password" style="width:100%;padding:12px;font-size:1.2em;border:1px solid #e1e8ed;border-radius:8px;">
+      <div class="button-group" style="margin-top:20px;">
+        <button class="btn btn-primary" id="scCheck">Check Strength</button>
+      </div>
+    </div>
+
+    <div id="scResult" style="margin-top:30px;"></div>
+  </main>
+
+  <footer><p>© 2025 strongpasswordgenerator.dev</p></footer>
+</div>
+
+<script>
+function evaluatePassword(pw){
+  let score=0;const suggestions=[];
+  if(!pw) return {score:0,label:'No password provided',suggestions};
+  if(pw.length>=8)score++; if(pw.length>=12)score++; if(pw.length>=16)score++;
+  if(/[a-z]/.test(pw))score++; if(/[A-Z]/.test(pw))score++; if(/[0-9]/.test(pw))score++; if(/[^A-Za-z0-9]/.test(pw))score++;
+  if(pw.length<12)suggestions.push('Use at least 12 characters');
+  if(!/[A-Z]/.test(pw))suggestions.push('Include uppercase letters (A–Z)');
+  if(!/[a-z]/.test(pw))suggestions.push('Include lowercase letters (a–z)');
+  if(!/[0-9]/.test(pw))suggestions.push('Include numbers (0–9)');
+  if(!/[^A-Za-z0-9]/.test(pw))suggestions.push('Include symbols (!@#$…)');
+  let label = (score<=3)?'Weak':(score<=5?'Medium':'Strong');
+  return {score,label,suggestions};
+}
+document.getElementById('scCheck').addEventListener('click',()=>{
+  const pw=document.getElementById('scInput').value;
+  const {score,label,suggestions}=evaluatePassword(pw);
+  let html='<div class="strength-meter" style="margin-top:20px;"><p>Strength: <strong>'+label+'</strong></p>';
+  html+='<div class="strength-bar"><div class="strength-fill '+(score<=3?'weak':score<=5?'medium':'strong')+'" style="width:'+Math.min(score*14,100)+'%;"></div></div></div>';
+  if(suggestions.length){html+='<h3 style="margin-top:20px;">Suggestions</h3><ul>';suggestions.forEach(s=>html+='<li>'+s+'</li>');html+='</ul>'}
+  document.getElementById('scResult').innerHTML=html;
+});
+</script>
+</body>
+</html>
