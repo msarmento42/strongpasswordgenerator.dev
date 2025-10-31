@@ -7,9 +7,6 @@
   <link rel="canonical" href="https://strongpasswordgenerator.dev/404.html" />
   <title>404 — Page not found</title>
 
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
-
   <meta property="og:title" content="Page not found — strongpasswordgenerator.dev" />
   <meta property="og:description" content="Sorry, the page you’re looking for doesn’t exist. Try our password or passphrase generators instead." />
   <meta property="og:url" content="https://strongpasswordgenerator.dev/404.html" />
@@ -21,10 +18,11 @@
   <link rel="stylesheet" href="/styles.css" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <meta name="theme-color" content="#667eea" />
-  <script>if('serviceWorker'in navigator){addEventListener('load',()=>navigator.serviceWorker.register('/sw.js'))}</script>
-
-  <!-- Optional: AdSense on 404 -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696" crossorigin="anonymous"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+  </script>
 </head>
 <body>
 <div class="container">
@@ -35,7 +33,7 @@
         <a class="nav" href="/index.html">Passwords</a>
         <a class="nav" href="/passphrase.html">Passphrases</a>
         <a class="nav" href="/strength-checker.html">Strength Checker</a>
-        <a class "nav" href="/faq.html">FAQ</a>
+        <a class="nav" href="/faq.html">FAQ</a>
       </div>
     </nav>
     <p class="subtitle">Let’s get you to the right place</p>
