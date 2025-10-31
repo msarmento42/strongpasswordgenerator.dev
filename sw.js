@@ -1,10 +1,10 @@
-const CACHE = 'spg-v2';
+const CACHE = 'spg-v3';
 const CORE = [
   '/', '/index.html', '/styles.css', '/script.js',
   '/passphrase.html', '/passphrase.js', '/wordlist.json',
-  '/faq.html', '/strength-checker.html', '/enable-2fa.html',
-  '/breach-checklist.html', '/pm-comparison.html', '/guide-strong-passwords.html',
-  '/about.html', '/contact.html',
+  '/strength-checker.html', '/enable-2fa.html', '/breach-checklist.html',
+  '/pm-comparison.html', '/guide-strong-passwords.html', '/faq.html',
+  '/about.html', '/contact.html', '/404.html',
   '/manifest.webmanifest'
 ];
 
@@ -22,16 +22,19 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  // Network-first for wordlist (it updates via Actions), cache-first for the rest
+
+  // Network-first for the word list (it updates via Actions)
   if (url.pathname === '/wordlist.json') {
-    e.respondWith(fetch(e.request).then(r => {
-      const copy = r.clone();
-      caches.open(CACHE).then(c => c.put(e.request, copy));
-      return r;
-    }).catch(() => caches.match(e.request)));
+    e.respondWith(
+      fetch(e.request).then(r => {
+        const copy = r.clone();
+        caches.open(CACHE).then(c => c.put(e.request, copy));
+        return r;
+      }).catch(() => caches.match(e.request))
+    );
     return;
   }
-  e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request))
-  );
+
+  // Cache-first for the rest
+  e.respondWith(caches.match(e.request).then(cached => cached || fetch(e.request)));
 });
