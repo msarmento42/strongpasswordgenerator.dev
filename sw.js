@@ -1,40 +1,54 @@
-const CACHE_NAME = 'spg-v6'; // bump this value
-const CORE = [
-  '/', '/index.html', '/styles.css', '/script.js',
-  '/passphrase.html', '/passphrase.js', '/wordlist.json',
-  '/strength-checker.html', '/enable-2fa.html', '/breach-checklist.html',
-  '/pm-comparison.html', '/guide-strong-passwords.html', '/faq.html',
-  '/about.html', '/contact.html', '/404.html',
-  '/manifest.webmanifest'
-];
+// sw.js — minimal runtime cache with version bump
+const CACHE_NAME = 'spg-v8'; // bump this to force updates
 
-self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(CORE)));
+self.addEventListener('install', (event) => {
   self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) =>
+      cache.addAll([
+        '/', '/index.html',
+        '/styles.css', '/script.js',
+        '/passphrase.html', '/passphrase.js',
+        '/strength-checker.html', '/strength-checker.js',
+        '/manifest.webmanifest',
+        // intentionally NOT caching /wordlist.json on install
+      ])
+    )
+  );
 });
 
-self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(keys =>
-    Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-  ));
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.map((k) => (k === CACHE_NAME ? null : caches.delete(k))))
+    )
+  );
   self.clients.claim();
 });
 
-self.addEventListener('fetch', e => {
-  const url = new URL(e.request.url);
+// Network-first for wordlist.json; cache-first for others
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+  const url = new URL(request.url);
 
-  // Network-first for the word list (it updates via Actions)
   if (url.pathname === '/wordlist.json') {
-    e.respondWith(
-      fetch(e.request).then(r => {
-        const copy = r.clone();
-        caches.open(CACHE_NAME).then(c => c.put(e.request, copy));
-        return r;
-      }).catch(() => caches.match(e.request))
+    event.respondWith(
+      fetch(request).then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE_NAME).then((c) => c.put(request, copy));
+        return res;
+      }).catch(() => caches.match(request))
     );
     return;
   }
 
-  // Cache-first for the rest
-  e.respondWith(caches.match(e.request).then(cached => cached || fetch(e.request)));
+  event.respondWith(
+    caches.match(request).then((cached) =>
+      cached || fetch(request).then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE_NAME).then((c) => c.put(request, copy));
+        return res;
+      })
+    )
+  );
 });

@@ -1,7 +1,7 @@
 {
-  "name": "Strong Password Generator",
+  "name": "Secure Password Generator",
   "short_name": "SPG",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#667eea",
