@@ -1,163 +1,92 @@
-// Simple fallback list in case wordlist.json is unavailable
-const fallbackWords = [
-  "alpha",
-  "bravo",
-  "charlie",
-  "delta",
-  "echo",
-  "foxtrot",
-  "golf",
-  "hotel",
-  "india",
-  "juliet"
-];
+// passphrase.js — robust, crypto-secure passphrase generator with helpful logs
+(() => {
+  const $ = (id) => document.getElementById(id);
 
-// Elements
-const ppDisplay = document.getElementById("ppDisplay");
-const ppGenBtn = document.getElementById("ppGenBtn");
-const ppCopyBtn = document.getElementById("ppCopyBtn");
-const ppCopyNote = document.getElementById("ppCopyNote");
-const wordCountSelect = document.getElementById("ppCount");
-const titleCaseCheckbox = document.getElementById("ppTitleCase");
-const hyphenCheckbox = document.getElementById("ppHyphens");
-const numberCheckbox = document.getElementById("ppNumber");
-const symbolCheckbox = document.getElementById("ppSymbol");
+  const ui = {
+    display: $("ppDisplay"),
+    genBtn: $("ppGenBtn"),
+    copyBtn: $("ppCopyBtn"),
+    copyNote: $("ppCopyNote"),
+    count: $("ppCount"),
+    titleCase: $("ppTitleCase"),
+    hyphens: $("ppHyphens"),
+    number: $("ppNumber"),
+    symbol: $("ppSymbol"),
+  };
 
-let wordList = fallbackWords;
+  console.log("[passphrase] script loaded", { haveDisplay: !!ui.display });
 
-async function loadWordList() {
-  try {
-    const resp = await fetch("/wordlist.json", { cache: "no-store" });
-    if (resp.ok) {
-      const data = await resp.json();
-      if (Array.isArray(data) && data.length > 0) {
-        wordList = data;
-        return;
-      }
+  let WORDS = null;
+  let lastPhrase = "";
+
+  function titleCase(w) { return w.length ? w[0].toUpperCase() + w.slice(1) : w; }
+  function randInt(max) { const b = new Uint32Array(1); crypto.getRandomValues(b); return b[0] % max; }
+
+  function secureSample(arr, k) {
+    const out = [];
+    const seen = new Set();
+    while (out.length < k && seen.size < arr.length) {
+      const idx = randInt(arr.length);
+      if (!seen.has(idx)) { seen.add(idx); out.push(arr[idx]); }
     }
-  } catch (err) {
-    console.warn("wordlist.json fetch failed", err);
+    return out;
   }
 
-  try {
-    const resp = await fetch("/assets/eff_large_wordlist.txt");
-    if (resp.ok) {
-      const text = await resp.text();
-      const lines = text
-        .trim()
-        .split(/\s+/)
-        .filter((w) => /^[a-zA-Z]+$/.test(w));
-      if (lines.length > 0) {
-        wordList = lines;
-        return;
-      }
+  async function loadWordlist() {
+    if (WORDS) return WORDS;
+    const v = "2025-11-06"; // bump to kill stale caches
+    console.log("[passphrase] fetching /wordlist.json?v="+v);
+    const res = await fetch(`/wordlist.json?v=${v}`, { cache: "no-cache" });
+    if (!res.ok) throw new Error(`wordlist.json HTTP ${res.status}`);
+    const data = await res.json();
+    if (!Array.isArray(data)) throw new Error("wordlist.json must be an array");
+    WORDS = data.filter(w => typeof w === "string" && w.trim().length > 0);
+    console.log("[passphrase] word count:", WORDS.length);
+    return WORDS;
+  }
+
+  function buildPhrase(words) {
+    const count = parseInt(ui.count.value, 10) || 6;
+    const picks = secureSample(words, count).map(w => ui.titleCase.checked ? titleCase(w) : w);
+    const glue = ui.hyphens.checked ? "-" : " ";
+    let phrase = picks.join(glue);
+    if (ui.number.checked) { const n = randInt(100); phrase += (ui.hyphens.checked ? "-" : "") + String(n).padStart(2, "0"); }
+    if (ui.symbol.checked) { const syms = "!@#$%&*?"; phrase += (ui.hyphens.checked ? "-" : "") + syms[randInt(syms.length)]; }
+    return phrase;
+  }
+
+  async function generate() {
+    try {
+      if (!ui.display) { console.error("[passphrase] Missing #ppDisplay"); return; }
+      ui.display.textContent = "Loading word list…";
+      const words = await loadWordlist();
+      lastPhrase = buildPhrase(words);
+      ui.display.textContent = lastPhrase;
+      ui.display.classList.add("generated");
+    } catch (e) {
+      console.error("[passphrase] generate error:", e);
+      if (ui.display) ui.display.textContent = "Error loading word list. Try Shift+Reload. If it persists, wordlist.json may be missing.";
     }
-  } catch (err) {
-    console.warn("EFF list fetch failed", err);
   }
 
-  console.warn("Using fallback word list");
-}
-
-function secureRandomInt(max) {
-  const array = new Uint32Array(1);
-  window.crypto.getRandomValues(array);
-  return array[0] % max;
-}
-
-function formatWord(word) {
-  if (!titleCaseCheckbox || !titleCaseCheckbox.checked) {
-    return word.toLowerCase();
-  }
-  const lower = word.toLowerCase();
-  return lower.charAt(0).toUpperCase() + lower.slice(1);
-}
-
-function appendWithSeparator(base, addition, useHyphen) {
-  if (!addition) return base;
-  const separator = useHyphen ? "-" : " ";
-  return base + separator + addition;
-}
-
-function generatePassphrase() {
-  const count = parseInt(wordCountSelect.value, 10) || 6;
-  const useHyphen = hyphenCheckbox.checked;
-  const words = [];
-
-  if (!wordList.length) {
-    console.error("Word list is empty. Falling back to default list.");
-    wordList = fallbackWords;
+  async function copy() {
+    if (!lastPhrase) { if (ui.display) ui.display.textContent = "Generate a passphrase first!"; return; }
+    try {
+      await navigator.clipboard.writeText(lastPhrase);
+      if (ui.copyNote) { ui.copyNote.classList.add("show"); setTimeout(() => ui.copyNote.classList.remove("show"), 1600); }
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = lastPhrase; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+      if (ui.copyNote) { ui.copyNote.classList.add("show"); setTimeout(() => ui.copyNote.classList.remove("show"), 1600); }
+    }
   }
 
-  for (let i = 0; i < count; i += 1) {
-    const idx = secureRandomInt(wordList.length);
-    words.push(formatWord(wordList[idx]));
-  }
+  if (ui.genBtn) ui.genBtn.addEventListener("click", generate);
+  if (ui.copyBtn) ui.copyBtn.addEventListener("click", copy);
 
-  let phrase = words.join(useHyphen ? "-" : " ");
-
-  if (numberCheckbox.checked) {
-    const randomNumber = secureRandomInt(10); // 0-9
-    phrase = appendWithSeparator(phrase, String(randomNumber), useHyphen);
-  }
-
-  if (symbolCheckbox.checked) {
-    const symbols = ["!", "@", "#", "$", "%", "&", "*"];
-    const randomSymbol = symbols[secureRandomInt(symbols.length)];
-    phrase = appendWithSeparator(phrase, randomSymbol, useHyphen);
-  }
-
-  ppDisplay.textContent = phrase;
-}
-
-async function copyPassphrase() {
-  const text = ppDisplay.textContent;
-  if (!text || text === "Click \"Generate\" to start") {
-    return;
-  }
-
-  try {
-    await navigator.clipboard.writeText(text);
-    showNotification();
-  } catch (err) {
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    textarea.style.position = "fixed";
-    textarea.style.opacity = "0";
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textarea);
-    showNotification();
-  }
-}
-
-function showNotification() {
-  if (!ppCopyNote) return;
-  ppCopyNote.classList.add("show");
-  setTimeout(() => {
-    ppCopyNote.classList.remove("show");
-  }, 2000);
-}
-
-if (ppGenBtn) {
-  ppGenBtn.addEventListener("click", generatePassphrase);
-}
-
-if (ppCopyBtn) {
-  ppCopyBtn.addEventListener("click", copyPassphrase);
-}
-
-if (wordCountSelect) {
-  wordCountSelect.addEventListener("change", generatePassphrase);
-}
-
-[titleCaseCheckbox, hyphenCheckbox, numberCheckbox, symbolCheckbox]
-  .filter(Boolean)
-  .forEach((checkbox) => {
-    checkbox.addEventListener("change", generatePassphrase);
+  window.addEventListener("load", () => {
+    console.log("[passphrase] window load — auto-generate");
+    generate();
   });
-
-window.addEventListener("load", () => {
-  loadWordList().then(generatePassphrase);
-});
+})();

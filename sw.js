@@ -1,4 +1,4 @@
-const CACHE = 'spg-v3';
+const CACHE_NAME = 'spg-v6'; // bump this value
 const CORE = [
   '/', '/index.html', '/styles.css', '/script.js',
   '/passphrase.html', '/passphrase.js', '/wordlist.json',
@@ -9,13 +9,13 @@ const CORE = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)));
+  e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(CORE)));
   self.skipWaiting();
 });
 
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(keys =>
-    Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
   ));
   self.clients.claim();
 });
@@ -28,7 +28,7 @@ self.addEventListener('fetch', e => {
     e.respondWith(
       fetch(e.request).then(r => {
         const copy = r.clone();
-        caches.open(CACHE).then(c => c.put(e.request, copy));
+        caches.open(CACHE_NAME).then(c => c.put(e.request, copy));
         return r;
       }).catch(() => caches.match(e.request))
     );
