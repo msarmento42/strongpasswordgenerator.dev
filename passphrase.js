@@ -1,27 +1,37 @@
 // Simple fallback list in case wordlist.json is unavailable
-const fallbackWords = ["alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliet"];
+const fallbackWords = [
+  "alpha",
+  "bravo",
+  "charlie",
+  "delta",
+  "echo",
+  "foxtrot",
+  "golf",
+  "hotel",
+  "india",
+  "juliet"
+];
 
-// Global variables
-let wordList = fallbackWords;
-let selectedSeparator = " ";
-const wordCountSlider = document.getElementById("wordCount");
-const wordCountValue = document.getElementById("wordCountValue");
+// Elements
 const ppDisplay = document.getElementById("ppDisplay");
-const ppEntropy = document.getElementById("ppEntropy");
-const ppStrength = document.getElementById("ppStrength");
-const ppStatus = document.getElementById("ppStatus");
-const sepButtons = document.querySelectorAll(".button-group .btn[data-sep]");
+const ppGenBtn = document.getElementById("ppGenBtn");
+const ppCopyBtn = document.getElementById("ppCopyBtn");
+const ppCopyNote = document.getElementById("ppCopyNote");
+const wordCountSelect = document.getElementById("ppCount");
+const titleCaseCheckbox = document.getElementById("ppTitleCase");
+const hyphenCheckbox = document.getElementById("ppHyphens");
+const numberCheckbox = document.getElementById("ppNumber");
+const symbolCheckbox = document.getElementById("ppSymbol");
 
-// Load wordlist.json (prefer 70k/50k), else fallback to EFF, else fallbackWords
+let wordList = fallbackWords;
+
 async function loadWordList() {
-  // Try wordlist.json first
   try {
     const resp = await fetch("/wordlist.json", { cache: "no-store" });
     if (resp.ok) {
       const data = await resp.json();
-      if (Array.isArray(data) && data.length > 10000) {
+      if (Array.isArray(data) && data.length > 0) {
         wordList = data;
-        ppStatus.textContent = `Loaded ${data.length} words.`;
         return;
       }
     }
@@ -29,15 +39,16 @@ async function loadWordList() {
     console.warn("wordlist.json fetch failed", err);
   }
 
-  // Fallback to EFF list
   try {
     const resp = await fetch("/assets/eff_large_wordlist.txt");
     if (resp.ok) {
       const text = await resp.text();
-      const lines = text.trim().split(/\s+/).filter(w => /^[a-zA-Z]+$/.test(w));
-      if (lines.length > 5000) {
+      const lines = text
+        .trim()
+        .split(/\s+/)
+        .filter((w) => /^[a-zA-Z]+$/.test(w));
+      if (lines.length > 0) {
         wordList = lines;
-        ppStatus.textContent = `Loaded ${lines.length} words (EFF list).`;
         return;
       }
     }
@@ -45,59 +56,74 @@ async function loadWordList() {
     console.warn("EFF list fetch failed", err);
   }
 
-  // Fallback to built‑in list
-  ppStatus.textContent = `Loaded fallback list (${fallbackWords.length} words).`;
+  console.warn("Using fallback word list");
 }
 
-// Secure random integer [0, max)
 function secureRandomInt(max) {
   const array = new Uint32Array(1);
   window.crypto.getRandomValues(array);
   return array[0] % max;
 }
 
-// Generate the passphrase
-function generatePassphrase() {
-  const count = parseInt(wordCountSlider.value, 10) || 8;
-  const words = [];
-  for (let i = 0; i < count; i++) {
-    const idx = secureRandomInt(wordList.length);
-    words.push(wordList[idx].toLowerCase());
+function formatWord(word) {
+  if (!titleCaseCheckbox || !titleCaseCheckbox.checked) {
+    return word.toLowerCase();
   }
-  const phrase = words.join(selectedSeparator);
-  ppDisplay.textContent = phrase;
-
-  // Entropy calculation (bits)
-  const baseEntropy = Math.log2(wordList.length) * count;
-  ppEntropy.textContent = `${Math.round(baseEntropy)} bits`;
-
-  // Visual strength meter (weak <40, medium <60, strong >=60)
-  ppStrength.className = "strength-fill";
-  if (baseEntropy < 40) {
-    ppStrength.classList.add("weak");
-  } else if (baseEntropy < 60) {
-    ppStrength.classList.add("medium");
-  } else {
-    ppStrength.classList.add("strong");
-  }
-
-  // Update slider display
-  wordCountValue.textContent = count;
+  const lower = word.toLowerCase();
+  return lower.charAt(0).toUpperCase() + lower.slice(1);
 }
 
-// Copy function
+function appendWithSeparator(base, addition, useHyphen) {
+  if (!addition) return base;
+  const separator = useHyphen ? "-" : " ";
+  return base + separator + addition;
+}
+
+function generatePassphrase() {
+  const count = parseInt(wordCountSelect.value, 10) || 6;
+  const useHyphen = hyphenCheckbox.checked;
+  const words = [];
+
+  if (!wordList.length) {
+    console.error("Word list is empty. Falling back to default list.");
+    wordList = fallbackWords;
+  }
+
+  for (let i = 0; i < count; i += 1) {
+    const idx = secureRandomInt(wordList.length);
+    words.push(formatWord(wordList[idx]));
+  }
+
+  let phrase = words.join(useHyphen ? "-" : " ");
+
+  if (numberCheckbox.checked) {
+    const randomNumber = secureRandomInt(10); // 0-9
+    phrase = appendWithSeparator(phrase, String(randomNumber), useHyphen);
+  }
+
+  if (symbolCheckbox.checked) {
+    const symbols = ["!", "@", "#", "$", "%", "&", "*"];
+    const randomSymbol = symbols[secureRandomInt(symbols.length)];
+    phrase = appendWithSeparator(phrase, randomSymbol, useHyphen);
+  }
+
+  ppDisplay.textContent = phrase;
+}
+
 async function copyPassphrase() {
   const text = ppDisplay.textContent;
-  if (!text) return;
+  if (!text || text === "Click \"Generate\" to start") {
+    return;
+  }
+
   try {
     await navigator.clipboard.writeText(text);
     showNotification();
-  } catch {
-    // Fallback for older browsers
+  } catch (err) {
     const textarea = document.createElement("textarea");
     textarea.value = text;
     textarea.style.position = "fixed";
-    textarea.style.opacity = 0;
+    textarea.style.opacity = "0";
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
@@ -107,28 +133,31 @@ async function copyPassphrase() {
 }
 
 function showNotification() {
-  const note = document.getElementById("ppCopied");
-  note.classList.add("show");
-  setTimeout(() => note.classList.remove("show"), 2000);
+  if (!ppCopyNote) return;
+  ppCopyNote.classList.add("show");
+  setTimeout(() => {
+    ppCopyNote.classList.remove("show");
+  }, 2000);
 }
 
-// Event listeners
-document.getElementById("ppGenerate").addEventListener("click", generatePassphrase);
-document.getElementById("ppCopy").addEventListener("click", copyPassphrase);
-wordCountSlider.addEventListener("input", () => {
-  wordCountValue.textContent = wordCountSlider.value;
-});
-sepButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    selectedSeparator = btn.getAttribute("data-sep");
-    // Highlight active separator button
-    sepButtons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    generatePassphrase();
-  });
-});
+if (ppGenBtn) {
+  ppGenBtn.addEventListener("click", generatePassphrase);
+}
 
-// Load the word list on page load
+if (ppCopyBtn) {
+  ppCopyBtn.addEventListener("click", copyPassphrase);
+}
+
+if (wordCountSelect) {
+  wordCountSelect.addEventListener("change", generatePassphrase);
+}
+
+[titleCaseCheckbox, hyphenCheckbox, numberCheckbox, symbolCheckbox]
+  .filter(Boolean)
+  .forEach((checkbox) => {
+    checkbox.addEventListener("change", generatePassphrase);
+  });
+
 window.addEventListener("load", () => {
   loadWordList().then(generatePassphrase);
 });
