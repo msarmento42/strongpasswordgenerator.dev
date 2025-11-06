@@ -2,29 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Check the strength of a password and get actionable tips to harden it." />
+  <meta name="description" content="Check the strength of a password locally. We estimate entropy and time-to-crack without sending your input anywhere." />
   <link rel="canonical" href="https://strongpasswordgenerator.dev/strength-checker.html" />
-  <title>Password Strength Checker</title>
-
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
+  <title>Password Strength Checker — Entropy & Crack Time</title>
 
   <link rel="stylesheet" href="/styles.css" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <meta name="theme-color" content="#667eea" />
   <script>if('serviceWorker'in navigator){addEventListener('load',()=>navigator.serviceWorker.register('/sw.js'))}</script>
-
-  <!-- Consent Mode (must be before AdSense) -->
-  <script src="/consent.js"></script>
-
-  <!-- AdSense Auto Ads -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container">
   <header>
     <nav style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
-      <h1>Password Strength Checker</h1>
+      <h1>🔎 Password Strength Checker</h1>
       <div style="display:flex;gap:14px;">
         <a class="nav" href="/index.html">Passwords</a>
         <a class="nav" href="/passphrase.html">Passphrases</a>
@@ -32,23 +23,22 @@
         <a class="nav" href="/faq.html">FAQ</a>
       </div>
     </nav>
-    <p class="subtitle">Instant feedback and hardening tips</p>
+    <p class="subtitle">All checking happens locally. We do not store or send your input.</p>
   </header>
 
-  <main class="info-section">
-    <label class="option" style="margin-top:8px;"><span style="min-width:140px;">Password to check</span></label>
-    <input id="pwInput" type="password" placeholder="Enter password" style="width:100%;padding:12px;border:1px solid #e1e8ed;border-radius:8px;margin:8px 0 16px;">
-    <button class="btn btn-primary" id="checkBtn">Check strength</button>
-
-    <div class="strength-meter" style="margin-top:24px;">
-      <p>Strength: <strong id="scoreText">—</strong></p>
-      <div class="strength-bar"><div class="strength-fill" id="scoreFill"></div></div>
+  <main>
+    <div class="options-section">
+      <h2>Test a Password</h2>
+      <input id="scInput" type="password" placeholder="Type or paste a password…" style="width:100%;padding:14px;border-radius:10px;border:2px solid #e1e8ed;font-size:1.1em;" autocomplete="off" />
+      <div class="strength-meter" style="margin-top:18px;">
+        <p>Password Strength: <strong id="scLabel">–</strong></p>
+        <div class="strength-bar"><div class="strength-fill" id="scBar" style="width:0%"></div></div>
+      </div>
+      <ul id="scChecklist" style="margin-top:14px;line-height:1.8"></ul>
     </div>
-
-    <div style="margin-top:18px;" id="advice"></div>
   </main>
 
-  <footer><p>© 2025 strongpasswordgenerator.dev</p></footer>
+  <footer><p>© 2025 strongpasswordgenerator.dev — Local-first, privacy-friendly tools.</p></footer>
 </div>
 
 <script src="/strength-checker.js"></script>

@@ -1,47 +1,17 @@
+# netlify.toml
+
 [[headers]]
   for = "/*"
   [headers.values]
-  Content-Security-Policy = """
-default-src 'self';
-script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagservices.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com;
-style-src 'self' 'unsafe-inline';
-img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;
-font-src 'self' data:;
-connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;
-frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.google.com;
-frame-ancestors 'none';
-base-uri 'self';
-form-action 'self';
-upgrade-insecure-requests;
-"""
-  Referrer-Policy = "strict-origin-when-cross-origin"
-  X-Content-Type-Options = "nosniff"
-  X-Frame-Options = "DENY"
-  X-XSS-Protection = "0"
-  Permissions-Policy = "geolocation=(), microphone=(), camera=()"
-  Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/styles.css"
-  [headers.values]
-  Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/script.js"
-  [headers.values]
-  Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/passphrase.js"
-  [headers.values]
-  Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/manifest.webmanifest"
-  [headers.values]
-  Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # Allow AdSense where used (index.html), and allow local fetches + frames.
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; script-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;"
 
 [[headers]]
   for = "/wordlist.json"
   [headers.values]
-  Cache-Control = "public, max-age=300"
+    Content-Type = "application/json; charset=utf-8"
+    Cache-Control = "public, max-age=604800, immutable"

@@ -19,8 +19,8 @@
   let WORDS = null;
   let lastPhrase = "";
 
-  function titleCase(w) { return w.length ? w[0].toUpperCase() + w.slice(1) : w; }
-  function randInt(max) { const b = new Uint32Array(1); crypto.getRandomValues(b); return b[0] % max; }
+  const titleCase = (w) => (w ? w[0].toUpperCase() + w.slice(1) : w);
+  const randInt = (max) => { const b = new Uint32Array(1); crypto.getRandomValues(b); return b[0] % max; };
 
   function secureSample(arr, k) {
     const out = [];
@@ -34,8 +34,8 @@
 
   async function loadWordlist() {
     if (WORDS) return WORDS;
-    const v = "2025-11-06"; // bump to kill stale caches
-    console.log("[passphrase] fetching /wordlist.json?v="+v);
+    const v = "2025-11-06"; // bust old SW caches
+    console.log("[passphrase] fetching /wordlist.json?v=" + v);
     const res = await fetch(`/wordlist.json?v=${v}`, { cache: "no-cache" });
     if (!res.ok) throw new Error(`wordlist.json HTTP ${res.status}`);
     const data = await res.json();
@@ -51,7 +51,7 @@
     const glue = ui.hyphens.checked ? "-" : " ";
     let phrase = picks.join(glue);
     if (ui.number.checked) { const n = randInt(100); phrase += (ui.hyphens.checked ? "-" : "") + String(n).padStart(2, "0"); }
-    if (ui.symbol.checked) { const syms = "!@#$%&*?"; phrase += (ui.hyphens.checked ? "-" : "") + syms[randInt(syms.length)]; }
+    if (ui.symbol.checked) { const syms = "!@#$%&?*"; phrase += (ui.hyphens.checked ? "-" : "") + syms[randInt(syms.length)]; }
     return phrase;
   }
 
@@ -65,28 +65,26 @@
       ui.display.classList.add("generated");
     } catch (e) {
       console.error("[passphrase] generate error:", e);
-      if (ui.display) ui.display.textContent = "Error loading word list. Try Shift+Reload. If it persists, wordlist.json may be missing.";
+      ui.display.textContent = "Error loading word list. Try Shift+Reload. If it persists, wordlist.json may be missing.";
     }
   }
 
   async function copy() {
-    if (!lastPhrase) { if (ui.display) ui.display.textContent = "Generate a passphrase first!"; return; }
+    if (!lastPhrase) { ui.display.textContent = "Generate a passphrase first!"; return; }
     try {
       await navigator.clipboard.writeText(lastPhrase);
-      if (ui.copyNote) { ui.copyNote.classList.add("show"); setTimeout(() => ui.copyNote.classList.remove("show"), 1600); }
+      ui.copyNote.classList.add("show");
+      setTimeout(() => ui.copyNote.classList.remove("show"), 1600);
     } catch {
       const ta = document.createElement("textarea");
       ta.value = lastPhrase; ta.style.position = "fixed"; ta.style.opacity = "0";
       document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
-      if (ui.copyNote) { ui.copyNote.classList.add("show"); setTimeout(() => ui.copyNote.classList.remove("show"), 1600); }
+      ui.copyNote.classList.add("show");
+      setTimeout(() => ui.copyNote.classList.remove("show"), 1600);
     }
   }
 
-  if (ui.genBtn) ui.genBtn.addEventListener("click", generate);
-  if (ui.copyBtn) ui.copyBtn.addEventListener("click", copy);
-
-  window.addEventListener("load", () => {
-    console.log("[passphrase] window load — auto-generate");
-    generate();
-  });
+  ui.genBtn?.addEventListener("click", generate);
+  ui.copyBtn?.addEventListener("click", copy);
+  window.addEventListener("load", () => { console.log("[passphrase] window load — auto-generate"); generate(); });
 })();
