@@ -1,17 +1,20 @@
 # netlify.toml
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "SAMEORIGIN"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    # Allow AdSense where used (index.html), and allow local fetches + frames.
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; script-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;"
+[build]
+  publish = "/"
+  # no build command for a static site
 
+# Ensure /ads.txt is served as text and rechecked frequently
 [[headers]]
-  for = "/wordlist.json"
+  for = "/ads.txt"
   [headers.values]
-    Content-Type = "application/json; charset=utf-8"
-    Cache-Control = "public, max-age=604800, immutable"
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=600"
+
+# (If you have a wordlist.json or other large JSON, keep your existing headers)
+# Example:
+# [[headers]]
+#   for = "/data/wordlist.json"
+#   [headers.values]
+#     Content-Type = "application/json; charset=utf-8"
+#     Cache-Control = "public, max-age=3600"
