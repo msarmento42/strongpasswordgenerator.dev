@@ -1,0 +1,229 @@
+You are an expert full-stack developer and Google AdSense policy consultant.
+
+You are working in a Replit project that powers:
+
+  https://strongpasswordgenerator.dev/
+
+The site is a strong password generator with:
+- A password generator
+- A passphrase generator
+- A password strength checker
+- Guides / FAQ pages
+
+Google AdSense has flagged the site for:
+- "Google-served ads on screens without publisher-content"
+- "Low value content"
+
+We need to:
+1) Turn the site into a small but complete content site (not just tools).
+2) Integrate long-form content partials from `/content/*.html`.
+3) Keep all existing functionality (generators, checker).
+4) Use **AdSense Auto Ads** with publisher ID: `ca-pub-6175161566333696`.
+5) Ensure **every page that includes the AdSense script is content-rich and looks finished** (no thin/test/placeholder pages).
+
+--------------------------------------------------
+CONTENT PARTIALS
+--------------------------------------------------
+
+Assume there is a `/content` folder containing the following HTML partials
+(already created by me, with headings, paragraphs, lists, etc., but NOT full page shells):
+
+- /content/home-main.html
+- /content/passphrases-main.html
+- /content/strength-checker-main.html
+- /content/guides-hub.html
+- /content/guide-strong-passwords.html
+- /content/guide-password-managers.html
+- /content/guide-upgrading-passwords.html
+- /content/guide-mfa.html
+- /content/faq.html
+- /content/about.html
+- /content/privacy.html
+- /content/terms.html
+- /content/contact.html
+
+These files contain long-form, original content about passwords, passphrases, MFA, etc.
+DO NOT rewrite or shorten their text. It is okay to:
+- Wrap them in div/section containers
+- Adjust heading levels for semantic correctness
+- Add IDs / anchors
+
+--------------------------------------------------
+ROUTES & PAGE CONTENT
+--------------------------------------------------
+
+Inspect the existing project structure (whether it is static HTML, a template engine, or a small framework) and then create or update routes/pages so that:
+
+1) Home: `/`
+   - <title>: "Secure Password Generator | StrongPasswordGenerator.dev"
+   - Contains:
+     * The existing password generator UI and logic near the top.
+     * Below the tool (or alongside it on desktop), inject the HTML from `/content/home-main.html`.
+   - Ensure password generation is 100% client-side and uses secure randomness (e.g., `window.crypto.getRandomValues`).
+   - Add clear comments in JS that generated passwords are never transmitted or stored.
+
+2) Passphrases: `/passphrases`
+   - <title>: "Passphrase Generator | StrongPasswordGenerator.dev"
+   - Contains:
+     * The existing or a new passphrase generator UI (options: number of words, separator, capitalization, etc.), implemented entirely client-side using secure randomness and a local wordlist.
+     * The HTML from `/content/passphrases-main.html` below the tool.
+
+3) Strength Checker: `/strength-checker`
+   - <title>: "Password Strength Checker | StrongPasswordGenerator.dev"
+   - Contains:
+     * The existing password strength checker UI.
+     * The HTML from `/content/strength-checker-main.html`.
+
+4) Guides hub: `/guides`
+   - <title>: "Guides & Resources | StrongPasswordGenerator.dev"
+   - Contains:
+     * HTML from `/content/guides-hub.html`
+     * Internal links to each guide detail route below.
+
+5) Guide detail pages:
+   - `/guides/strong-passwords-and-passphrases`
+       -> render `/content/guide-strong-passwords.html`
+   - `/guides/password-managers`
+       -> render `/content/guide-password-managers.html`
+   - `/guides/upgrading-old-passwords`
+       -> render `/content/guide-upgrading-passwords.html`
+   - `/guides/multi-factor-authentication`
+       -> render `/content/guide-mfa.html`
+
+6) FAQ: `/faq`
+   - Render `/content/faq.html`
+
+7) About: `/about`
+   - Render `/content/about.html`
+
+8) Privacy Policy: `/privacy`
+   - Render `/content/privacy.html`
+
+9) Terms of Use: `/terms`
+   - Render `/content/terms.html`
+
+10) Contact: `/contact`
+   - Render `/content/contact.html`
+   - If there is a contact form, it can either:
+     * Use a `mailto:` action, or
+     * Call any existing backend endpoint.
+   - Do NOT ever send generated passwords in any request.
+
+Use whatever routing/layout mechanism the project is already using; the key is that each route renders a shared layout plus the correct content partial and (where relevant) the tool UI.
+
+--------------------------------------------------
+SHARED LAYOUT, NAVIGATION, FOOTER
+--------------------------------------------------
+
+Create or update a shared layout used by all main pages (e.g., base HTML template or root React component) with:
+
+- <header> containing a <nav> with links to:
+  - Password Generator (/)
+  - Passphrases (/passphrases)
+  - Strength Checker (/strength-checker)
+  - Guides (/guides)
+  - FAQ (/faq)
+  - About (/about)
+  - Privacy (/privacy)
+  - Terms (/terms)
+  - Contact (/contact)
+
+- <main> where each page injects:
+  - The tool UI (if applicable)
+  - Then the proper `/content/*.html` partial
+
+- <footer> with:
+  - Copyright line
+  - Links to About, Guides, Privacy, Terms, Contact
+
+Accessibility & semantics:
+- Exactly one <h1> per page.
+- Use logical <h2>, <h3> levels for sections.
+- Label form fields and buttons.
+- Ensure layout is responsive (mobile-friendly, no horizontal scroll on narrow screens).
+
+--------------------------------------------------
+ADSENSE AUTO ADS INTEGRATION
+--------------------------------------------------
+
+We are using **Auto Ads only**, with publisher ID `ca-pub-6175161566333696`.
+
+1) In the shared layout `<head>` (so every main page gets it), include this script:
+
+   <!-- Google AdSense Auto Ads -->
+   <script async
+           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696"
+           crossorigin="anonymous"></script>
+
+2) Remove any other existing AdSense code, including:
+   - Any `<ins class="adsbygoogle">` elements.
+   - Any inline scripts that manually push `(adsbygoogle = window.adsbygoogle || []).push(...)`.
+   - Any old page-level ads snippets.
+
+   The **only** AdSense-related code should be the Auto Ads script above.
+
+3) Make sure **every page that uses this shared layout is content-rich and looks finished**, thanks to the `/content/*.html` partials. There must be no:
+   - Blank or nearly-blank pages with the script.
+   - "Coming soon" / placeholder pages with the script.
+   - Debug/test routes with the script.
+
+4) If you find any routes that cannot be made substantial easily and are not essential, either:
+   - Delete them altogether, OR
+   - Ensure they do not use the main layout that includes the AdSense script (and do not appear in the sitemap).
+
+--------------------------------------------------
+PRIVACY, TERMS & POLICY COMPLIANCE
+--------------------------------------------------
+
+- Use `/content/privacy.html` as the body for the `/privacy` route.
+  Ensure the page clearly states:
+  - Passwords and passphrases are generated and checked client-side.
+  - The site does not store or log generated passwords.
+  - Third-party services (like Google AdSense Auto Ads) may set cookies and collect usage data as described in their own policies.
+
+- Use `/content/terms.html` as the body for the `/terms` route.
+  Ensure it includes:
+  - Acceptable use of the site.
+  - Disclaimers and limitation of liability.
+
+- Footer must link to Privacy and Terms from every page.
+
+--------------------------------------------------
+SEO & TECH CLEANUP
+--------------------------------------------------
+
+1) For each route, set a relevant `<title>` and `<meta name="description">` reflecting that page’s content.
+
+2) Create or update:
+   - `/sitemap.xml` listing:
+       /,
+       /passphrases,
+       /strength-checker,
+       /guides,
+       /guides/strong-passwords-and-passphrases,
+       /guides/password-managers,
+       /guides/upgrading-old-passwords,
+       /guides/multi-factor-authentication,
+       /faq,
+       /about,
+       /privacy,
+       /terms,
+       /contact
+   - `/robots.txt` that allows normal crawling and references the sitemap.
+
+3) Fix any JavaScript console errors or obvious issues.
+4) In generator and checker JS files, add brief comments stating that all generation/checking is performed locally in the browser and no passwords are transmitted or logged.
+
+--------------------------------------------------
+FINAL SUMMARY OUTPUT
+--------------------------------------------------
+
+When you are done, output a concise summary that includes:
+
+1) A list of the files you created or modified (with paths).
+2) The final set of routes/pages and which content partial each one uses.
+3) 3–5 bullet points explaining how these changes address:
+   - "Google-served ads on screens without publisher-content"
+   - "Low value content"
+
+Do NOT rewrite the textual content inside `/content/*.html`. Focus on layout, routing, Auto Ads integration with `ca-pub-6175161566333696`, and ensuring every AdSense-enabled page has substantial, high-quality publisher content.

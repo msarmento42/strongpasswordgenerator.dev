@@ -1,0 +1,91 @@
+import { Layout } from "@/components/Layout";
+import { Link } from "wouter";
+
+export default function Privacy() {
+  return (
+    <Layout>
+      <div className="container mx-auto px-4 py-8 md:py-12 max-w-3xl">
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground mb-6">
+          Privacy Policy
+        </h1>
+        <p className="text-muted-foreground mb-8">Last updated: December 2, 2025</p>
+
+        <article className="prose prose-slate dark:prose-invert lg:prose-lg">
+          <p>
+            This Privacy Policy explains how StrongPasswordGenerator.dev (“we”, “us”, or “our”) handles information when you use our website 
+            and tools.
+          </p>
+
+          <section>
+            <h2>Passwords and Passphrases</h2>
+            <p>
+              The core feature of this site is generating and checking passwords and passphrases. These values are processed entirely within 
+              your web browser using client-side JavaScript. We do not receive, store, or log the passwords or passphrases you generate or check.
+            </p>
+          </section>
+
+          <section>
+            <h2>Log Data and Basic Analytics</h2>
+            <p>
+              Like many websites, we may collect basic technical information that your browser sends when you visit the site, such as:
+            </p>
+            <ul>
+              <li>IP address and approximate location.</li>
+              <li>Browser type and version.</li>
+              <li>Pages visited and time spent on each page.</li>
+              <li>Referring pages and exit pages.</li>
+            </ul>
+            <p>
+              This information is used in aggregate to understand how people use the site and to improve performance and reliability. It is not 
+              linked to specific passwords or passphrases you generate.
+            </p>
+          </section>
+
+          <section>
+            <h2>Cookies and Third-Party Services</h2>
+            <p>
+              We may use cookies or similar technologies to remember basic preferences and to support analytics or advertising. If we integrate 
+              advertising networks such as Google AdSense (including Auto Ads), those services may set their own cookies and collect data according 
+              to their privacy policies.
+            </p>
+            <p>
+              When such services are used, we will strive to follow their guidelines and provide appropriate notices and consent options where required.
+            </p>
+          </section>
+
+          <section>
+            <h2>Links to Other Websites</h2>
+            <p>
+              Our guides may contain links to other websites or services. We are not responsible for the content or privacy practices of those 
+              external sites. We encourage you to review the privacy policies of any websites you visit.
+            </p>
+          </section>
+
+          <section>
+            <h2>Children’s Privacy</h2>
+            <p>
+              StrongPasswordGenerator.dev is intended for general audiences and is not specifically directed at children under 13. If you believe 
+              that a child has provided personal information through this site, please contact us so we can investigate and take appropriate action.
+            </p>
+          </section>
+
+          <section>
+            <h2>Changes to This Policy</h2>
+            <p>
+              We may update this Privacy Policy from time to time. When we do, we will revise the “Last updated” date at the top of the page. 
+              Significant changes may also be highlighted on the site.
+            </p>
+          </section>
+
+          <section>
+            <h2>Contact</h2>
+            <p>
+              If you have questions about this Privacy Policy or how we handle information, please contact us through the{" "}
+              <Link href="/contact" className="text-primary hover:underline">Contact</Link> page.
+            </p>
+          </section>
+        </article>
+      </div>
+    </Layout>
+  );
+}

@@ -1,0 +1,86 @@
+===== FILE: /content/faq.html =====
+<section>
+  <h1>Frequently Asked Questions</h1>
+  <p>
+    Here are answers to common questions about StrongPasswordGenerator.dev, how it works, and how to use it safely.
+  </p>
+</section>
+
+<section>
+  <h2>Do you store or see my passwords?</h2>
+  <p>
+    No. Passwords and passphrases are generated and analyzed entirely in your browser. They are not sent to our servers, logged, or stored.
+    If you refresh or close the page, the values disappear.
+  </p>
+</section>
+
+<section>
+  <h2>Is this site free to use?</h2>
+  <p>
+    Yes. The password generator, passphrase generator, strength checker, and guides are free to use for personal and educational purposes.
+  </p>
+</section>
+
+<section>
+  <h2>How random are the passwords?</h2>
+  <p>
+    The generator uses modern browser cryptography features (such as <code>window.crypto.getRandomValues</code>) to create random values,
+    which are then mapped to characters. This provides much stronger randomness than simple math-based random functions.
+  </p>
+</section>
+
+<section>
+  <h2>Can I use these passwords at work?</h2>
+  <p>
+    In many cases, yes, but you should follow your organization’s security policies. Some companies require specific password lengths
+    or character types. Our generator lets you adjust options to match those rules.
+  </p>
+</section>
+
+<section>
+  <h2>What if a website does not allow symbols or long passwords?</h2>
+  <p>
+    Some older systems have strict limits. In those cases, use the longest length the site supports and mix uppercase, lowercase, and numbers.
+    You may also want to enable multi-factor authentication if available.
+  </p>
+</section>
+
+<section>
+  <h2>Why do you recommend a password manager?</h2>
+  <p>
+    Password managers make it practical to use a different strong password for every account. Without one, people tend to reuse or simplify passwords,
+    which weakens security. See our <a href="/guides/password-managers">Password Managers guide</a> for details.
+  </p>
+</section>
+
+<section>
+  <h2>Can I share generated passwords with family members?</h2>
+  <p>
+    You should only share passwords in a secure way, ideally using a password manager that supports family sharing. Avoid sending passwords through
+    email, text messages, or messaging apps unless you have no better option and trust the channel.
+  </p>
+</section>
+
+<section>
+  <h2>What should I do if I think a password has been leaked?</h2>
+  <p>
+    Change it as soon as possible, using a new, strong password. If you reused the same password on other sites, change those as well.
+    Turn on multi-factor authentication and watch for unusual account activity.
+  </p>
+</section>
+
+<section>
+  <h2>Does using a generator guarantee I can never be hacked?</h2>
+  <p>
+    No tool can offer a guarantee. Strong passwords significantly reduce the risk of direct password guessing, but other factors—such as phishing,
+    malware, or website breaches—also matter. Use strong passwords together with good overall security habits.
+  </p>
+</section>
+
+<section>
+  <h2>How can I give feedback or report an issue?</h2>
+  <p>
+    Use the contact information on our <a href="/contact">Contact</a> page. We appreciate bug reports, suggestions, and ideas for new guides.
+  </p>
+</section>
+===== END FILE =====
