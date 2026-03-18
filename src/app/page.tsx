@@ -38,6 +38,7 @@ export default function Home() {
     length: 20,
     uppercase: true,
     lowercase: true,
+    pin: false,
     passphrase: false,
     numbers: true,
     symbols: true
