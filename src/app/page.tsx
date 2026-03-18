@@ -6,6 +6,7 @@ interface PasswordOptions {
   length: number;
   uppercase: boolean;
   lowercase: boolean;
+  passphrase: boolean;
   numbers: boolean;
   symbols: boolean;
 }
@@ -37,6 +38,7 @@ export default function Home() {
     length: 20,
     uppercase: true,
     lowercase: true,
+    passphrase: false,
     numbers: true,
     symbols: true
   });
