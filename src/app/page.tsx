@@ -47,6 +47,7 @@ export default function Home() {
   const [strengthLabel, setStrengthLabel] = useState('');
   const [crackTime, setCrackTime] = useState('');
   const [history, setHistory] = useState<PasswordHistory[]>([]);
+  const [passwords, setPasswords] = useState<string[]>([]);
   const [copied, setCopied] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const toggleDarkMode = () => {
