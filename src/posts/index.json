@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "bitwarden-setup-guide",
+    "title": "Bitwarden Setup Guide: How to Get Started with the Best Free Password Manager",
+    "date": "2026-04-15",
+    "category": "Password Managers",
+    "readingTime": "7 min",
+    "tags": ["bitwarden", "password manager", "security setup", "2FA", "open source"],
+    "excerpt": "Bitwarden is the gold standard for free, open-source password management. This step-by-step guide walks you through installing Bitwarden, importing your existing passwords, enabling two-factor authentication, and using it effectively across all your devices."
+  },
+  {
+    "slug": "securing-your-email-account",
+    "title": "How to Secure Your Email Account: The Complete Guide",
+    "date": "2026-04-15",
+    "category": "Best Practices",
+    "readingTime": "6 min",
+    "tags": ["email security", "Gmail", "2FA", "account security", "phishing"],
+    "excerpt": "Your email account is the master key to your digital life — whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
+  }
+]
