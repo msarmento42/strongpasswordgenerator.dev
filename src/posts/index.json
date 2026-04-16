@@ -17,4 +17,23 @@
     "tags": ["email security", "Gmail", "2FA", "account security", "phishing"],
     "excerpt": "Your email account is the master key to your digital life — whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
   }
+,
+  {
+    "slug": "password-security-for-remote-workers",
+    "title": "Password Security for Remote Workers: How to Stay Safe Outside the Office",
+    "date": "2026-04-16",
+    "category": "Best Practices",
+    "readingTime": "7 min",
+    "tags": ["remote work", "password security", "VPN", "home office", "work from home"],
+    "excerpt": "Remote work introduces unique security risks that office environments handle automatically. This guide covers the specific password and account security steps every remote worker needs — from securing your home network to managing work credentials safely without corporate IT watching your back."
+  },
+  {
+    "slug": "securing-social-media-accounts",
+    "title": "How to Secure Your Social Media Accounts: A Practical Guide",
+    "date": "2026-04-16",
+    "category": "Best Practices",
+    "readingTime": "6 min",
+    "tags": ["social media", "Instagram", "Facebook", "account security", "2FA", "password"],
+    "excerpt": "Social media accounts are among the most commonly hijacked accounts on the internet — and losing one can mean losing years of content, your audience, and your online identity. This guide walks through the exact steps to lock down your Instagram, Facebook, X, LinkedIn, and other social accounts before an attacker gets in."
+  }
 ]
