@@ -35,5 +35,23 @@
     "readingTime": "6 min",
     "tags": ["social media", "Instagram", "Facebook", "account security", "2FA", "password"],
     "excerpt": "Social media accounts are among the most commonly hijacked accounts on the internet — and losing one can mean losing years of content, your audience, and your online identity. This guide walks through the exact steps to lock down your Instagram, Facebook, X, LinkedIn, and other social accounts before an attacker gets in."
+  },
+  {
+    "slug": "wifi-password-best-practices",
+    "title": "Wi-Fi Password Best Practices: How to Secure Your Home and Office Network",
+    "date": "2026-04-21",
+    "category": "Best Practices",
+    "readingTime": "7 min",
+    "tags": ["wifi", "network security", "router", "WPA3", "password", "home security"],
+    "excerpt": "Your Wi-Fi password is the front door to every device on your network. A weak or default router password exposes your smart TV, laptop, phone, and every IoT device to anyone within range. This guide walks through the exact steps to lock down your home or office network with a strong password, proper encryption, and smart network segmentation."
+  },
+  {
+    "slug": "what-is-phishing-and-how-to-avoid-it",
+    "title": "What Is Phishing and How to Avoid It: A Practical Guide",
+    "date": "2026-04-21",
+    "category": "Best Practices",
+    "readingTime": "8 min",
+    "tags": ["phishing", "social engineering", "email security", "account security", "scams", "2FA"],
+    "excerpt": "Phishing is the most common way accounts get compromised — and it doesn't require any technical skill from the attacker. This guide explains exactly how phishing attacks work, how to recognize them across email, SMS, and phone calls, and the specific habits and tools that will keep you from becoming a victim."
   }
 ]
