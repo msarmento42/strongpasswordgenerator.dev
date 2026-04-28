@@ -5,7 +5,13 @@
     "date": "2026-04-15",
     "category": "Password Managers",
     "readingTime": "7 min",
-    "tags": ["bitwarden", "password manager", "security setup", "2FA", "open source"],
+    "tags": [
+      "bitwarden",
+      "password manager",
+      "security setup",
+      "2FA",
+      "open source"
+    ],
     "excerpt": "Bitwarden is the gold standard for free, open-source password management. This step-by-step guide walks you through installing Bitwarden, importing your existing passwords, enabling two-factor authentication, and using it effectively across all your devices."
   },
   {
@@ -14,18 +20,29 @@
     "date": "2026-04-15",
     "category": "Best Practices",
     "readingTime": "6 min",
-    "tags": ["email security", "Gmail", "2FA", "account security", "phishing"],
-    "excerpt": "Your email account is the master key to your digital life — whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
-  }
-,
+    "tags": [
+      "email security",
+      "Gmail",
+      "2FA",
+      "account security",
+      "phishing"
+    ],
+    "excerpt": "Your email account is the master key to your digital life \u2014 whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
+  },
   {
     "slug": "password-security-for-remote-workers",
     "title": "Password Security for Remote Workers: How to Stay Safe Outside the Office",
     "date": "2026-04-16",
     "category": "Best Practices",
     "readingTime": "7 min",
-    "tags": ["remote work", "password security", "VPN", "home office", "work from home"],
-    "excerpt": "Remote work introduces unique security risks that office environments handle automatically. This guide covers the specific password and account security steps every remote worker needs — from securing your home network to managing work credentials safely without corporate IT watching your back."
+    "tags": [
+      "remote work",
+      "password security",
+      "VPN",
+      "home office",
+      "work from home"
+    ],
+    "excerpt": "Remote work introduces unique security risks that office environments handle automatically. This guide covers the specific password and account security steps every remote worker needs \u2014 from securing your home network to managing work credentials safely without corporate IT watching your back."
   },
   {
     "slug": "securing-social-media-accounts",
@@ -33,8 +50,15 @@
     "date": "2026-04-16",
     "category": "Best Practices",
     "readingTime": "6 min",
-    "tags": ["social media", "Instagram", "Facebook", "account security", "2FA", "password"],
-    "excerpt": "Social media accounts are among the most commonly hijacked accounts on the internet — and losing one can mean losing years of content, your audience, and your online identity. This guide walks through the exact steps to lock down your Instagram, Facebook, X, LinkedIn, and other social accounts before an attacker gets in."
+    "tags": [
+      "social media",
+      "Instagram",
+      "Facebook",
+      "account security",
+      "2FA",
+      "password"
+    ],
+    "excerpt": "Social media accounts are among the most commonly hijacked accounts on the internet \u2014 and losing one can mean losing years of content, your audience, and your online identity. This guide walks through the exact steps to lock down your Instagram, Facebook, X, LinkedIn, and other social accounts before an attacker gets in."
   },
   {
     "slug": "wifi-password-best-practices",
@@ -42,7 +66,14 @@
     "date": "2026-04-21",
     "category": "Best Practices",
     "readingTime": "7 min",
-    "tags": ["wifi", "network security", "router", "WPA3", "password", "home security"],
+    "tags": [
+      "wifi",
+      "network security",
+      "router",
+      "WPA3",
+      "password",
+      "home security"
+    ],
     "excerpt": "Your Wi-Fi password is the front door to every device on your network. A weak or default router password exposes your smart TV, laptop, phone, and every IoT device to anyone within range. This guide walks through the exact steps to lock down your home or office network with a strong password, proper encryption, and smart network segmentation."
   },
   {
@@ -51,7 +82,45 @@
     "date": "2026-04-21",
     "category": "Best Practices",
     "readingTime": "8 min",
-    "tags": ["phishing", "social engineering", "email security", "account security", "scams", "2FA"],
-    "excerpt": "Phishing is the most common way accounts get compromised — and it doesn't require any technical skill from the attacker. This guide explains exactly how phishing attacks work, how to recognize them across email, SMS, and phone calls, and the specific habits and tools that will keep you from becoming a victim."
+    "tags": [
+      "phishing",
+      "social engineering",
+      "email security",
+      "account security",
+      "scams",
+      "2FA"
+    ],
+    "excerpt": "Phishing is the most common way accounts get compromised \u2014 and it doesn't require any technical skill from the attacker. This guide explains exactly how phishing attacks work, how to recognize them across email, SMS, and phone calls, and the specific habits and tools that will keep you from becoming a victim."
+  },
+  {
+    "slug": "github-security-best-practices",
+    "title": "GitHub Security Best Practices: Protect Your Code and Account",
+    "date": "2026-04-28",
+    "category": "Best Practices",
+    "readingTime": "8 min",
+    "tags": [
+      "github",
+      "code security",
+      "authentication",
+      "SSH keys",
+      "2FA",
+      "developer security"
+    ],
+    "excerpt": "GitHub is where developers store their most valuable code \u2014 and often their credentials. This guide covers the essential security practices every developer needs: SSH keys, personal access tokens, branch protection, two-factor authentication, and how to audit what has access to your repositories."
+  },
+  {
+    "slug": "google-password-manager-review",
+    "title": "Google Password Manager Review: Is it Good Enough for Your Security?",
+    "date": "2026-04-28",
+    "category": "Password Managers",
+    "readingTime": "7 min",
+    "tags": [
+      "google password manager",
+      "password managers",
+      "security comparison",
+      "built-in tools",
+      "sync"
+    ],
+    "excerpt": "Google Password Manager comes built-in to Chrome and Android, but is it actually secure and feature-rich enough for real password management? This honest review compares it to dedicated password managers and explains when it's sufficient and when you need something better."
   }
 ]
