@@ -27,7 +27,7 @@
       "account security",
       "phishing"
     ],
-    "excerpt": "Your email account is the master key to your digital life — whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
+    "excerpt": "Your email account is the master key to your digital life \u2014 whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
   },
   {
     "slug": "password-security-for-remote-workers",
@@ -42,7 +42,7 @@
       "home office",
       "work from home"
     ],
-    "excerpt": "Remote work introduces unique security risks that office environments handle automatically. This guide covers the specific password and account security steps every remote worker needs — from securing your home network to managing work credentials safely without corporate IT watching your back."
+    "excerpt": "Remote work introduces unique security risks that office environments handle automatically. This guide covers the specific password and account security steps every remote worker needs \u2014 from securing your home network to managing work credentials safely without corporate IT watching your back."
   },
   {
     "slug": "securing-social-media-accounts",
@@ -58,7 +58,7 @@
       "2FA",
       "password"
     ],
-    "excerpt": "Social media accounts are among the most commonly hijacked accounts on the internet — and losing one can mean losing years of content, your audience, and your online identity. This guide walks through the exact steps to lock down your Instagram, Facebook, X, LinkedIn, and other social accounts before an attacker gets in."
+    "excerpt": "Social media accounts are among the most commonly hijacked accounts on the internet \u2014 and losing one can mean losing years of content, your audience, and your online identity. This guide walks through the exact steps to lock down your Instagram, Facebook, X, LinkedIn, and other social accounts before an attacker gets in."
   },
   {
     "slug": "wifi-password-best-practices",
@@ -90,7 +90,7 @@
       "scams",
       "2FA"
     ],
-    "excerpt": "Phishing is the most common way accounts get compromised — and it doesn't require any technical skill from the attacker. This guide explains exactly how phishing attacks work, how to recognize them across email, SMS, and phone calls, and the specific habits and tools that will keep you from becoming a victim."
+    "excerpt": "Phishing is the most common way accounts get compromised \u2014 and it doesn't require any technical skill from the attacker. This guide explains exactly how phishing attacks work, how to recognize them across email, SMS, and phone calls, and the specific habits and tools that will keep you from becoming a victim."
   },
   {
     "slug": "github-security-best-practices",
@@ -106,7 +106,7 @@
       "2FA",
       "developer security"
     ],
-    "excerpt": "GitHub is where developers store their most valuable code — and often their credentials. This guide covers the essential security practices every developer needs: SSH keys, personal access tokens, branch protection, two-factor authentication, and how to audit what has access to your repositories."
+    "excerpt": "GitHub is where developers store their most valuable code \u2014 and often their credentials. This guide covers the essential security practices every developer needs: SSH keys, personal access tokens, branch protection, two-factor authentication, and how to audit what has access to your repositories."
   },
   {
     "slug": "google-password-manager-review",
@@ -152,5 +152,36 @@
       "Password Management"
     ],
     "excerpt": "Online banking puts your entire financial life at risk if compromised. Learn how to create unbreakable banking passwords, enable multi-factor authentication, detect phishing attempts, use secure networks, and implement banking-specific security practices that prevent unauthorized transfers and account takeovers."
+  },
+  {
+    "slug": "password-security-for-seniors",
+    "title": "Password Security for Seniors: A Simple, Step-by-Step Guide",
+    "date": "2026-05-05",
+    "category": "Best Practices",
+    "readingTime": "7 min",
+    "tags": [
+      "seniors",
+      "password security",
+      "password manager",
+      "2FA",
+      "online safety"
+    ],
+    "excerpt": "Staying safe online doesn't have to be complicated. This plain-language guide walks seniors through creating strong passwords, avoiding common scams, setting up a password manager, and adding a second layer of protection to their most important accounts."
+  },
+  {
+    "slug": "lastpass-alternatives",
+    "title": "The Best LastPass Alternatives in 2026: Safer, Cheaper, Better Options",
+    "date": "2026-05-05",
+    "category": "Password Managers",
+    "readingTime": "8 min",
+    "tags": [
+      "lastpass alternatives",
+      "password manager",
+      "bitwarden",
+      "1password",
+      "security",
+      "data breach"
+    ],
+    "excerpt": "LastPass suffered major data breaches in 2022 and 2023 that exposed encrypted password vaults. If you are still using LastPass \u2014 or shopping for a first password manager \u2014 here are the best alternatives with honest comparisons on security, price, and ease of use."
   }
 ]
