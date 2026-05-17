@@ -27,7 +27,7 @@
       "account security",
       "phishing"
     ],
-    "excerpt": "Your email account is the master key to your digital life \u2014 whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
+    "excerpt": "Your email account is the master key to your digital life — whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
   },
   {
     "slug": "password-security-for-remote-workers",
@@ -42,7 +42,7 @@
       "home office",
       "work from home"
     ],
-    "excerpt": "Remote work introduces unique security risks that office environments handle automatically. This guide covers the specific password and account security steps every remote worker needs \u2014 from securing your home network to managing work credentials safely without corporate IT watching your back."
+    "excerpt": "Remote work introduces unique security risks that office environments handle automatically. This guide covers the specific password and account security steps every remote worker needs — from securing your home network to managing work credentials safely without corporate IT watching your back."
   },
   {
     "slug": "securing-social-media-accounts",
@@ -58,7 +58,7 @@
       "2FA",
       "password"
     ],
-    "excerpt": "Social media accounts are among the most commonly hijacked accounts on the internet \u2014 and losing one can mean losing years of content, your audience, and your online identity. This guide walks through the exact steps to lock down your Instagram, Facebook, X, LinkedIn, and other social accounts before an attacker gets in."
+    "excerpt": "Social media accounts are among the most commonly hijacked accounts on the internet — and losing one can mean losing years of content, your audience, and your online identity. This guide walks through the exact steps to lock down your Instagram, Facebook, X, LinkedIn, and other social accounts before an attacker gets in."
   },
   {
     "slug": "wifi-password-best-practices",
@@ -90,7 +90,7 @@
       "scams",
       "2FA"
     ],
-    "excerpt": "Phishing is the most common way accounts get compromised \u2014 and it doesn't require any technical skill from the attacker. This guide explains exactly how phishing attacks work, how to recognize them across email, SMS, and phone calls, and the specific habits and tools that will keep you from becoming a victim."
+    "excerpt": "Phishing is the most common way accounts get compromised — and it doesn't require any technical skill from the attacker. This guide explains exactly how phishing attacks work, how to recognize them across email, SMS, and phone calls, and the specific habits and tools that will keep you from becoming a victim."
   },
   {
     "slug": "github-security-best-practices",
@@ -106,7 +106,7 @@
       "2FA",
       "developer security"
     ],
-    "excerpt": "GitHub is where developers store their most valuable code \u2014 and often their credentials. This guide covers the essential security practices every developer needs: SSH keys, personal access tokens, branch protection, two-factor authentication, and how to audit what has access to your repositories."
+    "excerpt": "GitHub is where developers store their most valuable code — and often their credentials. This guide covers the essential security practices every developer needs: SSH keys, personal access tokens, branch protection, two-factor authentication, and how to audit what has access to your repositories."
   },
   {
     "slug": "google-password-manager-review",
@@ -182,7 +182,7 @@
       "security",
       "data breach"
     ],
-    "excerpt": "LastPass suffered major data breaches in 2022 and 2023 that exposed encrypted password vaults. If you are still using LastPass \u2014 or shopping for a first password manager \u2014 here are the best alternatives with honest comparisons on security, price, and ease of use."
+    "excerpt": "LastPass suffered major data breaches in 2022 and 2023 that exposed encrypted password vaults. If you are still using LastPass — or shopping for a first password manager — here are the best alternatives with honest comparisons on security, price, and ease of use."
   },
   {
     "slug": "yubikey-setup-guide",
@@ -227,7 +227,7 @@
       "account security",
       "mobile security"
     ],
-    "excerpt": "Microsoft Authenticator is one of the most capable free 2FA apps available \u2014 it handles time-based codes, passwordless sign-in, and encrypted cloud backup. This guide walks you through installing it, adding your most important accounts, and avoiding the mistakes that leave people locked out."
+    "excerpt": "Microsoft Authenticator is one of the most capable free 2FA apps available — it handles time-based codes, passwordless sign-in, and encrypted cloud backup. This guide walks you through installing it, adding your most important accounts, and avoiding the mistakes that leave people locked out."
   },
   {
     "slug": "password-security-audit-checklist",
@@ -243,5 +243,37 @@
       "password manager"
     ],
     "excerpt": "Most people have dozens of accounts with weak, reused, or outdated passwords and don't know it. This step-by-step audit checklist walks you through finding and fixing every weak point in your password security, from credential stuffing exposure to emergency access planning."
+  },
+  {
+    "slug": "android-password-tips",
+    "title": "Android Password Security Tips: How to Lock Down Your Phone and Accounts",
+    "date": "2026-05-17",
+    "category": "Best Practices",
+    "readingTime": "7 min",
+    "tags": [
+      "android",
+      "mobile security",
+      "password manager",
+      "Google account",
+      "2FA",
+      "biometrics"
+    ],
+    "excerpt": "Your Android phone holds the keys to your email, banking, social media, and cloud storage. This guide covers the exact steps to secure your Android device and the accounts on it — from screen lock settings to Google account hardening to choosing the right password manager for Android."
+  },
+  {
+    "slug": "securing-crypto-wallets",
+    "title": "How to Secure Your Crypto Wallet: Passwords, Seed Phrases, and Account Protection",
+    "date": "2026-05-17",
+    "category": "Best Practices",
+    "readingTime": "9 min",
+    "tags": [
+      "crypto",
+      "cryptocurrency",
+      "wallet security",
+      "seed phrase",
+      "hardware wallet",
+      "2FA"
+    ],
+    "excerpt": "Crypto wallets have no fraud protection and no account recovery — if your password or seed phrase is compromised, your funds are gone permanently. This guide covers the exact security steps for exchange accounts, software wallets, and hardware wallets, including how to store seed phrases so they survive a disaster without being stolen."
   }
 ]
