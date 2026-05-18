@@ -275,5 +275,36 @@
       "2FA"
     ],
     "excerpt": "Crypto wallets have no fraud protection and no account recovery — if your password or seed phrase is compromised, your funds are gone permanently. This guide covers the exact security steps for exchange accounts, software wallets, and hardware wallets, including how to store seed phrases so they survive a disaster without being stolen."
+  },
+  {
+    "slug": "passkeys-explained",
+    "title": "Passkeys Explained: The Future of Passwordless Login and How to Use Them",
+    "date": "2026-05-17",
+    "category": "Best Practices",
+    "readingTime": "8 min",
+    "tags": [
+      "passkeys",
+      "passwordless",
+      "FIDO2",
+      "account security",
+      "authentication",
+      "biometrics"
+    ],
+    "excerpt": "Passkeys are replacing passwords across Google, Apple, Microsoft, and hundreds of major sites — and for good reason. They are phishing-proof, can't be stolen in data breaches, and are faster than typing a password. This guide explains exactly how passkeys work, which accounts support them, and how to set them up today."
+  },
+  {
+    "slug": "data-breach-what-to-do",
+    "title": "Data Breach: What to Do Immediately if Your Information Is Exposed",
+    "date": "2026-05-17",
+    "category": "Data Breaches",
+    "readingTime": "8 min",
+    "tags": [
+      "data breach",
+      "identity theft",
+      "account security",
+      "password manager",
+      "credit monitoring"
+    ],
+    "excerpt": "Getting notified that your data was exposed in a breach is alarming — but the next 24 hours matter most. This guide walks through the exact steps to take immediately after a data breach: what to change first, how to check what was exposed, and how to protect yourself from the identity theft and account takeovers that follow."
   }
 ]
