@@ -369,5 +369,20 @@
       "public Wi-Fi"
     ],
     "excerpt": "Remote workers are a prime target for network-level attacks — from coffee shop snooping to ISP logging to man-in-the-middle attacks on unencrypted connections. This guide explains exactly what a VPN does and doesn't protect, when you actually need one for remote work, and how to choose and set up the right VPN for professional use."
+  },
+  {
+    "slug": "browser-security-settings",
+    "title": "Browser Security Settings: The Complete Hardening Guide for Chrome, Firefox, and Safari",
+    "date": "2026-05-21",
+    "category": "Best Practices",
+    "readingTime": "8 min",
+    "tags": [
+      "browser security",
+      "Chrome",
+      "Firefox",
+      "privacy",
+      "security settings"
+    ],
+    "excerpt": "Your browser is your biggest attack surface. This guide walks through every critical security and privacy setting in Chrome, Firefox, and Safari — from disabling dangerous permissions to enabling DNS-over-HTTPS and locking down extensions."
   }
 ]
