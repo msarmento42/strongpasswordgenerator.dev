@@ -384,5 +384,20 @@
       "security settings"
     ],
     "excerpt": "Your browser is your biggest attack surface. This guide walks through every critical security and privacy setting in Chrome, Firefox, and Safari — from disabling dangerous permissions to enabling DNS-over-HTTPS and locking down extensions."
+  },
+  {
+    "slug": "securing-your-amazon-account",
+    "title": "How to Secure Your Amazon Account: Complete 2026 Guide",
+    "date": "2026-05-21",
+    "category": "Best Practices",
+    "readingTime": "8 min",
+    "tags": [
+      "Amazon security",
+      "account security",
+      "2FA",
+      "phishing",
+      "password security"
+    ],
+    "excerpt": "Your Amazon account stores your home address, credit cards, purchase history, and access to dozens of connected services. This guide covers every step to lock it down — from setting a strong password and enabling two-step verification to auditing connected apps and spotting phishing emails."
   }
 ]
