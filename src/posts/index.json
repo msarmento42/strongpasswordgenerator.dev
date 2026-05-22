@@ -399,5 +399,20 @@
       "password security"
     ],
     "excerpt": "Your Amazon account stores your home address, credit cards, purchase history, and access to dozens of connected services. This guide covers every step to lock it down — from setting a strong password and enabling two-step verification to auditing connected apps and spotting phishing emails."
+  },
+  {
+    "slug": "sim-swapping-protection",
+    "title": "SIM Swapping Protection: How to Stop Attackers From Hijacking Your Phone Number",
+    "date": "2026-05-22",
+    "category": "Best Practices",
+    "readingTime": "9 min",
+    "tags": [
+      "SIM swapping",
+      "phone security",
+      "2FA",
+      "account security",
+      "identity theft"
+    ],
+    "excerpt": "SIM swapping lets attackers hijack your phone number and bypass SMS-based two-factor authentication. Learn exactly how this attack works, which accounts are most at risk, and the specific steps you can take to protect yourself today."
   }
 ]
