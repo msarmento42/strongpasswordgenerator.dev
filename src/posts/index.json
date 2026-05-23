@@ -414,5 +414,20 @@
       "identity theft"
     ],
     "excerpt": "SIM swapping lets attackers hijack your phone number and bypass SMS-based two-factor authentication. Learn exactly how this attack works, which accounts are most at risk, and the specific steps you can take to protect yourself today."
+  },
+  {
+    "slug": "securing-linkedin-account",
+    "title": "How to Secure Your LinkedIn Account: Passwords, 2FA, and Privacy Settings",
+    "date": "2026-05-23",
+    "category": "Best Practices",
+    "readingTime": "8 min",
+    "tags": [
+      "linkedin",
+      "social media security",
+      "2FA",
+      "account security",
+      "professional security"
+    ],
+    "excerpt": "LinkedIn is a goldmine for social engineering attacks — your career history, employer, colleagues, and contact info are all publicly available. A compromised LinkedIn account can damage your professional reputation and expose your network. This guide walks through exactly how to lock it down."
   }
 ]
