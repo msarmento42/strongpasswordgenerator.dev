@@ -474,5 +474,20 @@
       "cybersecurity"
     ],
     "excerpt": "With malware and ransomware attacks at record levels, choosing the right antivirus software matters more than ever. This guide breaks down what modern antivirus actually protects you from, what the top options offer in 2026, and how to pair them with strong password hygiene for complete security."
+  },
+  {
+    "slug": "how-to-spot-fake-websites",
+    "title": "How to Spot Fake Websites: A Practical Guide to Avoiding Phishing and Scam Sites",
+    "date": "2026-05-25",
+    "category": "Best Practices",
+    "readingTime": "8 min",
+    "tags": [
+      "Phishing",
+      "Online Safety",
+      "Browser Security",
+      "Scams",
+      "URL Safety"
+    ],
+    "excerpt": "Fake websites are designed to look exactly like legitimate ones. Learn the tell-tale signs of phishing and scam sites — from suspicious URLs and missing HTTPS to pressure tactics and login page red flags — so you never hand your credentials to an attacker."
   }
 ]
