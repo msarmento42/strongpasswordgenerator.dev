@@ -489,5 +489,20 @@
       "URL Safety"
     ],
     "excerpt": "Fake websites are designed to look exactly like legitimate ones. Learn the tell-tale signs of phishing and scam sites — from suspicious URLs and missing HTTPS to pressure tactics and login page red flags — so you never hand your credentials to an attacker."
+  },
+  {
+    "slug": "protecting-kids-online",
+    "title": "Protecting Kids Online: A Parent's Complete Guide to Account Security",
+    "date": "2026-05-25",
+    "category": "Best Practices",
+    "readingTime": "9 min",
+    "tags": [
+      "kids online safety",
+      "parental controls",
+      "password security",
+      "family security",
+      "online privacy"
+    ],
+    "excerpt": "Children face unique online threats — from predators and scammers to school bullying migrating to apps you've never heard of. This guide covers account security for every age, how to set up safe passwords and parental controls, what to monitor, and how to build habits that protect your kids without destroying trust."
   }
 ]
