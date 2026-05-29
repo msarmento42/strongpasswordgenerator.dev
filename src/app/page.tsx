@@ -335,6 +335,20 @@ export default function Home() {
           <PassphraseGenerator />
         </div>
 
+
+        {/* Newsletter */}
+        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-3xl border border-indigo-100 p-8 text-center">
+          <div className="text-3xl mb-3">🔐</div>
+          <h2 className="text-lg font-semibold text-slate-800 mb-2">Stay ahead of security threats</h2>
+          <p className="text-sm text-slate-500 mb-5 max-w-md mx-auto">
+            Weekly tips on password security, data breach alerts, and practical cybersecurity advice. No spam, unsubscribe anytime.
+          </p>
+          <iframe
+            src="https://monthly-newsletter-258d49.beehiiv.com/subscribe"
+            style={{ width: "100%", maxWidth: "480px", height: "320px", border: "none", borderRadius: "8px" }}
+            title="Security newsletter signup"
+          />
+        </div>
         {/* AdSense */}
         <div className="mt-6">
           <div className="bg-[#1a2332] py-4 rounded-lg border border-[#2f3640] text-center">
