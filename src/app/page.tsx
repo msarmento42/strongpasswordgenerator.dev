@@ -349,12 +349,6 @@ export default function Home() {
             title="Security newsletter signup"
           />
         </div>
-        {/* AdSense */}
-        <div className="mt-6">
-          <div className="bg-[#1a2332] py-4 rounded-lg border border-[#2f3640] text-center">
-            <span className="text-slate-500 text-sm">Advertisement</span>
-          </div>
-        </div>
       </main>
 
       <footer className="text-center py-8 text-slate-500 text-sm border-t border-slate-200 mt-4">
