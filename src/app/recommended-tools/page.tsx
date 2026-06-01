@@ -20,6 +20,16 @@ const tools = [
         features: ['Zero-knowledge XChaCha20 encryption', 'Data breach scanner', 'Password health report', 'Free tier available', 'Secure password sharing'],
       },
       {
+        name: 'Bitwarden',
+        tagline: 'The open-source password manager trusted by millions',
+        description: 'Bitwarden is the leading open-source password manager — fully audited, end-to-end encrypted, and free for individuals. Self-host if you want full control, or use their cloud. Bitwarden supports TOTP, passkeys, and secure sharing, and the free tier has no practical limits.',
+        url: 'https://bitwarden.com',
+        badge: 'Open Source',
+        badgeColor: '#175DDC',
+        sponsored: false,
+        features: ['End-to-end encrypted vault', 'Fully open-source & audited', 'Free tier with unlimited passwords', 'TOTP authenticator built-in', 'Self-hosting option available'],
+      },
+      {
         name: '1Password',
         tagline: 'Best password manager for families and teams',
         description: '1Password is the gold standard for team and family use. Travel Mode lets you hide vaults at border crossings, and Watchtower alerts you to breached, reused, and weak passwords in real time. Full passkey support included.',
