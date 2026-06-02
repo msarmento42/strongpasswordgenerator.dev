@@ -1,0 +1,28 @@
+{
+  "id": "strongpasswordgenerator.dev",
+  "name": "Strong Password Generator",
+  "repo": "msarmento42/strongpasswordgenerator.dev",
+  "deploy_url": "https://strongpasswordgenerator.dev",
+  "production_url": "https://strongpasswordgenerator.dev",
+  "priority": "high",
+  "status": "active",
+  "type": "content-site",
+  "tech_stack": ["Next.js 15", "TypeScript", "React", "PostCSS", "Vercel"],
+  "objective": "Grow organic traffic and establish the site as a go-to password tool",
+  "success_metrics": [
+    "organic sessions per week",
+    "top keyword rankings",
+    "blog post count"
+  ],
+  "health": "green",
+  "last_activity": "2026-06-02",
+  "last_audit": null,
+  "next_review": "2026-06-07",
+  "human_approval_required_for": [
+    "vision changes",
+    "monetization changes",
+    "architecture changes",
+    "experiment issues",
+    "playbook promotion"
+  ]
+}
