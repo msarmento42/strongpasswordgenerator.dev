@@ -1,6 +1,7 @@
 'use client';
 
 import PassphraseGenerator from './components/PassphraseGenerator';
+import Link from 'next/link';
 
 import { useState, useEffect, useCallback } from 'react';
 
@@ -47,11 +48,7 @@ export default function Home() {
   const [crackTime, setCrackTime] = useState('');
   const [history, setHistory] = useState<PasswordHistory[]>([]);
   const [copied, setCopied] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    localStorage.setItem("darkMode", String(!darkMode));
-  };
+
 
   const calculateEntropy = useCallback((pwd: string): number => {
     let charsetSize = 0;
@@ -145,8 +142,7 @@ export default function Home() {
       setHistory(JSON.parse(saved));
     }
     generatePassword();
-    const savedDarkMode = localStorage.getItem("darkMode");
-    if (savedDarkMode === "true") setDarkMode(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const optionChanged = (key: keyof PasswordOptions, value: boolean | number) => {
@@ -159,8 +155,8 @@ export default function Home() {
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3"><div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg"><svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" /></svg></div><h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">SecurePass</h1></div>
           <div className="flex items-center gap-4">
-            <a href="/recommended-tools" className="text-slate-500 hover:text-indigo-600 text-sm font-medium hidden sm:block">🛡️ Tools</a>
-            <a href="/blog" className="text-slate-500 hover:text-indigo-600 text-sm font-medium">Security Blog →</a>
+            <Link href="/recommended-tools" className="text-slate-500 hover:text-indigo-600 text-sm font-medium hidden sm:block">🛡️ Tools</Link>
+            <Link href="/blog" className="text-slate-500 hover:text-indigo-600 text-sm font-medium">Security Blog →</Link>
           </div>
         </div>
       </header>
@@ -307,7 +303,7 @@ export default function Home() {
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
           <h2 className="text-lg font-semibold mb-4">📊 What is Password Entropy?</h2>
           <div className="text-slate-500 space-y-3">
-            <p>Password entropy measures how hard a password is to guess. It's measured in <strong className="text-white">bits</strong> - the higher the number, the stronger the password.</p>
+            <p>Password entropy measures how hard a password is to guess. It&apos;s measured in <strong className="text-white">bits</strong> - the higher the number, the stronger the password.</p>
             <ul className="list-disc list-inside space-y-2 text-sm">
               <li><span className="text-[#ff6b6b]">Less than 28 bits:</span> Very Weak - Can be cracked instantly</li>
               <li><span className="text-[#feca57]">28-35 bits:</span> Weak - Vulnerable to fast attacks</li>
@@ -323,7 +319,7 @@ export default function Home() {
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
           <h2 className="text-lg font-semibold mb-4">ℹ️ About This Tool</h2>
           <div className="text-slate-500 text-sm space-y-2">
-            <p>This password generator creates cryptographically secure passwords using your browser's built-in <strong className="text-white">crypto.getRandomValues()</strong> API - the same technology used by password managers and security professionals.</p>
+            <p>This password generator creates cryptographically secure passwords using your browser&apos;s built-in <strong className="text-white">crypto.getRandomValues()</strong> API - the same technology used by password managers and security professionals.</p>
             <p>All passwords are generated <strong className="text-white">locally on your device</strong>. Nothing is ever sent to any server.</p>
           </div>
         </div>
@@ -353,11 +349,11 @@ export default function Home() {
 
       <footer className="text-center py-8 text-slate-500 text-sm border-t border-slate-200 mt-4">
         <div className="flex justify-center gap-6 mb-3 flex-wrap">
-          <a href="/blog" className="hover:text-indigo-600">Security Blog</a>
-          <a href="/recommended-tools" className="hover:text-indigo-600">Recommended Tools</a>
-          <a href="/about" className="hover:text-indigo-600">About</a>
-          <a href="/privacy" className="hover:text-indigo-600">Privacy Policy</a>
-          <a href="/contact" className="hover:text-indigo-600">Contact</a>
+          <Link href="/blog" className="hover:text-indigo-600">Security Blog</Link>
+          <Link href="/recommended-tools" className="hover:text-indigo-600">Recommended Tools</Link>
+          <Link href="/about" className="hover:text-indigo-600">About</Link>
+          <Link href="/privacy" className="hover:text-indigo-600">Privacy Policy</Link>
+          <Link href="/contact" className="hover:text-indigo-600">Contact</Link>
         </div>
         <p>🔒 Passwords generated locally — never sent to any server.</p>
         <p className="mt-1 text-xs text-slate-400">© 2026 StrongPasswordGenerator.dev · Some links are affiliate links.</p>
