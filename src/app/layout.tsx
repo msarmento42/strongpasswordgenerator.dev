@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     siteName: "Strong Password Generator",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Strong Password Generator | Free Security Suite",
+    description: "Generate cryptographically secure passwords with advanced security analysis. Free, no signup required.",
+  },
 };
 
 export default function RootLayout({
