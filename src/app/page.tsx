@@ -27,7 +27,7 @@ const CHAR_SETS = {
 };
 
 const tips = [
-  { title: "Use a Password Manager", text: "Don't memorize passwords - use a password manager like Bitwarden or 1Password to generate and store unique passwords for every site." },
+  { title: "Use a Password Manager", text: "Don't memorize passwords - use a password manager like Bitwarden or NordPass to generate and store unique passwords for every site." },
   { title: "Enable 2FA Wherever Possible", text: "Two-factor authentication adds an extra layer of security. Use an authenticator app instead of SMS when available." },
   { title: "Never Reuse Passwords", text: "If one site gets breached, all your accounts are vulnerable. Use unique passwords for every account." },
   { title: "Longer is Stronger", text: "A 20-character password with only lowercase letters is often stronger than an 8-character one with special characters." },
@@ -295,7 +295,18 @@ export default function Home() {
             {tips.map((tip, i) => (
               <div key={i} className="bg-slate-50 p-4 rounded-lg">
                 <h3 className="font-semibold text-indigo-600 mb-2">💡 {tip.title}</h3>
-                <p className="text-sm text-slate-500">{tip.text}</p>
+                <p className="text-sm text-slate-500">
+                  {tip.text}
+                  {tip.title === "Use a Password Manager" && (
+                    <>
+                      {' '}
+                      Learn more about our{' '}
+                      <Link href="/recommended-tools" className="text-indigo-600 underline hover:text-indigo-800">
+                        recommended password managers →
+                      </Link>
+                    </>
+                  )}
+                </p>
               </div>
             ))}
           </div>

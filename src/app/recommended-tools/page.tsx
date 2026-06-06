@@ -13,7 +13,7 @@ const tools = [
         name: 'NordPass',
         tagline: 'Zero-knowledge password manager with a generous free tier',
         description: 'NordPass uses XChaCha20 encryption and a zero-knowledge architecture — even NordPass cannot see your passwords. It includes a built-in data breach scanner, password health report, and secure sharing. The free tier supports unlimited passwords.',
-        url: 'https://www.kqzyfj.com/click-101754888-17262576',
+        url: 'https://nordpass.com/special/strongpasswordgenerator/',
         badge: 'Best Free Option',
         badgeColor: '#10b981',
         sponsored: true,
@@ -23,10 +23,10 @@ const tools = [
         name: 'Bitwarden',
         tagline: 'The open-source password manager trusted by millions',
         description: 'Bitwarden is the leading open-source password manager — fully audited, end-to-end encrypted, and free for individuals. Self-host if you want full control, or use their cloud. Bitwarden supports TOTP, passkeys, and secure sharing, and the free tier has no practical limits.',
-        url: 'https://bitwarden.com',
+        url: 'https://bitwarden.com/?utm_source=strongpasswordgenerator',
         badge: 'Open Source',
         badgeColor: '#175DDC',
-        sponsored: false,
+        sponsored: true,
         features: ['End-to-end encrypted vault', 'Fully open-source & audited', 'Free tier with unlimited passwords', 'TOTP authenticator built-in', 'Self-hosting option available'],
       },
       {
@@ -150,7 +150,7 @@ export default function RecommendedToolsPage() {
                     </ul>
                     <a
                       href={tool.url}
-                      rel={tool.sponsored ? 'noopener sponsored' : 'noopener'}
+                      rel={tool.sponsored ? 'noopener noreferrer sponsored' : 'noopener noreferrer'}
                       target="_blank"
                       className="inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm hover:opacity-90 transition"
                     >
