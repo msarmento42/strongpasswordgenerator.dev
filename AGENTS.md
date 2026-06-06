@@ -1,30 +1,36 @@
-# AGENTS.md — strongpasswordgenerator.dev
+# AGENTS.md
 
-You are the Codex cloud agent implementing tasks for strongpasswordgenerator.dev,
-a Next.js (App Router) + TypeScript password generator and content site.
+You are Codex working inside the AGIOS system for this content site repository.
 
-## Project overview
-- **Stack:** Next.js 15, TypeScript, React, PostCSS
-- **Deploy:** Vercel (auto-deploys on merge to main)
-- **Structure:**
-  - `src/app/` — pages and layouts (App Router)
-  - `src/app/components/` — shared React components
-  - `src/posts/` — JSON blog post content
-  - `public/` — static assets
+## Session start protocol (run this at the start of every session)
 
-## Rules for this project
-- Do not modify `vercel.json`, `.github/`, `.agios/`, or any `*.env*` files
-- Do not modify `public/sitemap.xml` or `public/robots.txt`
-- Blog posts live in `src/posts/` as JSON files
-- New pages go in `src/app/[page-name]/page.tsx`
-- New components go in `src/app/components/`
-- Run `npm run build` before opening a PR to catch type errors
+1. Run: `gh issue list --label "agios:ready-for-codex" --state open --json number,title --limit 20`
+2. Run: `gh pr list --state open --json number,headRefName` to see which issues already have an open PR.
+3. Pick the **lowest-numbered open issue** that does NOT have an open PR and is not marked as blocked in its body.
+4. Implement it following the rules below, then open a PR.
 
-## If the issue is ambiguous
-Leave a comment on the issue explaining what is unclear. Do not open a PR with guesses.
+If no `agios:ready-for-codex` issues exist, stop and post a comment on the most recently closed issue:
+`@msarmento42 — no ready issues in this repo. Please queue the next item.`
 
-## PR body must include
-- `Closes #[issue number]`
-- Summary of changes (2–5 sentences)
-- Files changed
-- Verification steps run
+---
+
+## Required startup (before implementing any issue)
+
+1. Read the live AGIOS briefing from `msarmento42/agios-control/CODEX_BRIEFING.md`.
+2. Read the GitHub issue fully before writing any code.
+
+---
+
+## Project rules
+
+- This is a public content/income site. Changes go live on merge.
+- Do NOT touch `.github/workflows/`, environment files, or payment/analytics credentials.
+- Affiliate link changes must use the exact link format specified in the issue.
+- Keep changes scoped to what the issue specifies — no unsolicited UI changes.
+- Run `npm run build` (or equivalent) before opening a PR to confirm it compiles.
+
+---
+
+## PR requirements
+
+Include `Closes #<issue-number>` in the PR body.
