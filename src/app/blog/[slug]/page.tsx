@@ -19,6 +19,11 @@ interface PostMeta {
   slug: string;
 }
 
+const bitwardenRecommendedSlugs = new Set([
+  'bitwarden-setup-guide',
+  'lastpass-alternatives',
+]);
+
 export async function generateStaticParams() {
   const index: PostMeta[] = postsIndex;
   return index.map((post) => ({ slug: post.slug }));
@@ -82,6 +87,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <p className="text-slate-500 text-base leading-relaxed mb-6 border-l-4 border-indigo-200 pl-4 italic">
             {post.excerpt}
           </p>
+
+          {bitwardenRecommendedSlugs.has(post.slug) && (
+            <blockquote className="bg-indigo-50 border-l-4 border-indigo-300 rounded-r-xl p-4 my-6 text-sm text-indigo-900">
+              <strong>Recommended:</strong> We use and recommend{' '}
+              <a
+                href="https://bitwarden.com/?utm_source=strongpasswordgenerator"
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className="font-semibold underline hover:text-indigo-700"
+              >
+                Bitwarden
+              </a>{' '}
+              — free, open-source, and trusted by millions.
+            </blockquote>
+          )}
 
           <div
             className="prose prose-slate max-w-none"
