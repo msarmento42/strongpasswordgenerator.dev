@@ -1,21 +1,19 @@
 name: Scope Check
+
 on:
   pull_request:
-    branches: [main]
+    branches: [main, master]
 
 jobs:
-  validate:
-    name: Validate scope
+  scope:
+    name: Issue-level scope enforcement
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get changed files
-        id: changed
-        uses: tj-actions/changed-files@v44
-
-      - name: Run scope check
-        run: |
-          python3 .github/scripts/scope_check.py \
-            --changed "${{ steps.changed.outputs.all_changed_files }}" \
-            --scope .agios/scope.json
+      - name: Check scope against linked issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: python3 .github/scripts/check_scope.py
