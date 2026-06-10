@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
 export const metadata: Metadata = {
   title: "Strong Password Generator | Free Security Suite",
   description: "Free password generator with advanced security analysis. Generate cryptographically secure passwords, check strength, estimate crack time, and monitor password health.",
   keywords: "password generator, password strength, security checker, password health, cryptographically secure, password entropy, crack time calculator",
   openGraph: {
     title: "Strong Password Generator | Free Security Suite",
-    description: "Generate cryptographically secure passwords with advanced security analysis.",
+    description: "Generate cryptographically secure passwords, with advanced security analysis.",
     url: "https://strongpasswordgenerator.dev",
     siteName: "Strong Password Generator",
     type: "website",
@@ -49,6 +48,13 @@ export default function RootLayout({
               }
             })
           }}
+        />
+
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696"
+          crossOrigin="anonymous"
         />
       </head>
       <body>{children}</body>
