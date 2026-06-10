@@ -29,6 +29,27 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href="https://strongpasswordgenerator.dev/" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Strong Password Generator",
+              "url": "https://strongpasswordgenerator.dev",
+              "description": "Free online password generator with cryptographic security analysis, strength checking, breach monitoring, and password health dashboard.",
+              "applicationCategory": "SecurityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Strong Password Generator",
+                "url": "https://strongpasswordgenerator.dev"
+              }
+            })
+          }}
+        />
       </head>
       <body>{children}</body>
     </html>
