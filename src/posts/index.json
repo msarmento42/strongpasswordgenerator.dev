@@ -1,5 +1,69 @@
 [
   {
+    "slug": "best-password-manager-iphone-ios-2026",
+    "title": "Best Password Manager for iPhone and iOS (2026): Top 5 Compared",
+    "date": "2026-06-16",
+    "category": "Password Managers",
+    "readingTime": "7 min",
+    "tags": [
+      "iphone password manager",
+      "ios",
+      "1password",
+      "bitwarden",
+      "nordpass",
+      "Face ID",
+      "2026"
+    ],
+    "excerpt": "iOS 18 ships with Apple Passwords, but it has limitations that make third-party managers worth considering. Here's how NordPass, Bitwarden, 1Password, Apple Passwords, and Dashlane compare for iPhone users in 2026."
+  },
+  {
+    "slug": "passkeys-vs-passwords-2026",
+    "title": "Are Passkeys Replacing Passwords in 2026? What You Need to Know",
+    "date": "2026-06-14",
+    "category": "Security Trends",
+    "readingTime": "6 min",
+    "tags": [
+      "passkeys",
+      "passwords",
+      "FIDO2",
+      "WebAuthn",
+      "2026",
+      "passwordless"
+    ],
+    "excerpt": "Passkeys are the most significant shift in authentication in a decade \u2014 but passwords aren't gone yet. Here's the honest 2026 state of passkeys: where they work, where they don't, and what this means for your password manager."
+  },
+  {
+    "slug": "best-password-manager-for-business-2026",
+    "title": "Best Password Manager for Small Business and Teams (2026)",
+    "date": "2026-06-12",
+    "category": "Password Managers",
+    "readingTime": "7 min",
+    "tags": [
+      "business password manager",
+      "teams",
+      "1password teams",
+      "bitwarden",
+      "nordpass",
+      "2026"
+    ],
+    "excerpt": "Shared credentials are one of the top attack vectors in small business breaches. Here's how the leading team password managers compare in 2026 \u2014 covering price per seat, admin controls, and SSO support."
+  },
+  {
+    "slug": "bitwarden-vs-1password-2026",
+    "title": "Bitwarden vs 1Password (2026): Which Password Manager Should You Use?",
+    "date": "2026-06-10",
+    "category": "Password Managers",
+    "readingTime": "8 min",
+    "tags": [
+      "bitwarden",
+      "1password",
+      "password manager",
+      "comparison",
+      "2026"
+    ],
+    "excerpt": "Bitwarden and 1Password are the two most trusted password managers in 2026 \u2014 but they serve different needs at very different price points. Here's a detailed head-to-head comparison to help you pick the right one."
+  },
+  {
     "slug": "zero-trust-security-basics",
     "title": "Zero Trust Security Explained: A Practical Guide for Individuals and Small Businesses",
     "date": "2026-05-24",
@@ -12,7 +76,7 @@
       "Password Manager",
       "VPN"
     ],
-    "excerpt": "Zero trust security — 'never trust, always verify' — is the modern standard for protecting accounts, devices, and networks. Learn the core principles and practical steps to apply zero trust thinking to your personal digital security today."
+    "excerpt": "Zero trust security \u2014 'never trust, always verify' \u2014 is the modern standard for protecting accounts, devices, and networks. Learn the core principles and practical steps to apply zero trust thinking to your personal digital security today."
   },
   {
     "slug": "bitwarden-setup-guide",
@@ -42,7 +106,7 @@
       "account security",
       "phishing"
     ],
-    "excerpt": "Your email account is the master key to your digital life — whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
+    "excerpt": "Your email account is the master key to your digital life \u2014 whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
   },
   {
     "slug": "password-security-for-remote-workers",
@@ -57,7 +121,7 @@
       "home office",
       "work from home"
     ],
-    "excerpt": "Remote work introduces unique security risks that office environments handle automatically. This guide covers the specific password and account security steps every remote worker needs — from securing your home network to managing work credentials safely without corporate IT watching your back."
+    "excerpt": "Remote work introduces unique security risks that office environments handle automatically. This guide covers the specific password and account security steps every remote worker needs \u2014 from securing your home network to managing work credentials safely without corporate IT watching your back."
   },
   {
     "slug": "securing-social-media-accounts",
@@ -73,7 +137,7 @@
       "2FA",
       "password"
     ],
-    "excerpt": "Social media accounts are among the most commonly hijacked accounts on the internet — and losing one can mean losing years of content, your audience, and your online identity. This guide walks through the exact steps to lock down your Instagram, Facebook, X, LinkedIn, and other social accounts before an attacker gets in."
+    "excerpt": "Social media accounts are among the most commonly hijacked accounts on the internet \u2014 and losing one can mean losing years of content, your audience, and your online identity. This guide walks through the exact steps to lock down your Instagram, Facebook, X, LinkedIn, and other social accounts before an attacker gets in."
   },
   {
     "slug": "wifi-password-best-practices",
@@ -105,7 +169,7 @@
       "scams",
       "2FA"
     ],
-    "excerpt": "Phishing is the most common way accounts get compromised — and it doesn't require any technical skill from the attacker. This guide explains exactly how phishing attacks work, how to recognize them across email, SMS, and phone calls, and the specific habits and tools that will keep you from becoming a victim."
+    "excerpt": "Phishing is the most common way accounts get compromised \u2014 and it doesn't require any technical skill from the attacker. This guide explains exactly how phishing attacks work, how to recognize them across email, SMS, and phone calls, and the specific habits and tools that will keep you from becoming a victim."
   },
   {
     "slug": "github-security-best-practices",
@@ -121,7 +185,7 @@
       "2FA",
       "developer security"
     ],
-    "excerpt": "GitHub is where developers store their most valuable code — and often their credentials. This guide covers the essential security practices every developer needs: SSH keys, personal access tokens, branch protection, two-factor authentication, and how to audit what has access to your repositories."
+    "excerpt": "GitHub is where developers store their most valuable code \u2014 and often their credentials. This guide covers the essential security practices every developer needs: SSH keys, personal access tokens, branch protection, two-factor authentication, and how to audit what has access to your repositories."
   },
   {
     "slug": "google-password-manager-review",
@@ -197,7 +261,7 @@
       "security",
       "data breach"
     ],
-    "excerpt": "LastPass suffered major data breaches in 2022 and 2023 that exposed encrypted password vaults. If you are still using LastPass — or shopping for a first password manager — here are the best alternatives with honest comparisons on security, price, and ease of use."
+    "excerpt": "LastPass suffered major data breaches in 2022 and 2023 that exposed encrypted password vaults. If you are still using LastPass \u2014 or shopping for a first password manager \u2014 here are the best alternatives with honest comparisons on security, price, and ease of use."
   },
   {
     "slug": "yubikey-setup-guide",
@@ -242,7 +306,7 @@
       "account security",
       "mobile security"
     ],
-    "excerpt": "Microsoft Authenticator is one of the most capable free 2FA apps available — it handles time-based codes, passwordless sign-in, and encrypted cloud backup. This guide walks you through installing it, adding your most important accounts, and avoiding the mistakes that leave people locked out."
+    "excerpt": "Microsoft Authenticator is one of the most capable free 2FA apps available \u2014 it handles time-based codes, passwordless sign-in, and encrypted cloud backup. This guide walks you through installing it, adding your most important accounts, and avoiding the mistakes that leave people locked out."
   },
   {
     "slug": "password-security-audit-checklist",
@@ -273,7 +337,7 @@
       "2FA",
       "biometrics"
     ],
-    "excerpt": "Your Android phone holds the keys to your email, banking, social media, and cloud storage. This guide covers the exact steps to secure your Android device and the accounts on it — from screen lock settings to Google account hardening to choosing the right password manager for Android."
+    "excerpt": "Your Android phone holds the keys to your email, banking, social media, and cloud storage. This guide covers the exact steps to secure your Android device and the accounts on it \u2014 from screen lock settings to Google account hardening to choosing the right password manager for Android."
   },
   {
     "slug": "securing-crypto-wallets",
@@ -289,7 +353,7 @@
       "hardware wallet",
       "2FA"
     ],
-    "excerpt": "Crypto wallets have no fraud protection and no account recovery — if your password or seed phrase is compromised, your funds are gone permanently. This guide covers the exact security steps for exchange accounts, software wallets, and hardware wallets, including how to store seed phrases so they survive a disaster without being stolen."
+    "excerpt": "Crypto wallets have no fraud protection and no account recovery \u2014 if your password or seed phrase is compromised, your funds are gone permanently. This guide covers the exact security steps for exchange accounts, software wallets, and hardware wallets, including how to store seed phrases so they survive a disaster without being stolen."
   },
   {
     "slug": "passkeys-explained",
@@ -305,7 +369,7 @@
       "authentication",
       "biometrics"
     ],
-    "excerpt": "Passkeys are replacing passwords across Google, Apple, Microsoft, and hundreds of major sites — and for good reason. They are phishing-proof, can't be stolen in data breaches, and are faster than typing a password. This guide explains exactly how passkeys work, which accounts support them, and how to set them up today."
+    "excerpt": "Passkeys are replacing passwords across Google, Apple, Microsoft, and hundreds of major sites \u2014 and for good reason. They are phishing-proof, can't be stolen in data breaches, and are faster than typing a password. This guide explains exactly how passkeys work, which accounts support them, and how to set them up today."
   },
   {
     "slug": "data-breach-what-to-do",
@@ -320,7 +384,7 @@
       "password manager",
       "credit monitoring"
     ],
-    "excerpt": "Getting notified that your data was exposed in a breach is alarming — but the next 24 hours matter most. This guide walks through the exact steps to take immediately after a data breach: what to change first, how to check what was exposed, and how to protect yourself from the identity theft and account takeovers that follow."
+    "excerpt": "Getting notified that your data was exposed in a breach is alarming \u2014 but the next 24 hours matter most. This guide walks through the exact steps to take immediately after a data breach: what to change first, how to check what was exposed, and how to protect yourself from the identity theft and account takeovers that follow."
   },
   {
     "slug": "two-factor-authentication-guide",
@@ -335,7 +399,7 @@
       "authenticator app",
       "security keys"
     ],
-    "excerpt": "Two-factor authentication is the single most effective step you can take to protect your accounts from being hacked — even if your password is stolen, 2FA stops attackers cold. This guide explains how 2FA works, the different types ranked by security, and exactly how to enable it on your most critical accounts today."
+    "excerpt": "Two-factor authentication is the single most effective step you can take to protect your accounts from being hacked \u2014 even if your password is stolen, 2FA stops attackers cold. This guide explains how 2FA works, the different types ranked by security, and exactly how to enable it on your most critical accounts today."
   },
   {
     "slug": "securing-home-network",
@@ -351,7 +415,7 @@
       "smart home",
       "firewall"
     ],
-    "excerpt": "Your home network is the foundation of everything you do online — and most routers are configured with default settings that make them trivially easy to compromise. This guide covers every step to lock down your router, segment your devices, and protect every phone, laptop, and smart device in your home."
+    "excerpt": "Your home network is the foundation of everything you do online \u2014 and most routers are configured with default settings that make them trivially easy to compromise. This guide covers every step to lock down your router, segment your devices, and protect every phone, laptop, and smart device in your home."
   },
   {
     "slug": "securing-apple-id",
@@ -367,7 +431,7 @@
       "iPhone",
       "Mac"
     ],
-    "excerpt": "Your Apple ID controls your iPhone, Mac, iPad, iCloud backups, App Store purchases, and Apple Pay — making it one of the highest-value targets for attackers. This guide walks through every step to lock down your Apple ID with a strong password, two-factor authentication, and a recovery key that ensures only you can ever regain access."
+    "excerpt": "Your Apple ID controls your iPhone, Mac, iPad, iCloud backups, App Store purchases, and Apple Pay \u2014 making it one of the highest-value targets for attackers. This guide walks through every step to lock down your Apple ID with a strong password, two-factor authentication, and a recovery key that ensures only you can ever regain access."
   },
   {
     "slug": "vpn-for-remote-work",
@@ -383,7 +447,7 @@
       "work from home",
       "public Wi-Fi"
     ],
-    "excerpt": "Remote workers are a prime target for network-level attacks — from coffee shop snooping to ISP logging to man-in-the-middle attacks on unencrypted connections. This guide explains exactly what a VPN does and doesn't protect, when you actually need one for remote work, and how to choose and set up the right VPN for professional use."
+    "excerpt": "Remote workers are a prime target for network-level attacks \u2014 from coffee shop snooping to ISP logging to man-in-the-middle attacks on unencrypted connections. This guide explains exactly what a VPN does and doesn't protect, when you actually need one for remote work, and how to choose and set up the right VPN for professional use."
   },
   {
     "slug": "browser-security-settings",
@@ -398,7 +462,7 @@
       "privacy",
       "security settings"
     ],
-    "excerpt": "Your browser is your biggest attack surface. This guide walks through every critical security and privacy setting in Chrome, Firefox, and Safari — from disabling dangerous permissions to enabling DNS-over-HTTPS and locking down extensions."
+    "excerpt": "Your browser is your biggest attack surface. This guide walks through every critical security and privacy setting in Chrome, Firefox, and Safari \u2014 from disabling dangerous permissions to enabling DNS-over-HTTPS and locking down extensions."
   },
   {
     "slug": "securing-your-amazon-account",
@@ -413,7 +477,7 @@
       "phishing",
       "password security"
     ],
-    "excerpt": "Your Amazon account stores your home address, credit cards, purchase history, and access to dozens of connected services. This guide covers every step to lock it down — from setting a strong password and enabling two-step verification to auditing connected apps and spotting phishing emails."
+    "excerpt": "Your Amazon account stores your home address, credit cards, purchase history, and access to dozens of connected services. This guide covers every step to lock it down \u2014 from setting a strong password and enabling two-step verification to auditing connected apps and spotting phishing emails."
   },
   {
     "slug": "sim-swapping-protection",
@@ -443,7 +507,7 @@
       "account security",
       "professional security"
     ],
-    "excerpt": "LinkedIn is a goldmine for social engineering attacks — your career history, employer, colleagues, and contact info are all publicly available. A compromised LinkedIn account can damage your professional reputation and expose your network. This guide walks through exactly how to lock it down."
+    "excerpt": "LinkedIn is a goldmine for social engineering attacks \u2014 your career history, employer, colleagues, and contact info are all publicly available. A compromised LinkedIn account can damage your professional reputation and expose your network. This guide walks through exactly how to lock it down."
   },
   {
     "slug": "identity-theft-protection-guide",
@@ -488,7 +552,7 @@
       "Scams",
       "URL Safety"
     ],
-    "excerpt": "Fake websites are designed to look exactly like legitimate ones. Learn the tell-tale signs of phishing and scam sites — from suspicious URLs and missing HTTPS to pressure tactics and login page red flags — so you never hand your credentials to an attacker."
+    "excerpt": "Fake websites are designed to look exactly like legitimate ones. Learn the tell-tale signs of phishing and scam sites \u2014 from suspicious URLs and missing HTTPS to pressure tactics and login page red flags \u2014 so you never hand your credentials to an attacker."
   },
   {
     "slug": "protecting-kids-online",
@@ -503,7 +567,7 @@
       "family security",
       "online privacy"
     ],
-    "excerpt": "Children face unique online threats — from predators and scammers to school bullying migrating to apps you've never heard of. This guide covers account security for every age, how to set up safe passwords and parental controls, what to monitor, and how to build habits that protect your kids without destroying trust."
+    "excerpt": "Children face unique online threats \u2014 from predators and scammers to school bullying migrating to apps you've never heard of. This guide covers account security for every age, how to set up safe passwords and parental controls, what to monitor, and how to build habits that protect your kids without destroying trust."
   },
   {
     "slug": "dark-web-monitoring-explained",
@@ -518,7 +582,7 @@
       "monitoring",
       "personal data security"
     ],
-    "excerpt": "Billions of stolen credentials are circulating on the dark web right now — and yours might be among them. Dark web monitoring services watch for your personal data in breach databases and underground markets, alerting you before attackers can exploit it. Here's how it works and what to do when you get an alert."
+    "excerpt": "Billions of stolen credentials are circulating on the dark web right now \u2014 and yours might be among them. Dark web monitoring services watch for your personal data in breach databases and underground markets, alerting you before attackers can exploit it. Here's how it works and what to do when you get an alert."
   },
   {
     "slug": "how-to-freeze-your-credit",
@@ -533,7 +597,7 @@
       "personal finance security",
       "data breach"
     ],
-    "excerpt": "A credit freeze is the single most effective way to stop identity thieves from opening new accounts in your name — and it's completely free. This step-by-step guide walks you through freezing your credit at all three bureaus in under 15 minutes."
+    "excerpt": "A credit freeze is the single most effective way to stop identity thieves from opening new accounts in your name \u2014 and it's completely free. This step-by-step guide walks you through freezing your credit at all three bureaus in under 15 minutes."
   },
   {
     "slug": "nordvpn-review-2026",
@@ -549,7 +613,7 @@
       "review",
       "best VPN 2026"
     ],
-    "excerpt": "NordVPN has dominated VPN recommendations for years — but is it still the right choice in 2026? This in-depth review covers performance, privacy policy, security features, pricing, and how it compares to alternatives."
+    "excerpt": "NordVPN has dominated VPN recommendations for years \u2014 but is it still the right choice in 2026? This in-depth review covers performance, privacy policy, security features, pricing, and how it compares to alternatives."
   },
   {
     "slug": "identity-theft-statistics-2026",
@@ -565,6 +629,6 @@
       "fraud",
       "dark web"
     ],
-    "excerpt": "Identity theft affects millions of people every year — but the numbers behind it reveal important patterns about who is targeted, how accounts get compromised, and what defenses actually work."
+    "excerpt": "Identity theft affects millions of people every year \u2014 but the numbers behind it reveal important patterns about who is targeted, how accounts get compromised, and what defenses actually work."
   }
 ]
