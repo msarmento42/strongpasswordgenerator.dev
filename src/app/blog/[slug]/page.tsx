@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import postsIndex from '../../../posts/index.json';
@@ -11,6 +12,7 @@ interface PostData {
   category: string;
   readingTime: string;
   tags: string[];
+  description?: string;
   excerpt: string;
   content: string;
 }
@@ -18,6 +20,8 @@ interface PostData {
 interface PostMeta {
   slug: string;
 }
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://strongpasswordgenerator.dev';
 
 const bitwardenRecommendedSlugs = new Set([
   'bitwarden-setup-guide',
@@ -29,14 +33,37 @@ export async function generateStaticParams() {
   return index.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const filePath = path.join(process.cwd(), 'src', 'posts', `${slug}.json`);
   if (!fs.existsSync(filePath)) return {};
+
   const post: PostData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  const title = `${post.title} | Strong Password Generator`;
+  const description = post.description || post.excerpt;
+  const postUrl = `${SITE_URL}/blog/${post.slug}`;
+
   return {
-    title: `${post.title} | Strong Password Generator`,
-    description: post.excerpt,
+    title,
+    description,
+    alternates: {
+      canonical: postUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      url: postUrl,
+      siteName: 'Strong Password Generator',
+      publishedTime: post.date,
+      tags: post.tags,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@strongpwdgen',
+      title,
+      description,
+    },
   };
 }
 
