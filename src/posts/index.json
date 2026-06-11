@@ -5,13 +5,7 @@
     "date": "2026-06-11",
     "category": "Password Managers",
     "readingTime": "8 min",
-    "tags": [
-      "nordpass",
-      "dashlane",
-      "password manager",
-      "comparison",
-      "2026"
-    ],
+    "tags": ["nordpass", "dashlane", "password manager", "comparison", "2026"],
     "excerpt": "NordPass and Dashlane are two of the most polished password managers in 2026, but they solve slightly different problems. Here is a practical head-to-head comparison of price, security, features, ease of use, and who should choose each one."
   },
   {
@@ -400,5 +394,14 @@
     "readingTime": "13 min",
     "tags": ["VPN", "NordVPN", "privacy", "online security", "public WiFi", "2026"],
     "excerpt": "VPNs are marketed as the solution to online privacy — but they protect against a specific set of threats, not all of them. This honest 2026 guide explains exactly what a VPN does and doesn't protect, when it's genuinely worth it, and how NordVPN compares to alternatives."
+  },
+  {
+    "slug": "how-to-secure-gmail-2026",
+    "title": "How to Secure Your Gmail Account in 2026: Complete Protection Guide",
+    "date": "2026-06-11",
+    "category": "Best Practices",
+    "readingTime": "8 min",
+    "tags": ["Gmail security", "Google account", "2-Step Verification", "password manager", "account security", "2026"],
+    "excerpt": "Your Gmail account is the reset button for much of your digital life. This 2026 guide shows how to secure Gmail with 2-Step Verification, a strong unique password, recovery checks, connected app reviews, phishing defenses, and Google's Advanced Protection Program."
   }
 ]
