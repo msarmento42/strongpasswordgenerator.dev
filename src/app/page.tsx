@@ -78,7 +78,7 @@ export default function Home() {
 
   const calculateStrength = useCallback((pwd: string): { score: number; label: string } => {
     const entropy = calculateEntropy(pwd);
-    
+
     if (pwd.length === 0) return { score: 0, label: '' };
     if (entropy < 28) return { score: 1, label: 'Very Weak' };
     if (entropy < 36) return { score: 2, label: 'Weak' };
@@ -101,13 +101,13 @@ export default function Home() {
     let pwd = '';
     const array = new Uint32Array(options.length);
     crypto.getRandomValues(array);
-    
+
     for (let i = 0; i < options.length; i++) {
       pwd += charset[array[i] % charset.length];
     }
 
     setPassword(pwd);
-    
+
     const entropy = calculateEntropy(pwd);
     const strengthResult = calculateStrength(pwd);
     setStrength(strengthResult.score);
@@ -220,7 +220,7 @@ export default function Home() {
         {/* Options */}
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
           <h2 className="text-lg font-semibold mb-4">⚙️ Options</h2>
-          
+
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className="block text-slate-500 mb-2">Password Length: {options.length}</label>
@@ -263,7 +263,7 @@ export default function Home() {
         {history.length > 0 && (
           <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold">📜 Password History</h2>
+              <h2 className="text-lg font-semibold">📝 Password History</h2>
               <button
                 onClick={() => {
                   setHistory([]);
@@ -359,6 +359,15 @@ export default function Home() {
           />
         </div>
       </main>
+
+      {copied && (
+        <div
+          aria-live="polite"
+          className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-green-600 px-4 py-2 text-sm text-white shadow-lg transition-opacity duration-300"
+        >
+          Password copied!
+        </div>
+      )}
 
       <footer className="text-center py-8 text-slate-500 text-sm border-t border-slate-200 mt-4">
         <div className="flex justify-center gap-6 mb-3 flex-wrap">
