@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://strongpasswordgenerator.dev"),
   title: "Strong Password Generator | Free Security Suite",
   description: "Free password generator with advanced security analysis. Generate cryptographically secure passwords, check strength, estimate crack time, and monitor password health.",
   keywords: "password generator, password strength, security checker, password health, cryptographically secure, password entropy, crack time calculator",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Strong Password Generator | Free Security Suite",
     description: "Generate cryptographically secure passwords, with advanced security analysis.",
@@ -26,7 +31,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://strongpasswordgenerator.dev/" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
         <script
