@@ -1,23 +1,13 @@
+# EXAMPLE — Phase 1 builder-router caller for a PROJECT repo.
+# Put this in a project repo as .github/workflows/agios-builder-router.yml.
 name: AGIOS Builder Router (caller)
 on:
   workflow_dispatch:
     inputs:
-      issue_number:
-        description: "Issue number to route"
-        required: true
-      builder_order:
-        description: "Comma-separated builder override"
-        required: false
-        default: ""
+      issue_number: { required: true }
+      builder_order: { required: false, default: "" }
   issues:
     types: [labeled]
-permissions:
-  contents: write
-  issues: write
-  pull-requests: write
-concurrency:
-  group: agios-issue-${{ github.event.issue.number || inputs.issue_number }}
-  cancel-in-progress: false
 jobs:
   route:
     if: >-
@@ -25,6 +15,13 @@ jobs:
       github.event.label.name == 'agios:ready-for-codex'
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    concurrency:
+      group: agios-issue-${{ github.event.issue.number || inputs.issue_number }}
+      cancel-in-progress: false
     steps:
       - name: Resolve issue number
         id: issue
@@ -52,5 +49,13 @@ jobs:
       - name: Route builder
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: |
-          python agios-control/scripts/agios_builder_router.py             --issue-number "${{ steps.issue.outputs.number }}"             --repo "${{ github.repository }}"             --repo-path target             --control-path agios-control             --policy-path builder-policy.json             --builder-order "${{ inputs.builder_order || '' }}"             --builder-timeout-seconds 60
+          python agios-control/scripts/agios_builder_router.py \
+            --issue-number "${{ steps.issue.outputs.number }}" \
+            --repo "${{ github.repository }}" \
+            --repo-path target \
+            --control-path agios-control \
+            --policy-path builder-policy.json \
+            --builder-order "${{ inputs.builder_order || '' }}" \
+            --builder-timeout-seconds 60
