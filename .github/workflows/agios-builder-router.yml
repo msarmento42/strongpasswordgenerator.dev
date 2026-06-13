@@ -1,0 +1,23 @@
+name: AGIOS Builder Router (caller)
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Issue number to route"
+        required: true
+      builder_order:
+        description: "Comma-separated builder override"
+        required: false
+        default: ""
+  issues:
+    types: [labeled]
+jobs:
+  route:
+    if: >-
+      github.event_name != 'issues' ||
+      github.event.label.name == 'agios:ready-for-codex'
+    uses: msarmento42/agios-control/.github/workflows/agios-builder-router.yml@main
+    with:
+      issue_number: ${{ inputs.issue_number || github.event.issue.number }}
+      builder_order: ${{ inputs.builder_order || '' }}
+    secrets: inherit
