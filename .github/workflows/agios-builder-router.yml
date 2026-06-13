@@ -59,4 +59,4 @@ jobs:
             --control-path agios-control \
             --policy-path builder-policy.json \
             --builder-order "${{ inputs.builder_order || '' }}" \
-            --builder-timeout-seconds 60
+            --builder-timeout-seconds 120
