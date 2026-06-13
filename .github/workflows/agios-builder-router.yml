@@ -11,13 +11,46 @@ on:
         default: ""
   issues:
     types: [labeled]
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+concurrency:
+  group: agios-issue-${{ github.event.issue.number || inputs.issue_number }}
+  cancel-in-progress: false
 jobs:
   route:
     if: >-
       github.event_name != 'issues' ||
       github.event.label.name == 'agios:ready-for-codex'
-    uses: msarmento42/agios-control/.github/workflows/agios-builder-router.yml@main
-    with:
-      issue_number: ${{ inputs.issue_number || github.event.issue.number }}
-      builder_order: ${{ inputs.builder_order || '' }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Resolve issue number
+        id: issue
+        run: |
+          if [ -n "${{ inputs.issue_number }}" ]; then
+            echo "number=${{ inputs.issue_number }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "number=${{ github.event.issue.number }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+        with:
+          path: target
+          fetch-depth: 0
+
+      - name: Checkout AGIOS control repo
+        uses: actions/checkout@v4
+        with:
+          repository: msarmento42/agios-control
+          path: agios-control
+          fetch-depth: 1
+          token: ${{ secrets.AGIOS_CONTROL_TOKEN }}
+
+      - name: Route builder
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python agios-control/scripts/agios_builder_router.py             --issue-number "${{ steps.issue.outputs.number }}"             --repo "${{ github.repository }}"             --repo-path target             --control-path agios-control             --policy-path builder-policy.json             --builder-order "${{ inputs.builder_order || '' }}"             --builder-timeout-seconds 60
