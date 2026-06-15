@@ -1,5 +1,37 @@
 [
   {
+    "slug": "nordvpn-vs-expressvpn",
+    "title": "NordVPN vs ExpressVPN (2026): Which VPN Is Worth Your Money?",
+    "date": "2026-06-15",
+    "category": "Best Practices",
+    "readingTime": "8 min",
+    "tags": [
+      "VPN",
+      "NordVPN",
+      "ExpressVPN",
+      "VPN comparison",
+      "online privacy",
+      "network security"
+    ],
+    "excerpt": "NordVPN and ExpressVPN are the two most-recommended VPNs in 2026. This detailed comparison covers speed, security, price, and which one is right for your specific needs."
+  },
+  {
+    "slug": "securing-cloud-storage",
+    "title": "How to Secure Your Cloud Storage: Google Drive, iCloud, Dropbox, and OneDrive",
+    "date": "2026-06-15",
+    "category": "Best Practices",
+    "readingTime": "9 min",
+    "tags": [
+      "cloud storage",
+      "Google Drive",
+      "iCloud",
+      "Dropbox",
+      "OneDrive",
+      "cloud security"
+    ],
+    "excerpt": "Cloud storage accounts hold your most sensitive files — documents, photos, backups, even tax returns. Here's how to lock them down properly with strong passwords, 2FA, and access controls."
+  },
+  {
     "slug": "best-password-manager-iphone-ios-2026",
     "title": "Best Password Manager for iPhone and iOS (2026): Top 5 Compared",
     "date": "2026-06-16",
