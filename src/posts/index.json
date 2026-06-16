@@ -1,5 +1,54 @@
 [
   {
+    "slug": "best-password-manager-iphone-ios-2026",
+    "title": "Best Password Manager for iPhone and iOS (2026): Top 5 Compared",
+    "date": "2026-06-16",
+    "category": "Password Managers",
+    "readingTime": "7 min",
+    "tags": [
+      "iphone password manager",
+      "ios",
+      "1password",
+      "bitwarden",
+      "nordpass",
+      "Face ID",
+      "2026"
+    ],
+    "excerpt": "iOS 18 ships with Apple Passwords, but it has limitations that make third-party managers worth considering. Here's how NordPass, Bitwarden, 1Password, Apple Passwords, and Dashlane compare for iPhone users in 2026."
+  },
+  {
+    "slug": "wordpress-security-passwords",
+    "title": "WordPress Security: How to Lock Down Passwords, Logins, and Admin Access",
+    "date": "2026-06-16",
+    "category": "Best Practices",
+    "readingTime": "11 min",
+    "tags": [
+      "wordpress",
+      "password security",
+      "website security",
+      "wp-admin",
+      "2FA",
+      "brute force protection"
+    ],
+    "excerpt": "WordPress powers 40% of the web and is attacked constantly. This guide covers exactly how to lock down your WordPress site's passwords, login page, admin access, and user accounts — step by step, with the security plugins and settings that actually stop attacks."
+  },
+  {
+    "slug": "antivirus-software-guide",
+    "title": "Antivirus Software Guide 2026: Do You Need It, Which to Choose, and How to Configure It",
+    "date": "2026-06-16",
+    "category": "Best Practices",
+    "readingTime": "12 min",
+    "tags": [
+      "antivirus",
+      "malware protection",
+      "internet security",
+      "Avast",
+      "McAfee",
+      "Windows Defender"
+    ],
+    "excerpt": "Do you actually need antivirus software in 2026, or does Windows Defender cover it? This guide explains how modern antivirus works, compares the top products honestly, covers what antivirus doesn't protect you from, and walks through the configuration settings that make a real difference."
+  },
+  {
     "slug": "nordvpn-vs-expressvpn",
     "title": "NordVPN vs ExpressVPN (2026): Which VPN Is Worth Your Money?",
     "date": "2026-06-15",
@@ -32,23 +81,6 @@
     "excerpt": "Cloud storage accounts hold your most sensitive files — documents, photos, backups, even tax returns. Here's how to lock them down properly with strong passwords, 2FA, and access controls."
   },
   {
-    "slug": "best-password-manager-iphone-ios-2026",
-    "title": "Best Password Manager for iPhone and iOS (2026): Top 5 Compared",
-    "date": "2026-06-16",
-    "category": "Password Managers",
-    "readingTime": "7 min",
-    "tags": [
-      "iphone password manager",
-      "ios",
-      "1password",
-      "bitwarden",
-      "nordpass",
-      "Face ID",
-      "2026"
-    ],
-    "excerpt": "iOS 18 ships with Apple Passwords, but it has limitations that make third-party managers worth considering. Here's how NordPass, Bitwarden, 1Password, Apple Passwords, and Dashlane compare for iPhone users in 2026."
-  },
-  {
     "slug": "passkeys-vs-passwords-2026",
     "title": "Are Passkeys Replacing Passwords in 2026? What You Need to Know",
     "date": "2026-06-14",
@@ -78,6 +110,22 @@
       "data breach"
     ],
     "excerpt": "NordProtect is Nord Security's identity theft protection and dark web monitoring service. This guide explains what it does, what it covers, how it compares to standalone identity protection services, and whether it's worth adding to your security stack."
+  },
+  {
+    "slug": "nordvpn-review-2026",
+    "title": "NordVPN Review 2026: Is It Still the Best VPN?",
+    "date": "2026-06-14",
+    "category": "Best Practices",
+    "readingTime": "9 min",
+    "tags": [
+      "VPN",
+      "NordVPN",
+      "privacy",
+      "online security",
+      "review",
+      "best VPN 2026"
+    ],
+    "excerpt": "NordVPN has dominated VPN recommendations for years — but is it still the right choice in 2026? This in-depth review covers performance, privacy policy, security features, pricing, and how it compares to alternatives."
   },
   {
     "slug": "best-password-manager-for-business-2026",
@@ -219,22 +267,6 @@
       "2026"
     ],
     "excerpt": "Bitwarden and 1Password are the two most trusted password managers in 2026 — but they serve different needs at very different price points. Here's a detailed head-to-head comparison to help you pick the right one."
-  },
-  {
-    "slug": "nordvpn-review-2026",
-    "title": "NordVPN Review 2026: Is It Still the Best VPN?",
-    "date": "2026-06-14",
-    "category": "Best Practices",
-    "readingTime": "9 min",
-    "tags": [
-      "VPN",
-      "NordVPN",
-      "privacy",
-      "online security",
-      "review",
-      "best VPN 2026"
-    ],
-    "excerpt": "NordVPN has dominated VPN recommendations for years — but is it still the right choice in 2026? This in-depth review covers performance, privacy policy, security features, pricing, and how it compares to alternatives."
   },
   {
     "slug": "identity-theft-statistics-2026",
