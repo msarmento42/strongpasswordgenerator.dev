@@ -1,6 +1,7 @@
 'use client';
 
 import PassphraseGenerator from './components/PassphraseGenerator';
+import AffiliateCTA from './components/AffiliateCTA';
 
 import Link from 'next/link';
 import { useState, useEffect, useCallback } from 'react';
@@ -368,6 +369,14 @@ export default function Home() {
           Password copied!
         </div>
       )}
+
+      <section className="max-w-xl mx-auto px-4 py-8">
+        <h2 className="text-lg font-semibold text-slate-700 mb-4 text-center">Protect your passwords with a manager:</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <AffiliateCTA product="bitwarden" />
+          <AffiliateCTA product="nordpass" />
+        </div>
+      </section>
 
       <footer className="text-center py-8 text-slate-500 text-sm border-t border-slate-200 mt-4">
         <div className="flex justify-center gap-6 mb-3 flex-wrap">
