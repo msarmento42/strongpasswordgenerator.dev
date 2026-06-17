@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import AffiliateCTA from '../../components/AffiliateCTA';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import postsIndex from '../../../posts/index.json';
@@ -180,6 +181,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           >
             Try the Password Generator →
           </Link>
+        </div>
+
+        <div className="mt-8">
+          <AffiliateCTA product="bitwarden" />
         </div>
 
         <div className="mt-4 text-center">
