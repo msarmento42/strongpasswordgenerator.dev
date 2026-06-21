@@ -1,5 +1,35 @@
 [
   {
+    "slug": "securing-facebook-account",
+    "title": "How to Secure Your Facebook Account: The Complete 2026 Guide",
+    "date": "2026-06-21",
+    "category": "Best Practices",
+    "readingTime": "11 min",
+    "tags": [
+      "facebook",
+      "social media security",
+      "2FA",
+      "account security",
+      "privacy"
+    ],
+    "excerpt": "Facebook accounts are prime targets for takeovers, phishing, and identity theft. This guide covers every security setting — passwords, 2FA, session management, privacy controls, and how to spot Facebook-specific scams — so you can lock down your account today."
+  },
+  {
+    "slug": "google-authenticator-vs-authy",
+    "title": "Google Authenticator vs. Authy: Which 2FA App Should You Use in 2026?",
+    "date": "2026-06-21",
+    "category": "2FA",
+    "readingTime": "11 min",
+    "tags": [
+      "authenticator app",
+      "2FA",
+      "Google Authenticator",
+      "Authy",
+      "account security"
+    ],
+    "excerpt": "Google Authenticator and Authy are the two most popular two-factor authentication apps, but they take very different approaches to backup, multi-device sync, and account recovery. Here's exactly how they compare — and which one is right for your situation."
+  },
+  {
     "slug": "email-security-best-practices-2026",
     "title": "Email Security Best Practices 2026: Protect Your Inbox from Hackers and Phishing",
     "date": "2026-06-20",
@@ -32,6 +62,67 @@
       "network security"
     ],
     "excerpt": "Remote desktop and remote access tools are among the most targeted attack surfaces in cybersecurity — exposed RDP ports are scanned and attacked within minutes of going online. This guide covers how to secure Windows RDP, third-party remote access tools, and your entire remote work setup with the layered defenses that actually matter."
+  },
+  {
+    "slug": "microsoft-account-security-guide",
+    "title": "How to Secure Your Microsoft Account: Passwords, 2FA, and Recovery Options",
+    "date": "2026-06-19",
+    "category": "Best Practices",
+    "readingTime": "10 min",
+    "tags": [
+      "Microsoft account",
+      "Microsoft Authenticator",
+      "2FA",
+      "account security",
+      "Windows security"
+    ],
+    "excerpt": "Your Microsoft account controls Windows, Outlook, OneDrive, Xbox, and Office 365. A single breach can expose years of emails, files, and purchases. This guide walks through every security layer you should have in place."
+  },
+  {
+    "slug": "free-vs-paid-password-managers-2026",
+    "title": "Free vs Paid Password Managers in 2026: What You Actually Get for Your Money",
+    "date": "2026-06-19",
+    "category": "Password Managers",
+    "readingTime": "10 min",
+    "tags": [
+      "password manager",
+      "free password manager",
+      "NordPass",
+      "1Password",
+      "Bitwarden",
+      "comparison"
+    ],
+    "excerpt": "The best free password managers are genuinely secure. The best paid ones earn their price with features free tiers don't offer. An honest breakdown of what the upgrade actually delivers."
+  },
+  {
+    "slug": "how-to-create-strong-password",
+    "title": "How to Create a Strong Password: The Complete Guide for 2026",
+    "date": "2026-06-18",
+    "category": "Password Security",
+    "readingTime": "11 min",
+    "tags": [
+      "strong password",
+      "password tips",
+      "password generator",
+      "account security",
+      "best practices"
+    ],
+    "excerpt": "A strong password is the foundation of every secure account. This guide explains exactly what makes a password strong, what patterns to avoid, how password managers and generators work, and how to build a practical system you can actually maintain."
+  },
+  {
+    "slug": "password-manager-vs-browser-autofill",
+    "title": "Password Manager vs. Browser Autofill: Which Is Actually More Secure?",
+    "date": "2026-06-18",
+    "category": "Password Managers",
+    "readingTime": "10 min",
+    "tags": [
+      "password manager",
+      "browser autofill",
+      "Chrome passwords",
+      "Safari passwords",
+      "security comparison"
+    ],
+    "excerpt": "Chrome, Safari, and Edge all offer built-in password autofill — but are they as secure as a dedicated password manager? This guide compares the two approaches across security, features, and real-world usability so you can make the right choice."
   },
   {
     "slug": "how-to-check-if-youve-been-hacked",
@@ -883,66 +974,5 @@
       "phishing"
     ],
     "excerpt": "Your email account is the master key to your digital life — whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
-  },
-  {
-    "slug": "how-to-create-strong-password",
-    "title": "How to Create a Strong Password: The Complete Guide for 2026",
-    "date": "2026-06-18",
-    "category": "Password Security",
-    "readingTime": "11 min",
-    "tags": [
-      "strong password",
-      "password tips",
-      "password generator",
-      "account security",
-      "best practices"
-    ],
-    "excerpt": "A strong password is the foundation of every secure account. This guide explains exactly what makes a password strong, what patterns to avoid, how password managers and generators work, and how to build a practical system you can actually maintain."
-  },
-  {
-    "slug": "password-manager-vs-browser-autofill",
-    "title": "Password Manager vs. Browser Autofill: Which Is Actually More Secure?",
-    "date": "2026-06-18",
-    "category": "Password Managers",
-    "readingTime": "10 min",
-    "tags": [
-      "password manager",
-      "browser autofill",
-      "Chrome passwords",
-      "Safari passwords",
-      "security comparison"
-    ],
-    "excerpt": "Chrome, Safari, and Edge all offer built-in password autofill — but are they as secure as a dedicated password manager? This guide compares the two approaches across security, features, and real-world usability so you can make the right choice."
-  },
-  {
-    "slug": "microsoft-account-security-guide",
-    "title": "How to Secure Your Microsoft Account: Passwords, 2FA, and Recovery Options",
-    "date": "2026-06-19",
-    "category": "Best Practices",
-    "readingTime": "10 min",
-    "tags": [
-      "Microsoft account",
-      "Microsoft Authenticator",
-      "2FA",
-      "account security",
-      "Windows security"
-    ],
-    "excerpt": "Your Microsoft account controls Windows, Outlook, OneDrive, Xbox, and Office 365. A single breach can expose years of emails, files, and purchases. This guide walks through every security layer you should have in place."
-  },
-  {
-    "slug": "free-vs-paid-password-managers-2026",
-    "title": "Free vs Paid Password Managers in 2026: What You Actually Get for Your Money",
-    "date": "2026-06-19",
-    "category": "Password Managers",
-    "readingTime": "10 min",
-    "tags": [
-      "password manager",
-      "free password manager",
-      "NordPass",
-      "1Password",
-      "Bitwarden",
-      "comparison"
-    ],
-    "excerpt": "The best free password managers are genuinely secure. The best paid ones earn their price with features free tiers don't offer. An honest breakdown of what the upgrade actually delivers."
   }
 ]
