@@ -974,5 +974,38 @@
       "phishing"
     ],
     "excerpt": "Your email account is the master key to your digital life — whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
+  },
+  {
+    "slug": "password-reuse-risks",
+    "title": "The Dangers of Password Reuse: Why Using the Same Password Everywhere Is a Security Disaster",
+    "date": "2026-06-22",
+    "category": "Password Security",
+    "readingTime": "12 min",
+    "tags": [
+      "password reuse",
+      "credential stuffing",
+      "data breach",
+      "password manager",
+      "account security",
+      "cyber threats"
+    ],
+    "excerpt": "Using the same password across multiple accounts is one of the most dangerous habits in personal security. Billions of stolen credentials are actively traded online — when one account is breached, every account that shares that password is immediately at risk. This guide explains how credential stuffing works and exactly what to do instead."
+  },
+  {
+    "slug": "how-to-recover-from-identity-theft",
+    "title": "How to Recover from Identity Theft: A Complete Step-by-Step Action Plan",
+    "date": "2026-06-22",
+    "category": "Data Breaches",
+    "readingTime": "13 min",
+    "tags": [
+      "identity theft",
+      "identity theft recovery",
+      "credit fraud",
+      "FTC",
+      "fraud alert",
+      "credit freeze",
+      "data breach"
+    ],
+    "excerpt": "Discovering you're an identity theft victim is terrifying — but recovery is possible with the right steps. This guide walks you through exactly what to do immediately, how to clean up fraudulent accounts, restore your credit, and protect yourself from future theft."
   }
 ]
