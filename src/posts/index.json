@@ -1,5 +1,68 @@
 [
   {
+    "slug": "mfa-fatigue-attack-explained",
+    "title": "MFA Fatigue Attacks: How Push Notification Abuse Bypasses Two-Factor Authentication",
+    "date": "2026-06-23",
+    "category": "2FA",
+    "readingTime": "7 min",
+    "tags": [
+      "MFA fatigue",
+      "two-factor authentication",
+      "push notification attack",
+      "account security",
+      "phishing-resistant MFA"
+    ],
+    "excerpt": "MFA fatigue attacks have successfully bypassed two-factor authentication at Uber, Microsoft, and Cisco. Here's how the attack works and how to make your accounts immune to it."
+  },
+  {
+    "slug": "credential-stuffing-explained",
+    "title": "Credential Stuffing Explained: What It Is and How to Stop It",
+    "date": "2026-06-23",
+    "category": "Password Security",
+    "readingTime": "8 min",
+    "tags": [
+      "credential stuffing",
+      "password security",
+      "data breaches",
+      "account takeover",
+      "password manager"
+    ],
+    "excerpt": "Credential stuffing is the automated attack behind millions of account takeovers each year. Here's exactly how attackers do it — and the two changes that stop it cold."
+  },
+  {
+    "slug": "password-reuse-risks",
+    "title": "The Dangers of Password Reuse: Why Using the Same Password Everywhere Is a Security Disaster",
+    "date": "2026-06-22",
+    "category": "Password Security",
+    "readingTime": "12 min",
+    "tags": [
+      "password reuse",
+      "credential stuffing",
+      "data breach",
+      "password manager",
+      "account security",
+      "cyber threats"
+    ],
+    "excerpt": "Using the same password across multiple accounts is one of the most dangerous habits in personal security. Billions of stolen credentials are actively traded online — when one account is breached, every account that shares that password is immediately at risk. This guide explains how credential stuffing works and exactly what to do instead."
+  },
+  {
+    "slug": "how-to-recover-from-identity-theft",
+    "title": "How to Recover from Identity Theft: A Complete Step-by-Step Action Plan",
+    "date": "2026-06-22",
+    "category": "Data Breaches",
+    "readingTime": "13 min",
+    "tags": [
+      "identity theft",
+      "identity theft recovery",
+      "credit fraud",
+      "FTC",
+      "fraud alert",
+      "credit freeze",
+      "data breach"
+    ],
+    "excerpt": "Discovering you're an identity theft victim is terrifying — but recovery is possible with the right steps. This guide walks you through exactly what to do immediately, how to clean up fraudulent accounts, restore your credit, and protect yourself from future theft."
+  },
+  {
     "slug": "securing-facebook-account",
     "title": "How to Secure Your Facebook Account: The Complete 2026 Guide",
     "date": "2026-06-21",
@@ -974,38 +1037,5 @@
       "phishing"
     ],
     "excerpt": "Your email account is the master key to your digital life — whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
-  },
-  {
-    "slug": "password-reuse-risks",
-    "title": "The Dangers of Password Reuse: Why Using the Same Password Everywhere Is a Security Disaster",
-    "date": "2026-06-22",
-    "category": "Password Security",
-    "readingTime": "12 min",
-    "tags": [
-      "password reuse",
-      "credential stuffing",
-      "data breach",
-      "password manager",
-      "account security",
-      "cyber threats"
-    ],
-    "excerpt": "Using the same password across multiple accounts is one of the most dangerous habits in personal security. Billions of stolen credentials are actively traded online — when one account is breached, every account that shares that password is immediately at risk. This guide explains how credential stuffing works and exactly what to do instead."
-  },
-  {
-    "slug": "how-to-recover-from-identity-theft",
-    "title": "How to Recover from Identity Theft: A Complete Step-by-Step Action Plan",
-    "date": "2026-06-22",
-    "category": "Data Breaches",
-    "readingTime": "13 min",
-    "tags": [
-      "identity theft",
-      "identity theft recovery",
-      "credit fraud",
-      "FTC",
-      "fraud alert",
-      "credit freeze",
-      "data breach"
-    ],
-    "excerpt": "Discovering you're an identity theft victim is terrifying — but recovery is possible with the right steps. This guide walks you through exactly what to do immediately, how to clean up fraudulent accounts, restore your credit, and protect yourself from future theft."
   }
 ]
