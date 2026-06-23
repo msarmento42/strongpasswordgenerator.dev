@@ -5,6 +5,7 @@ import PasswordChecker from './components/PasswordChecker';
 import AffiliateCTA from './components/AffiliateCTA';
 
 import Link from 'next/link';
+import Script from 'next/script'; // Added Script import
 import { useState, useEffect, useCallback } from 'react';
 
 interface PasswordOptions {
@@ -34,6 +35,29 @@ const tips = [
   { title: "Never Reuse Passwords", text: "If one site gets breached, all your accounts are vulnerable. Use unique passwords for every account." },
   { title: "Longer is Stronger", text: "A 20-character password with only lowercase letters is often stronger than an 8-character one with special characters." },
   { title: "Passphrases Work Great", text: "Consider using random words like 'correct-horse-battery-staple' - they're easy to remember but hard to crack." },
+];
+
+const FAQ_ITEMS = [
+  {
+    question: "Is this password generator safe to use?",
+    answer: "Yes. Passwords are generated entirely in your browser using the Web Crypto API — nothing is ever sent to a server or stored anywhere."
+  },
+  {
+    question: "Does this tool log or store my generated passwords?",
+    answer: "No. This generator runs 100% client-side. We have no server-side code and no database. Your passwords exist only in your browser for the duration of your session."
+  },
+  {
+    question: "What makes a password strong?",
+    answer: "A strong password is at least 16 characters long, combines uppercase and lowercase letters, numbers, and symbols, and is unique to each account."
+  },
+  {
+    question: "How many passwords should I generate before using one?",
+    answer: "Generate until you find one you can memorise a hint for, or use a password manager like Bitwarden (free) to store it securely — then the length and complexity matter more than memorability."
+  },
+  {
+    question: "How often should I change my passwords?",
+    answer: "Change passwords immediately if a service is breached. Otherwise, for accounts with a password manager, there is no need to rotate regularly — focus on uniqueness per account instead."
+  },
 ];
 
 export default function Home() {
@@ -174,6 +198,20 @@ export default function Home() {
 
   const optionChanged = (key: keyof PasswordOptions, value: boolean | number) => {
     setOptions(prev => ({ ...prev, [key]: value }));
+  };
+
+  // JSON-LD for FAQPage
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQ_ITEMS.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
   };
 
   return (
@@ -377,6 +415,26 @@ export default function Home() {
           <PasswordChecker />
         </div>
 
+        {/* New FAQ Section */}
+        <section className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100 dark:bg-slate-800 dark:border-slate-700">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">❓ Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {FAQ_ITEMS.map((item, index) => (
+              <details
+                key={index}
+                className="bg-slate-50 dark:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-600 p-4"
+              >
+                <summary className="font-medium text-slate-800 dark:text-slate-200 cursor-pointer">
+                  {item.question}
+                </summary>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+
         {/* Newsletter */}
         <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-3xl border border-indigo-100 p-8 text-center">
           <div className="text-3xl mb-3">🔐</div>
@@ -420,6 +478,14 @@ export default function Home() {
         <p>🔒 Passwords generated locally — never sent to any server.</p>
         <p className="mt-1 text-xs text-slate-400">© 2026 StrongPasswordGenerator.dev · Some links are affiliate links.</p>
       </footer>
+
+      {/* JSON-LD Script */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </div>
   );
 }
