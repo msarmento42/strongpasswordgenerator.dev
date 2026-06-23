@@ -1,5 +1,4 @@
-# EXAMPLE — Phase 1 builder-router caller for a PROJECT repo.
-# Put this in a project repo as .github/workflows/agios-builder-router.yml.
+# AGIOS Builder Router caller — strongpasswordgenerator.dev
 name: AGIOS Builder Router (caller)
 on:
   workflow_dispatch:
@@ -14,7 +13,7 @@ jobs:
       github.event_name != 'issues' ||
       github.event.label.name == 'agios:ready-for-codex'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     permissions:
       contents: write
       issues: write
@@ -33,6 +32,13 @@ jobs:
             echo "number=${{ github.event.issue.number }}" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Set up Node.js (for build verification)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
@@ -47,16 +53,23 @@ jobs:
           fetch-depth: 1
           token: ${{ secrets.AGIOS_CONTROL_TOKEN }}
 
+      - name: Install dependencies (for build verification)
+        run: |
+          cd target && npm ci --prefer-offline
+
+      - name: Clean dependency install artifacts
+        run: |
+          git -C target restore -- package.json package-lock.json 2>/dev/null || true
+
       - name: Route builder
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.AGIOS_CONTROL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_MODELS_TOKEN: ${{ secrets.GITHUB_MODELS_TOKEN }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
-          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           python agios-control/scripts/agios_builder_router.py \
@@ -67,4 +80,3 @@ jobs:
             --policy-path builder-policy.json \
             --builder-order "${{ inputs.builder_order || '' }}" \
             --builder-timeout-seconds 120
-
