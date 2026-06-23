@@ -149,6 +149,29 @@ export default function Home() {
     return () => window.clearTimeout(timer);
   }, [generatePassword]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const activeTag = document.activeElement?.tagName;
+
+      if (
+        event.key.toLowerCase() === 'c' &&
+        (event.metaKey || event.ctrlKey) &&
+        activeTag !== 'INPUT' &&
+        activeTag !== 'TEXTAREA' &&
+        activeTag !== 'SELECT'
+      ) {
+        event.preventDefault();
+        navigator.clipboard.writeText(password);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [password]);
+
   const optionChanged = (key: keyof PasswordOptions, value: boolean | number) => {
     setOptions(prev => ({ ...prev, [key]: value }));
   };
@@ -196,6 +219,8 @@ export default function Home() {
               🎲 Generate
             </button>
           </div>
+
+          <span className="mt-1 block text-xs text-slate-400">Press Cmd+C / Ctrl+C anywhere to copy</span>
 
           {password && (
             <div className="mb-2">
