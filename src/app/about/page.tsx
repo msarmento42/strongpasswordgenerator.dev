@@ -1,8 +1,21 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'About | Strong Password Generator',
   description: 'Learn about StrongPasswordGenerator.dev — a free tool to generate cryptographically secure passwords and learn password security best practices.',
+  openGraph: {
+    type: 'website',
+    url: 'https://strongpasswordgenerator.dev/about',
+    siteName: 'Strong Password Generator',
+    title: 'About | Strong Password Generator',
+    description: 'Learn about StrongPasswordGenerator.dev — a free tool to generate cryptographically secure passwords and learn password security best practices.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About | Strong Password Generator',
+    description: 'Learn about StrongPasswordGenerator.dev — a free tool to generate cryptographically secure passwords and learn password security best practices.',
+  },
 };
 
 export default function AboutPage() {

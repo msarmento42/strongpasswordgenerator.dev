@@ -1,8 +1,21 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Recommended Security Tools | Strong Password Generator',
   description: 'Our top picks for password managers, VPNs, antivirus, and identity protection. Curated by the SecurePass security team.',
+  openGraph: {
+    type: 'website',
+    url: 'https://strongpasswordgenerator.dev/recommended-tools',
+    siteName: 'Strong Password Generator',
+    title: 'Recommended Security Tools | Strong Password Generator',
+    description: 'Our top picks for password managers, VPNs, antivirus, and identity protection.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Recommended Security Tools | Strong Password Generator',
+    description: 'Our top picks for password managers, VPNs, antivirus, and identity protection.',
+  },
 };
 
 const tools = [
