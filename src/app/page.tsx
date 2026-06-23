@@ -1,6 +1,7 @@
 'use client';
 
 import PassphraseGenerator from './components/PassphraseGenerator';
+import PasswordChecker from './components/PasswordChecker';
 import AffiliateCTA from './components/AffiliateCTA';
 
 import Link from 'next/link';
@@ -345,6 +346,11 @@ export default function Home() {
           <PassphraseGenerator />
         </div>
 
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+          <h2 className="text-lg font-semibold mb-2">🔍 Check Your Password</h2>
+          <p className="text-sm text-slate-500 mb-4">Already have a password? See how strong it really is.</p>
+          <PasswordChecker />
+        </div>
 
         {/* Newsletter */}
         <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-3xl border border-indigo-100 p-8 text-center">
