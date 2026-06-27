@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import AffiliateCTA from '../../components/AffiliateCTA';
+import NordPassCTA from '../../components/NordPassCTA';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import postsIndex from '../../../posts/index.json';
@@ -27,6 +28,10 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://strongpasswordgene
 const bitwardenRecommendedSlugs = new Set([
   'bitwarden-setup-guide',
   'lastpass-alternatives',
+]);
+
+const nordPassRecommendedSlugs = new Set([
+  'nordpass-vs-dashlane-2026',
 ]);
 
 export async function generateStaticParams() {
@@ -142,6 +147,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <p className="text-slate-500 text-base leading-relaxed mb-6 border-l-4 border-indigo-200 pl-4 italic">
             {post.excerpt}
           </p>
+
+          {nordPassRecommendedSlugs.has(post.slug) && (
+            <div className="my-6">
+              <NordPassCTA />
+            </div>
+          )}
 
           {bitwardenRecommendedSlugs.has(post.slug) && (
             <blockquote className="bg-indigo-50 border-l-4 border-indigo-300 rounded-r-xl p-4 my-6 text-sm text-indigo-900">
