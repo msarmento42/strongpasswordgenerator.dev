@@ -75,6 +75,28 @@ export default function Home() {
   const [history, setHistory] = useState<PasswordHistory[]>([]);
   const [copied, setCopied] = useState(false);
 
+  // Effect to load options from localStorage on mount
+  useEffect(() => {
+    try {
+      const savedOptions = localStorage.getItem('pwOptions');
+      if (savedOptions) {
+        setOptions(JSON.parse(savedOptions));
+      }
+    } catch (error) {
+      console.error("Failed to load password options from localStorage:", error);
+      // Fallback to default options is handled by the useState initial value
+    }
+  }, []); // Empty dependency array means it runs once on mount
+
+  // Effect to save options to localStorage whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem('pwOptions', JSON.stringify(options));
+    } catch (error) {
+      console.error("Failed to save password options to localStorage:", error);
+    }
+  }, [options]); // Runs whenever 'options' state changes
+
   const calculateEntropy = useCallback((pwd: string): number => {
     let charsetSize = 0;
     if (/[a-z]/.test(pwd)) charsetSize += 26;
@@ -183,7 +205,8 @@ export default function Home() {
         activeTag !== 'INPUT' &&
         activeTag !== 'TEXTAREA' &&
         activeTag !== 'SELECT'
-      ) {
+      )
+      {
         event.preventDefault();
         navigator.clipboard.writeText(password);
         setCopied(true);
