@@ -250,6 +250,46 @@ export default function Home() {
     }))
   };
 
+  // JSON-LD for HowTo
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Generate a Strong Password",
+    "description": "Use the free Strong Password Generator to create a secure, random password in seconds.",
+    "totalTime": "PT1M",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": "0"
+    },
+    "tool": [{
+      "@type": "HowToTool",
+      "name": "Strong Password Generator"
+    }],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Set your password length",
+        "text": "Use the length slider to choose how long your password should be. 16 or more characters is strongly recommended for maximum security."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Choose character types",
+        "text": "Check the boxes for uppercase letters, lowercase letters, numbers, and symbols to include in your password."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Generate your password",
+        "text": "Click the Generate button to create a new random password matching your settings. Click again to regenerate."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Copy your password",
+        "text": "Click the Copy button or press Cmd+C / Ctrl+C to copy the generated password to your clipboard, then paste it wherever needed."
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
@@ -529,6 +569,10 @@ export default function Home() {
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
     </div>
   );
