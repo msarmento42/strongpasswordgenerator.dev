@@ -18,7 +18,7 @@ interface PasswordOptions {
 
 interface PasswordHistory {
   password: string;
-  timestamp: Date;
+  timestamp: Date | string;
   strength: string;
 }
 
@@ -154,6 +154,25 @@ export default function Home() {
     await navigator.clipboard.writeText(password);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const exportHistory = () => {
+    const text = history
+      .map((item) => {
+        const timestamp = new Date(item.timestamp).toLocaleString();
+        return `[${timestamp}] ${item.password} (${item.strength})`;
+      })
+      .join('\n');
+
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'password-history.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   const getStrengthColor = () => {
@@ -329,15 +348,23 @@ export default function Home() {
           <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold">📝 Password History</h2>
-              <button
-                onClick={() => {
-                  setHistory([]);
-                  localStorage.removeItem('passwordHistory');
-                }}
-                className="text-sm text-slate-500 hover:text-white"
-              >
-                Clear
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={exportHistory}
+                  className="text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                >
+                  Download history
+                </button>
+                <button
+                  onClick={() => {
+                    setHistory([]);
+                    localStorage.removeItem('passwordHistory');
+                  }}
+                  className="text-sm text-slate-500 hover:text-white"
+                >
+                  Clear
+                </button>
+              </div>
             </div>
             <div className="space-y-2 max-h-48 overflow-y-auto">
               {history.map((item, i) => (
