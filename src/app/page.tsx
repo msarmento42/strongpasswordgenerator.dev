@@ -62,18 +62,34 @@ const FAQ_ITEMS = [
 
 export default function Home() {
   const [password, setPassword] = useState('');
-  const [options, setOptions] = useState<PasswordOptions>({
-    length: 20,
-    uppercase: true,
-    lowercase: true,
-    numbers: true,
-    symbols: true
+  const [options, setOptions] = useState<PasswordOptions>(() => {
+    try {
+      const saved = typeof window !== 'undefined' ? localStorage.getItem('pwOptions') : null;
+      return saved ? (JSON.parse(saved) as PasswordOptions) : {
+        length: 20,
+        uppercase: true,
+        lowercase: true,
+        numbers: true,
+        symbols: true,
+      };
+    } catch {
+      return { length: 20, uppercase: true, lowercase: true, numbers: true, symbols: true };
+    }
   });
   const [strength, setStrength] = useState(0);
   const [strengthLabel, setStrengthLabel] = useState('');
   const [crackTime, setCrackTime] = useState('');
   const [history, setHistory] = useState<PasswordHistory[]>([]);
   const [copied, setCopied] = useState(false);
+
+  // Effect to save options to localStorage whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem('pwOptions', JSON.stringify(options));
+    } catch (error) {
+      console.error("Failed to save password options to localStorage:", error);
+    }
+  }, [options]); // Runs whenever 'options' state changes
 
   const calculateEntropy = useCallback((pwd: string): number => {
     let charsetSize = 0;
@@ -202,7 +218,8 @@ export default function Home() {
         activeTag !== 'INPUT' &&
         activeTag !== 'TEXTAREA' &&
         activeTag !== 'SELECT'
-      ) {
+      )
+      {
         event.preventDefault();
         navigator.clipboard.writeText(password);
         setCopied(true);
