@@ -62,31 +62,25 @@ const FAQ_ITEMS = [
 
 export default function Home() {
   const [password, setPassword] = useState('');
-  const [options, setOptions] = useState<PasswordOptions>({
-    length: 20,
-    uppercase: true,
-    lowercase: true,
-    numbers: true,
-    symbols: true
+  const [options, setOptions] = useState<PasswordOptions>(() => {
+    try {
+      const saved = typeof window !== 'undefined' ? localStorage.getItem('pwOptions') : null;
+      return saved ? (JSON.parse(saved) as PasswordOptions) : {
+        length: 20,
+        uppercase: true,
+        lowercase: true,
+        numbers: true,
+        symbols: true,
+      };
+    } catch {
+      return { length: 20, uppercase: true, lowercase: true, numbers: true, symbols: true };
+    }
   });
   const [strength, setStrength] = useState(0);
   const [strengthLabel, setStrengthLabel] = useState('');
   const [crackTime, setCrackTime] = useState('');
   const [history, setHistory] = useState<PasswordHistory[]>([]);
   const [copied, setCopied] = useState(false);
-
-  // Effect to load options from localStorage on mount
-  useEffect(() => {
-    try {
-      const savedOptions = localStorage.getItem('pwOptions');
-      if (savedOptions) {
-        setOptions(JSON.parse(savedOptions));
-      }
-    } catch (error) {
-      console.error("Failed to load password options from localStorage:", error);
-      // Fallback to default options is handled by the useState initial value
-    }
-  }, []); // Empty dependency array means it runs once on mount
 
   // Effect to save options to localStorage whenever they change
   useEffect(() => {
