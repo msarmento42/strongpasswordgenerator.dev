@@ -1,5 +1,33 @@
 [
   {
+    "slug": "public-wifi-security-tips",
+    "title": "Public Wi-Fi Security: How to Stay Safe on Unsecured Networks",
+    "date": "2026-06-29",
+    "category": "Best Practices",
+    "readingTime": "8 min",
+    "tags": [
+      "public wifi",
+      "vpn",
+      "network security",
+      "privacy"
+    ],
+    "excerpt": "Public Wi-Fi is convenient but risky. Here's exactly what the threats are, which ones are still relevant in 2026, and how to protect yourself effectively."
+  },
+  {
+    "slug": "nordpass-review-2026",
+    "title": "NordPass Review 2026: Is This Password Manager Worth It?",
+    "date": "2026-06-29",
+    "category": "Password Managers",
+    "readingTime": "9 min",
+    "tags": [
+      "nordpass",
+      "password manager",
+      "review",
+      "password security"
+    ],
+    "excerpt": "NordPass is a zero-knowledge password manager from Nord Security with a clean interface and generous free tier. Here's whether it's worth paying for in 2026."
+  },
+  {
     "slug": "mfa-fatigue-attack-explained",
     "title": "MFA Fatigue Attacks: How Push Notification Abuse Bypasses Two-Factor Authentication",
     "date": "2026-06-23",
