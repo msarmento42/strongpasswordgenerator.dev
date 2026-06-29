@@ -150,6 +150,9 @@ export default function RecommendedToolsPage() {
       </header>
 
       <main className="max-w-3xl mx-auto p-6">
+        <div className="mb-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+          Disclosure: Some links on this page are affiliate links. We may earn a small commission if you make a purchase through them, at no extra cost to you.
+        </div>
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-800 mb-2">Recommended Security Tools</h1>
           <p className="text-slate-500 mb-3">Our curated picks for the tools that actually move the needle on your security. All listed here based on features, reputation, and real-world value.</p>
