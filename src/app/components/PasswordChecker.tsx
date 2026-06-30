@@ -33,11 +33,11 @@ function calculateStrength(pwd: string): { score: number; label: string } {
   const entropy = calculateEntropy(pwd);
 
   if (pwd.length === 0) return { score: 0, label: '' };
-  if (entropy < 28) return { score: 1, label: 'Very Weak' };
-  if (entropy < 36) return { score: 2, label: 'Weak' };
-  if (entropy < 60) return { score: 3, label: 'Fair' };
-  if (entropy < 80) return { score: 4, label: 'Strong' };
-  return { score: 5, label: 'Very Strong' };
+  if (entropy < 28) return { score: 1, label: 'Very Weak: Easily Guessable' };
+  if (entropy < 36) return { score: 2, label: 'Weak: Improve with more characters' };
+  if (entropy < 60) return { score: 3, label: 'Good: Consider adding symbols' };
+  if (entropy < 80) return { score: 4, label: 'Strong: Excellent Security' };
+  return { score: 5, label: 'Excellent: Highly Secure' };
 }
 
 export default function PasswordChecker() {
