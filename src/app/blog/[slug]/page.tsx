@@ -90,24 +90,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
+            "@type": "Article",
             "headline": post.title,
             "description": post.excerpt,
+            "image": [
+              `${SITE_URL}/images/${post.slug}.jpg`,
+            ],
             "datePublished": post.date,
+            "dateModified": post.date,
             "author": {
-              "@type": "Organization",
+              "@type": "Person",
               "name": "Strong Password Generator",
-              "url": "https://strongpasswordgenerator.dev"
             },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Strong Password Generator",
-              "url": "https://strongpasswordgenerator.dev"
-            },
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": `https://strongpasswordgenerator.dev/blog/${post.slug}`
-            }
           })
         }}
       />
@@ -170,8 +164,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           {bitwardenRecommendedSlugs.has(post.slug) && (
             <blockquote className="bg-indigo-50 border-l-4 border-indigo-300 rounded-r-xl p-4 my-6 text-sm text-indigo-900">
-              <strong>Recommended:</strong> We use and recommend{' '}
-              <a
+              <strong>Recommended:</strong> We use and recommend{' '}<a
                 href="https://bitwarden.com/?utm_source=strongpasswordgenerator"
                 target="_blank"
                 rel="noopener noreferrer sponsored"
