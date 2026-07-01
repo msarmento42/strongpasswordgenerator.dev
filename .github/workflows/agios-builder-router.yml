@@ -68,17 +68,17 @@ jobs:
         with:
           node-version: "20"
           cache: npm
-          cache-dependency-path: target/./package-lock.json
+          cache-dependency-path: target/package-lock.json
 
       - name: Install dependencies (for build verification)
         run: |
-          cd "target/." && npm ci --prefer-offline 2>/dev/null || npm install
+          cd "target" && npm ci --prefer-offline 2>/dev/null || npm install
 
       - name: Clean dependency install artifacts
         run: |
           git -C target restore -- \
-            "./package.json" \
-            "./package-lock.json" 2>/dev/null || true
+            "package.json" \
+            "package-lock.json" 2>/dev/null || true
 
       - name: Route builder
         env:
