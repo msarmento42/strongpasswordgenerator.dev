@@ -50,11 +50,15 @@ export default function PassphraseGenerator() {
           Words: {wordCount}
           <input type="range" min={3} max={8} value={wordCount}
             onChange={e => setWordCount(parseInt(e.target.value))}
+            aria-label="Number of words in passphrase"
+            aria-describedby="passphrase-word-count-value"
             className="ml-2 w-24 accent-[#00d4aa] align-middle" />
+          <span id="passphrase-word-count-value" className="sr-only">{wordCount} words selected</span>
         </label>
         <label className="text-sm text-slate-500 font-medium">
           Separator:
           <select value={separator} onChange={e => setSeparator(e.target.value)}
+            aria-label="Passphrase word separator"
             className="ml-2 text-slate-700 border border-slate-200 rounded px-2 py-1 text-sm">
             <option value="-">Hyphen  (-)</option>
             <option value=".">Dot     (.)</option>
@@ -72,11 +76,14 @@ export default function PassphraseGenerator() {
 
       <div className="flex gap-3 flex-wrap">
         <button onClick={generate}
+          aria-label="Generate passphrase"
           className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-5 py-2.5 rounded-lg text-sm transition">
           🎲 Generate Passphrase
         </button>
         {passphrase && (
           <button onClick={copy}
+            aria-label={copied ? 'Passphrase copied to clipboard' : 'Copy passphrase to clipboard'}
+            aria-describedby="passphrase-value"
             className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition">
             {copied ? '✓ Copied!' : '📋 Copy'}
           </button>
@@ -84,7 +91,7 @@ export default function PassphraseGenerator() {
       </div>
 
       {passphrase && (
-        <p className="text-xs text-slate-400">
+        <p id="passphrase-value" className="text-xs text-slate-400">
           Entropy: ~{Math.round(wordCount * Math.log2(WORDS.length))} bits · Crack time at 10B guesses/sec: centuries+
         </p>
       )}

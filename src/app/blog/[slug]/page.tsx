@@ -96,24 +96,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
+            "@type": "Article",
             "headline": post.title,
             "description": description,
+            "image": [
+              `${SITE_URL}/images/${post.slug}.jpg`,
+            ],
             "datePublished": post.date,
+            "dateModified": post.date,
             "author": {
-              "@type": "Organization",
+              "@type": "Person",
               "name": "Strong Password Generator",
-              "url": "https://strongpasswordgenerator.dev"
             },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Strong Password Generator",
-              "url": "https://strongpasswordgenerator.dev"
-            },
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": `https://strongpasswordgenerator.dev/blog/${post.slug}`
-            }
           })
         }}
       />
@@ -137,6 +131,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         />
       )}
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://strongpasswordgenerator.dev" },
+              { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://strongpasswordgenerator.dev/blog" },
+              { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://strongpasswordgenerator.dev/blog/${slug}` },
+            ],
+          })
+        }}
+      />
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3">
@@ -181,16 +189,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           {bitwardenRecommendedSlugs.has(post.slug) && (
             <blockquote className="bg-indigo-50 border-l-4 border-indigo-300 rounded-r-xl p-4 my-6 text-sm text-indigo-900">
-              <strong>Recommended:</strong> We use and recommend{' '}
-              <a
+              <strong>Recommended:</strong> We use and recommend{' '}<a
                 href="https://bitwarden.com/?utm_source=strongpasswordgenerator"
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 className="font-semibold underline hover:text-indigo-700"
               >
                 Bitwarden
-              </a>{' '}
-              — free, open-source, and trusted by millions.
+              </a>{' '}— free, open-source, and trusted by millions.
             </blockquote>
           )}
 

@@ -18,7 +18,7 @@ interface PasswordOptions {
 
 interface PasswordHistory {
   password: string;
-  timestamp: Date;
+  timestamp: Date | string;
   strength: string;
 }
 
@@ -62,18 +62,34 @@ const FAQ_ITEMS = [
 
 export default function Home() {
   const [password, setPassword] = useState('');
-  const [options, setOptions] = useState<PasswordOptions>({
-    length: 20,
-    uppercase: true,
-    lowercase: true,
-    numbers: true,
-    symbols: true
+  const [options, setOptions] = useState<PasswordOptions>(() => {
+    try {
+      const saved = typeof window !== 'undefined' ? localStorage.getItem('pwOptions') : null;
+      return saved ? (JSON.parse(saved) as PasswordOptions) : {
+        length: 20,
+        uppercase: true,
+        lowercase: true,
+        numbers: true,
+        symbols: true,
+      };
+    } catch {
+      return { length: 20, uppercase: true, lowercase: true, numbers: true, symbols: true };
+    }
   });
   const [strength, setStrength] = useState(0);
   const [strengthLabel, setStrengthLabel] = useState('');
   const [crackTime, setCrackTime] = useState('');
   const [history, setHistory] = useState<PasswordHistory[]>([]);
   const [copied, setCopied] = useState(false);
+
+  // Effect to save options to localStorage whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem('pwOptions', JSON.stringify(options));
+    } catch (error) {
+      console.error("Failed to save password options to localStorage:", error);
+    }
+  }, [options]); // Runs whenever 'options' state changes
 
   const calculateEntropy = useCallback((pwd: string): number => {
     let charsetSize = 0;
@@ -156,6 +172,25 @@ export default function Home() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const exportHistory = () => {
+    const text = history
+      .map((item) => {
+        const timestamp = new Date(item.timestamp).toLocaleString();
+        return `[${timestamp}] ${item.password} (${item.strength})`;
+      })
+      .join('\n');
+
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'password-history.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   const getStrengthColor = () => {
     const colors = ['#ff6b6b', '#ff6b6b', '#feca57', '#feca57', '#26de81', '#26de81'];
     return colors[strength] || '#8899a6';
@@ -183,7 +218,8 @@ export default function Home() {
         activeTag !== 'INPUT' &&
         activeTag !== 'TEXTAREA' &&
         activeTag !== 'SELECT'
-      ) {
+      )
+      {
         event.preventDefault();
         navigator.clipboard.writeText(password);
         setCopied(true);
@@ -212,6 +248,46 @@ export default function Home() {
         "text": item.answer
       }
     }))
+  };
+
+  // JSON-LD for HowTo
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Generate a Strong Password",
+    "description": "Use the free Strong Password Generator to create a secure, random password in seconds.",
+    "totalTime": "PT1M",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": "0"
+    },
+    "tool": [{
+      "@type": "HowToTool",
+      "name": "Strong Password Generator"
+    }],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Set your password length",
+        "text": "Use the length slider to choose how long your password should be. 16 or more characters is strongly recommended for maximum security."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Choose character types",
+        "text": "Check the boxes for uppercase letters, lowercase letters, numbers, and symbols to include in your password."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Generate your password",
+        "text": "Click the Generate button to create a new random password matching your settings. Click again to regenerate."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Copy your password",
+        "text": "Click the Copy button or press Cmd+C / Ctrl+C to copy the generated password to your clipboard, then paste it wherever needed."
+      }
+    ]
   };
 
   return (
@@ -329,15 +405,23 @@ export default function Home() {
           <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold">📝 Password History</h2>
-              <button
-                onClick={() => {
-                  setHistory([]);
-                  localStorage.removeItem('passwordHistory');
-                }}
-                className="text-sm text-slate-500 hover:text-white"
-              >
-                Clear
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={exportHistory}
+                  className="text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                >
+                  Download history
+                </button>
+                <button
+                  onClick={() => {
+                    setHistory([]);
+                    localStorage.removeItem('passwordHistory');
+                  }}
+                  className="text-sm text-slate-500 hover:text-white"
+                >
+                  Clear
+                </button>
+              </div>
             </div>
             <div className="space-y-2 max-h-48 overflow-y-auto">
               {history.map((item, i) => (
@@ -485,6 +569,10 @@ export default function Home() {
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
     </div>
   );
