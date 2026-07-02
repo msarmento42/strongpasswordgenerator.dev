@@ -101,7 +101,7 @@ export default function PasswordChecker() {
             <span className="text-slate-500">Strength:</span>
             <span style={{ color: getStrengthColor() }}>{strengthLabel}</span>
           </div>
-          <div className="h-2 bg-slate-50 rounded-full overflow-hidden">
+          <div role="progressbar" aria-valuenow={strengthScore} aria-valuemin={0} aria-valuemax={5} aria-valuetext={strengthLabel || 'No password entered'} className="h-2 bg-slate-50 rounded-full overflow-hidden">
             <div
               className="h-full transition-all duration-300"
               style={{ width: `${(strengthScore / 5) * 100}%`, backgroundColor: getStrengthColor() }}
