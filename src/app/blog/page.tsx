@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import postsIndex from '../../posts/index.json';
+import { getSortedPosts, topicHubs } from '../../lib/posts';
 
 export const metadata = {
   title: 'Password Security Blog | Strong Password Generator',
@@ -17,9 +17,7 @@ interface PostMeta {
 }
 
 export default function BlogPage() {
-  const posts: PostMeta[] = [...postsIndex].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  const posts: PostMeta[] = getSortedPosts();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -44,6 +42,19 @@ export default function BlogPage() {
           <h1 className="text-3xl font-bold text-slate-800 mb-2">Password Security Blog</h1>
           <p className="text-slate-500">Practical guides to protect your accounts and data online.</p>
         </div>
+
+        <section className="grid gap-3 md:grid-cols-3 mb-8">
+          {topicHubs.map((hub) => (
+            <Link
+              key={hub.slug}
+              href={`/blog/${hub.slug}`}
+              className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm shadow-slate-200/50 hover:shadow-md transition-shadow"
+            >
+              <span className="text-sm font-bold text-slate-800 block mb-1">{hub.shortTitle}</span>
+              <span className="text-xs leading-relaxed text-slate-500">{hub.description}</span>
+            </Link>
+          ))}
+        </section>
 
         <div className="space-y-6">
           {posts.map((post) => (

@@ -64,7 +64,7 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-3">Affiliate Links</h2>
-              <p>Some links on this site — particularly on the <Link href="/recommended-tools" className="text-indigo-600 hover:underline">Recommended Tools</Link> page — are affiliate links. We earn a small commission if you purchase through these links, at no additional cost to you. These relationships do not influence our editorial recommendations.</p>
+              <p>Some links on this site — particularly on the <Link href="/recommended-tools" className="text-indigo-600 hover:underline">Recommended Tools</Link> page — are affiliate links. We earn a small commission if you purchase through these links, at no additional cost to you. These relationships do not influence our editorial recommendations. See our <Link href="/editorial-policy" className="text-indigo-600 hover:underline">editorial policy</Link> for more detail.</p>
             </section>
 
             <section>

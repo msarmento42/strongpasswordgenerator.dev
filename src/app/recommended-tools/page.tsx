@@ -156,7 +156,7 @@ export default function RecommendedToolsPage() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-800 mb-2">Recommended Security Tools</h1>
           <p className="text-slate-500 mb-3">Our curated picks for the tools that actually move the needle on your security. All listed here based on features, reputation, and real-world value.</p>
-          <p className="text-xs text-slate-400 italic">Some links on this page are affiliate links. We may earn a commission at no extra cost to you — this never influences our recommendations.</p>
+          <p className="text-xs text-slate-400 italic">Some links on this page are affiliate links. We may earn a commission at no extra cost to you — this never influences our recommendations. <Link href="/editorial-policy" className="text-indigo-600 hover:underline">Review our editorial policy</Link>.</p>
         </div>
 
         <div className="mb-8">
