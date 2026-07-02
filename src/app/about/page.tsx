@@ -64,7 +64,7 @@ export default function AboutPage() {
             Our <Link href="/recommended-tools" className="text-indigo-600 hover:underline">Recommended Tools</Link> page lists products we genuinely endorse. Some links are affiliate links — we earn a small commission if you sign up, at no cost to you. This helps keep the site free.
           </p>
           <p className="text-slate-600 leading-relaxed">
-            We only recommend tools we&apos;d use ourselves. Affiliate relationships never influence which tools we list or how we describe them.
+            We only recommend tools we&apos;d use ourselves. Affiliate relationships never influence which tools we list or how we describe them. Read our <Link href="/editorial-policy" className="text-indigo-600 hover:underline">editorial policy</Link> for the full review and disclosure process.
           </p>
         </div>
 
@@ -81,6 +81,7 @@ export default function AboutPage() {
           <Link href="/blog" className="hover:text-indigo-600">Blog</Link>
           <Link href="/recommended-tools" className="hover:text-indigo-600">Tools</Link>
           <Link href="/privacy" className="hover:text-indigo-600">Privacy</Link>
+          <Link href="/editorial-policy" className="hover:text-indigo-600">Editorial Policy</Link>
         </div>
         <p>© 2026 StrongPasswordGenerator.dev</p>
       </footer>

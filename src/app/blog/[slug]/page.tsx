@@ -3,9 +3,16 @@ import AffiliateCTA from '../../components/AffiliateCTA';
 import NordPassCTA from '../../components/NordPassCTA';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import postsIndex from '../../../posts/index.json';
 import fs from 'fs';
 import path from 'path';
+import {
+  allPosts,
+  extractFaqItems,
+  getHubForPost,
+  getPostDescription,
+  getRelatedPosts,
+  type PostMeta,
+} from '../../../lib/posts';
 
 interface PostData {
   slug: string;
@@ -17,10 +24,6 @@ interface PostData {
   description?: string;
   excerpt: string;
   content: string;
-}
-
-interface PostMeta {
-  slug: string;
 }
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://strongpasswordgenerator.dev';
@@ -35,8 +38,7 @@ const nordPassRecommendedSlugs = new Set([
 ]);
 
 export async function generateStaticParams() {
-  const index: PostMeta[] = postsIndex;
-  return index.map((post) => ({ slug: post.slug }));
+  return allPosts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -46,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const post: PostData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
   const title = `${post.title} | Strong Password Generator`;
-  const description = post.description || post.excerpt;
+  const description = getPostDescription(post);
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
 
   return {
@@ -82,6 +84,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   const post: PostData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  const description = getPostDescription(post);
+  const relatedPosts: PostMeta[] = getRelatedPosts(post);
+  const hub = getHubForPost(post);
+  const faqItems = extractFaqItems(post.content);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -92,7 +98,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": post.title,
-            "description": post.excerpt,
+            "description": description,
             "datePublished": post.date,
             "author": {
               "@type": "Organization",
@@ -111,6 +117,25 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           })
         }}
       />
+      {faqItems.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqItems.map((item) => ({
+                "@type": "Question",
+                "name": item.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": item.answer,
+                },
+              })),
+            }),
+          }}
+        />
+      )}
 
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
@@ -173,6 +198,27 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             className="prose prose-slate max-w-none"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+
+          <section className="mt-8 rounded-2xl border border-indigo-100 bg-indigo-50/70 p-5">
+            <h2 className="text-lg font-bold text-slate-800 mb-3">Keep Improving Your Account Security</h2>
+            <ul className="space-y-3 text-sm text-slate-700">
+              {hub && (
+                <li>
+                  <Link href={`/blog/${hub.slug}`} className="font-semibold text-indigo-700 hover:underline">
+                    Browse the {hub.shortTitle.toLowerCase()} hub
+                  </Link>{' '}
+                  for the complete set of related guides.
+                </li>
+              )}
+              {relatedPosts.map((relatedPost) => (
+                <li key={relatedPost.slug}>
+                  <Link href={`/blog/${relatedPost.slug}`} className="font-semibold text-indigo-700 hover:underline">
+                    {relatedPost.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
 
           <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap gap-2">
             {post.tags.map((tag) => (
