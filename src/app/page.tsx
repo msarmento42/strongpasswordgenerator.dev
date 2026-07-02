@@ -211,15 +211,19 @@ export default function Home() {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const activeTag = document.activeElement?.tagName;
+      const isInputFocused = activeTag === 'INPUT' || activeTag === 'SELECT' || activeTag === 'TEXTAREA';
 
-      if (
+      if (isInputFocused) {
+        return; // Do nothing if an input is focused
+      }
+
+      if (event.code === 'Space') {
+        event.preventDefault(); // Prevent page scroll
+        generatePassword();
+      } else if (
         event.key.toLowerCase() === 'c' &&
-        (event.metaKey || event.ctrlKey) &&
-        activeTag !== 'INPUT' &&
-        activeTag !== 'TEXTAREA' &&
-        activeTag !== 'SELECT'
-      )
-      {
+        (event.metaKey || event.ctrlKey)
+      ) {
         event.preventDefault();
         navigator.clipboard.writeText(password);
         setCopied(true);
@@ -230,7 +234,7 @@ export default function Home() {
     document.addEventListener('keydown', handleKeyDown);
 
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [password]);
+  }, [password, generatePassword]);
 
   const optionChanged = (key: keyof PasswordOptions, value: boolean | number) => {
     setOptions(prev => ({ ...prev, [key]: value }));
@@ -334,7 +338,7 @@ export default function Home() {
             </button>
           </div>
 
-          <span className="mt-1 block text-xs text-slate-400">Press Cmd+C / Ctrl+C anywhere to copy</span>
+          <span className="mt-1 block text-xs text-slate-400">Press Cmd+C / Ctrl+C to copy, Space — regenerate</span>
 
           {password && (
             <div className="mb-2">
