@@ -28,6 +28,7 @@ interface PostData {
 }
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://strongpasswordgenerator.dev';
+const OG_IMAGE_URL = `${SITE_URL}/opengraph-image`;
 
 const bitwardenRecommendedSlugs = new Set([
   'bitwarden-setup-guide',
@@ -36,7 +37,35 @@ const bitwardenRecommendedSlugs = new Set([
 
 const nordPassRecommendedSlugs = new Set([
   'nordpass-vs-dashlane-2026',
+  'nordpass-review-2026',
+  'free-vs-paid-password-managers-2026',
+  'password-manager-vs-browser-autofill',
+  'how-to-create-strong-password',
 ]);
+
+function getAffiliateProduct(post: PostData): 'bitwarden' | 'nordpass' | 'nordvpn' | 'nordprotect' {
+  const topicText = `${post.slug} ${post.category} ${post.tags.join(' ')} ${post.title}`.toLowerCase();
+
+  if (topicText.includes('vpn') || topicText.includes('wifi') || topicText.includes('remote work')) {
+    return 'nordvpn';
+  }
+
+  if (
+    topicText.includes('identity') ||
+    topicText.includes('breach') ||
+    topicText.includes('dark web') ||
+    topicText.includes('credit') ||
+    topicText.includes('hacked')
+  ) {
+    return 'nordprotect';
+  }
+
+  if (topicText.includes('nordpass') || topicText.includes('password manager') || topicText.includes('password')) {
+    return 'nordpass';
+  }
+
+  return 'bitwarden';
+}
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({ slug: post.slug }));
@@ -66,12 +95,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'Strong Password Generator',
       publishedTime: post.date,
       tags: post.tags,
+      images: [
+        {
+          url: OG_IMAGE_URL,
+          width: 1200,
+          height: 630,
+          alt: 'Strong Password Generator security tools',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       site: '@strongpwdgen',
       title,
       description,
+      images: [OG_IMAGE_URL],
     },
   };
 }
@@ -89,6 +127,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const relatedPosts: PostMeta[] = getRelatedPosts(post);
   const hub = getHubForPost(post);
   const faqItems = extractFaqItems(post.content);
+  const affiliateProduct = getAffiliateProduct(post);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -101,7 +140,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             "headline": post.title,
             "description": description,
             "image": [
-              `${SITE_URL}/images/${post.slug}.jpg`,
+              OG_IMAGE_URL,
             ],
             "datePublished": post.date,
             "dateModified": post.date,
@@ -250,7 +289,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
 
         <div className="mt-8">
-          <AffiliateCTA product="bitwarden" />
+          <AffiliateCTA product={affiliateProduct} />
         </div>
 
         <div className="mt-4 text-center">
