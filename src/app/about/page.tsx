@@ -5,6 +5,9 @@ import Script from 'next/script';
 export const metadata: Metadata = {
   title: 'About | Strong Password Generator',
   description: 'Learn about StrongPasswordGenerator.dev — a free tool to generate cryptographically secure passwords and learn password security best practices.',
+  alternates: {
+    canonical: 'https://strongpasswordgenerator.dev/about',
+  },
   openGraph: {
     type: 'website',
     url: 'https://strongpasswordgenerator.dev/about',

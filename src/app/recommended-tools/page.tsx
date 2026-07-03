@@ -6,6 +6,9 @@ import AffiliateCTA from '../components/AffiliateCTA';
 export const metadata: Metadata = {
   title: 'Recommended Security Tools | Strong Password Generator',
   description: 'Our top picks for password managers, VPNs, antivirus, and identity protection. Curated by the SecurePass security team.',
+  alternates: {
+    canonical: 'https://strongpasswordgenerator.dev/recommended-tools',
+  },
   openGraph: {
     type: 'website',
     url: 'https://strongpasswordgenerator.dev/recommended-tools',
