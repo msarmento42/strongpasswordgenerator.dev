@@ -115,6 +115,7 @@ function PasswordGeneratorPage() {
   });
   const [strength, setStrength] = useState(0);
   const [strengthLabel, setStrengthLabel] = useState('');
+  const [entropy, setEntropy] = useState(0);
   const [crackTime, setCrackTime] = useState('');
   const [history, setHistory] = useState<PasswordHistory[]>([]);
   const [copied, setCopied] = useState(false);
@@ -191,6 +192,7 @@ function PasswordGeneratorPage() {
     const strengthResult = calculateStrength(pwd);
     setStrength(strengthResult.score);
     setStrengthLabel(strengthResult.label);
+    setEntropy(Math.round(entropy));
     setCrackTime(estimateCrackTime(entropy));
 
     setHistory(prev => {
@@ -358,6 +360,7 @@ function PasswordGeneratorPage() {
                 const strengthResult = calculateStrength(e.target.value);
                 setStrength(strengthResult.score);
                 setStrengthLabel(strengthResult.label);
+                setEntropy(Math.round(entropy));
                 setCrackTime(estimateCrackTime(entropy));
               }}
             />
@@ -388,7 +391,10 @@ function PasswordGeneratorPage() {
             <div className="mb-2">
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-slate-500">Strength:</span>
-                <span style={{ color: getStrengthColor() }}>{strengthLabel}</span>
+                <span>
+                  <span style={{ color: getStrengthColor() }}>{strengthLabel}</span>
+                  <span className="text-xs text-gray-500 ml-1">({entropy} bits)</span>
+                </span>
               </div>
               <div className="h-2 bg-slate-50 rounded-full overflow-hidden">
                 <div
