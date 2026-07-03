@@ -44,9 +44,10 @@ export default function PrivacyPage() {
               <h2 className="text-xl font-bold text-slate-800 mb-3">Information We Collect</h2>
               <p className="mb-3">We collect minimal, non-identifying data:</p>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Page views and general site analytics (via Vercel Analytics)</li>
+                <li>Page views and general site analytics (via Google Analytics or hosting-provider analytics)</li>
                 <li>Referring URLs and general geographic region (country-level)</li>
                 <li>Browser type and device type (for compatibility)</li>
+                <li>Affiliate and outbound link click events, reviewed in aggregate</li>
               </ul>
               <p className="mt-3 text-sm">We do not collect names, email addresses, or any personally identifiable information unless you choose to contact us.</p>
             </section>
@@ -71,7 +72,8 @@ export default function PrivacyPage() {
               <h2 className="text-xl font-bold text-slate-800 mb-3">Third-Party Services</h2>
               <p>We use the following third-party services, each with their own privacy policies:</p>
               <ul className="list-disc list-inside space-y-1 text-sm mt-2">
-                <li>Vercel (hosting and analytics)</li>
+                <li>Vercel (hosting and deployment)</li>
+                <li>Google Analytics (traffic and aggregate click analytics)</li>
                 <li>Google AdSense (advertising)</li>
                 <li>Commission Junction / CJ Affiliate (affiliate tracking)</li>
               </ul>
