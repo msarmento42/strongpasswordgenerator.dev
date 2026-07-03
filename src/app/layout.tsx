@@ -16,11 +16,20 @@ export const metadata: Metadata = {
     url: "https://strongpasswordgenerator.dev",
     siteName: "Strong Password Generator",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Strong Password Generator security tools",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Strong Password Generator | Free Security Suite",
     description: "Generate cryptographically secure passwords with advanced security analysis. Free, no signup required.",
+    images: ["/opengraph-image"],
   },
 };
 
