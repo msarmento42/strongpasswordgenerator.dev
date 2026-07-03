@@ -196,7 +196,7 @@ export default function RecommendedToolsPage() {
                   <th className="border px-2 py-1 text-center border-green-300">
                     <div className="flex flex-col items-center">
                       <span className="font-semibold">NordPass</span>
-                      <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded">Editor's Pick</span>
+                      <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded">Editor&apos;s Pick</span>
                     </div>
                   </th>
                   <th className="border px-2 py-1 text-center"><span className="font-semibold">Bitwarden</span></th>
