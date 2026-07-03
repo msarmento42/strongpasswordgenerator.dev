@@ -164,6 +164,84 @@ export default function RecommendedToolsPage() {
 
         <div className="mb-8">
           <AffiliateCTA product="nordpass" />
+        {/* Quick Comparison Table */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-slate-800 mb-4">Quick Comparison</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full border border-gray-200">
+              <thead>
+                <tr className="bg-gray-50">
+                  <th className="border px-2 py-1 text-left"></th>
+                  <th className="border px-2 py-1 text-center border-green-300">
+                    <div className="flex flex-col items-center">
+                      <span className="font-semibold">NordPass</span>
+                      <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded">Editor's Pick</span>
+                    </div>
+                  </th>
+                  <th className="border px-2 py-1 text-center"><span className="font-semibold">Bitwarden</span></th>
+                  <th className="border px-2 py-1 text-center"><span className="font-semibold">1Password</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border px-2 py-1 font-medium">Free tier</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">No</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border px-2 py-1 font-medium">Starting price</td>
+                  <td className="border px-2 py-1 text-center">$2.99/mo</td>
+                  <td className="border px-2 py-1 text-center">Free (Premium $3.33/mo)</td>
+                  <td className="border px-2 py-1 text-center">$2.99/mo</td>
+                </tr>
+                <tr>
+                  <td className="border px-2 py-1 font-medium">Unlimited devices</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border px-2 py-1 font-medium">Open source</td>
+                  <td className="border px-2 py-1 text-center">No</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">No</td>
+                </tr>
+                <tr>
+                  <td className="border px-2 py-1 font-medium">Hardware 2FA</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border px-2 py-1 font-medium">Passkeys</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                </tr>
+                <tr>
+                  <td className="border px-2 py-1 font-medium">Family plan</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                  <td className="border px-2 py-1 text-center">Yes</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border px-2 py-1 font-medium">Link</td>
+                  <td className="border px-2 py-1 text-center">
+                    <a href={tools[0].items[0].url} target="_blank" rel="noopener noreferrer" className="inline-block bg-green-500 text-white px-3 py-1 rounded">Visit</a>
+                  </td>
+                  <td className="border px-2 py-1 text-center">
+                    <a href={tools[0].items[1].url} target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-500 text-white px-3 py-1 rounded">Visit</a>
+                  </td>
+                  <td className="border px-2 py-1 text-center">
+                    <a href={tools[0].items[2].url} target="_blank" rel="noopener noreferrer" className="inline-block bg-indigo-500 text-white px-3 py-1 rounded">Visit</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         </div>
 
         <div className="space-y-10">
