@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Analytics from "./components/Analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -61,7 +62,10 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Analytics />
+        {children}
+      </body>
     </html>
   );
 }
