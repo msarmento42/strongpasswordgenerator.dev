@@ -116,6 +116,27 @@ const tools = [
   },
 ];
 
+const paths = [
+  {
+    title: 'Protect a family',
+    description: 'Start with shared vaults, recovery, and a quarterly cleanup routine.',
+    href: '/blog/best-password-manager-for-families-2026',
+    cta: 'Compare family plans',
+  },
+  {
+    title: 'Secure a small team',
+    description: 'Prioritize admin controls, onboarding, offboarding, and breach alerts.',
+    href: '/blog/best-password-manager-for-business-2026',
+    cta: 'See business picks',
+  },
+  {
+    title: 'Reduce identity risk',
+    description: 'Add breach monitoring, credit freeze basics, and recovery planning.',
+    href: '/blog/best-identity-theft-protection-2026',
+    cta: 'Review protection tools',
+  },
+];
+
 export default function RecommendedToolsPage() {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -175,7 +196,7 @@ export default function RecommendedToolsPage() {
                   <th className="border px-2 py-1 text-center border-green-300">
                     <div className="flex flex-col items-center">
                       <span className="font-semibold">NordPass</span>
-                      <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded">Editor's Pick</span>
+                      <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded">Editor&apos;s Pick</span>
                     </div>
                   </th>
                   <th className="border px-2 py-1 text-center"><span className="font-semibold">Bitwarden</span></th>
@@ -244,6 +265,20 @@ export default function RecommendedToolsPage() {
 
         </div>
 
+        <section className="mb-10 rounded-2xl border border-indigo-100 bg-white p-5 shadow-md shadow-slate-200/50">
+          <p className="mb-2 text-xs font-bold uppercase tracking-wide text-indigo-500">Choose your security path</p>
+          <h2 className="mb-3 text-xl font-bold text-slate-800">Match the tool to the problem you are solving</h2>
+          <div className="grid gap-3 md:grid-cols-3">
+            {paths.map((path) => (
+              <Link key={path.title} href={path.href} className="rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-indigo-200 hover:bg-indigo-50">
+                <h3 className="mb-2 text-sm font-bold text-slate-800">{path.title}</h3>
+                <p className="mb-3 text-xs leading-relaxed text-slate-500">{path.description}</p>
+                <span className="text-xs font-bold text-indigo-600">{path.cta} →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <div className="space-y-10">
           {tools.map((section) => (
             <section key={section.category}>
@@ -292,6 +327,16 @@ export default function RecommendedToolsPage() {
             Generate a Password →
           </Link>
         </div>
+
+        <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6">
+          <h2 className="mb-3 text-lg font-bold text-slate-800">Related buying guides</h2>
+          <ul className="grid gap-2 text-sm text-slate-600 md:grid-cols-2">
+            <li><Link className="text-indigo-600 hover:underline" href="/blog/nordpass-review-2026">NordPass review</Link></li>
+            <li><Link className="text-indigo-600 hover:underline" href="/blog/nordvpn-review-2026">NordVPN review</Link></li>
+            <li><Link className="text-indigo-600 hover:underline" href="/blog/free-vs-paid-password-managers-2026">Free vs paid password managers</Link></li>
+            <li><Link className="text-indigo-600 hover:underline" href="/blog/password-manager-vs-browser-autofill">Password manager vs browser autofill</Link></li>
+          </ul>
+        </section>
       </main>
 
       <footer className="max-w-3xl mx-auto px-6 py-8 mt-8 border-t border-slate-200 text-center text-sm text-slate-400">
