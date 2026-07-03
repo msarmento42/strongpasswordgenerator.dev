@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import AffiliateCTA from '../../components/AffiliateCTA';
+import MoneyNextStep from '../../components/MoneyNextStep';
 import NordPassCTA from '../../components/NordPassCTA';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -204,6 +205,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             className="prose prose-slate max-w-none"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+
+          <MoneyNextStep tags={post.tags} category={post.category} />
 
           <section className="mt-8 rounded-2xl border border-indigo-100 bg-indigo-50/70 p-5">
             <h2 className="text-lg font-bold text-slate-800 mb-3">Keep Improving Your Account Security</h2>
