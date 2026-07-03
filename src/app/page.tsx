@@ -3,10 +3,12 @@
 import PassphraseGenerator from './components/PassphraseGenerator';
 import PasswordChecker from './components/PasswordChecker';
 import AffiliateCTA from './components/AffiliateCTA';
+import ShareConfig from './components/ShareConfig';
 
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import Script from 'next/script'; // Added Script import
-import { useState, useEffect, useCallback } from 'react';
+import { Suspense, useState, useEffect, useCallback } from 'react';
 
 interface PasswordOptions {
   length: number;
@@ -27,6 +29,42 @@ const CHAR_SETS = {
   lowercase: 'abcdefghijklmnopqrstuvwxyz',
   numbers: '0123456789',
   symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+};
+
+const DEFAULT_OPTIONS: PasswordOptions = {
+  length: 20,
+  uppercase: true,
+  lowercase: true,
+  numbers: true,
+  symbols: true,
+};
+
+const parseBooleanParam = (value: string | null): boolean | null => {
+  if (value === 'true') return true;
+  if (value === 'false') return false;
+  return null;
+};
+
+const getOptionsFromSearchParams = (
+  searchParams: URLSearchParams,
+  fallback: PasswordOptions,
+): PasswordOptions => {
+  const nextOptions = { ...fallback };
+  const lengthParam = searchParams.get('length');
+  const parsedLength = lengthParam ? Number.parseInt(lengthParam, 10) : Number.NaN;
+
+  if (Number.isInteger(parsedLength) && parsedLength >= 8 && parsedLength <= 128) {
+    nextOptions.length = parsedLength;
+  }
+
+  (['uppercase', 'lowercase', 'numbers', 'symbols'] as const).forEach((key) => {
+    const parsedValue = parseBooleanParam(searchParams.get(key));
+    if (parsedValue !== null) {
+      nextOptions[key] = parsedValue;
+    }
+  });
+
+  return nextOptions;
 };
 
 const tips = [
@@ -60,21 +98,20 @@ const FAQ_ITEMS = [
   },
 ];
 
-export default function Home() {
+function PasswordGeneratorPage() {
+  const searchParams = useSearchParams();
   const [password, setPassword] = useState('');
   const [options, setOptions] = useState<PasswordOptions>(() => {
+    let savedOptions = DEFAULT_OPTIONS;
+
     try {
       const saved = typeof window !== 'undefined' ? localStorage.getItem('pwOptions') : null;
-      return saved ? (JSON.parse(saved) as PasswordOptions) : {
-        length: 20,
-        uppercase: true,
-        lowercase: true,
-        numbers: true,
-        symbols: true,
-      };
+      savedOptions = saved ? (JSON.parse(saved) as PasswordOptions) : DEFAULT_OPTIONS;
     } catch {
-      return { length: 20, uppercase: true, lowercase: true, numbers: true, symbols: true };
+      savedOptions = DEFAULT_OPTIONS;
     }
+
+    return getOptionsFromSearchParams(searchParams, savedOptions);
   });
   const [strength, setStrength] = useState(0);
   const [strengthLabel, setStrengthLabel] = useState('');
@@ -330,6 +367,13 @@ export default function Home() {
             >
               {copied ? '✓ Copied' : '📋 Copy'}
             </button>
+            <ShareConfig
+              length={options.length}
+              uppercase={options.uppercase}
+              lowercase={options.lowercase}
+              numbers={options.numbers}
+              symbols={options.symbols}
+            />
             <button
               onClick={generatePassword}
               className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-6 py-3 rounded-lg transition"
@@ -371,15 +415,15 @@ export default function Home() {
               <label className="block text-slate-500 mb-2">Password Length: {options.length}</label>
               <input
                 type="range"
-                min="4"
-                max="64"
+                min="8"
+                max="128"
                 value={options.length}
                 onChange={(e) => optionChanged('length', parseInt(e.target.value))}
                 className="w-full accent-[#00d4aa]"
               />
               <div className="flex justify-between text-xs text-slate-500 mt-1">
-                <span>4</span>
-                <span>64</span>
+                <span>8</span>
+                <span>128</span>
               </div>
             </div>
 
@@ -579,5 +623,13 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <PasswordGeneratorPage />
+    </Suspense>
   );
 }
