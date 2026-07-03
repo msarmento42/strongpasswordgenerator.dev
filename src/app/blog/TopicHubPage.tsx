@@ -26,6 +26,29 @@ export default function TopicHubPage({ hub }: { hub: TopicHub }) {
           }),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Blog",
+                "item": `${SITE_URL}/blog`
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": hub.shortTitle,
+                "item": `${SITE_URL}/blog/${hub.slug}`
+              }
+            ]
+          }),
+        }}
+      />
 
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
