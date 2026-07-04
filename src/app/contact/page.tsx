@@ -3,6 +3,14 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Contact | Strong Password Generator',
   description: 'Get in touch with the StrongPasswordGenerator.dev team.',
+  openGraph: {
+    title: 'Contact | Strong Password Generator',
+    description: 'Get in touch with the StrongPasswordGenerator.dev team.',
+    url: 'https://strongpasswordgenerator.dev/contact',
+    siteName: 'Strong Password Generator',
+    type: 'website',
+    images: [{ url: '/og-image.svg' }],
+  },
 };
 
 export default function ContactPage() {
