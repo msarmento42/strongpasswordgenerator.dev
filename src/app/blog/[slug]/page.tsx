@@ -28,7 +28,7 @@ interface PostData {
 }
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://strongpasswordgenerator.dev';
-const OG_IMAGE_URL = `${SITE_URL}/opengraph-image`;
+const OG_IMAGE_URL = `${SITE_URL}/og-image.svg`;
 
 const bitwardenRecommendedSlugs = new Set([
   'bitwarden-setup-guide',

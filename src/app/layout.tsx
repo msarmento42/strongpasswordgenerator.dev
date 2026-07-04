@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Strong Password Generator security tools",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Strong Password Generator | Free Security Suite",
     description: "Generate cryptographically secure passwords with advanced security analysis. Free, no signup required.",
-    images: ["/opengraph-image"],
+    images: ["/og-image.svg"],
   },
 };
 
