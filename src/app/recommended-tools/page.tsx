@@ -116,6 +116,30 @@ const tools = [
   },
 ];
 
+const flattenedTools = tools.flatMap(category =>
+  category.items.map(item => ({
+    ...item,
+    parentCategory: category.category,
+  }))
+);
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Recommended Security Tools",
+  "itemListElement": flattenedTools.map((tool, index) => ({
+    "@type": "ListItem",
+    "position": index + 1, // 1-indexed position
+    "item": {
+      "@type": "Product",
+      "name": tool.name,
+      "description": tool.description,
+      "url": tool.url,
+      "category": tool.parentCategory,
+    },
+  })),
+};
+
 const paths = [
   {
     title: 'Protect a family',
@@ -353,6 +377,11 @@ export default function RecommendedToolsPage() {
         id="breadcrumb-jsonld-rt"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="recommended-tools-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
     </div>
   );
