@@ -6,7 +6,7 @@ const hub = topicHubs.find((item) => item.slug === 'password-security')!;
 
 export const metadata: Metadata = {
   title: `${hub.title} | Strong Password Generator`,
-  description: hub.description,
+  description: 'Discover essential tips and strategies for creating strong passwords, protecting your accounts, and improving your overall password security.',
   alternates: {
     canonical: '/blog/password-security',
   },
