@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
-import AffiliateCTA from '../components/AffiliateCTA';
+import AffiliateCTA from '../components/AffiliateCTA';import NordPassCTA from '../components/NordPassCTA';
+
 
 export const metadata: Metadata = {
   title: 'Recommended Security Tools | Strong Password Generator',
@@ -208,7 +209,10 @@ export default function RecommendedToolsPage() {
         </div>
 
         <div className="mb-8">
-          <AffiliateCTA product="nordpass" />
+          <AffiliateCTA product="nordpass" />          <div className="mt-8">
+            <NordPassCTA />
+          </div>
+
         {/* Quick Comparison Table */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-slate-800 mb-4">Quick Comparison</h2>
