@@ -35,11 +35,20 @@ export default function Analytics() {
             }
 
             var isExternal = url.hostname && url.hostname !== window.location.hostname;
-            var isAffiliate = /sponsored|affiliate/i.test(link.rel || '') || /awin1|kqzyfj|cj|nordpass|nordvpn|1password|bitwarden/i.test(link.href);
+            var href = link.href;
+            var isAffiliate = /sponsored|affiliate/i.test(link.rel || '') || /awin1|kqzyfj|cj|nordpass|nordvpn|1password|bitwarden/i.test(href);
+            var partner = 'external';
+
+            if (/kqzyfj|nordpass/i.test(href)) partner = 'nordpass';
+            else if (/awin1|nordprotect/i.test(href)) partner = 'nordprotect';
+            else if (/1password/i.test(href)) partner = '1password';
+            else if (/bitwarden/i.test(href)) partner = 'bitwarden';
 
             if (isAffiliate || isExternal) {
               window.gtag('event', isAffiliate ? 'affiliate_click' : 'outbound_click', {
                 link_url: link.href,
+                link_domain: url.hostname,
+                affiliate_partner: isAffiliate ? partner : undefined,
                 link_text: (link.textContent || '').trim().slice(0, 100),
                 page_location: window.location.href
               });
