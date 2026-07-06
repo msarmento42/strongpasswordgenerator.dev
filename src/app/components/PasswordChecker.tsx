@@ -90,7 +90,7 @@ export default function PasswordChecker() {
             {showPassword ? '🙈' : '👁'}
           </button>
         </div>
-        <p className="mt-2 text-xs italic text-slate-400">
+        <p className="mt-2 text-sm italic text-slate-400">
           Your password is never sent anywhere — all analysis happens locally in your browser.
         </p>
       </div>
