@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import NordPassCTA from '../components/NordPassCTA';
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,6 +11,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
         strategy="afterInteractive"
       />
       {children}
+      <NordPassCTA />
     </>
   );
 }
