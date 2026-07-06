@@ -42,6 +42,45 @@ export default function AboutPage() {
     ]
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is SecurePass truly free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, SecurePass is completely free to use. We aim to provide a valuable security tool without any cost to our users."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does SecurePass ensure my privacy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All password generation happens directly in your browser using the Web Crypto API. We never transmit, store, or log your generated passwords. Your data stays on your device."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I trust the randomness of the generated passwords?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. We use crypto.getRandomValues(), a cryptographically secure pseudorandom number generator (CSPRNG) provided by your browser, which is the industry standard for secure applications."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I use a strong password generator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Using a strong password generator helps you create unique, complex passwords that are difficult for attackers to guess or crack, significantly improving your online security."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
@@ -90,6 +129,27 @@ export default function AboutPage() {
             We only recommend tools we&apos;d use ourselves. Affiliate relationships never influence which tools we list or how we describe them. Read our <Link href="/editorial-policy" className="text-indigo-600 hover:underline">editorial policy</Link> for the full review and disclosure process.
           </p>
         </div>
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100 mb-6">
+          <h2 className="text-xl font-bold text-slate-800 mb-4">Frequently Asked Questions</h2>
+          <div className="space-y-4 text-slate-600 leading-relaxed">
+            <div>
+              <h3 className="font-semibold text-slate-700 mb-1">Is SecurePass truly free?</h3>
+              <p>Yes, SecurePass is completely free to use. We aim to provide a valuable security tool without any cost to our users.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-slate-700 mb-1">How does SecurePass ensure my privacy?</h3>
+              <p>All password generation happens directly in your browser using the Web Crypto API. We never transmit, store, or log your generated passwords. Your data stays on your device.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-slate-700 mb-1">Can I trust the randomness of the generated passwords?</h3>
+              <p>Absolutely. We use <code className="bg-slate-100 px-1 rounded text-indigo-600">crypto.getRandomValues()</code>, a cryptographically secure pseudorandom number generator (CSPRNG) provided by your browser, which is the industry standard for secure applications.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-slate-700 mb-1">Why should I use a strong password generator?</h3>
+              <p>Using a strong password generator helps you create unique, complex passwords that are difficult for attackers to guess or crack, significantly improving your online security.</p>
+            </div>
+          </div>
+        </div>
 
         <div className="flex gap-4 flex-wrap">
           <Link href="/" className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold px-6 py-3 rounded-xl text-sm hover:opacity-90 transition">Generate a Password</Link>
@@ -113,6 +173,11 @@ export default function AboutPage() {
         id="breadcrumb-jsonld-ab"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="faq-jsonld-ab"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </div>
   );
