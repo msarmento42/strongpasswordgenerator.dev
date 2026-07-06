@@ -7,6 +7,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://strongpasswordgenerator.dev/editorial-policy',
   },
+  openGraph: {
+    title: 'Editorial Policy | Strong Password Generator',
+    description: 'How StrongPasswordGenerator.dev researches, reviews, and monetizes password security guides and tool recommendations.',
+    url: 'https://strongpasswordgenerator.dev/editorial-policy',
+    siteName: 'Strong Password Generator',
+    type: 'website',
+    images: [{ url: '/og-image.svg' }],
+  },
 };
 
 export default function EditorialPolicyPage() {
