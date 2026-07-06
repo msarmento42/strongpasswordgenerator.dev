@@ -582,6 +582,7 @@ function PasswordGeneratorPage() {
           </p>
           <iframe
             src="https://monthly-newsletter-258d49.beehiiv.com/subscribe"
+            loading="lazy"
             style={{ width: "100%", maxWidth: "480px", height: "320px", border: "none", borderRadius: "8px" }}
             title="Security newsletter signup"
           />
