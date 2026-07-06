@@ -6,7 +6,7 @@ const hub = topicHubs.find((item) => item.slug === 'password-managers')!;
 
 export const metadata: Metadata = {
   title: `${hub.title} | Strong Password Generator`,
-  description: hub.description,
+  description: 'Learn about the best password managers, how they work, and why you should use one to secure your online accounts.',
   alternates: {
     canonical: '/blog/password-managers',
   },

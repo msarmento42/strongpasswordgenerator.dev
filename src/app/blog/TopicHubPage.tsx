@@ -1,10 +1,15 @@
 import Link from 'next/link';
-import { getHubPosts, type TopicHub } from '../../lib/posts';
+import { getHubPosts, getPostsByCategory, type TopicHub } from '../../lib/posts';
+import RelatedPostsList from '../components/RelatedPostsList';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://strongpasswordgenerator.dev';
 
 export default function TopicHubPage({ hub }: { hub: TopicHub }) {
   const posts = getHubPosts(hub);
+  const hubPostSlugs = new Set(posts.map(p => p.slug));
+  const relatedPosts = getPostsByCategory(hub.categories)
+    .filter(p => !hubPostSlugs.has(p.slug))
+    .slice(0, 5); // Limit to 5 related posts
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -23,6 +28,29 @@ export default function TopicHubPage({ hub }: { hub: TopicHub }) {
               "url": `${SITE_URL}/blog/${post.slug}`,
               "datePublished": post.date,
             })),
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Blog",
+                "item": `${SITE_URL}/blog`
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": hub.shortTitle,
+                "item": `${SITE_URL}/blog/${hub.slug}`
+              }
+            ]
           }),
         }}
       />
@@ -80,6 +108,8 @@ export default function TopicHubPage({ hub }: { hub: TopicHub }) {
             </article>
           ))}
         </div>
+
+        <RelatedPostsList posts={relatedPosts} />
       </main>
     </div>
   );

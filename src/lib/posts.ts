@@ -69,6 +69,10 @@ export function getSortedPosts() {
   return [...allPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
+export function getPostsByCategory(categories: string[]) {
+  return allPosts.filter(post => categories.includes(post.category));
+}
+
 export function getPostDescription(post: PostMeta) {
   if (post.description) return post.description;
   const cleaned = post.excerpt.replace(/\s+/g, " ").trim();

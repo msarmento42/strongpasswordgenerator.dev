@@ -3,6 +3,14 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Privacy Policy | Strong Password Generator',
   description: 'Privacy policy for StrongPasswordGenerator.dev — we collect minimal data and never see your generated passwords.',
+  openGraph: {
+    title: 'Privacy Policy | Strong Password Generator',
+    description: 'Privacy policy for StrongPasswordGenerator.dev — we collect minimal data and never see your generated passwords.',
+    url: 'https://strongpasswordgenerator.dev/privacy',
+    siteName: 'Strong Password Generator',
+    type: 'website',
+    images: [{ url: '/og-image.svg' }],
+  },
 };
 
 export default function PrivacyPage() {

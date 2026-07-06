@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
-import AffiliateCTA from '../components/AffiliateCTA';
+import AffiliateCTA from '../components/AffiliateCTA';import NordPassCTA from '../components/NordPassCTA';
+
 
 export const metadata: Metadata = {
   title: 'Recommended Security Tools | Strong Password Generator',
@@ -116,6 +117,30 @@ const tools = [
   },
 ];
 
+const flattenedTools = tools.flatMap(category =>
+  category.items.map(item => ({
+    ...item,
+    parentCategory: category.category,
+  }))
+);
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Recommended Security Tools",
+  "itemListElement": flattenedTools.map((tool, index) => ({
+    "@type": "ListItem",
+    "position": index + 1, // 1-indexed position
+    "item": {
+      "@type": "Product",
+      "name": tool.name,
+      "description": tool.description,
+      "url": tool.url,
+      "category": tool.parentCategory,
+    },
+  })),
+};
+
 const paths = [
   {
     title: 'Protect a family',
@@ -184,7 +209,10 @@ export default function RecommendedToolsPage() {
         </div>
 
         <div className="mb-8">
-          <AffiliateCTA product="nordpass" />
+          <AffiliateCTA product="nordpass" />          <div className="mt-8">
+            <NordPassCTA />
+          </div>
+
         {/* Quick Comparison Table */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-slate-800 mb-4">Quick Comparison</h2>
@@ -353,6 +381,11 @@ export default function RecommendedToolsPage() {
         id="breadcrumb-jsonld-rt"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="recommended-tools-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
     </div>
   );

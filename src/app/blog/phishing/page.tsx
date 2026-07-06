@@ -6,7 +6,7 @@ const hub = topicHubs.find((item) => item.slug === 'phishing')!;
 
 export const metadata: Metadata = {
   title: `${hub.title} | Strong Password Generator`,
-  description: hub.description,
+  description: 'Understand what phishing is, how to identify common phishing scams, and best practices to protect yourself from cybercriminals.',
   alternates: {
     canonical: '/blog/phishing',
   },

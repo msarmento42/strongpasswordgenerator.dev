@@ -69,8 +69,18 @@ export default function PassphraseGenerator() {
       </div>
 
       {passphrase && (
-        <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 font-mono text-indigo-700 text-lg break-all">
-          {passphrase}
+        <div className="flex items-center gap-2">
+          <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 font-mono text-indigo-700 text-lg break-all flex-grow">
+            {passphrase}
+          </div>
+          <button onClick={copy}
+            aria-label={copied ? 'Passphrase copied to clipboard' : 'Copy passphrase to clipboard'}
+            className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition">
+            {copied ? '✓ Copied!' : '📋 Copy'}
+          </button>
+          <span role="status" aria-live="polite" className="sr-only">
+            {copied ? 'Passphrase copied to clipboard' : ''}
+          </span>
         </div>
       )}
 
@@ -80,19 +90,7 @@ export default function PassphraseGenerator() {
           className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-5 py-2.5 rounded-lg text-sm transition">
           🎲 Generate Passphrase
         </button>
-        {passphrase && (
-          <>
-            <button onClick={copy}
-              aria-label={copied ? 'Passphrase copied to clipboard' : 'Copy passphrase to clipboard'}
-              aria-describedby="passphrase-value"
-              className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition">
-              {copied ? '✓ Copied!' : '📋 Copy'}
-            </button>
-            <span role="status" aria-live="polite" className="sr-only">
-              {copied ? 'Passphrase copied to clipboard' : ''}
-            </span>
-          </>
-        )}
+
       </div>
 
       {passphrase && (
