@@ -40,7 +40,9 @@ export default function Analytics() {
             var partner = 'external';
 
             if (/kqzyfj|nordpass/i.test(href)) partner = 'nordpass';
-            else if (/awin1|nordprotect/i.test(href)) partner = 'nordprotect';
+            else if (/nordvpn/i.test(href)) partner = 'nordvpn';
+            else if (/nordprotect/i.test(href)) partner = 'nordprotect';
+            else if (/awin1/i.test(href)) partner = 'awin';
             else if (/1password/i.test(href)) partner = '1password';
             else if (/bitwarden/i.test(href)) partner = 'bitwarden';
 

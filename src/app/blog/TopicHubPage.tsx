@@ -87,6 +87,44 @@ export default function TopicHubPage({ hub }: { hub: TopicHub }) {
           <p className="text-sm text-slate-600">{hub.primaryCta}</p>
         </section>
 
+        {hub.featuredProducts?.length ? (
+          <section className="mb-8 rounded-2xl border border-indigo-100 bg-white p-5 shadow-md shadow-slate-200/50">
+            <p className="mb-2 text-xs font-bold uppercase tracking-wide text-indigo-500">Quick picks</p>
+            <h2 className="mb-4 text-xl font-bold text-slate-900">Choose the right password manager faster</h2>
+            <div className="grid gap-3 md:grid-cols-3">
+              {hub.featuredProducts.map((product) => (
+                <article key={product.name} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                  <h3 className="text-base font-bold text-slate-800">{product.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{product.fit}</p>
+                  <Link href={product.href} className="mt-4 inline-block text-sm font-semibold text-indigo-600 hover:underline">
+                    {product.cta} →
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {hub.featuredPaths?.length ? (
+          <section className="mb-8 rounded-2xl border border-emerald-100 bg-emerald-50 p-5">
+            <p className="mb-2 text-xs font-bold uppercase tracking-wide text-emerald-700">Best next step</p>
+            <h2 className="mb-4 text-xl font-bold text-slate-900">Match the guide to your use case</h2>
+            <div className="grid gap-3 md:grid-cols-3">
+              {hub.featuredPaths.map((path) => (
+                <Link
+                  key={path.title}
+                  href={path.href}
+                  className="rounded-xl border border-emerald-200 bg-white p-4 transition hover:border-emerald-300"
+                >
+                  <h3 className="text-base font-bold text-slate-800">{path.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{path.description}</p>
+                  <span className="mt-4 inline-block text-sm font-semibold text-emerald-700">{path.cta} →</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <div className="grid gap-5">
           {posts.map((post) => (
             <article key={post.slug} className="bg-white rounded-2xl border border-slate-100 p-6 shadow-md shadow-slate-200/50">

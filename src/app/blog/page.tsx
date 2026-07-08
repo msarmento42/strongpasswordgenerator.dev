@@ -43,6 +43,21 @@ export default function BlogPage() {
           <p className="text-slate-500">Practical guides to protect your accounts and data online.</p>
         </div>
 
+        <section className="grid gap-4 md:grid-cols-3 mb-8">
+          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/50">
+            <h2 className="text-sm font-bold text-slate-800 mb-2">What you&apos;ll find here</h2>
+            <p className="text-xs leading-relaxed text-slate-600">Buying guides, setup tutorials, breach-response help, and plain-English account security explainers.</p>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/50">
+            <h2 className="text-sm font-bold text-slate-800 mb-2">How we recommend tools</h2>
+            <p className="text-xs leading-relaxed text-slate-600">We compare products based on security model, fit, and usability. Read the <Link href="/editorial-policy" className="text-indigo-600 hover:underline">editorial policy</Link>.</p>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/50">
+            <h2 className="text-sm font-bold text-slate-800 mb-2">Need to reach us?</h2>
+            <p className="text-xs leading-relaxed text-slate-600">Use the <Link href="/contact" className="text-indigo-600 hover:underline">contact page</Link> for corrections, suggestions, and partnership questions.</p>
+          </div>
+        </section>
+
         <section className="grid gap-3 md:grid-cols-3 mb-8">
           {topicHubs.map((hub) => (
             <Link

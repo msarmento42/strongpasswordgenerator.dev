@@ -33,16 +33,16 @@ export default function ContactPage() {
       <main className="max-w-3xl mx-auto p-6">
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100">
           <h1 className="text-3xl font-bold text-slate-800 mb-2">Contact Us</h1>
-          <p className="text-slate-500 mb-8">Questions, feedback, or partnership inquiries — we read everything.</p>
+          <p className="text-slate-500 mb-8">Questions, corrections, feedback, or partnership inquiries. We review all messages manually.</p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-5">
-              <h3 className="font-bold text-indigo-800 mb-2">📝 General Feedback</h3>
-              <p className="text-sm text-slate-600">Found a bug, have a feature request, or want to suggest a blog topic? We want to hear it.</p>
+              <h3 className="font-bold text-indigo-800 mb-2">General Feedback</h3>
+              <p className="text-sm text-slate-600">Found a bug, want a feature, or have a security topic you want covered? Send it our way.</p>
             </div>
             <div className="bg-purple-50 border border-purple-100 rounded-2xl p-5">
-              <h3 className="font-bold text-purple-800 mb-2">🤝 Partnerships</h3>
-              <p className="text-sm text-slate-600">Interested in being featured on our Recommended Tools page or exploring other partnerships? Reach out.</p>
+              <h3 className="font-bold text-purple-800 mb-2">Partnerships</h3>
+              <p className="text-sm text-slate-600">Interested in product partnerships, affiliate relationships, or editorial corrections to a listing? Reach out.</p>
             </div>
           </div>
 
@@ -53,6 +53,24 @@ export default function ContactPage() {
             </a>
             <p className="text-sm text-slate-400 mt-3">We typically respond within 2 business days.</p>
           </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5">
+              <h2 className="text-lg font-bold text-slate-800 mb-2">Best Reasons to Contact Us</h2>
+              <ul className="list-disc list-inside space-y-2 text-sm text-slate-600">
+                <li>Broken links or outdated product claims</li>
+                <li>Security or privacy questions about the generator</li>
+                <li>Requests to correct factual errors</li>
+                <li>Suggestions for new buying guides or tutorials</li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-5">
+              <h2 className="text-lg font-bold text-slate-800 mb-2">Before You Email</h2>
+              <p className="text-sm leading-relaxed text-slate-600">
+                For immediate fraud, account takeover, tax issues, or bank disputes, contact the institution involved first. Our content is educational and we do not provide direct recovery services.
+              </p>
+            </div>
+          </div>
         </div>
       </main>
 
@@ -62,6 +80,7 @@ export default function ContactPage() {
           <Link href="/blog" className="hover:text-indigo-600">Blog</Link>
           <Link href="/recommended-tools" className="hover:text-indigo-600">Tools</Link>
           <Link href="/privacy" className="hover:text-indigo-600">Privacy</Link>
+          <Link href="/editorial-policy" className="hover:text-indigo-600">Editorial Policy</Link>
         </div>
         <p>© 2026 StrongPasswordGenerator.dev</p>
       </footer>

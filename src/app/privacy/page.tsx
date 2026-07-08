@@ -33,7 +33,7 @@ export default function PrivacyPage() {
       <main className="max-w-3xl mx-auto p-6">
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100">
           <h1 className="text-3xl font-bold text-slate-800 mb-2">Privacy Policy</h1>
-          <p className="text-sm text-slate-400 mb-8">Last updated: May 2026</p>
+          <p className="text-sm text-slate-400 mb-8">Last updated: July 2026</p>
 
           <div className="space-y-8 text-slate-600 leading-relaxed">
             <section>
@@ -72,6 +72,11 @@ export default function PrivacyPage() {
             </section>
 
             <section>
+              <h2 className="text-xl font-bold text-slate-800 mb-3">Contact and Email</h2>
+              <p>If you contact us directly, we receive the information you include in your message so we can reply and maintain a record of the conversation. We do not sell contact submissions or use them for unrelated marketing.</p>
+            </section>
+
+            <section>
               <h2 className="text-xl font-bold text-slate-800 mb-3">Affiliate Links</h2>
               <p>Some links on this site — particularly on the <Link href="/recommended-tools" className="text-indigo-600 hover:underline">Recommended Tools</Link> page — are affiliate links. We earn a small commission if you purchase through these links, at no additional cost to you. These relationships do not influence our editorial recommendations. See our <Link href="/editorial-policy" className="text-indigo-600 hover:underline">editorial policy</Link> for more detail.</p>
             </section>
@@ -101,6 +106,7 @@ export default function PrivacyPage() {
           <Link href="/blog" className="hover:text-indigo-600">Blog</Link>
           <Link href="/recommended-tools" className="hover:text-indigo-600">Tools</Link>
           <Link href="/about" className="hover:text-indigo-600">About</Link>
+          <Link href="/contact" className="hover:text-indigo-600">Contact</Link>
         </div>
         <p>© 2026 StrongPasswordGenerator.dev</p>
       </footer>

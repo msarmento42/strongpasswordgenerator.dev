@@ -14,6 +14,7 @@ import {
   getRelatedPosts,
   type PostMeta,
 } from '../../../lib/posts';
+import { articleCommerceGuides } from '../../../lib/articleCommerce';
 
 interface PostData {
   slug: string;
@@ -128,6 +129,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const hub = getHubForPost(post);
   const faqItems = extractFaqItems(post.content);
   const affiliateProduct = getAffiliateProduct(post);
+  const commerceGuide = articleCommerceGuides[post.slug];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -221,6 +223,36 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {post.excerpt}
           </p>
 
+          {commerceGuide && (
+            <section className="my-6 rounded-2xl border border-amber-200 bg-amber-50 p-5">
+              <p className="text-xs font-bold uppercase tracking-wide text-amber-700">{commerceGuide.eyebrow}</p>
+              <h2 className="mt-1 text-xl font-bold text-slate-800">{commerceGuide.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{commerceGuide.summary}</p>
+              <div className="mt-4 grid gap-3 md:grid-cols-3">
+                {commerceGuide.cards.map((card) => (
+                  <div key={card.title} className="rounded-xl border border-amber-200 bg-white p-4">
+                    <h3 className="text-sm font-bold text-slate-800">{card.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{card.body}</p>
+                    {card.external ? (
+                      <a
+                        href={card.href}
+                        target="_blank"
+                        rel="noopener noreferrer sponsored"
+                        className="mt-4 inline-block text-sm font-semibold text-amber-700 hover:underline"
+                      >
+                        {card.cta} →
+                      </a>
+                    ) : (
+                      <Link href={card.href} className="mt-4 inline-block text-sm font-semibold text-amber-700 hover:underline">
+                        {card.cta} →
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {nordPassRecommendedSlugs.has(post.slug) && (
             <div className="my-6">
               <NordPassCTA />
@@ -246,6 +278,25 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           />
 
           <MoneyNextStep tags={post.tags} category={post.category} />
+
+          {commerceGuide && (
+            <section className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <h2 className="text-lg font-bold text-slate-800">{commerceGuide.followUpTitle}</h2>
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                {commerceGuide.followUps.map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="rounded-xl border border-slate-200 bg-white p-4 transition hover:border-indigo-200 hover:bg-indigo-50"
+                  >
+                    <h3 className="text-sm font-bold text-slate-800">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.body}</p>
+                    <span className="mt-4 inline-block text-sm font-semibold text-indigo-600">{item.cta} →</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           <section className="mt-8 rounded-2xl border border-indigo-100 bg-indigo-50/70 p-5">
             <h2 className="text-lg font-bold text-slate-800 mb-3">Keep Improving Your Account Security</h2>

@@ -20,6 +20,18 @@ export interface TopicHub {
   categories: string[];
   tagMatchers: string[];
   primaryCta: string;
+  featuredPaths?: Array<{
+    title: string;
+    description: string;
+    href: string;
+    cta: string;
+  }>;
+  featuredProducts?: Array<{
+    name: string;
+    fit: string;
+    href: string;
+    cta: string;
+  }>;
 }
 
 export const allPosts: PostMeta[] = postsIndex as PostMeta[];
@@ -36,6 +48,46 @@ export const topicHubs: TopicHub[] = [
     categories: ["Password Managers"],
     tagMatchers: ["password manager", "bitwarden", "nordpass", "1password", "dashlane", "lastpass"],
     primaryCta: "Start with the comparison guides, then set up one manager before changing your most important accounts.",
+    featuredPaths: [
+      {
+        title: "Best for families",
+        description: "Compare shared vaults, recovery options, and kid-safe account setup before you invite anyone else in.",
+        href: "/blog/best-password-manager-for-families-2026",
+        cta: "Compare family plans",
+      },
+      {
+        title: "Best for teams",
+        description: "Use admin controls, onboarding, offboarding, and audit features to avoid shared-password chaos at work.",
+        href: "/blog/best-password-manager-for-business-2026",
+        cta: "See business picks",
+      },
+      {
+        title: "Best if you had a breach",
+        description: "Pair a password manager with breach monitoring so exposed logins do not turn into account takeover.",
+        href: "/blog/best-identity-theft-protection-2026",
+        cta: "Add identity protection",
+      },
+    ],
+    featuredProducts: [
+      {
+        name: "NordPass",
+        fit: "Best value for most people who want a simple upgrade from browser autofill.",
+        href: "/blog/nordpass-review-2026",
+        cta: "Read NordPass review",
+      },
+      {
+        name: "Bitwarden",
+        fit: "Best if you want a strong free tier, open-source audits, and unlimited devices.",
+        href: "/blog/bitwarden-setup-guide",
+        cta: "Start with Bitwarden",
+      },
+      {
+        name: "1Password",
+        fit: "Best if you are shopping for a polished family or team workflow.",
+        href: "/blog/bitwarden-vs-1password-2026",
+        cta: "Compare 1Password",
+      },
+    ],
   },
   {
     slug: "phishing",

@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
-import AffiliateCTA from '../components/AffiliateCTA';import NordPassCTA from '../components/NordPassCTA';
-
+import AffiliateCTA from '../components/AffiliateCTA';
+import NordPassCTA from '../components/NordPassCTA';
+import { affiliates } from '../../lib/affiliates';
 
 export const metadata: Metadata = {
   title: 'Recommended Security Tools | Strong Password Generator',
@@ -32,7 +33,7 @@ const tools = [
         name: 'NordPass',
         tagline: 'Zero-knowledge password manager with a generous free tier',
         description: 'NordPass uses XChaCha20 encryption and a zero-knowledge architecture — even NordPass cannot see your passwords. It includes a built-in data breach scanner, password health report, and secure sharing. The free tier supports unlimited passwords.',
-        url: 'https://nordpass.com/special/strongpasswordgenerator/',
+        url: affiliates.nordpass.url,
         badge: 'Best Free Option',
         badgeColor: '#10b981',
         sponsored: true,
@@ -42,7 +43,7 @@ const tools = [
         name: 'Bitwarden',
         tagline: 'The open-source password manager trusted by millions',
         description: 'Bitwarden is the leading open-source password manager — fully audited, end-to-end encrypted, and free for individuals. Self-host if you want full control, or use their cloud. Bitwarden supports TOTP, passkeys, and secure sharing, and the free tier has no practical limits.',
-        url: 'https://bitwarden.com/?utm_source=strongpasswordgenerator',
+        url: affiliates.bitwarden.url,
         badge: 'Open Source',
         badgeColor: '#175DDC',
         sponsored: true,
@@ -67,7 +68,7 @@ const tools = [
         name: 'NordVPN',
         tagline: 'Fast, reliable VPN — essential on public Wi-Fi',
         description: 'NordVPN has 6,000+ servers across 60+ countries, a verified no-logs policy, and the NordLynx protocol for top speeds. Dark Web Monitor scans for your email being leaked. Essential if you ever use coffee shop or airport Wi-Fi.',
-        url: 'https://www.awin1.com/cread.php?awinmid=15132&awinaffid=2892161',
+        url: affiliates.nordvpn.url,
         badge: 'Top Pick',
         badgeColor: '#6366f1',
         sponsored: true,
@@ -107,7 +108,7 @@ const tools = [
         name: 'NordProtect',
         tagline: 'Dark web monitoring and identity theft protection from Nord Security',
         description: 'NordProtect monitors your personal data — email addresses, passwords, credit card numbers, and more — across the dark web and data breaches. Get instant alerts if your information is exposed, plus identity theft insurance and recovery support backed by Nord Security.',
-        url: 'https://www.awin1.com/cread.php?awinmid=123620&awinaffid=2892161',
+        url: affiliates.nordprotect.url,
         badge: 'Top Pick',
         badgeColor: '#8b5cf6',
         sponsored: true,
@@ -209,88 +210,88 @@ export default function RecommendedToolsPage() {
         </div>
 
         <div className="mb-8">
-          <AffiliateCTA product="nordpass" />          <div className="mt-8">
+          <AffiliateCTA product="nordpass" />
+          <div className="mt-8">
             <NordPassCTA />
           </div>
 
-        {/* Quick Comparison Table */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-slate-800 mb-4">Quick Comparison</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full border border-gray-200">
-              <thead>
-                <tr className="bg-gray-50">
-                  <th className="border px-2 py-1 text-left"></th>
-                  <th className="border px-2 py-1 text-center border-green-300">
-                    <div className="flex flex-col items-center">
-                      <span className="font-semibold">NordPass</span>
-                      <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded">Editor&apos;s Pick</span>
-                    </div>
-                  </th>
-                  <th className="border px-2 py-1 text-center"><span className="font-semibold">Bitwarden</span></th>
-                  <th className="border px-2 py-1 text-center"><span className="font-semibold">1Password</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border px-2 py-1 font-medium">Free tier</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">No</td>
-                </tr>
-                <tr className="bg-gray-50">
-                  <td className="border px-2 py-1 font-medium">Starting price</td>
-                  <td className="border px-2 py-1 text-center">$2.99/mo</td>
-                  <td className="border px-2 py-1 text-center">Free (Premium $3.33/mo)</td>
-                  <td className="border px-2 py-1 text-center">$2.99/mo</td>
-                </tr>
-                <tr>
-                  <td className="border px-2 py-1 font-medium">Unlimited devices</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                </tr>
-                <tr className="bg-gray-50">
-                  <td className="border px-2 py-1 font-medium">Open source</td>
-                  <td className="border px-2 py-1 text-center">No</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">No</td>
-                </tr>
-                <tr>
-                  <td className="border px-2 py-1 font-medium">Hardware 2FA</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                </tr>
-                <tr className="bg-gray-50">
-                  <td className="border px-2 py-1 font-medium">Passkeys</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                </tr>
-                <tr>
-                  <td className="border px-2 py-1 font-medium">Family plan</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                  <td className="border px-2 py-1 text-center">Yes</td>
-                </tr>
-                <tr className="bg-gray-50">
-                  <td className="border px-2 py-1 font-medium">Link</td>
-                  <td className="border px-2 py-1 text-center">
-                    <a href={tools[0].items[0].url} target="_blank" rel="noopener noreferrer" className="inline-block bg-green-500 text-white px-3 py-1 rounded">Visit</a>
-                  </td>
-                  <td className="border px-2 py-1 text-center">
-                    <a href={tools[0].items[1].url} target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-500 text-white px-3 py-1 rounded">Visit</a>
-                  </td>
-                  <td className="border px-2 py-1 text-center">
-                    <a href={tools[0].items[2].url} target="_blank" rel="noopener noreferrer" className="inline-block bg-indigo-500 text-white px-3 py-1 rounded">Visit</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
+          {/* Quick Comparison Table */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-slate-800 mb-4">Quick Comparison</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full border border-gray-200">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="border px-2 py-1 text-left"></th>
+                    <th className="border px-2 py-1 text-center border-green-300">
+                      <div className="flex flex-col items-center">
+                        <span className="font-semibold">NordPass</span>
+                        <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded">Editor&apos;s Pick</span>
+                      </div>
+                    </th>
+                    <th className="border px-2 py-1 text-center"><span className="font-semibold">Bitwarden</span></th>
+                    <th className="border px-2 py-1 text-center"><span className="font-semibold">1Password</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border px-2 py-1 font-medium">Free tier</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">No</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="border px-2 py-1 font-medium">Starting price</td>
+                    <td className="border px-2 py-1 text-center">$2.99/mo</td>
+                    <td className="border px-2 py-1 text-center">Free (Premium $3.33/mo)</td>
+                    <td className="border px-2 py-1 text-center">$2.99/mo</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-2 py-1 font-medium">Unlimited devices</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="border px-2 py-1 font-medium">Open source</td>
+                    <td className="border px-2 py-1 text-center">No</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">No</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-2 py-1 font-medium">Hardware 2FA</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="border px-2 py-1 font-medium">Passkeys</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-2 py-1 font-medium">Family plan</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                    <td className="border px-2 py-1 text-center">Yes</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="border px-2 py-1 font-medium">Link</td>
+                    <td className="border px-2 py-1 text-center">
+                      <a href={tools[0].items[0].url} target="_blank" rel="noopener noreferrer sponsored" className="inline-block bg-green-500 text-white px-3 py-1 rounded">Visit</a>
+                    </td>
+                    <td className="border px-2 py-1 text-center">
+                      <a href={tools[0].items[1].url} target="_blank" rel="noopener noreferrer sponsored" className="inline-block bg-blue-500 text-white px-3 py-1 rounded">Visit</a>
+                    </td>
+                    <td className="border px-2 py-1 text-center">
+                      <a href={tools[0].items[2].url} target="_blank" rel="noopener noreferrer sponsored" className="inline-block bg-indigo-500 text-white px-3 py-1 rounded">Visit</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
         </div>
 
         <section className="mb-10 rounded-2xl border border-indigo-100 bg-white p-5 shadow-md shadow-slate-200/50">

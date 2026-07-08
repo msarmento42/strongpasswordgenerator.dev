@@ -111,6 +111,27 @@ export default function AboutPage() {
           </p>
         </div>
 
+        <div className="grid gap-6 md:grid-cols-3 mb-6">
+          <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+            <h2 className="text-lg font-bold text-slate-800 mb-2">What We Publish</h2>
+            <p className="text-sm leading-relaxed text-slate-600">
+              We focus on password security, account recovery, phishing prevention, password managers, VPNs, and identity protection for normal users, not enterprise security teams.
+            </p>
+          </div>
+          <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+            <h2 className="text-lg font-bold text-slate-800 mb-2">Who It&apos;s For</h2>
+            <p className="text-sm leading-relaxed text-slate-600">
+              The site is built for people who want practical steps they can actually follow: stronger passwords, safer defaults, and better decisions after breaches or scams.
+            </p>
+          </div>
+          <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+            <h2 className="text-lg font-bold text-slate-800 mb-2">How To Reach Us</h2>
+            <p className="text-sm leading-relaxed text-slate-600">
+              Readers can send corrections, bug reports, or partnership questions through our <Link href="/contact" className="text-indigo-600 hover:underline">contact page</Link>. We review messages manually.
+            </p>
+          </div>
+        </div>
+
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100 mb-6">
           <h2 className="text-xl font-bold text-slate-800 mb-4">How the Generator Works</h2>
           <div className="space-y-4 text-slate-600 leading-relaxed">
@@ -148,6 +169,14 @@ export default function AboutPage() {
               <h3 className="font-semibold text-slate-700 mb-1">Why should I use a strong password generator?</h3>
               <p>Using a strong password generator helps you create unique, complex passwords that are difficult for attackers to guess or crack, significantly improving your online security.</p>
             </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100 mb-6">
+          <h2 className="text-xl font-bold text-slate-800 mb-4">What This Site Is Not</h2>
+          <div className="space-y-3 text-slate-600 leading-relaxed">
+            <p>SecurePass does not provide legal, financial, or incident-response services. Our articles are educational and are meant to help you ask better questions and take safer first steps.</p>
+            <p>If you&apos;re dealing with active fraud, tax identity theft, or an account compromise at work, contact the relevant institution or provider directly before relying on any general guide.</p>
           </div>
         </div>
 

@@ -53,9 +53,23 @@ export default function EditorialPolicyPage() {
             </section>
 
             <section>
+              <h2 className="text-xl font-bold text-slate-800 mb-2">How We Update Content</h2>
+              <p>
+                We review commercially important pages more often than evergreen explainers, especially when pricing, feature limits, or vendor positioning changes. When a recommendation meaningfully changes, we update the page rather than quietly redirecting readers to a different product.
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-xl font-bold text-slate-800 mb-2">Affiliate Disclosure</h2>
               <p>
                 Some outbound links are affiliate links. If you buy through those links, we may earn a commission at no extra cost to you. Affiliate relationships help keep the generator and guides free, but they do not determine whether a product is included or how it is described.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-bold text-slate-800 mb-2">What We Avoid</h2>
+              <p>
+                We avoid publishing filler pages, exaggerated scare tactics, fake urgency, or recommendations that exist only to monetize search traffic. If a product is not a good fit for the reader&apos;s situation, we would rather point them to a different guide than force a weak recommendation.
               </p>
             </section>
 
@@ -65,6 +79,13 @@ export default function EditorialPolicyPage() {
                 Security advice changes as products, threats, and platform defaults change. If you spot an outdated claim, broken link, or factual issue, please contact us so we can review and update the page.
               </p>
             </section>
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+            <h2 className="text-lg font-bold text-slate-800 mb-2">Need to Flag an Issue?</h2>
+            <p className="text-sm leading-relaxed text-slate-600">
+              Send corrections, broken links, or factual concerns through our <Link href="/contact" className="text-indigo-600 hover:underline">contact page</Link>. We use reader feedback to review update priorities.
+            </p>
           </div>
         </article>
       </main>
