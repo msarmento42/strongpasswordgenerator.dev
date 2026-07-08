@@ -1,5 +1,5 @@
 'use client';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 const WORDS = [
   'apple','brave','cloud','dance','eagle','flame','grace','honor','ivory','joker',
@@ -42,6 +42,20 @@ export default function PassphraseGenerator() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
+        event.preventDefault();
+        copy();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [copy]);
 
   return (
     <div className="space-y-4">
