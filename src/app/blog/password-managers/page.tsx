@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import TopicHubPage from '../TopicHubPage';
 import { topicHubs } from '../../../lib/posts';
+import NordPassCTA from '../../components/NordPassCTA';
 
 const hub = topicHubs.find((item) => item.slug === 'password-managers')!;
 
@@ -13,5 +14,10 @@ export const metadata: Metadata = {
 };
 
 export default function PasswordManagersHub() {
-  return <TopicHubPage hub={hub} />;
+  return (
+    <>
+      <NordPassCTA />
+      <TopicHubPage hub={hub} />
+    </>
+  );
 }
