@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import TopicHubPage from '../TopicHubPage';
+import TopicHubPage from '../TopicHubPage';import NordPassCTA from '../../components/NordPassCTA';
 import { topicHubs } from '../../../lib/posts';
 
 const hub = topicHubs.find((item) => item.slug === 'password-security')!;
@@ -13,5 +13,10 @@ export const metadata: Metadata = {
 };
 
 export default function PasswordSecurityHub() {
-  return <TopicHubPage hub={hub} />;
+  return (
+    <>
+      <TopicHubPage hub={hub} />
+      <NordPassCTA />
+    </>
+  );
 }
