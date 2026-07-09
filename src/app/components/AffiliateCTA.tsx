@@ -5,7 +5,7 @@ import { affiliates, type AffiliateProduct } from "../../lib/affiliates";
 export default function AffiliateCTA({ product }: { product: AffiliateProduct }) {
   const a = affiliates[product];
   return (
-    <div className="rounded-xl border border-indigo-100 bg-indigo-50 p-4 flex items-start gap-4">
+    <div className="rounded-xl border border-indigo-100 bg-indigo-50 p-4 flex flex-col sm:flex-row sm:items-center gap-4">
       <div className="flex-1">
         <span className="inline-block text-xs font-bold uppercase tracking-wide text-indigo-500 mb-1">
           {a.badge}
