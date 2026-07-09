@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getHubPosts, getPostsByCategory, type TopicHub } from '../../lib/posts';
-import RelatedPostsList from '../components/RelatedPostsList';
+import RelatedPostsList from '../components/RelatedPostsList';import Head from 'next/head';
+
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://strongpasswordgenerator.dev';
 
@@ -12,7 +13,18 @@ export default function TopicHubPage({ hub }: { hub: TopicHub }) {
     .slice(0, 5); // Limit to 5 related posts
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">      <Head>
+        <meta property="og:title" content={hub.title} />
+        <meta property="og:description" content={hub.description} />
+        <meta property="og:image" content={`${SITE_URL}/og-image.png`} />
+        <meta property="og:url" content={`${SITE_URL}/blog/${hub.slug}`} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={hub.title} />
+        <meta name="twitter:description" content={hub.description} />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image.png`} />
+      </Head>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
