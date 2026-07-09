@@ -91,6 +91,10 @@ export default function PassphraseGenerator() {
             aria-label={copied ? 'Passphrase copied to clipboard' : 'Copy passphrase to clipboard'}
             className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition">
             {copied ? '✓ Copied!' : '📋 Copy'}
+          </button>          <button onClick={generate}
+            aria-label="Generate new passphrase"
+            className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-5 py-2.5 rounded-lg text-sm transition">
+            Generate New
           </button>
           <span role="status" aria-live="polite" className="sr-only">
             {copied ? 'Passphrase copied to clipboard' : ''}
