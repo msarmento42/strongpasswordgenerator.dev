@@ -11,6 +11,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/blog/password-managers',
   },
+  openGraph: {
+    title: `${hub.title} | Strong Password Generator`,
+    description: 'Learn about the best password managers, how they work, and why you should use one to secure your online accounts.',
+    url: 'https://strongpasswordgenerator.dev/blog/password-managers',
+    siteName: 'Strong Password Generator',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${hub.title} | Strong Password Generator`,
+    description: 'Learn about the best password managers, how they work, and why you should use one to secure your online accounts.',
+  },
 };
 
 export default function PasswordManagersHub() {
