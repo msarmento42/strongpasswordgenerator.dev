@@ -83,19 +83,22 @@ export default function PassphraseGenerator() {
       </div>
 
       {passphrase && (
-        <div className="flex items-center gap-2">
-          <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 font-mono text-indigo-700 text-lg break-all flex-grow">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+          <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 font-mono text-indigo-700 text-lg break-all flex-grow w-full">
             {passphrase}
           </div>
-          <button onClick={copy}
-            aria-label={copied ? 'Passphrase copied to clipboard' : 'Copy passphrase to clipboard'}
-            className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition">
-            {copied ? '✓ Copied!' : '📋 Copy'}
-          </button>          <button onClick={generate}
-            aria-label="Generate new passphrase"
-            className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-5 py-2.5 rounded-lg text-sm transition">
-            Generate New
-          </button>
+          <div className="flex gap-2 w-full sm:w-auto">
+            <button onClick={copy}
+              aria-label={copied ? 'Passphrase copied to clipboard' : 'Copy passphrase to clipboard'}
+              className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition flex-1 sm:flex-none">
+              {copied ? '✓ Copied!' : '📋 Copy'}
+            </button>
+            <button onClick={generate}
+              aria-label="Generate new passphrase"
+              className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-5 py-2.5 rounded-lg text-sm transition flex-1 sm:flex-none">
+              Generate New
+            </button>
+          </div>
           <span role="status" aria-live="polite" className="sr-only">
             {copied ? 'Passphrase copied to clipboard' : ''}
           </span>
@@ -105,7 +108,7 @@ export default function PassphraseGenerator() {
       <div className="flex gap-3 flex-wrap">
         <button onClick={generate}
           aria-label="Generate passphrase"
-          className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-5 py-2.5 rounded-lg text-sm transition">
+          className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-5 py-2.5 rounded-lg text-sm transition w-full sm:w-auto">
           🎲 Generate Passphrase
         </button>
 
