@@ -20,6 +20,65 @@ export const metadata: Metadata = {
 export default function EditorialPolicyPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How does StrongPasswordGenerator.dev research articles?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Security guides are based on vendor documentation, public security guidance, breach-response best practices, and hands-on evaluation where applicable. We prioritize advice that a reader can apply immediately: unique passwords, password managers, two-factor authentication, passkeys, account recovery, and breach monitoring."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does StrongPasswordGenerator.dev review recommendations?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Tool recommendations consider security model, reputation, pricing, ease of use, cross-device support, export options, and fit for the reader's situation. We avoid recommending tools solely because they pay commissions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How often does StrongPasswordGenerator.dev update content?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We review commercially important pages more often than evergreen explainers, especially when pricing, feature limits, or vendor positioning changes. When a recommendation meaningfully changes, we update the page rather than quietly redirecting readers to a different product."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does StrongPasswordGenerator.dev use affiliate links?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Some outbound links are affiliate links. If you buy through those links, we may earn a commission at no extra cost to you. Affiliate relationships help keep the generator and guides free, but they do not determine whether a product is included or how it is described."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What kind of content does StrongPasswordGenerator.dev avoid publishing?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We avoid publishing filler pages, exaggerated scare tactics, fake urgency, or recommendations that exist only to monetize search traffic. If a product is not a good fit for the reader's situation, we would rather point them to a different guide than force a weak recommendation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I report corrections or updates to StrongPasswordGenerator.dev?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Security advice changes as products, threats, and platform defaults change. If you spot an outdated claim, broken link, or factual issue, please contact us so we can review and update the page."
+                }
+              }
+            ]
+          })
+        }}
+      />
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <Link href="/" className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
