@@ -84,7 +84,7 @@ export default function PassphraseGenerator() {
 
       {passphrase && (
         <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-          <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 font-mono text-indigo-700 text-lg break-all flex-grow w-full">
+          <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 font-mono text-indigo-700 text-lg break-all flex-grow w-full">            {copied && <span className="ml-2 text-sm text-green-600">Copied!</span>}
             {passphrase}
           </div>
           <div className="flex gap-2 w-full sm:w-auto">
