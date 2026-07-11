@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Editorial Policy | Strong Password Generator',
@@ -20,7 +21,8 @@ export const metadata: Metadata = {
 export default function EditorialPolicyPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <script
+      <Script
+        id="faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -78,6 +80,7 @@ export default function EditorialPolicyPage() {
             ]
           })
         }}
+        strategy="beforeInteractive"
       />
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
@@ -149,6 +152,36 @@ export default function EditorialPolicyPage() {
               </p>
             </section>
           </div>
+
+          <section className="mt-8">
+            <h2 className="text-2xl font-bold text-slate-800 mb-4">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How does StrongPasswordGenerator.dev research articles?</h3>
+                <p className="text-slate-600 leading-relaxed">A: Security guides are based on vendor documentation, public security guidance, breach-response best practices, and hands-on evaluation where applicable. We prioritize advice that a reader can apply immediately: unique passwords, password managers, two-factor authentication, passkeys, account recovery, and breach monitoring.</p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How does StrongPasswordGenerator.dev review recommendations?</h3>
+                <p className="text-slate-600 leading-relaxed">A: Tool recommendations consider security model, reputation, pricing, ease of use, cross-device support, export options, and fit for the reader&apos;s situation. We avoid recommending tools solely because they pay commissions.</p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How often does StrongPasswordGenerator.dev update content?</h3>
+                <p className="text-slate-600 leading-relaxed">A: We review commercially important pages more often than evergreen explainers, especially when pricing, feature limits, or vendor positioning changes. When a recommendation meaningfully changes, we update the page rather than quietly redirecting readers to a different product.</p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: Does StrongPasswordGenerator.dev use affiliate links?</h3>
+                <p className="text-slate-600 leading-relaxed">A: Some outbound links are affiliate links. If you buy through those links, we may earn a commission at no extra cost to you. Affiliate relationships help keep the generator and guides free, but they do not determine whether a product is included or how it is described.</p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: What kind of content does StrongPasswordGenerator.dev avoid publishing?</h3>
+                <p className="text-slate-600 leading-relaxed">A: We avoid publishing filler pages, exaggerated scare tactics, fake urgency, or recommendations that exist only to monetize search traffic. If a product is not a good fit for the reader&apos;s situation, we would rather point them to a different guide than force a weak recommendation.</p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How can I report corrections or updates to StrongPasswordGenerator.dev?</h3>
+                <p className="text-slate-600 leading-relaxed">A: Security advice changes as products, threats, and platform defaults change. If you spot an outdated claim, broken link, or factual issue, please contact us so we can review and update the page.</p>
+              </div>
+            </div>
+          </section>
 
           <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-5">
             <h2 className="text-lg font-bold text-slate-800 mb-2">Need to Flag an Issue?</h2>
