@@ -74,6 +74,16 @@ export default function PrivacyPage() {
             </section>
 
             <section>
+              <h2 className="text-xl font-bold text-slate-800 mb-3">Key Takeaways</h2>
+              <ul className="list-disc list-inside space-y-2 text-slate-600 leading-relaxed">
+                <li><strong>Your Passwords are Private:</strong> All password generation happens directly in your browser and is never sent to our servers.</li>
+                <li><strong>Minimal Data Collection:</strong> We collect non-identifying analytics data (like page views) but no personal information unless you contact us directly.</li>
+                <li><strong>Local Storage for Preferences:</strong> Your password history and generator settings are saved only on your device using browser local storage.</li>
+                <li><strong>Transparency on Third-Parties:</strong> We use services like Google Analytics and AdSense, and some links are affiliates, all disclosed in detail.</li>
+              </ul>
+            </section>
+
+            <section>
               <h2 className="text-xl font-bold text-slate-800 mb-3">Password Generation</h2>
               <p>All passwords are generated client-side using your browser&apos;s <code className="bg-slate-100 px-1 rounded text-indigo-700">crypto.getRandomValues()</code> API. Generated passwords are never transmitted to our servers, never logged, and never stored anywhere except optionally in your own browser&apos;s localStorage.</p>
             </section>
