@@ -90,7 +90,7 @@ export default function PassphraseGenerator() {
           <div className="flex gap-2 w-full sm:w-auto">
             <button onClick={copy}
               aria-label="Copy password to clipboard"
-              className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition flex-1 sm:flex-none">
+              className={`bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition flex-1 sm:flex-none ${copied ? 'bg-green-200' : ''}`}>
               Copy Password
             </button>
             <button onClick={generate}
