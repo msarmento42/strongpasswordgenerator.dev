@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: `${hub.title} | Strong Password Generator`,
   description: 'Protect yourself from phishing scams. Learn to identify common attacks, understand what phishing is, and discover best practices to stay safe online.',
   alternates: {
-    canonical: '/blog/phishing',
+    canonical: 'https://strongpasswordgenerator.dev/blog/phishing',
   },
 };
 
