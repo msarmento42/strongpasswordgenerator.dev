@@ -40,6 +40,86 @@ function calculateStrength(pwd: string): { score: number; label: string } {
   return { score: 5, label: 'Very Strong' };
 }
 
+function normalizeForLeetspeak(pwd: string): string[] {
+  let normalizedPwd = pwd.toLowerCase();
+  normalizedPwd = normalizedPwd.replace(/@/g, 'a');
+  normalizedPwd = normalizedPwd.replace(/4/g, 'a');
+  normalizedPwd = normalizedPwd.replace(/3/g, 'e');
+  normalizedPwd = normalizedPwd.replace(/0/g, 'o');
+  normalizedPwd = normalizedPwd.replace(/\$/g, 's');
+
+  // Handle 1 -> i/l. This will create two versions of the normalized password if '1' is present.
+  const normalizedVersions: string[] = [];
+  if (normalizedPwd.includes('1')) {
+    normalizedVersions.push(normalizedPwd.replace(/1/g, 'i'));
+    normalizedVersions.push(normalizedPwd.replace(/1/g, 'l'));
+  } else {
+    normalizedVersions.push(normalizedPwd);
+  }
+
+  return normalizedVersions;
+}
+
+function detectWeakPatterns(pwd: string): string[] {
+  const warnings: string[] = [];
+  if (pwd.length === 0) return warnings;
+
+  const lowerPwd = pwd.toLowerCase();
+
+  // 1. Sequential characters of 4+
+  const sequences = [
+    'abcdefghijklmnopqrstuvwxyz',
+    'zyxwuvtsrqponmlkjihgfedcba',
+    '0123456789',
+    '9876543210',
+    // QWERTY keyboard rows
+    'qwertyuiop', 'poiuytrewq',
+    'asdfghjkl', 'lkjhgfdsa',
+    'zxcvbnm', 'mnbvcxz',
+  ];
+
+  let sequentialWarningAdded = false;
+  for (const seq of sequences) {
+    for (let i = 0; i <= seq.length - 4; i++) {
+      const subSeq = seq.substring(i, i + 4);
+      if (lowerPwd.includes(subSeq)) {
+        warnings.push('Contains sequential characters (e.g., "abcd", "1234")');
+        sequentialWarningAdded = true;
+        break;
+      }
+    }
+    if (sequentialWarningAdded) break;
+  }
+
+  // 2. 4+ repeated identical characters in a row
+  if (/(.)\1{3,}/.test(pwd)) {
+    warnings.push('Contains 4 or more repeated characters (e.g., "aaaa", "1111")');
+  }
+
+  // 3. Common base words with leetspeak substitutions
+  const weakWords = [
+    'password', 'qwerty', 'letmein', 'dragon', 'monkey', 'welcome', 'admin',
+    '123456', 'iloveyou', 'secret', 'master', 'access', 'default', 'test', 'hello'
+  ];
+
+  const normalizedPasswords = normalizeForLeetspeak(pwd);
+
+  let weakWordWarningAdded = false;
+  for (const weakWord of weakWords) {
+    for (const normalizedPwd of normalizedPasswords) {
+      if (normalizedPwd.includes(weakWord)) {
+        warnings.push('Contains a common weak pattern or dictionary word');
+        weakWordWarningAdded = true;
+        break;
+      }
+    }
+    if (weakWordWarningAdded) break;
+  }
+
+  // Remove duplicates if any check triggers multiple times
+  return Array.from(new Set(warnings));
+}
+
 export default function PasswordChecker() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -47,6 +127,7 @@ export default function PasswordChecker() {
   const [strengthLabel, setStrengthLabel] = useState('');
   const [crackTime, setCrackTime] = useState('');
   const [entropy, setEntropy] = useState(0);
+  const [weakPatterns, setWeakPatterns] = useState<string[]>([]);
 
   const getStrengthColor = useCallback(() => {
     const colors = ['#ff6b6b', '#ff6b6b', '#feca57', '#feca57', '#26de81', '#26de81'];
@@ -56,12 +137,14 @@ export default function PasswordChecker() {
   const updatePassword = (nextPassword: string) => {
     const nextEntropy = calculateEntropy(nextPassword);
     const nextStrength = calculateStrength(nextPassword);
+    const detectedWeakPatterns = detectWeakPatterns(nextPassword);
 
     setPassword(nextPassword);
     setEntropy(nextEntropy);
     setStrengthScore(nextStrength.score);
     setStrengthLabel(nextStrength.label);
     setCrackTime(estimateCrackTime(nextEntropy));
+    setWeakPatterns(detectedWeakPatterns);
   };
 
   return (
@@ -115,6 +198,17 @@ export default function PasswordChecker() {
               Estimated crack time: <span className="text-slate-700">{crackTime}</span>
             </div>
           </div>
+
+          {weakPatterns.length > 0 && (
+            <div className="mt-4 space-y-2">
+              {weakPatterns.map((warning, index) => (
+                <div key={index} className="flex items-center text-sm text-red-600 font-medium">
+                  <span className="mr-2 text-lg">⚠️</span>
+                  <span>{warning}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>
