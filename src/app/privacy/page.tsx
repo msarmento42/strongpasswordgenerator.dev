@@ -3,7 +3,37 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Privacy Policy | Strong Password Generator',
   description: 'Privacy policy for StrongPasswordGenerator.dev — we collect minimal data and never see your generated passwords.',
-  openGraph: {
+  openGraph: {  jsonLd: {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Do you see the passwords I generate?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'No, we never see the passwords you generate. Password generation happens entirely in your browser, using your browser\'s crypto.getRandomValues() API. Generated passwords are never transmitted to our servers, never logged, and never stored anywhere except optionally in your own browser\'s localStorage.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What information do you collect?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We collect minimal, non-identifying data such as page views, referring URLs, general geographic region (country-level), browser type, device type, and affiliate/outbound link click events, reviewed in aggregate. We do not collect names, email addresses, or any personally identifiable information unless you choose to contact us directly.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do you use cookies and local storage?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We use browser localStorage to save your password generator preferences (length, character options) and password history between sessions. This data stays on your device and is never sent to us. We may also use cookies for analytics purposes, which you can disable in your browser settings.',
+        },
+      },
+    ],
+  },
+
     title: 'Privacy Policy | Strong Password Generator',
     description: 'Privacy policy for StrongPasswordGenerator.dev — we collect minimal data and never see your generated passwords.',
     url: 'https://strongpasswordgenerator.dev/privacy',
