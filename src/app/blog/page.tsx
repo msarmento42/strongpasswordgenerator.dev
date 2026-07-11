@@ -3,7 +3,7 @@ import { getSortedPosts, topicHubs } from '../../lib/posts';
 
 export const metadata = {
   title: 'Password Security Blog | Strong Password Generator',
-  description: 'Expert guides on password security, password managers, two-factor authentication, and protecting your accounts online.',
+  description: 'Explore articles on password security, password managers, phishing, and online privacy from Strong Password Generator.',
 };
 
 interface PostMeta {
