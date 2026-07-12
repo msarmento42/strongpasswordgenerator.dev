@@ -26,8 +26,31 @@ export const metadata: Metadata = {
 };
 
 export default function PasswordManagersHub() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://strongpasswordgenerator.dev"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": hub.title,
+        "item": "https://strongpasswordgenerator.dev/blog/password-managers"
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <NordPassCTA />
       <TopicHubPage hub={hub} />
     </>
