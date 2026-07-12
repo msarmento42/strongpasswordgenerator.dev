@@ -11,6 +11,13 @@ export const metadata = {
     siteName: 'Strong Password Generator',
     type: 'website',
     images: [{ url: '/og-image.svg' }],
+  },  alternates: {
+    canonical: 'https://strongpasswordgenerator.dev/contact',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact | Strong Password Generator',
+    description: 'Get in touch with the StrongPasswordGenerator.dev team.',
   },
 };
 
