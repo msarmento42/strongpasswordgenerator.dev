@@ -327,7 +327,7 @@ export default function RecommendedToolsPage() {
                       </div>
                     </div>
                     <p className="text-slate-600 text-sm mb-4 leading-relaxed">{tool.description}</p>
-                    <ul className="grid grid-cols-2 gap-1 mb-5">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1 mb-5">
                       {tool.features.map((f) => (
                         <li key={f} className="text-xs text-slate-500 flex items-center gap-1">
                           <span className="text-indigo-500">✓</span> {f}
