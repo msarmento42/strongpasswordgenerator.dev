@@ -14,11 +14,20 @@ export const metadata: Metadata = {
     siteName: 'Strong Password Generator',
     title: 'About | Strong Password Generator',
     description: 'Learn about StrongPasswordGenerator.dev — a free tool to generate cryptographically secure passwords and learn password security best practices.',
+    images: [
+      {
+        url: 'https://strongpasswordgenerator.dev/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Strong Password Generator - About',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About | Strong Password Generator',
     description: 'Learn about StrongPasswordGenerator.dev — a free tool to generate cryptographically secure passwords and learn password security best practices.',
+    images: ['https://strongpasswordgenerator.dev/og-image.png'],
   },
 };
 
