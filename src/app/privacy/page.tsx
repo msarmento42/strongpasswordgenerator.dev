@@ -58,7 +58,12 @@ export default function PrivacyPage() {
           </Link>
           <Link href="/" className="text-sm text-indigo-600 hover:text-indigo-800 font-medium">← Generator</Link>
         </div>
-      </header>
+      </header>      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "url": "https://strongpasswordgenerator.dev/privacy"
+}` }} />
 
       <main className="max-w-3xl mx-auto p-6">
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100">
