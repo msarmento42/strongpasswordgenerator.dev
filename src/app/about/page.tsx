@@ -201,11 +201,13 @@ export default function AboutPage() {
       <Script
         id="breadcrumb-jsonld-ab"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <Script
         id="faq-jsonld-ab"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </div>
