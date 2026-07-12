@@ -97,7 +97,17 @@ export default function EditorialPolicyPage() {
           <h1 className="text-3xl font-bold text-slate-800 mb-4">Editorial Policy</h1>
           <p className="text-slate-600 leading-relaxed mb-6">
             StrongPasswordGenerator.dev publishes practical password security guidance for everyday users. Our goal is to help readers make safer account-security decisions without hype, fear tactics, or unnecessary complexity.
-          </p>
+          </p>          <section className="bg-blue-50 p-6 rounded-2xl border border-blue-100 mb-6">
+            <h2 className="text-xl font-bold text-slate-800 mb-3">Key Takeaways</h2>
+            <ul className="list-disc list-inside space-y-2 text-slate-700">
+              <li>Our content is based on thorough research, including vendor documentation and security best practices, prioritizing actionable advice for users.</li>
+              <li>Tool recommendations are chosen for their security, reputation, and usability, not solely for affiliate commissions.</li>
+              <li>We frequently review and update content, especially for commercially important pages, to ensure accuracy and relevance.</li>
+              <li>Some links are affiliate links, which may earn us a commission at no extra cost to you, helping to keep our resources free.</li>
+              <li>We avoid scare tactics, fake urgency, or content published solely for monetization, focusing instead on genuine value.</li>
+            </ul>
+          </section>
+
           <section className="bg-blue-50 p-6 rounded-2xl border border-blue-100 mb-6">
             <h2 className="text-xl font-bold text-slate-800 mb-3">Key Takeaways</h2>
             <ul className="list-disc list-inside space-y-2 text-slate-700">
