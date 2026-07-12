@@ -29,19 +29,55 @@ export default function PassphraseGenerator() {
   const [separator, setSeparator] = useState('-');
   const [passphrase, setPassphrase] = useState('');
   const [copied, setCopied] = useState(false);
+  const [shared, setShared] = useState(false);
 
   const generate = useCallback(() => {
     const words: string[] = [];
     for (let i = 0; i < wordCount; i++) words.push(getRandWord());
     setPassphrase(words.join(separator));
+    setCopied(false);
+    setShared(false);
   }, [wordCount, separator]);
 
-  const copy = async () => {
+  const copy = useCallback(async () => {
     if (!passphrase) return;
     await navigator.clipboard.writeText(passphrase);
     setCopied(true);
+    setShared(false); // Ensure only one feedback is active
     setTimeout(() => setCopied(false), 2000);
-  };
+  }, [passphrase]);
+
+  const sharePassphrase = useCallback(async () => {
+    if (!passphrase) return;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Generated Passphrase',
+          text: passphrase,
+        });
+        // If native share is successful, no local feedback needed.
+        // If user cancels, it's not a "failure" to show feedback for.
+        setCopied(false); // Ensure only one feedback is active
+        setShared(false); // Reset in case it was previously true
+      } catch (error) {
+        // User dismissed the share dialog or an error occurred
+        console.error('Error sharing or user dismissed:', error);
+        // Fallback to copy if share fails or is dismissed
+        await navigator.clipboard.writeText(passphrase);
+        setShared(true);
+        setCopied(false); // Ensure only one feedback is active
+        setTimeout(() => setShared(false), 2000);
+      }
+    } else {
+      // Fallback for browsers that do not support Web Share API
+      await navigator.clipboard.writeText(passphrase);
+      setShared(true);
+      setCopied(false); // Ensure only one feedback is active
+      setTimeout(() => setShared(false), 2000);
+    }
+  }, [passphrase]);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
@@ -84,7 +120,9 @@ export default function PassphraseGenerator() {
 
       {passphrase && (
         <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-          <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 font-mono text-indigo-700 text-lg break-all flex-grow w-full">            {copied && <span className="ml-2 text-sm text-green-600">Copied!</span>}
+          <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 font-mono text-indigo-700 text-lg break-all flex-grow w-full">
+            {copied && <span className="ml-2 text-sm text-green-600">Copied!</span>}
+            {shared && <span className="ml-2 text-sm text-green-600">Shared! (Copied to clipboard)</span>}
             {passphrase}
           </div>
           <div className="flex gap-2 w-full sm:w-auto">
@@ -93,6 +131,11 @@ export default function PassphraseGenerator() {
               className={`bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition flex-1 sm:flex-none ${copied ? 'bg-green-200' : ''}`}>
               Copy Password
             </button>
+            <button onClick={sharePassphrase}
+              aria-label="Share passphrase"
+              className={`bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition flex-1 sm:flex-none ${shared ? 'bg-green-200' : ''}`}>
+              Share Password
+            </button>
             <button onClick={generate}
               aria-label="Generate new passphrase"
               className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-5 py-2.5 rounded-lg text-sm transition flex-1 sm:flex-none">
@@ -100,7 +143,7 @@ export default function PassphraseGenerator() {
             </button>
           </div>
           <span role="status" aria-live="polite" className="sr-only">
-            {copied ? 'Passphrase copied to clipboard' : ''}
+            {copied ? 'Passphrase copied to clipboard' : shared ? 'Passphrase shared (copied to clipboard)' : ''}
           </span>
         </div>
       )}
