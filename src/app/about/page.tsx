@@ -57,15 +57,15 @@ export default function AboutPage() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Is SecurePass truly free?",
+        "name": "Is Strong Password Generator truly free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, SecurePass is completely free to use. We aim to provide a valuable security tool without any cost to our users."
+          "text": "Yes, Strong Password Generator is completely free to use. We aim to provide a valuable security tool without any cost to our users."
         }
       },
       {
         "@type": "Question",
-        "name": "How does SecurePass ensure my privacy?",
+        "name": "How does Strong Password Generator ensure my privacy?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "All password generation happens directly in your browser using the Web Crypto API. We never transmit, store, or log your generated passwords. Your data stays on your device."
@@ -100,7 +100,7 @@ export default function AboutPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
               </svg>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">SecurePass</span>
+            <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Strong Password Generator</span>
           </Link>
           <Link href="/" className="text-sm text-indigo-600 hover:text-indigo-800 font-medium">← Generator</Link>
         </div>
@@ -108,7 +108,7 @@ export default function AboutPage() {
 
       <main className="max-w-3xl mx-auto p-6">
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100 mb-6">
-          <h1 className="text-3xl font-bold text-slate-800 mb-4">About SecurePass</h1>
+          <h1 className="text-3xl font-bold text-slate-800 mb-4">About Strong Password Generator</h1>
           <p className="text-slate-600 mb-4 leading-relaxed">
             StrongPasswordGenerator.dev is a free, privacy-first password security tool. We built it because most password generators are either too simple, ad-riddled, or — worst of all — send your generated passwords to a server. Ours never does.
           </p>
@@ -163,11 +163,11 @@ export default function AboutPage() {
           <h2 className="text-xl font-bold text-slate-800 mb-4">Frequently Asked Questions</h2>
           <div className="space-y-4 text-slate-600 leading-relaxed">
             <div>
-              <h3 className="font-semibold text-slate-700 mb-1">Is SecurePass truly free?</h3>
-              <p>Yes, SecurePass is completely free to use. We aim to provide a valuable security tool without any cost to our users.</p>
+              <h3 className="font-semibold text-slate-700 mb-1">Is Strong Password Generator truly free?</h3>
+              <p>Yes, Strong Password Generator is completely free to use. We aim to provide a valuable security tool without any cost to our users.</p>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-700 mb-1">How does SecurePass ensure my privacy?</h3>
+              <h3 className="font-semibold text-slate-700 mb-1">How does Strong Password Generator ensure my privacy?</h3>
               <p>All password generation happens directly in your browser using the Web Crypto API. We never transmit, store, or log your generated passwords. Your data stays on your device.</p>
             </div>
             <div>
@@ -184,7 +184,7 @@ export default function AboutPage() {
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100 mb-6">
           <h2 className="text-xl font-bold text-slate-800 mb-4">What This Site Is Not</h2>
           <div className="space-y-3 text-slate-600 leading-relaxed">
-            <p>SecurePass does not provide legal, financial, or incident-response services. Our articles are educational and are meant to help you ask better questions and take safer first steps.</p>
+            <p>Strong Password Generator does not provide legal, financial, or incident-response services. Our articles are educational and are meant to help you ask better questions and take safer first steps.</p>
             <p>If you&apos;re dealing with active fraud, tax identity theft, or an account compromise at work, contact the relevant institution or provider directly before relying on any general guide.</p>
           </div>
         </div>

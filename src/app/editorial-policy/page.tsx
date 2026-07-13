@@ -85,7 +85,7 @@ export default function EditorialPolicyPage() {
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <Link href="/" className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            SecurePass
+            Strong Password Generator
           </Link>
           <Link href="/blog" className="text-sm text-indigo-600 hover:text-indigo-800 font-medium">Security Blog</Link>
         </div>
