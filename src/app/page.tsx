@@ -339,6 +339,7 @@ function PasswordGeneratorPage() {
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3"><div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg"><svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" /></svg></div><h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">SecurePass</h1></div>
           <div className="flex items-center gap-4">
+            <Link href="/password-safety-checklist" className="text-slate-500 hover:text-indigo-600 text-sm font-medium hidden sm:block">Checklist</Link>
             <a href="/recommended-tools" className="text-slate-500 hover:text-indigo-600 text-sm font-medium hidden sm:block">🛡️ Tools</a>
             <Link href="/blog" className="text-slate-500 hover:text-indigo-600 text-sm font-medium">Security Blog →</Link>
           </div>
@@ -513,6 +514,12 @@ function PasswordGeneratorPage() {
               </div>
             ))}
           </div>
+          <div className="mt-5 rounded-2xl border border-indigo-100 bg-indigo-50 p-4">
+            <h3 className="font-semibold text-slate-800 mb-1">Need a step-by-step account security plan?</h3>
+            <p className="text-sm text-slate-600">
+              Use the <Link href="/password-safety-checklist" className="text-indigo-600 underline hover:text-indigo-800">password safety checklist</Link> to prioritize unique passwords, 2FA, recovery codes, and breach cleanup.
+            </p>
+          </div>
         </div>
 
         {/* What is Password Entropy */}
@@ -609,6 +616,7 @@ function PasswordGeneratorPage() {
       <footer className="text-center py-8 text-slate-500 text-sm border-t border-slate-200 mt-4">
         <div className="flex justify-center gap-6 mb-3 flex-wrap">
           <Link href="/blog" className="hover:text-indigo-600">Security Blog</Link>
+          <Link href="/password-safety-checklist" className="hover:text-indigo-600">Safety Checklist</Link>
           <a href="/recommended-tools" className="hover:text-indigo-600">Recommended Tools</a>
           <a href="/about" className="hover:text-indigo-600">About</a>
           <a href="/privacy" className="hover:text-indigo-600">Privacy Policy</a>
