@@ -82,6 +82,20 @@ export default function EditorialPolicyPage() {
         }}
         strategy="beforeInteractive"
       />
+      <Script
+        id="webpage-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Editorial Policy | Strong Password Generator",
+            "url": "https://strongpasswordgenerator.dev/editorial-policy",
+            "description": "How StrongPasswordGenerator.dev researches, reviews, and monetizes password security guides and tool recommendations."
+          })
+        }}
+        strategy="beforeInteractive"
+      />
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <Link href="/" className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
@@ -97,7 +111,8 @@ export default function EditorialPolicyPage() {
           <h1 className="text-3xl font-bold text-slate-800 mb-4">Editorial Policy</h1>
           <p className="text-slate-600 leading-relaxed mb-6">
             StrongPasswordGenerator.dev publishes practical password security guidance for everyday users. Our goal is to help readers make safer account-security decisions without hype, fear tactics, or unnecessary complexity.
-          </p>          <section className="bg-blue-50 p-6 rounded-2xl border border-blue-100 mb-6">
+          </p>
+          <section className="bg-blue-50 p-6 rounded-2xl border border-blue-100 mb-6">
             <h2 className="text-xl font-bold text-slate-800 mb-3">Key Takeaways</h2>
             <ul className="list-disc list-inside space-y-2 text-slate-700">
               <li>Our content is based on thorough research, including vendor documentation and security best practices, prioritizing actionable advice for users.</li>
@@ -130,7 +145,7 @@ export default function EditorialPolicyPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-2">How We Review Recommendations</h2>
               <p>
-                Tool recommendations consider security model, reputation, pricing, ease of use, cross-device support, export options, and fit for the reader&apos;s situation. We avoid recommending tools solely because they pay commissions.
+                Tool recommendations consider security model, reputation, pricing, ease of use, cross-device support, export options, and fit for the reader's situation. We avoid recommending tools solely because they pay commissions.
               </p>
             </section>
 
@@ -151,7 +166,7 @@ export default function EditorialPolicyPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-2">What We Avoid</h2>
               <p>
-                We avoid publishing filler pages, exaggerated scare tactics, fake urgency, or recommendations that exist only to monetize search traffic. If a product is not a good fit for the reader&apos;s situation, we would rather point them to a different guide than force a weak recommendation.
+                We avoid publishing filler pages, exaggerated scare tactics, fake urgency, or recommendations that exist only to monetize search traffic. If a product is not a good fit for the reader's situation, we would rather point them to a different guide than force a weak recommendation.
               </p>
             </section>
 
@@ -172,7 +187,7 @@ export default function EditorialPolicyPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How does StrongPasswordGenerator.dev review recommendations?</h3>
-                <p className="text-slate-600 leading-relaxed">A: Tool recommendations consider security model, reputation, pricing, ease of use, cross-device support, export options, and fit for the reader&apos;s situation. We avoid recommending tools solely because they pay commissions.</p>
+                <p className="text-slate-600 leading-relaxed">A: Tool recommendations consider security model, reputation, pricing, ease of use, cross-device support, export options, and fit for the reader's situation. We avoid recommending tools solely because they pay commissions.</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How often does StrongPasswordGenerator.dev update content?</h3>
@@ -184,7 +199,7 @@ export default function EditorialPolicyPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: What kind of content does StrongPasswordGenerator.dev avoid publishing?</h3>
-                <p className="text-slate-600 leading-relaxed">A: We avoid publishing filler pages, exaggerated scare tactics, fake urgency, or recommendations that exist only to monetize search traffic. If a product is not a good fit for the reader&apos;s situation, we would rather point them to a different guide than force a weak recommendation.</p>
+                <p className="text-slate-600 leading-relaxed">A: We avoid publishing filler pages, exaggerated scare tactics, fake urgency, or recommendations that exist only to monetize search traffic. If a product is not a good fit for the reader's situation, we would rather point them to a different guide than force a weak recommendation.</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How can I report corrections or updates to StrongPasswordGenerator.dev?</h3>
