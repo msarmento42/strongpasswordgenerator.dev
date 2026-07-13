@@ -1,5 +1,6 @@
 import Script from 'next/script';
 import NordPassCTA from '../components/NordPassCTA';
+import AffiliateCTA from '../components/AffiliateCTA';
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,7 +11,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
         crossOrigin="anonymous"
         strategy="afterInteractive"
       />
-      {children}
+      {children}<AffiliateCTA product="bitwarden" />
       <NordPassCTA />
     </>
   );
