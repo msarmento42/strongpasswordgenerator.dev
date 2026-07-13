@@ -23,6 +23,12 @@ const staticRoutes: MetadataRoute.Sitemap = [
     priority: 0.9,
   },
   {
+    url: `${BASE_URL}/password-safety-checklist`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.85,
+  },
+  {
     url: `${BASE_URL}/blog/password-managers`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
