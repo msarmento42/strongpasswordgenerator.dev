@@ -38,7 +38,7 @@ export default function MoneyNextStep({ tags, category }: { tags: string[]; cate
             };
 
   return (
-    <section className="mt-8 rounded-2xl border border-emerald-100 bg-emerald-50 p-5">
+    <section className="mt-8 rounded-2xl border border-emerald-100 bg-emerald-50 p-4 sm:p-5">
       <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Recommended next step</p>
       <h2 className="mt-1 text-lg font-bold text-slate-800">{target.label}</h2>
       <p className="mt-2 text-sm leading-relaxed text-slate-700">{target.body}</p>
