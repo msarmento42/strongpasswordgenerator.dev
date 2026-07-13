@@ -4,6 +4,9 @@ import { getSortedPosts, topicHubs } from '../../lib/posts';
 export const metadata = {
   title: 'Password Security Blog | Strong Password Generator',
   description: 'Explore articles on password security, password managers, phishing, and online privacy from Strong Password Generator.',
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 interface PostMeta {
