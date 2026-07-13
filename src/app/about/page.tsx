@@ -106,9 +106,9 @@ export default function AboutPage() {
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto p-6">
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 py-6">
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100 mb-6">
-          <h1 className="text-3xl font-bold text-slate-800 mb-4">About Strong Password Generator</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">About Strong Password Generator</h1>
           <p className="text-slate-600 mb-4 leading-relaxed">
             StrongPasswordGenerator.dev is a free, privacy-first password security tool. We built it because most password generators are either too simple, ad-riddled, or — worst of all — send your generated passwords to a server. Ours never does.
           </p>
@@ -196,7 +196,7 @@ export default function AboutPage() {
         </div>
       </main>
 
-      <footer className="max-w-3xl mx-auto px-6 py-8 mt-8 border-t border-slate-200 text-center text-sm text-slate-400">
+      <footer className="max-w-3xl mx-auto px-4 sm:px-6 py-8 mt-8 border-t border-slate-200 text-center text-sm text-slate-400">
         <div className="flex justify-center gap-6 mb-3">
           <Link href="/" className="hover:text-indigo-600">Home</Link>
           <Link href="/blog" className="hover:text-indigo-600">Blog</Link>
