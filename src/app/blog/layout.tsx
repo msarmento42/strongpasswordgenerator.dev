@@ -1,6 +1,7 @@
 import Script from 'next/script';
 import NordPassCTA from '../components/NordPassCTA';
 import AffiliateCTA from '../components/AffiliateCTA';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
       />
       {children}<AffiliateCTA product="bitwarden" />
       <NordPassCTA />
+      <ScrollToTopButton />
     </>
   );
 }
