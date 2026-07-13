@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Editorial Policy | Strong Password Generator',
   description: 'How StrongPasswordGenerator.dev researches, reviews, and monetizes password security guides and tool recommendations.',
   alternates: {
-    canonical: 'https://strongpasswordgenerator.dev/editorial-policy',
+    canonical: new URL('https://strongpasswordgenerator.dev/editorial-policy'),
   },
   openGraph: {
     title: 'Editorial Policy | Strong Password Generator',
