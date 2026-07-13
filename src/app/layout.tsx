@@ -88,6 +88,8 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6175161566333696"
           crossOrigin="anonymous"
         />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#0f172a" />
       </head>
       <body>
         <Analytics />
