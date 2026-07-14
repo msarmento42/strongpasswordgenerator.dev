@@ -8,6 +8,7 @@ export interface PostMeta {
   readingTime: string;
   tags: string[];
   description?: string;
+  metaDescription?: string;
   excerpt: string;
 }
 
@@ -127,6 +128,7 @@ export function getPostsByCategory(categories: string[]) {
 
 export function getPostDescription(post: PostMeta) {
   if (post.description) return post.description;
+  if (post.metaDescription) return post.metaDescription;
   const cleaned = post.excerpt.replace(/\s+/g, " ").trim();
   if (cleaned.length <= 155) return cleaned;
   return `${cleaned.slice(0, 152).replace(/\s+\S*$/, "")}...`;
