@@ -70,6 +70,12 @@ const staticRoutes: MetadataRoute.Sitemap = [
     changeFrequency: 'monthly',
     priority: 0.5,
   },
+  {
+    url: `${BASE_URL}/editorial-policy`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.5,
+  },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
