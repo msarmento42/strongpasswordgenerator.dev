@@ -128,7 +128,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
-            <h2 className="text-lg font-bold text-slate-800 mb-2">Who It&apos;s For</h2>
+            <h2 className="text-lg font-bold text-slate-800 mb-2">Who It's For</h2>
             <p className="text-sm leading-relaxed text-slate-600">
               The site is built for people who want practical steps they can actually follow: stronger passwords, safer defaults, and better decisions after breaches or scams.
             </p>
@@ -144,9 +144,9 @@ export default function AboutPage() {
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100 mb-6">
           <h2 className="text-xl font-bold text-slate-800 mb-4">How the Generator Works</h2>
           <div className="space-y-4 text-slate-600 leading-relaxed">
-            <p>Passwords are generated using <strong>cryptographically secure randomness</strong> from the browser&apos;s built-in <code className="bg-slate-100 px-1 rounded text-indigo-600">crypto.getRandomValues()</code> API — the same standard used by secure applications worldwide.</p>
+            <p>Passwords are generated using <strong>cryptographically secure randomness</strong> from the browser's built-in <code className="bg-slate-100 px-1 rounded text-indigo-600">crypto.getRandomValues()</code> API — the same standard used by secure applications worldwide.</p>
             <p>Strength is calculated using <strong>Shannon entropy</strong>: the number of bits of randomness in your password given its character set and length. Crack time estimates assume a dedicated attacker running 10 billion guesses per second.</p>
-            <p>Password history is stored only in your browser&apos;s <code className="bg-slate-100 px-1 rounded text-indigo-600">localStorage</code> — it never leaves your device and is cleared when you clear browser data.</p>
+            <p>Password history is stored only in your browser's <code className="bg-slate-100 px-1 rounded text-indigo-600">localStorage</code> — it never leaves your device and is cleared when you clear browser data.</p>
           </div>
         </div>
 
@@ -156,7 +156,7 @@ export default function AboutPage() {
             Our <Link href="/recommended-tools" className="text-indigo-600 hover:underline">Recommended Tools</Link> page lists products we genuinely endorse. Some links are affiliate links — we earn a small commission if you sign up, at no cost to you. This helps keep the site free.
           </p>
           <p className="text-slate-600 leading-relaxed">
-            We only recommend tools we&apos;d use ourselves. Affiliate relationships never influence which tools we list or how we describe them. Read our <Link href="/editorial-policy" className="text-indigo-600 hover:underline">editorial policy</Link> for the full review and disclosure process.
+            We only recommend tools we'd use ourselves. Affiliate relationships never influence which tools we list or how we describe them. Read our <Link href="/editorial-policy" className="text-indigo-600 hover:underline">editorial policy</Link> for the full review and disclosure process.
           </p>
         </div>
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100 mb-6">
@@ -185,7 +185,7 @@ export default function AboutPage() {
           <h2 className="text-xl font-bold text-slate-800 mb-4">What This Site Is Not</h2>
           <div className="space-y-3 text-slate-600 leading-relaxed">
             <p>Strong Password Generator does not provide legal, financial, or incident-response services. Our articles are educational and are meant to help you ask better questions and take safer first steps.</p>
-            <p>If you&apos;re dealing with active fraud, tax identity theft, or an account compromise at work, contact the relevant institution or provider directly before relying on any general guide.</p>
+            <p>If you're dealing with active fraud, tax identity theft, or an account compromise at work, contact the relevant institution or provider directly before relying on any general guide.</p>
           </div>
         </div>
 
@@ -204,7 +204,7 @@ export default function AboutPage() {
           <Link href="/privacy" className="hover:text-indigo-600">Privacy</Link>
           <Link href="/editorial-policy" className="hover:text-indigo-600">Editorial Policy</Link>
         </div>
-        <p>© 2026 StrongPasswordGenerator.dev</p>
+        <p> 2026 StrongPasswordGenerator.dev</p>
       </footer>
 
       <Script
