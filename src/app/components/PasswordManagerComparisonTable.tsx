@@ -61,7 +61,7 @@ const PasswordManagerComparisonTable: React.FC = () => {
     <section className="mb-12">
       <h2 className="text-2xl font-bold text-slate-800 mb-4">Password Manager Comparison</h2>
       <div className="overflow-x-auto rounded-lg shadow-sm border border-gray-200">
-        <table className="w-full text-sm text-left text-gray-700">
+        <table className="min-w-max md:w-full text-sm text-left text-gray-700">
           <thead className="text-xs text-gray-900 uppercase bg-gray-50">
             <tr>
               <th scope="col" className="px-4 py-3">Feature</th>
