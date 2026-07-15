@@ -6,6 +6,7 @@ export const affiliates = {
     description: "Open-source password manager trusted by millions. Free forever."
   },
   nordpass: {
+    name: "NordPass",
     url: process.env.NEXT_PUBLIC_NORDPASS_AFFILIATE_URL ?? "https://www.kqzyfj.com/click-101754888-17262576",
     cta: "Try NordPass",
     badge: "Best value",
