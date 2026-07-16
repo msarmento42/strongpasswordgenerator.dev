@@ -1110,5 +1110,37 @@
       "fraud prevention"
     ],
     "excerpt": "Payment apps combine direct access to your money with low-friction social transfers, making them a top target for scammers. Here's how to lock down Venmo, Cash App, and PayPal."
+  },
+  {
+    "slug": "data-broker-opt-out-guide",
+    "title": "How to Remove Your Personal Information From Data Broker Sites",
+    "date": "2026-07-16",
+    "category": "Data Breaches",
+    "readingTime": "9 min",
+    "tags": [
+      "data brokers",
+      "opt out",
+      "identity theft",
+      "privacy",
+      "nordprotect",
+      "personal information removal"
+    ],
+    "excerpt": "Data broker sites compile your address, phone number, and relatives into searchable profiles that scammers use for phishing and SIM-swapping. Here's how to get removed, and why it needs to be an ongoing habit."
+  },
+  {
+    "slug": "how-to-share-passwords-safely",
+    "title": "How to Share Passwords Safely (Without Texting or Emailing Them)",
+    "date": "2026-07-16",
+    "category": "Password Managers",
+    "readingTime": "9 min",
+    "tags": [
+      "password sharing",
+      "password manager",
+      "family sharing",
+      "team passwords",
+      "1password",
+      "nordpass"
+    ],
+    "excerpt": "Texting or emailing a password leaves a permanent, unencrypted copy you don't control. Here's how to share logins with family, roommates, or coworkers the secure way \u2014 and how to revoke access when you need to."
   }
 ]
