@@ -19,6 +19,16 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://strongpasswordgenerator.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://strongpasswordgenerator.dev/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Phishing", "item": "https://strongpasswordgenerator.dev/blog/phishing" }
+  ]
+};
+
 export default function PhishingHub() {
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -35,6 +45,7 @@ export default function PhishingHub() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
+      <Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <TopicHubPage hub={hub} />
     </>
   );
