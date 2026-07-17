@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: 'Discover essential tips and strategies for creating strong passwords, protecting your accounts, and improving your overall password security.',
     url: 'https://strongpasswordgenerator.dev/blog/password-security',
     siteName: 'Strong Password Generator',
-    type: 'website',
+    type: 'website',    images: [{ url: '/og-image.svg' }],
   },
   twitter: {
     card: 'summary_large_image',

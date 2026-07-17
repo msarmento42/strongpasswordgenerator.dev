@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description: 'Learn about the best password managers, how they work, and why you should use one to secure your online accounts.',
     url: 'https://strongpasswordgenerator.dev/blog/password-managers',
     siteName: 'Strong Password Generator',
-    type: 'website',
+    type: 'website',    images: [{ url: '/og-image.svg' }],
   },
   twitter: {
     card: 'summary_large_image',
