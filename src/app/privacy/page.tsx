@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Head from 'next/head';
 
 export const metadata = {
   title: 'Privacy Policy | Strong Password Generator',
@@ -17,12 +16,6 @@ export const metadata = {
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <Head>
-        <meta property="og:title" content="Privacy Policy | Strong Password Generator" />
-        <meta property="og:description" content="Privacy policy for StrongPasswordGenerator.dev — we collect minimal data and never see your generated passwords." />
-        <meta property="og:url" content="https://strongpasswordgenerator.dev/privacy" />
-        <meta property="og:type" content="website" />
-      </Head>
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3">
