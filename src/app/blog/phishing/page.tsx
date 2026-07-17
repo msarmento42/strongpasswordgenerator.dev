@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: 'Protect yourself from phishing scams. Learn to identify common attacks, understand what phishing is, and discover best practices to stay safe online.',
     url: 'https://strongpasswordgenerator.dev/blog/phishing',
     siteName: 'Strong Password Generator',
-    type: 'website',
+    type: 'website',    images: [{ url: '/og-image.svg' }],
   },
 };
 
