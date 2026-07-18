@@ -11,6 +11,14 @@ export const metadata = {
     type: 'website',
     images: [{ url: '/og-image.svg' }],
   },
+  alternates: {
+    canonical: 'https://strongpasswordgenerator.dev/privacy',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy | Strong Password Generator',
+    description: 'Privacy policy for StrongPasswordGenerator.dev — we collect minimal data and never see your generated passwords.',
+  },
 };
 
 export default function PrivacyPage() {
