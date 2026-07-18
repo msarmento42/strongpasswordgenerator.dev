@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     siteName: 'Strong Password Generator',
     type: 'article',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Password Safety Checklist | Strong Password Generator',
+    description: 'A practical password safety checklist for everyday account security.',
+  },
 };
 
 const checklist = [
