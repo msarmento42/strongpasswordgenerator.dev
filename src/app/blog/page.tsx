@@ -155,6 +155,13 @@ export default function BlogPage() {
       </main>
 
       <footer className="text-center py-6 text-slate-500 text-sm mt-8">
+        <div className="mb-2 flex justify-center gap-5 flex-wrap text-xs text-slate-400">
+          <Link href="/about" className="hover:text-indigo-600">About</Link>
+          <Link href="/privacy" className="hover:text-indigo-600">Privacy</Link>
+          <Link href="/terms" className="hover:text-indigo-600">Terms</Link>
+          <Link href="/editorial-policy" className="hover:text-indigo-600">Editorial Policy</Link>
+          <Link href="/contact" className="hover:text-indigo-600">Contact</Link>
+        </div>
         <p>🔒 <Link href="/" className="text-indigo-600 hover:underline">Generate a secure password</Link> — All passwords are created locally. Nothing is sent to any server.</p>
       </footer>
     </div>

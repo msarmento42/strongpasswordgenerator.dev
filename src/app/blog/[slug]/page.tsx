@@ -42,10 +42,41 @@ const nordPassRecommendedSlugs = new Set([
   'free-vs-paid-password-managers-2026',
   'password-manager-vs-browser-autofill',
   'how-to-create-strong-password',
+  'best-password-manager-iphone-ios-2026',
+  'password-manager-for-business',
+  'best-password-manager-for-business-2026',
+]);
+
+const nordProtectRecommendedSlugs = new Set([
+  'best-identity-theft-protection-2026',
+  'identity-theft-protection-guide',
+  'dark-web-monitoring-explained',
+  'data-breach-what-to-do',
+  'how-to-check-if-youve-been-hacked',
+  'how-to-recover-from-identity-theft',
+  'how-to-freeze-your-credit',
+]);
+
+const nordVpnRecommendedSlugs = new Set([
+  'nordvpn-review-2026',
+  'nordvpn-vs-expressvpn',
+  'how-to-use-a-vpn-for-privacy',
+  'vpn-worth-it-2026',
+  'vpn-for-remote-work',
+  'public-wifi-security-tips',
+  'password-security-for-remote-workers',
 ]);
 
 function getAffiliateProduct(post: PostData): 'bitwarden' | 'nordpass' | 'nordvpn' | 'nordprotect' {
   const topicText = `${post.slug} ${post.category} ${post.tags.join(' ')} ${post.title}`.toLowerCase();
+
+  if (nordVpnRecommendedSlugs.has(post.slug)) {
+    return 'nordvpn';
+  }
+
+  if (nordProtectRecommendedSlugs.has(post.slug)) {
+    return 'nordprotect';
+  }
 
   if (topicText.includes('vpn') || topicText.includes('wifi') || topicText.includes('remote work')) {
     return 'nordvpn';
@@ -61,11 +92,17 @@ function getAffiliateProduct(post: PostData): 'bitwarden' | 'nordpass' | 'nordvp
     return 'nordprotect';
   }
 
-  if (topicText.includes('nordpass') || topicText.includes('password manager') || topicText.includes('password')) {
+  if (
+    topicText.includes('nordpass') ||
+    topicText.includes('password manager') ||
+    topicText.includes('browser autofill') ||
+    topicText.includes('lastpass') ||
+    topicText.includes('dashlane')
+  ) {
     return 'nordpass';
   }
 
-  return 'bitwarden';
+  return 'nordpass';
 }
 
 export async function generateStaticParams() {
@@ -252,7 +289,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       <a
                         href={card.href}
                         target="_blank"
-                        rel="noopener noreferrer sponsored"
+                        rel={card.monetized ? 'noopener noreferrer sponsored' : 'noopener noreferrer'}
                         className="mt-4 inline-block text-sm font-semibold text-amber-700 hover:underline"
                       >
                         {card.cta} →
@@ -279,7 +316,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <strong>Recommended:</strong> We use and recommend{' '}<a
                 href="https://bitwarden.com/?utm_source=strongpasswordgenerator"
                 target="_blank"
-                rel="noopener noreferrer sponsored"
+                rel="noopener noreferrer"
                 className="font-semibold underline hover:text-indigo-700"
               >
                 Bitwarden
@@ -366,6 +403,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </main>
 
       <footer className="text-center py-6 text-slate-500 text-sm mt-8">
+        <div className="mb-2 flex justify-center gap-5 flex-wrap text-xs text-slate-400">
+          <Link href="/about" className="hover:text-indigo-600">About</Link>
+          <Link href="/privacy" className="hover:text-indigo-600">Privacy</Link>
+          <Link href="/terms" className="hover:text-indigo-600">Terms</Link>
+          <Link href="/editorial-policy" className="hover:text-indigo-600">Editorial Policy</Link>
+          <Link href="/contact" className="hover:text-indigo-600">Contact</Link>
+        </div>
         <p>🔒 All passwords are generated locally. Nothing is sent to any server.</p>
       </footer>
     </div>

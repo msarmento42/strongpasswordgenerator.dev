@@ -36,15 +36,13 @@ export default function Analytics() {
 
             var isExternal = url.hostname && url.hostname !== window.location.hostname;
             var href = link.href;
-            var isAffiliate = /sponsored|affiliate/i.test(link.rel || '') || /awin1|kqzyfj|cj|nordpass|nordvpn|1password|bitwarden/i.test(href);
+            var isAffiliate = /sponsored|affiliate/i.test(link.rel || '') || /awin1|kqzyfj|cj/i.test(href);
             var partner = 'external';
 
-            if (/kqzyfj|nordpass/i.test(href)) partner = 'nordpass';
-            else if (/nordvpn/i.test(href)) partner = 'nordvpn';
-            else if (/nordprotect/i.test(href)) partner = 'nordprotect';
+            if (/kqzyfj/i.test(href)) partner = 'nordpass';
+            else if (/awin1.*15132/i.test(href)) partner = 'nordvpn';
+            else if (/awin1.*123620/i.test(href)) partner = 'nordprotect';
             else if (/awin1/i.test(href)) partner = 'awin';
-            else if (/1password/i.test(href)) partner = '1password';
-            else if (/bitwarden/i.test(href)) partner = 'bitwarden';
 
             if (isAffiliate || isExternal) {
               window.gtag('event', isAffiliate ? 'affiliate_click' : 'outbound_click', {

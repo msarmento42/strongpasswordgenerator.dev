@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
 import AffiliateCTA from '../components/AffiliateCTA';
-import NordPassCTA from '../components/NordPassCTA';import PasswordManagerComparisonTable from '../components/PasswordManagerComparisonTable';
+import NordPassCTA from '../components/NordPassCTA';
+import PasswordManagerComparisonTable from '../components/PasswordManagerComparisonTable';
 import { affiliates } from '../../lib/affiliates';
 
 export const metadata: Metadata = {
@@ -36,7 +37,7 @@ const tools = [
         url: affiliates.nordpass.url,
         badge: 'Best Free Option',
         badgeColor: '#10b981',
-        sponsored: true,
+        monetized: affiliates.nordpass.monetized,
         features: ['Zero-knowledge XChaCha20 encryption', 'Data breach scanner', 'Password health report', 'Free tier available', 'Secure password sharing'],
       },
       {
@@ -46,7 +47,7 @@ const tools = [
         url: affiliates.bitwarden.url,
         badge: 'Open Source',
         badgeColor: '#175DDC',
-        sponsored: true,
+        monetized: affiliates.bitwarden.monetized,
         features: ['End-to-end encrypted vault', 'Fully open-source & audited', 'Free tier with unlimited passwords', 'TOTP authenticator built-in', 'Self-hosting option available'],
       },
       {
@@ -56,7 +57,7 @@ const tools = [
         url: 'https://1password.com',
         badge: 'Best for Teams',
         badgeColor: '#3b82f6',
-        sponsored: true,
+        monetized: false,
         features: ['Watchtower breach monitoring', 'Travel Mode (hide vaults)', 'Passkey support', 'Family and team plans', 'Emergency access'],
       },
     ],
@@ -71,7 +72,7 @@ const tools = [
         url: affiliates.nordvpn.url,
         badge: 'Top Pick',
         badgeColor: '#6366f1',
-        sponsored: true,
+        monetized: affiliates.nordvpn.monetized,
         features: ['6,000+ servers in 60+ countries', 'Verified no-logs policy', 'Dark Web Monitor', 'NordLynx (WireGuard) protocol', 'Built-in threat protection'],
       },
     ],
@@ -86,7 +87,7 @@ const tools = [
         url: 'https://avast.com',
         badge: 'Free Tier Available',
         badgeColor: '#f59e0b',
-        sponsored: true,
+        monetized: false,
         features: ['Real-time malware protection', 'Ransomware shield', 'Wi-Fi inspector', 'Webcam protection (premium)', 'Free tier available'],
       },
       {
@@ -96,7 +97,7 @@ const tools = [
         url: 'https://mcafee.com',
         badge: 'All-in-One',
         badgeColor: '#ef4444',
-        sponsored: true,
+        monetized: false,
         features: ['Antivirus + VPN bundled', 'Identity monitoring', 'Password manager included', 'Multi-device support', 'Safe browsing extension'],
       },
     ],
@@ -111,7 +112,7 @@ const tools = [
         url: affiliates.nordprotect.url,
         badge: 'Top Pick',
         badgeColor: '#8b5cf6',
-        sponsored: true,
+        monetized: affiliates.nordprotect.monetized,
         features: ['Dark web monitoring', 'Real-time breach alerts', 'Identity theft insurance', 'Personal data scanning', 'Backed by Nord Security'],
       },
     ],
@@ -163,6 +164,30 @@ const paths = [
   },
 ];
 
+const firstMoveCards = [
+  {
+    title: 'Stop password reuse',
+    description: 'Best first purchase for most readers because reused passwords turn one leak into several account takeovers.',
+    href: affiliates.nordpass.url,
+    cta: 'Start with NordPass',
+    monetized: affiliates.nordpass.monetized,
+  },
+  {
+    title: 'Protect public Wi-Fi',
+    description: 'Best next layer if you travel, work remotely, or regularly sign in on hotel, airport, or coffee shop networks.',
+    href: affiliates.nordvpn.url,
+    cta: 'Try NordVPN',
+    monetized: affiliates.nordvpn.monetized,
+  },
+  {
+    title: 'Monitor exposed identity data',
+    description: 'Best fit if a breach, suspicious mail, leaked SSN, or fraud alert is already part of the situation.',
+    href: affiliates.nordprotect.url,
+    cta: 'Try NordProtect',
+    monetized: affiliates.nordprotect.monetized,
+  },
+];
+
 export default function RecommendedToolsPage() {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -201,13 +226,33 @@ export default function RecommendedToolsPage() {
 
       <main className="max-w-3xl mx-auto p-6">
         <div className="mb-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-          Disclosure: Some links on this page are affiliate links. We may earn a small commission if you make a purchase through them, at no extra cost to you.
+          Disclosure: Some links on this page are affiliate links and some are plain editorial links. We may earn a small commission if you make a purchase through an affiliate link, at no extra cost to you.
         </div>
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-800 mb-2">Recommended Security Tools</h1>
           <p className="text-slate-500 mb-3">Our curated picks for the tools that actually move the needle on your security. All listed here based on features, reputation, and real-world value.</p>
-          <p className="text-xs text-slate-400 italic">Some links on this page are affiliate links. We may earn a commission at no extra cost to you — this never influences our recommendations. <Link href="/editorial-policy" className="text-indigo-600 hover:underline">Review our editorial policy</Link>.</p>
+          <p className="text-xs text-slate-400 italic">Some links on this page are affiliate links and some are plain editorial references. We may earn a commission at no extra cost to you when you use an affiliate link, but that never determines whether a product appears here. <Link href="/editorial-policy" className="text-indigo-600 hover:underline">Review our editorial policy</Link>.</p>
         </div>
+
+        <section className="mb-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-md shadow-slate-200/50">
+          <p className="mb-2 text-xs font-bold uppercase tracking-wide text-indigo-500">Best first move</p>
+          <h2 className="mb-3 text-xl font-bold text-slate-800">Buy the layer that fixes your biggest current risk</h2>
+          <div className="grid gap-3 md:grid-cols-3">
+            {firstMoveCards.map((card) => (
+              <a
+                key={card.title}
+                href={card.href}
+                target="_blank"
+                rel={card.monetized ? 'noopener noreferrer sponsored' : 'noopener noreferrer'}
+                className="rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-indigo-200 hover:bg-indigo-50"
+              >
+                <h3 className="mb-2 text-sm font-bold text-slate-800">{card.title}</h3>
+                <p className="mb-3 text-xs leading-relaxed text-slate-500">{card.description}</p>
+                <span className="text-xs font-bold text-indigo-600">{card.cta} →</span>
+              </a>
+            ))}
+          </div>
+        </section>
 
         <div className="mb-8">
           <AffiliateCTA product="nordpass" />
@@ -232,6 +277,24 @@ export default function RecommendedToolsPage() {
           </div>
         </section>
 
+        <section className="mb-10 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/50">
+          <h2 className="mb-3 text-lg font-bold text-slate-800">How to read this page</h2>
+          <div className="grid gap-3 text-sm text-slate-600 md:grid-cols-3">
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <p className="font-semibold text-slate-800 mb-1">Best value</p>
+              <p>Usually the product we think offers the smoothest balance of price, usability, and security for most readers.</p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <p className="font-semibold text-slate-800 mb-1">Open source or specialist picks</p>
+              <p>Included when a tool is a better fit for a specific type of reader even if it is not the default recommendation.</p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <p className="font-semibold text-slate-800 mb-1">Affiliate note</p>
+              <p>Buttons marked as affiliate links may earn us a commission. Editorial-only links stay unsponsored.</p>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-10">
           {tools.map((section) => (
             <section key={section.category}>
@@ -246,6 +309,15 @@ export default function RecommendedToolsPage() {
                           <span className="text-xs font-semibold px-2 py-0.5 rounded-full text-white" style={{ backgroundColor: tool.badgeColor }}>
                             {tool.badge}
                           </span>
+                          {tool.monetized ? (
+                            <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">
+                              Affiliate
+                            </span>
+                          ) : (
+                            <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
+                              Editorial
+                            </span>
+                          )}
                         </div>
                         <p className="text-sm text-slate-500 font-medium">{tool.tagline}</p>
                       </div>
@@ -260,11 +332,11 @@ export default function RecommendedToolsPage() {
                     </ul>
                     <a
                       href={tool.url}
-                      rel={tool.sponsored ? 'noopener noreferrer sponsored' : 'noopener noreferrer'}
+                      rel={tool.monetized ? 'noopener noreferrer sponsored' : 'noopener noreferrer'}
                       target="_blank"
                       className="inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm hover:opacity-90 transition"
                     >
-                      Try {tool.name} →
+                      {tool.monetized ? `Try ${tool.name} (Affiliate)` : `Visit ${tool.name}`} →
                     </a>
                   </div>
                 ))}
@@ -298,6 +370,7 @@ export default function RecommendedToolsPage() {
           <Link href="/blog" className="hover:text-indigo-600">Blog</Link>
           <Link href="/about" className="hover:text-indigo-600">About</Link>
           <Link href="/privacy" className="hover:text-indigo-600">Privacy</Link>
+          <Link href="/terms" className="hover:text-indigo-600">Terms</Link>
         </div>
         <p>© 2026 StrongPasswordGenerator.dev · <span className="italic">Affiliate disclosure: some links earn us a commission.</span></p>
       </footer>

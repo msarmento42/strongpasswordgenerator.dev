@@ -232,6 +232,18 @@ export default function EditorialPolicyPage() {
           </div>
         </article>
       </main>
+
+      <footer className="max-w-3xl mx-auto px-6 py-8 mt-8 border-t border-slate-200 text-center text-sm text-slate-400">
+        <div className="flex justify-center gap-6 mb-3 flex-wrap">
+          <Link href="/" className="hover:text-indigo-600">Home</Link>
+          <Link href="/blog" className="hover:text-indigo-600">Blog</Link>
+          <Link href="/recommended-tools" className="hover:text-indigo-600">Tools</Link>
+          <Link href="/about" className="hover:text-indigo-600">About</Link>
+          <Link href="/privacy" className="hover:text-indigo-600">Privacy</Link>
+          <Link href="/terms" className="hover:text-indigo-600">Terms</Link>
+        </div>
+        <p>© 2026 StrongPasswordGenerator.dev</p>
+      </footer>
     </div>
   );
 }

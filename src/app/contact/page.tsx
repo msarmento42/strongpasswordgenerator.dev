@@ -103,6 +103,7 @@ export default function ContactPage() {
           <Link href="/recommended-tools" className="hover:text-indigo-600">Tools</Link>
           <Link href="/privacy" className="hover:text-indigo-600">Privacy</Link>
           <Link href="/editorial-policy" className="hover:text-indigo-600">Editorial Policy</Link>
+          <Link href="/terms" className="hover:text-indigo-600">Terms</Link>
         </div>
         <p>© 2026 StrongPasswordGenerator.dev</p>
       </footer>
