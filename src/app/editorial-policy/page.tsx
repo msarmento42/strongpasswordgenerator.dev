@@ -16,6 +16,12 @@ export const metadata: Metadata = {
     type: 'website',
     images: [{ url: '/og-image.svg' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Editorial Policy | Strong Password Generator',
+    description: 'How StrongPasswordGenerator.dev researches, reviews, and monetizes password security guides and tool recommendations.',
+    images: ['/og-image.svg'],
+  },
 };
 
 export default function EditorialPolicyPage() {
