@@ -1174,5 +1174,37 @@
       "phishing"
     ],
     "excerpt": "Your email account is the master key to your digital life — whoever controls it can reset every other password you have. This guide covers the exact steps to lock down your email against the most common attack vectors, from credential stuffing to phishing to account recovery exploits."
+  },
+  {
+    "slug": "qr-code-scam-quishing-guide",
+    "title": "QR Code Scams (\"Quishing\"): How They Work and How to Spot One",
+    "date": "2026-07-19",
+    "category": "Best Practices",
+    "readingTime": "5 min",
+    "tags": [
+      "quishing",
+      "qr code scam",
+      "phishing",
+      "parking scam",
+      "nordpass",
+      "nordprotect"
+    ],
+    "excerpt": "Scammers are hiding phishing links inside QR codes on parking meters, mailers, and even emails to dodge the red flags people have learned to spot. Here's how quishing works and how to check a code before you scan it."
+  },
+  {
+    "slug": "securing-google-account",
+    "title": "How to Secure Your Google Account: A Complete Checklist",
+    "date": "2026-07-19",
+    "category": "Best Practices",
+    "readingTime": "5 min",
+    "tags": [
+      "google account",
+      "2-step verification",
+      "passkeys",
+      "gmail security",
+      "nordpass",
+      "nordvpn"
+    ],
+    "excerpt": "Your Google account is often the recovery point for everything else you own online. Here's the full checklist for locking it down, from 2-Step Verification to passkeys to catching stale third-party app access."
   }
 ]
