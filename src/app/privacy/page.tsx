@@ -183,6 +183,7 @@ export default function PrivacyPage() {
           <Link href="/recommended-tools" className="hover:text-indigo-600">Tools</Link>
           <Link href="/about" className="hover:text-indigo-600">About</Link>
           <Link href="/contact" className="hover:text-indigo-600">Contact</Link>
+          <Link href="/terms" className="hover:text-indigo-600">Terms</Link>
         </div>
         <p>© 2026 StrongPasswordGenerator.dev</p>
       </footer>

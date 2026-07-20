@@ -605,11 +605,24 @@ function PasswordGeneratorPage() {
         </div>
       )}
 
-      <section className="max-w-xl mx-auto px-4 py-8">
+      <section className="max-w-3xl mx-auto px-4 py-8">
         <h2 className="text-lg font-semibold text-slate-700 mb-4 text-center">Protect your passwords with a manager:</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <AffiliateCTA product="bitwarden" />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-[1.2fr_0.8fr]">
           <AffiliateCTA product="nordpass" />
+          <div className="rounded-xl border border-slate-200 bg-white p-4">
+            <span className="inline-block text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
+              Editorial pick
+            </span>
+            <p className="text-sm text-slate-700 mb-3">
+              Want a strong free option first? Read the Bitwarden setup guide and compare it against paid managers before you switch.
+            </p>
+            <Link
+              href="/blog/bitwarden-setup-guide"
+              className="inline-block text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+            >
+              Read the Bitwarden guide →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -620,6 +633,7 @@ function PasswordGeneratorPage() {
           <a href="/recommended-tools" className="hover:text-indigo-600">Recommended Tools</a>
           <a href="/about" className="hover:text-indigo-600">About</a>
           <a href="/privacy" className="hover:text-indigo-600">Privacy Policy</a>
+          <a href="/terms" className="hover:text-indigo-600">Terms</a>
           <a href="/contact" className="hover:text-indigo-600">Contact</a>
         </div>
         <p>🔒 Passwords generated locally — never sent to any server.</p>

@@ -65,6 +65,12 @@ const staticRoutes: MetadataRoute.Sitemap = [
     priority: 0.5,
   },
   {
+    url: `${BASE_URL}/terms`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.5,
+  },
+  {
     url: `${BASE_URL}/editorial-policy`,
     lastModified: new Date(),
     changeFrequency: 'monthly',

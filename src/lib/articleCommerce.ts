@@ -1,9 +1,12 @@
+import { affiliates } from "./affiliates";
+
 export interface CommerceCard {
   title: string;
   body: string;
   href: string;
   cta: string;
   external?: boolean;
+  monetized?: boolean;
 }
 
 export interface ArticleCommerceGuide {
@@ -30,9 +33,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "Upgrade to NordPass for the smoothest low-cost premium path",
         body: "The easiest paid step up if you want polished apps, unlimited active devices, and better breach reporting.",
-        href: "https://www.kqzyfj.com/click-101754888-17262576",
+        href: affiliates.nordpass.url,
         cta: "Try NordPass",
         external: true,
+        monetized: affiliates.nordpass.monetized,
       },
       {
         title: "Choose 1Password if family sharing is the reason you are paying",
@@ -65,9 +69,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "Choose NordPass if you want the easiest upgrade",
         body: "Best for people moving off browser autofill who want a cleaner interface and built-in breach alerts.",
-        href: "https://www.kqzyfj.com/click-101754888-17262576",
+        href: affiliates.nordpass.url,
         cta: "Try NordPass",
         external: true,
+        monetized: affiliates.nordpass.monetized,
       },
       {
         title: "Choose Bitwarden if free and open source matter most",
@@ -113,9 +118,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "NordPass for simpler onboarding",
         body: "A strong option if you want a cleaner interface and easier adoption for less technical relatives.",
-        href: "https://www.kqzyfj.com/click-101754888-17262576",
+        href: affiliates.nordpass.url,
         cta: "Try NordPass Family",
         external: true,
+        monetized: affiliates.nordpass.monetized,
       },
       {
         title: "Bitwarden for the lowest long-term cost",
@@ -155,9 +161,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "NordPass if you need SSO sooner",
         body: "A strong value if you want SSO support without jumping to a more expensive enterprise tier immediately.",
-        href: "https://www.kqzyfj.com/click-101754888-17262576",
+        href: affiliates.nordpass.url,
         cta: "Try NordPass Business",
         external: true,
+        monetized: affiliates.nordpass.monetized,
       },
       {
         title: "Bitwarden if auditability matters most",
@@ -196,9 +203,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "Switch to NordPass for the easiest dedicated upgrade",
         body: "Best if you want the familiar autofill experience with cleaner cross-platform support and breach alerts.",
-        href: "https://www.kqzyfj.com/click-101754888-17262576",
+        href: affiliates.nordpass.url,
         cta: "Try NordPass",
         external: true,
+        monetized: affiliates.nordpass.monetized,
       },
       {
         title: "Choose Bitwarden if you want a stronger free option",
@@ -231,16 +239,18 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "Start with NordPass if your passwords are still reused",
         body: "Best first purchase for most people because account takeover risk is usually more immediate than network interception.",
-        href: "https://www.kqzyfj.com/click-101754888-17262576",
+        href: affiliates.nordpass.url,
         cta: "Start with NordPass",
         external: true,
+        monetized: affiliates.nordpass.monetized,
       },
       {
         title: "Add NordVPN if you travel or use public Wi-Fi often",
         body: "The stronger next step if you work remotely, use coffee shop Wi-Fi, or want to reduce ISP visibility.",
-        href: "https://www.awin1.com/cread.php?awinmid=15132&awinaffid=2892161",
+        href: affiliates.nordvpn.url,
         cta: "Try NordVPN",
         external: true,
+        monetized: affiliates.nordvpn.monetized,
       },
       {
         title: "Add monitoring if a breach already happened",
@@ -273,9 +283,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "NordProtect for the best value bundle",
         body: "A strong fit if you want dark-web alerts, credit monitoring, and recovery coverage without paying premium-tier pricing.",
-        href: "https://www.awin1.com/cread.php?awinmid=123620&awinaffid=2892161",
+        href: affiliates.nordprotect.url,
         cta: "Try NordProtect",
         external: true,
+        monetized: affiliates.nordprotect.monetized,
       },
       {
         title: "Add a password manager next",
@@ -295,7 +306,7 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "Freeze your credit",
         body: "Still the most underused no-cost defense against new-account fraud.",
-        href: "/blog/how-to-recover-from-identity-theft",
+        href: "/blog/how-to-freeze-your-credit",
         cta: "Review freeze steps",
       },
       {
@@ -314,9 +325,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "Use NordProtect for ongoing monitoring",
         body: "Best if you want alerts, recovery support, and a simpler way to spot new exposure after the initial cleanup.",
-        href: "https://www.awin1.com/cread.php?awinmid=123620&awinaffid=2892161",
+        href: affiliates.nordprotect.url,
         cta: "Try NordProtect",
         external: true,
+        monetized: affiliates.nordprotect.monetized,
       },
       {
         title: "Replace reused passwords with a manager immediately",
@@ -344,6 +356,180 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
         body: "Use it to work through reuse, 2FA, and breach-response cleanup step by step.",
         href: "/blog/password-security",
         cta: "Open the security hub",
+      },
+    ],
+  },
+  "nordvpn-review-2026": {
+    eyebrow: "Best fit at a glance",
+    title: "Who NordVPN is best for",
+    summary: "NordVPN is strongest when you need reliable privacy on public networks, travel-friendly coverage, and a clean path into a broader security stack.",
+    cards: [
+      {
+        title: "Choose NordVPN if you use public Wi-Fi often",
+        body: "Best for travelers, remote workers, and anyone who wants a simple, audited VPN with broad device support.",
+        href: affiliates.nordvpn.url,
+        cta: "Try NordVPN",
+        external: true,
+        monetized: affiliates.nordvpn.monetized,
+      },
+      {
+        title: "Add NordPass if password reuse is still the bigger risk",
+        body: "A VPN protects traffic, but it does not fix weak or reused credentials across your accounts.",
+        href: "/blog/password-manager-vs-browser-autofill",
+        cta: "Compare password managers",
+      },
+      {
+        title: "Add NordProtect if a breach is already part of the picture",
+        body: "Identity monitoring helps when your concern has shifted from privacy to active exposure and fraud cleanup.",
+        href: "/blog/best-identity-theft-protection-2026",
+        cta: "Review identity protection",
+      },
+    ],
+    followUpTitle: "Build the rest of the stack in order",
+    followUps: [
+      {
+        title: "Secure the accounts behind your VPN",
+        body: "Strong passwords and 2FA still matter more than the network layer once you sign in.",
+        href: "/blog/password-security",
+        cta: "Open the security hub",
+      },
+      {
+        title: "See the broader tools page",
+        body: "Useful if you want one place to compare managers, monitoring, and device-security options.",
+        href: "/recommended-tools",
+        cta: "See all recommendations",
+      },
+    ],
+  },
+  "data-breach-what-to-do": {
+    eyebrow: "Breach response stack",
+    title: "Fix the exposed login first, then monitor the identity risk",
+    summary: "A data breach is not solved by one password change. Rotate the exposed account, stop reuse across related accounts, and add monitoring if personal data was exposed.",
+    cards: [
+      {
+        title: "Use NordPass to rotate exposed passwords",
+        body: "Best first step when the breach included passwords or when you are not sure where credentials were reused.",
+        href: affiliates.nordpass.url,
+        cta: "Try NordPass",
+        external: true,
+        monetized: affiliates.nordpass.monetized,
+      },
+      {
+        title: "Add NordProtect if identity data was exposed",
+        body: "A stronger fit when the breach involved your SSN, address, phone number, credit data, or other personal information.",
+        href: affiliates.nordprotect.url,
+        cta: "Try NordProtect",
+        external: true,
+        monetized: affiliates.nordprotect.monetized,
+      },
+      {
+        title: "Freeze your credit if new-account fraud is possible",
+        body: "Use the free credit-freeze steps before spending on extra monitoring if the breach exposed sensitive identity details.",
+        href: "/blog/how-to-freeze-your-credit",
+        cta: "Review freeze steps",
+      },
+    ],
+    followUpTitle: "Finish the cleanup",
+    followUps: [
+      {
+        title: "Choose a password manager",
+        body: "Compare the main manager options before replacing reused credentials.",
+        href: "/blog/password-managers",
+        cta: "Open manager guide",
+      },
+      {
+        title: "Review identity protection tools",
+        body: "Use this if the breach involved more than just an email and password.",
+        href: "/blog/best-identity-theft-protection-2026",
+        cta: "Compare monitoring options",
+      },
+    ],
+  },
+  "identity-theft-statistics-2026": {
+    eyebrow: "Risk to action",
+    title: "Turn the identity-risk data into a prevention stack",
+    summary: "The useful takeaway from identity-theft statistics is practical: reduce account takeover risk, block new-account fraud, and monitor for exposed personal data.",
+    cards: [
+      {
+        title: "Start with NordProtect for monitoring and recovery support",
+        body: "Best fit if your main concern is exposed personal data, dark-web alerts, or help responding to identity fraud.",
+        href: affiliates.nordprotect.url,
+        cta: "Try NordProtect",
+        external: true,
+        monetized: affiliates.nordprotect.monetized,
+      },
+      {
+        title: "Use NordPass to reduce account takeover risk",
+        body: "Unique passwords prevent one leaked login from turning into access to your email, bank, shopping, or work accounts.",
+        href: affiliates.nordpass.url,
+        cta: "Try NordPass",
+        external: true,
+        monetized: affiliates.nordpass.monetized,
+      },
+      {
+        title: "Freeze your credit for the strongest free defense",
+        body: "A freeze is still one of the highest-impact steps against new credit accounts opened in your name.",
+        href: "/blog/how-to-freeze-your-credit",
+        cta: "Freeze credit safely",
+      },
+    ],
+    followUpTitle: "Build the prevention routine",
+    followUps: [
+      {
+        title: "Recover from active identity theft",
+        body: "Use this if fraud has already started or you found accounts you did not open.",
+        href: "/blog/how-to-recover-from-identity-theft",
+        cta: "Open recovery checklist",
+      },
+      {
+        title: "Review the full security stack",
+        body: "Compare password, VPN, antivirus, and identity-protection options in one place.",
+        href: "/recommended-tools",
+        cta: "See recommended tools",
+      },
+    ],
+  },
+  "how-to-freeze-your-credit": {
+    eyebrow: "Freeze plus monitor",
+    title: "A credit freeze blocks new accounts; monitoring catches exposure",
+    summary: "Freezing credit is the right first move for new-account fraud risk. Pair it with password cleanup and monitoring when your personal data is already circulating.",
+    cards: [
+      {
+        title: "Freeze first if fraud is not active yet",
+        body: "Use the bureau freeze process before buying anything. It directly blocks most new-credit attempts.",
+        href: "/blog/how-to-freeze-your-credit",
+        cta: "Follow freeze steps",
+      },
+      {
+        title: "Use NordProtect for alerts and recovery support",
+        body: "Best if you want ongoing monitoring after a breach or want help spotting new exposure quickly.",
+        href: affiliates.nordprotect.url,
+        cta: "Try NordProtect",
+        external: true,
+        monetized: affiliates.nordprotect.monetized,
+      },
+      {
+        title: "Use NordPass to lock down exposed accounts",
+        body: "A freeze protects credit files. A manager helps prevent credential reuse from spreading damage across accounts.",
+        href: affiliates.nordpass.url,
+        cta: "Try NordPass",
+        external: true,
+        monetized: affiliates.nordpass.monetized,
+      },
+    ],
+    followUpTitle: "Cover the other failure modes",
+    followUps: [
+      {
+        title: "Review identity protection",
+        body: "Compare monitoring and recovery options after the freeze is in place.",
+        href: "/blog/best-identity-theft-protection-2026",
+        cta: "Compare tools",
+      },
+      {
+        title: "Handle a live incident",
+        body: "Use the recovery checklist if you already see fraudulent accounts, charges, or mail.",
+        href: "/blog/how-to-recover-from-identity-theft",
+        cta: "Start recovery",
       },
     ],
   },
