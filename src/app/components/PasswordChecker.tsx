@@ -40,6 +40,53 @@ function calculateStrength(pwd: string): { score: number; label: string } {
   return { score: 5, label: 'Very Strong' };
 }
 
+function detectWeakPatterns(pwd: string): string[] {
+  const warnings: string[] = [];
+  const lowerPwd = pwd.toLowerCase();
+
+  // (a) Common passwords
+  const commonPasswords = ['123456', 'password', 'qwerty', 'abc123', 'letmein', 'admin', 'welcome', 'monkey', 'dragon', 'football'];
+  for (const commonPwd of commonPasswords) {
+    if (lowerPwd.includes(commonPwd)) {
+      warnings.push(`Contains common pattern: "${commonPwd}"`);
+      break; // Only need one common password warning
+    }
+  }
+
+  // (b) 3+ identical characters in a row
+  if (/(.)\1{2,}/.test(pwd)) {
+    warnings.push('Contains 3+ identical characters in a row');
+  }
+
+  // (c) 4+ character ascending/descending run of digits or letters
+  for (let i = 0; i <= pwd.length - 4; i++) {
+    const segment = pwd.substring(i, i + 4);
+    let isAscending = true;
+    let isDescending = true;
+    let isDigits = true;
+    let isLetters = true;
+
+    for (let j = 0; j < segment.length; j++) {
+      const charCode = segment.charCodeAt(j);
+      if (j > 0) {
+        const prevCharCode = segment.charCodeAt(j - 1);
+        if (charCode !== prevCharCode + 1) isAscending = false;
+        if (charCode !== prevCharCode - 1) isDescending = false;
+      }
+
+      if (!/\d/.test(segment[j])) isDigits = false;
+      if (!/[a-zA-Z]/.test(segment[j])) isLetters = false;
+    }
+
+    if ((isDigits || isLetters) && (isAscending || isDescending)) {
+      warnings.push(`Contains a simple sequence: "${segment}"`);
+      break; // Only need one sequence warning
+    }
+  }
+
+  return warnings;
+}
+
 export default function PasswordChecker() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -47,6 +94,7 @@ export default function PasswordChecker() {
   const [strengthLabel, setStrengthLabel] = useState('');
   const [crackTime, setCrackTime] = useState('');
   const [entropy, setEntropy] = useState(0);
+  const [warnings, setWarnings] = useState<string[]>([]);
 
   const getStrengthColor = useCallback(() => {
     const colors = ['#ff6b6b', '#ff6b6b', '#feca57', '#feca57', '#26de81', '#26de81'];
@@ -56,12 +104,14 @@ export default function PasswordChecker() {
   const updatePassword = (nextPassword: string) => {
     const nextEntropy = calculateEntropy(nextPassword);
     const nextStrength = calculateStrength(nextPassword);
+    const nextWarnings = detectWeakPatterns(nextPassword);
 
     setPassword(nextPassword);
     setEntropy(nextEntropy);
     setStrengthScore(nextStrength.score);
     setStrengthLabel(nextStrength.label);
     setCrackTime(estimateCrackTime(nextEntropy));
+    setWarnings(nextWarnings);
   };
 
   return (
@@ -115,6 +165,15 @@ export default function PasswordChecker() {
               Estimated crack time: <span className="text-slate-700">{crackTime}</span>
             </div>
           </div>
+          {password.length > 0 && warnings.length > 0 && (
+            <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 mt-3">
+              {warnings.map((warning, index) => (
+                <span key={index} className="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">
+                  ⚠️ {warning}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>
