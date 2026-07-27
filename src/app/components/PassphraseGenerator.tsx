@@ -1,5 +1,7 @@
 'use client';
 import { useState, useCallback, useEffect } from 'react';
+import { generateSecurePassphrase } from '@/lib/password-generator';
+import { trackFunnelEvent } from '@/lib/analytics';
 
 const WORDS = [
   'apple','brave','cloud','dance','eagle','flame','grace','honor','ivory','joker',
@@ -18,12 +20,6 @@ const WORDS = [
   'equip','fixed','grant','handy','image','jumbo','kinky','lucid','muted','novel',
 ];
 
-function getRandWord(): string {
-  const arr = new Uint32Array(1);
-  crypto.getRandomValues(arr);
-  return WORDS[arr[0] % WORDS.length];
-}
-
 export default function PassphraseGenerator() {
   const [wordCount, setWordCount] = useState(4);
   const [separator, setSeparator] = useState('-');
@@ -31,17 +27,17 @@ export default function PassphraseGenerator() {
   const [copied, setCopied] = useState(false);
 
   const generate = useCallback(() => {
-    const words: string[] = [];
-    for (let i = 0; i < wordCount; i++) words.push(getRandWord());
-    setPassphrase(words.join(separator));
+    setPassphrase(generateSecurePassphrase(WORDS, wordCount, separator));
+    trackFunnelEvent({ action: 'generator_success', page: '/', placement: 'passphrase_generator', generator: 'passphrase' });
   }, [wordCount, separator]);
 
-  const copy = async () => {
+  const copy = useCallback(async () => {
     if (!passphrase) return;
     await navigator.clipboard.writeText(passphrase);
+    trackFunnelEvent({ action: 'copy', page: '/', placement: 'passphrase_generator', generator: 'passphrase' });
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
+  }, [passphrase]);
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
@@ -93,7 +89,10 @@ export default function PassphraseGenerator() {
               className={`bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-sm transition flex-1 sm:flex-none ${copied ? 'bg-green-200' : ''}`}>
               Copy Password
             </button>
-            <button onClick={generate}
+            <button onClick={() => {
+              trackFunnelEvent({ action: 'regenerate', page: '/', placement: 'passphrase_generator', generator: 'passphrase' });
+              generate();
+            }}
               aria-label="Generate new passphrase"
               className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-5 py-2.5 rounded-lg text-sm transition flex-1 sm:flex-none">
               Generate New
@@ -116,7 +115,7 @@ export default function PassphraseGenerator() {
 
       {passphrase && (
         <p id="passphrase-value" className="text-xs text-slate-400">
-          Entropy: ~{Math.round(wordCount * Math.log2(WORDS.length))} bits · Crack time at 10B guesses/sec: centuries+
+          Rough theoretical entropy estimate: ~{Math.round(wordCount * Math.log2(WORDS.length))} bits. This assumes independent random word choices; do not substitute your own predictable words.
         </p>
       )}
     </div>

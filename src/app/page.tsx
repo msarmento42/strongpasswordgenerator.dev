@@ -9,6 +9,9 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import Script from 'next/script'; // Added Script import
 import { Suspense, useState, useEffect, useCallback } from 'react';
+import { generateSecurePassword } from '@/lib/password-generator';
+import { removeLegacyPasswordHistory } from '@/lib/privacy';
+import { trackFunnelEvent } from '@/lib/analytics';
 
 interface PasswordOptions {
   length: number;
@@ -17,19 +20,6 @@ interface PasswordOptions {
   numbers: boolean;
   symbols: boolean;
 }
-
-interface PasswordHistory {
-  password: string;
-  timestamp: Date | string;
-  strength: string;
-}
-
-const CHAR_SETS = {
-  uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-  lowercase: 'abcdefghijklmnopqrstuvwxyz',
-  numbers: '0123456789',
-  symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
-};
 
 const DEFAULT_OPTIONS: PasswordOptions = {
   length: 20,
@@ -86,7 +76,7 @@ const FAQ_ITEMS = [
   },
   {
     question: "What makes a password strong?",
-    answer: "A strong password is at least 16 characters long, combines uppercase and lowercase letters, numbers, and symbols, and is unique to each account."
+    answer: "Prefer a long, unique password produced by a cryptographically secure random generator. Character variety helps only when the password is not based on a predictable word or pattern."
   },
   {
     question: "How many passwords should I generate before using one?",
@@ -117,7 +107,6 @@ function PasswordGeneratorPage() {
   const [strengthLabel, setStrengthLabel] = useState('');
   const [entropy, setEntropy] = useState(0);
   const [crackTime, setCrackTime] = useState('');
-  const [history, setHistory] = useState<PasswordHistory[]>([]);
   const [copied, setCopied] = useState(false);
 
   // Effect to save options to localStorage whenever they change
@@ -160,31 +149,15 @@ function PasswordGeneratorPage() {
     const entropy = calculateEntropy(pwd);
 
     if (pwd.length === 0) return { score: 0, label: '' };
-    if (entropy < 28) return { score: 1, label: 'Very Weak' };
-    if (entropy < 36) return { score: 2, label: 'Weak' };
-    if (entropy < 60) return { score: 3, label: 'Fair' };
-    if (entropy < 80) return { score: 4, label: 'Strong' };
-    return { score: 5, label: 'Very Strong' };
+    if (entropy < 28) return { score: 1, label: 'Very low estimate' };
+    if (entropy < 36) return { score: 2, label: 'Low estimate' };
+    if (entropy < 60) return { score: 3, label: 'Moderate estimate' };
+    if (entropy < 80) return { score: 4, label: 'High estimate' };
+    return { score: 5, label: 'Very high estimate' };
   }, [calculateEntropy]);
 
   const generatePassword = useCallback(() => {
-    let charset = '';
-    if (options.uppercase) charset += CHAR_SETS.uppercase;
-    if (options.lowercase) charset += CHAR_SETS.lowercase;
-    if (options.numbers) charset += CHAR_SETS.numbers;
-    if (options.symbols) charset += CHAR_SETS.symbols;
-
-    if (charset === '') {
-      charset = CHAR_SETS.lowercase;
-    }
-
-    let pwd = '';
-    const array = new Uint32Array(options.length);
-    crypto.getRandomValues(array);
-
-    for (let i = 0; i < options.length; i++) {
-      pwd += charset[array[i] % charset.length];
-    }
+    const pwd = generateSecurePassword(options);
 
     setPassword(pwd);
 
@@ -194,40 +167,19 @@ function PasswordGeneratorPage() {
     setStrengthLabel(strengthResult.label);
     setEntropy(Math.round(entropy));
     setCrackTime(estimateCrackTime(entropy));
-
-    setHistory(prev => {
-      const newHistory = [
-        { password: pwd, timestamp: new Date(), strength: strengthResult.label },
-        ...prev.slice(0, 9)
-      ];
-      localStorage.setItem('passwordHistory', JSON.stringify(newHistory));
-      return newHistory;
+    trackFunnelEvent({
+      action: 'generator_success',
+      page: '/',
+      placement: 'primary_generator',
+      generator: 'password',
     });
   }, [options, calculateEntropy, calculateStrength, estimateCrackTime]);
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(password);
+    trackFunnelEvent({ action: 'copy', page: '/', placement: 'primary_generator', generator: 'password' });
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
-
-  const exportHistory = () => {
-    const text = history
-      .map((item) => {
-        const timestamp = new Date(item.timestamp).toLocaleString();
-        return `[${timestamp}] ${item.password} (${item.strength})`;
-      })
-      .join('\n');
-
-    const blob = new Blob([text], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'password-history.txt';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
   };
 
   const getStrengthColor = () => {
@@ -237,10 +189,7 @@ function PasswordGeneratorPage() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      const saved = localStorage.getItem('passwordHistory');
-      if (saved) {
-        setHistory(JSON.parse(saved));
-      }
+      removeLegacyPasswordHistory(localStorage);
       generatePassword();
     }, 0);
 
@@ -258,6 +207,7 @@ function PasswordGeneratorPage() {
 
       if (event.code === 'Space') {
         event.preventDefault(); // Prevent page scroll
+        trackFunnelEvent({ action: 'regenerate', page: '/', placement: 'keyboard_shortcut', generator: 'password' });
         generatePassword();
       } else if (
         event.key.toLowerCase() === 'c' &&
@@ -265,6 +215,7 @@ function PasswordGeneratorPage() {
       ) {
         event.preventDefault();
         navigator.clipboard.writeText(password);
+        trackFunnelEvent({ action: 'copy', page: '/', placement: 'keyboard_shortcut', generator: 'password' });
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       }
@@ -379,7 +330,10 @@ function PasswordGeneratorPage() {
               symbols={options.symbols}
             />
             <button
-              onClick={generatePassword}
+              onClick={() => {
+                trackFunnelEvent({ action: 'regenerate', page: '/', placement: 'primary_generator', generator: 'password' });
+                generatePassword();
+              }}
               className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-6 py-3 rounded-lg transition"
             >
               🎲 Generate
@@ -408,7 +362,8 @@ function PasswordGeneratorPage() {
 
           {password && (
             <div className="text-sm text-slate-500">
-              ⏱️ Estimated crack time: <span className="text-white">{crackTime}</span>
+              ⏱️ Rough theoretical crack-time estimate: <span className="text-slate-700">{crackTime}</span>
+              <span className="block text-xs text-slate-400">Assumes random generation and 10 billion guesses/second; patterns, reuse, breaches, and attacker knowledge can make a password much easier to guess.</span>
             </div>
           )}
         </div>
@@ -455,43 +410,6 @@ function PasswordGeneratorPage() {
           </div>
         </div>
 
-        {/* Password History */}
-        {history.length > 0 && (
-          <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold">📝 Password History</h2>
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={exportHistory}
-                  className="text-sm font-medium text-indigo-600 hover:text-indigo-800"
-                >
-                  Download history
-                </button>
-                <button
-                  onClick={() => {
-                    setHistory([]);
-                    localStorage.removeItem('passwordHistory');
-                  }}
-                  className="text-sm text-slate-500 hover:text-white"
-                >
-                  Clear
-                </button>
-              </div>
-            </div>
-            <div className="space-y-2 max-h-48 overflow-y-auto">
-              {history.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex justify-between items-center bg-slate-50 px-4 py-2 rounded font-mono text-sm"
-                >
-                  <span className="text-indigo-600 truncate max-w-xs">{item.password}</span>
-                  <span className="text-slate-500 text-xs">{item.strength}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Password Security Tips */}
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
           <h2 className="text-lg font-semibold mb-4">🛡️ Password Security Tips</h2>
@@ -526,7 +444,7 @@ function PasswordGeneratorPage() {
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
           <h2 className="text-lg font-semibold mb-4">📊 What is Password Entropy?</h2>
           <div className="text-slate-500 space-y-3">
-            <p>Password entropy measures how hard a password is to guess. It&apos;s measured in <strong className="text-white">bits</strong> - the higher the number, the stronger the password.</p>
+            <p>This entropy display is a rough theoretical estimate for randomly generated passwords. It does not detect words, patterns, reuse, leaks, or personal information, so it must not be treated as a guarantee.</p>
             <ul className="list-disc list-inside space-y-2 text-sm">
               <li><span className="text-[#ff6b6b]">Less than 28 bits:</span> Very Weak - Can be cracked instantly</li>
               <li><span className="text-[#feca57]">28-35 bits:</span> Weak - Vulnerable to fast attacks</li>
@@ -534,7 +452,7 @@ function PasswordGeneratorPage() {
               <li><span className="text-[#26de81]">60-79 bits:</span> Strong - Good for most accounts</li>
               <li><span className="text-[#26de81]">80+ bits:</span> Very Strong - Excellent security</li>
             </ul>
-            <p className="text-sm mt-4">This generator creates passwords with <strong className="text-white">80+ bits of entropy</strong> by default - practically uncrackable!</p>
+            <p className="text-sm mt-4">Long, unique, randomly generated passwords are generally harder to guess. Store each one in a reputable password manager and enable multi-factor authentication where available.</p>
           </div>
         </div>
 
@@ -543,7 +461,8 @@ function PasswordGeneratorPage() {
           <h2 className="text-lg font-semibold mb-4">ℹ️ About This Tool</h2>
           <div className="text-slate-500 text-sm space-y-2">
             <p>This password generator creates cryptographically secure passwords using your browser&apos;s built-in <strong className="text-white">crypto.getRandomValues()</strong> API - the same technology used by password managers and security professionals.</p>
-            <p>All passwords are generated <strong className="text-white">locally on your device</strong>. Nothing is ever sent to any server.</p>
+            <p>Generation happens <strong>locally on your device</strong>. Generated passwords are not sent to us, saved to local storage, or retained in a password history.</p>
+            <p>Strength and crack-time labels are theoretical estimates, not security guarantees. They cannot recognize every predictable pattern or account for leaks and reuse.</p>
           </div>
         </div>
 
