@@ -5,8 +5,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://strongpasswordgenerator.dev"),
   title: "Strong Password Generator | Free Security Suite",
-  description: "Free password generator with advanced security analysis. Generate cryptographically secure passwords, check strength, estimate crack time, and monitor password health.",
-  keywords: "password generator, password strength, security checker, password health, cryptographically secure, password entropy, crack time calculator",
+  description: "Generate random passwords locally with Web Crypto and review clearly labeled theoretical strength estimates.",
+  keywords: "password generator, password strength estimate, cryptographically secure, password entropy, crack time estimate",
   alternates: {
     canonical: "/",
   },
@@ -69,7 +69,7 @@ export default function RootLayout({
               "@type": "WebApplication",
               "name": "Strong Password Generator",
               "url": "https://strongpasswordgenerator.dev",
-              "description": "Free online password generator with cryptographic security analysis, strength checking, breach monitoring, and password health dashboard.",
+              "description": "Free online password generator that uses Web Crypto locally and provides theoretical strength estimates.",
               "applicationCategory": "SecurityApplication",
               "operatingSystem": "Web",
               "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },

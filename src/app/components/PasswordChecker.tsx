@@ -33,11 +33,11 @@ function calculateStrength(pwd: string): { score: number; label: string } {
   const entropy = calculateEntropy(pwd);
 
   if (pwd.length === 0) return { score: 0, label: '' };
-  if (entropy < 28) return { score: 1, label: 'Very Weak' };
-  if (entropy < 36) return { score: 2, label: 'Weak' };
-  if (entropy < 60) return { score: 3, label: 'Fair' };
-  if (entropy < 80) return { score: 4, label: 'Strong' };
-  return { score: 5, label: 'Very Strong' };
+  if (entropy < 28) return { score: 1, label: 'Very low estimate' };
+  if (entropy < 36) return { score: 2, label: 'Low estimate' };
+  if (entropy < 60) return { score: 3, label: 'Moderate estimate' };
+  if (entropy < 80) return { score: 4, label: 'High estimate' };
+  return { score: 5, label: 'Very high estimate' };
 }
 
 export default function PasswordChecker() {
@@ -98,7 +98,7 @@ export default function PasswordChecker() {
       {password.length > 0 && (
         <div aria-live="polite" className="space-y-3 rounded-xl border border-slate-100 bg-slate-50 p-4">
           <div className="flex justify-between text-sm">
-            <span className="text-slate-500">Strength:</span>
+            <span className="text-slate-500">Theoretical strength estimate:</span>
             <span style={{ color: getStrengthColor() }}>{strengthLabel}</span>
           </div>
           <div role="progressbar" aria-valuenow={strengthScore} aria-valuemin={0} aria-valuemax={5} aria-valuetext={strengthLabel || 'No password entered'} className="h-2 bg-slate-50 rounded-full overflow-hidden">
@@ -112,9 +112,10 @@ export default function PasswordChecker() {
               Entropy: <span className="text-slate-700">{Math.round(entropy)} bits</span>
             </div>
             <div>
-              Estimated crack time: <span className="text-slate-700">{crackTime}</span>
+              Rough theoretical crack time: <span className="text-slate-700">{crackTime}</span>
             </div>
           </div>
+          <p className="text-xs text-slate-400">This calculation assumes random character selection and 10 billion guesses per second. It cannot detect every word, pattern, reused password, breach, or attacker-specific clue.</p>
         </div>
       )}
     </div>

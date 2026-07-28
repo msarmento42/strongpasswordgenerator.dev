@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description: 'Learn about StrongPasswordGenerator.dev — a free tool to generate cryptographically secure passwords and learn password security best practices.',
     images: [
       {
-        url: 'https://strongpasswordgenerator.dev/og-image.png',
+        url: 'https://strongpasswordgenerator.dev/og-image.svg',
         width: 1200,
         height: 630,
         alt: 'Strong Password Generator - About',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About | Strong Password Generator',
     description: 'Learn about StrongPasswordGenerator.dev — a free tool to generate cryptographically secure passwords and learn password security best practices.',
-    images: ['https://strongpasswordgenerator.dev/og-image.png'],
+    images: ['https://strongpasswordgenerator.dev/og-image.svg'],
   },
 };
 
@@ -145,8 +145,8 @@ export default function AboutPage() {
           <h2 className="text-xl font-bold text-slate-800 mb-4">How the Generator Works</h2>
           <div className="space-y-4 text-slate-600 leading-relaxed">
             <p>Passwords are generated using <strong>cryptographically secure randomness</strong> from the browser&apos;s built-in <code className="bg-slate-100 px-1 rounded text-indigo-600">crypto.getRandomValues()</code> API — the same standard used by secure applications worldwide.</p>
-            <p>Strength is calculated using <strong>Shannon entropy</strong>: the number of bits of randomness in your password given its character set and length. Crack time estimates assume a dedicated attacker running 10 billion guesses per second.</p>
-            <p>Password history is stored only in your browser&apos;s <code className="bg-slate-100 px-1 rounded text-indigo-600">localStorage</code> — it never leaves your device and is cleared when you clear browser data.</p>
+            <p>Strength and crack-time labels are rough theoretical estimates based on length, detected character classes, and an assumed 10 billion guesses per second. They cannot identify every predictable pattern, reused password, leak, or attacker-specific clue.</p>
+            <p>Generated passwords are not persisted or placed in a password history. The site stores only generator preferences, such as length and enabled character classes, in your browser&apos;s <code className="bg-slate-100 px-1 rounded text-indigo-600">localStorage</code>.</p>
           </div>
         </div>
 

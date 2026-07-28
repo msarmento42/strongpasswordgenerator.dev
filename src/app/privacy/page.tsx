@@ -49,7 +49,7 @@ export default function PrivacyPage() {
                 name: 'Do you see the passwords I generate?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'No, we never see the passwords you generate. Password generation happens entirely in your browser, using your browser\'s crypto.getRandomValues() API. Generated passwords are never transmitted to our servers, never logged, and never stored anywhere except optionally in your own browser\'s localStorage.',
+                  text: 'No. Password generation happens entirely in your browser using the Web Crypto API. Generated passwords are not transmitted to us, logged, or saved in localStorage. The site removes legacy passwordHistory data when the generator loads.',
                 },
               },
               {
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
                 name: 'How do you use cookies and local storage?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'We use browser localStorage to save your password generator preferences (length, character options) and password history between sessions. This data stays on your device and is never sent to us. We may also use cookies for analytics purposes, which you can disable in your browser settings.',
+                  text: 'We use browser localStorage only to save generator preferences such as length and character options. Generated passwords are not stored. Analytics and advertising providers may use cookies, subject to their policies and your browser controls.',
                 },
               },
             ],
@@ -105,7 +105,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-3">The Short Version</h2>
               <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-sm">
-                <p>We never see the passwords you generate. Password generation happens entirely in your browser. We collect standard analytics (page views, referrers) but no personally identifiable information. Password history is stored locally on your device only.</p>
+                <p>We never see the passwords you generate. Generation happens entirely in your browser, and generated values are not persisted. We collect aggregate site and funnel analytics, but those events never include generated or checked passwords.</p>
               </div>
             </section>
 
@@ -114,14 +114,14 @@ export default function PrivacyPage() {
               <ul className="list-disc list-inside space-y-2 text-slate-600 leading-relaxed">
                 <li><strong>Your Passwords are Private:</strong> All password generation happens directly in your browser and is never sent to our servers.</li>
                 <li><strong>Minimal Data Collection:</strong> We collect non-identifying analytics data (like page views) but no personal information unless you contact us directly.</li>
-                <li><strong>Local Storage for Preferences:</strong> Your password history and generator settings are saved only on your device using browser local storage.</li>
+                <li><strong>Local Storage for Preferences:</strong> Generator settings are saved on your device. Generated passwords are not saved, and legacy password-history data is removed when the generator loads.</li>
                 <li><strong>Transparency on Third-Parties:</strong> We use services like Google Analytics and AdSense, and some links are affiliates, all disclosed in detail.</li>
               </ul>
             </section>
 
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-3">Password Generation</h2>
-              <p>All passwords are generated client-side using your browser&apos;s <code className="bg-slate-100 px-1 rounded text-indigo-700">crypto.getRandomValues()</code> API. Generated passwords are never transmitted to our servers, never logged, and never stored anywhere except optionally in your own browser&apos;s localStorage.</p>
+              <p>All passwords are generated client-side using your browser&apos;s <code className="bg-slate-100 px-1 rounded text-indigo-700">crypto.getRandomValues()</code> API. Generated passwords are not transmitted to us, logged, or saved in localStorage. When the generator loads, it removes any <code className="bg-slate-100 px-1 rounded text-indigo-700">passwordHistory</code> data created by an earlier version.</p>
             </section>
 
             <section>
@@ -131,15 +131,20 @@ export default function PrivacyPage() {
                 <li>Page views and general site analytics (via Google Analytics or hosting-provider analytics)</li>
                 <li>Referring URLs and general geographic region (country-level)</li>
                 <li>Browser type and device type (for compatibility)</li>
-                <li>Affiliate and outbound link click events, reviewed in aggregate</li>
+                <li>Generator success, copy, regenerate, recommendation view, affiliate click, and newsletter interaction events, with page and placement context</li>
               </ul>
               <p className="mt-3 text-sm">We do not collect names, email addresses, or any personally identifiable information unless you choose to contact us.</p>
             </section>
 
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-3">Cookies & Local Storage</h2>
-              <p>We use browser localStorage to save your password generator preferences (length, character options) and password history between sessions. This data stays on your device and is never sent to us. You can clear it at any time by clearing your browser&apos;s site data.</p>
+              <p>We use browser localStorage to save only password generator preferences such as length and character options. We do not save generated passwords or a password history. You can remove preferences by clearing this site&apos;s browser data.</p>
               <p className="mt-2">We may use cookies for analytics purposes. You can disable cookies in your browser settings.</p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-bold text-slate-800 mb-3">Funnel Analytics</h2>
+              <p>We measure whether a generator succeeds and whether visitors copy, regenerate, view a recommendation, follow an affiliate link, or interact with the newsletter form. Event payloads include the action, page, placement, and—when relevant—the generator type or affiliate partner. They never include a generated password, passphrase, or password-checker input.</p>
             </section>
 
             <section>

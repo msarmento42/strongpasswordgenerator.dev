@@ -23,6 +23,15 @@ export default function Analytics() {
       ) : null}
       <Script id="income-click-tracking" strategy="afterInteractive">
         {`
+          function funnelEvent(action, placement, extra) {
+            if (!window.gtag) return;
+            window.gtag('event', action, Object.assign({
+              action: action,
+              page: window.location.pathname,
+              placement: placement
+            }, extra || {}));
+          }
+
           document.addEventListener('click', function(event) {
             var link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
             if (!link || !window.gtag) return;
@@ -45,13 +54,33 @@ export default function Analytics() {
             else if (/awin1/i.test(href)) partner = 'awin';
 
             if (isAffiliate || isExternal) {
-              window.gtag('event', isAffiliate ? 'affiliate_click' : 'outbound_click', {
-                link_url: link.href,
-                link_domain: url.hostname,
-                affiliate_partner: isAffiliate ? partner : undefined,
-                link_text: (link.textContent || '').trim().slice(0, 100),
-                page_location: window.location.href
-              });
+              var placement = link.closest('main') ? 'content' : link.closest('footer') ? 'footer' : 'site_navigation';
+              if (isAffiliate) {
+                funnelEvent('affiliate_click', placement, { partner: partner });
+              } else {
+                funnelEvent('outbound_click', placement, { link_domain: url.hostname });
+              }
+            }
+          });
+
+          var seenRecommendations = new WeakSet();
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (!entry.isIntersecting || seenRecommendations.has(entry.target)) return;
+              seenRecommendations.add(entry.target);
+              var isNewsletter = entry.target.tagName === 'IFRAME';
+              funnelEvent(isNewsletter ? 'newsletter_view' : 'recommendation_view', isNewsletter ? 'homepage_newsletter' : 'affiliate_cta');
+            });
+          }, { threshold: 0.5 });
+
+          document.querySelectorAll('a[rel~="sponsored"], iframe[title="Security newsletter signup"]').forEach(function(element) {
+            observer.observe(element);
+          });
+
+          window.addEventListener('blur', function() {
+            var active = document.activeElement;
+            if (active && active.tagName === 'IFRAME' && active.title === 'Security newsletter signup') {
+              funnelEvent('newsletter_action', 'homepage_newsletter');
             }
           });
         `}
