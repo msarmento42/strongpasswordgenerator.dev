@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { createBrowserFunnelScript } from "@/lib/analytics";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -23,9 +24,10 @@ export default function Analytics() {
       ) : null}
       <Script id="income-click-tracking" strategy="afterInteractive">
         {`
+          ${createBrowserFunnelScript()}
+
           function funnelEvent(action, placement, extra) {
-            if (!window.gtag) return;
-            window.gtag('event', action, Object.assign({
+            return window.spgTrackFunnelEvent(Object.assign({
               action: action,
               page: window.location.pathname,
               placement: placement
@@ -34,7 +36,7 @@ export default function Analytics() {
 
           document.addEventListener('click', function(event) {
             var link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
-            if (!link || !window.gtag) return;
+            if (!link) return;
 
             var url;
             try {
@@ -57,8 +59,6 @@ export default function Analytics() {
               var placement = link.closest('main') ? 'content' : link.closest('footer') ? 'footer' : 'site_navigation';
               if (isAffiliate) {
                 funnelEvent('affiliate_click', placement, { partner: partner });
-              } else {
-                funnelEvent('outbound_click', placement, { link_domain: url.hostname });
               }
             }
           });
