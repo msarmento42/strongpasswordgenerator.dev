@@ -40,7 +40,7 @@ export default function EditorialPolicyPage() {
                 "name": "How does StrongPasswordGenerator.dev research articles?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Security guides are based on vendor documentation, public security guidance, breach-response best practices, and hands-on evaluation where applicable. We prioritize advice that a reader can apply immediately: unique passwords, password managers, two-factor authentication, passkeys, account recovery, and breach monitoring."
+                  "text": "Security guides draw on sources such as vendor documentation and public security guidance. Source links are included in articles when they help readers verify a claim or learn more."
                 }
               },
               {
@@ -48,7 +48,7 @@ export default function EditorialPolicyPage() {
                 "name": "How does StrongPasswordGenerator.dev review recommendations?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Tool recommendations consider security model, reputation, pricing, ease of use, cross-device support, export options, and fit for the reader's situation. We avoid recommending tools solely because they pay commissions."
+                  "text": "Tool comparisons may consider documented security features, pricing, platform support, export options, and fit for the reader's situation. Articles identify affiliate links where they appear."
                 }
               },
               {
@@ -56,7 +56,7 @@ export default function EditorialPolicyPage() {
                 "name": "How often does StrongPasswordGenerator.dev update content?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "We review commercially important pages more often than evergreen explainers, especially when pricing, feature limits, or vendor positioning changes. When a recommendation meaningfully changes, we update the page rather than quietly redirecting readers to a different product."
+                  "text": "Articles display their publication date. When an article is materially revised, its repository date can be updated to reflect that change."
                 }
               },
               {
@@ -72,7 +72,7 @@ export default function EditorialPolicyPage() {
                 "name": "What kind of content does StrongPasswordGenerator.dev avoid publishing?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "We avoid publishing filler pages, exaggerated scare tactics, fake urgency, or recommendations that exist only to monetize search traffic. If a product is not a good fit for the reader's situation, we would rather point them to a different guide than force a weak recommendation."
+                  "text": "Our editorial standard is to publish practical security guidance in plain language and to distinguish sponsored links from ordinary editorial references."
                 }
               },
               {
@@ -128,25 +128,16 @@ export default function EditorialPolicyPage() {
           <h1 className="text-3xl font-bold text-slate-800 mb-4">Editorial Policy</h1>
           <p className="text-slate-600 leading-relaxed mb-6">
             StrongPasswordGenerator.dev publishes practical password security guidance for everyday users. Our goal is to help readers make safer account-security decisions without hype, fear tactics, or unnecessary complexity.
-          </p>          <section className="bg-blue-50 p-6 rounded-2xl border border-blue-100 mb-6">
-            <h2 className="text-xl font-bold text-slate-800 mb-3">Key Takeaways</h2>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>Our content is based on thorough research, including vendor documentation and security best practices, prioritizing actionable advice for users.</li>
-              <li>Tool recommendations are chosen for their security, reputation, and usability, not solely for affiliate commissions.</li>
-              <li>We frequently review and update content, especially for commercially important pages, to ensure accuracy and relevance.</li>
-              <li>Some links are affiliate links, which may earn us a commission at no extra cost to you, helping to keep our resources free.</li>
-              <li>We avoid scare tactics, fake urgency, or content published solely for monetization, focusing instead on genuine value.</li>
-            </ul>
-          </section>
+          </p>
 
           <section className="bg-blue-50 p-6 rounded-2xl border border-blue-100 mb-6">
             <h2 className="text-xl font-bold text-slate-800 mb-3">Key Takeaways</h2>
             <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>Our content is based on thorough research, including vendor documentation and security best practices, prioritizing actionable advice for users.</li>
-              <li>Tool recommendations are chosen for their security, reputation, and usability, not solely for affiliate commissions.</li>
-              <li>We frequently review and update content, especially for commercially important pages, to ensure accuracy and relevance.</li>
-              <li>Some links are affiliate links, which may earn us a commission at no extra cost to you, helping to keep our resources free.</li>
-              <li>We avoid scare tactics, fake urgency, or content published solely for monetization, focusing instead on genuine value.</li>
+              <li>Articles draw on sources such as vendor documentation and public security guidance.</li>
+              <li>Tool comparisons explain the factors considered and identify affiliate links where they appear.</li>
+              <li>Publication dates come from each article&apos;s repository record rather than the site build time.</li>
+              <li>Some links may earn us a commission at no extra cost to the reader.</li>
+              <li>Readers can report factual concerns or broken links through the contact page.</li>
             </ul>
           </section>
 
@@ -154,21 +145,21 @@ export default function EditorialPolicyPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-2">How We Research Articles</h2>
               <p>
-                Security guides are based on vendor documentation, public security guidance, breach-response best practices, and hands-on evaluation where applicable. We prioritize advice that a reader can apply immediately: unique passwords, password managers, two-factor authentication, passkeys, account recovery, and breach monitoring.
+                Security guides draw on sources such as vendor documentation and public security guidance. We include source links in articles when they help readers verify a claim or learn more.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-2">How We Review Recommendations</h2>
               <p>
-                Tool recommendations consider security model, reputation, pricing, ease of use, cross-device support, export options, and fit for the reader&apos;s situation. We avoid recommending tools solely because they pay commissions.
+                Tool comparisons may consider documented security features, pricing, platform support, export options, and fit for the reader&apos;s situation. Articles identify affiliate links where they appear.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-2">How We Update Content</h2>
               <p>
-                We review commercially important pages more often than evergreen explainers, especially when pricing, feature limits, or vendor positioning changes. When a recommendation meaningfully changes, we update the page rather than quietly redirecting readers to a different product.
+                Articles display their publication date. When an article is materially revised, its repository date can be updated to reflect that change.
               </p>
             </section>
 
@@ -182,7 +173,7 @@ export default function EditorialPolicyPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-2">What We Avoid</h2>
               <p>
-                We avoid publishing filler pages, exaggerated scare tactics, fake urgency, or recommendations that exist only to monetize search traffic. If a product is not a good fit for the reader&apos;s situation, we would rather point them to a different guide than force a weak recommendation.
+                Our editorial standard is to publish practical security guidance in plain language and to distinguish sponsored links from ordinary editorial references.
               </p>
             </section>
 
@@ -199,15 +190,15 @@ export default function EditorialPolicyPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How does StrongPasswordGenerator.dev research articles?</h3>
-                <p className="text-slate-600 leading-relaxed">A: Security guides are based on vendor documentation, public security guidance, breach-response best practices, and hands-on evaluation where applicable. We prioritize advice that a reader can apply immediately: unique passwords, password managers, two-factor authentication, passkeys, account recovery, and breach monitoring.</p>
+                <p className="text-slate-600 leading-relaxed">A: Security guides draw on sources such as vendor documentation and public security guidance. Source links are included when they help readers verify a claim or learn more.</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How does StrongPasswordGenerator.dev review recommendations?</h3>
-                <p className="text-slate-600 leading-relaxed">A: Tool recommendations consider security model, reputation, pricing, ease of use, cross-device support, export options, and fit for the reader&apos;s situation. We avoid recommending tools solely because they pay commissions.</p>
+                <p className="text-slate-600 leading-relaxed">A: Tool comparisons may consider documented security features, pricing, platform support, export options, and fit for the reader&apos;s situation. Articles identify affiliate links where they appear.</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How often does StrongPasswordGenerator.dev update content?</h3>
-                <p className="text-slate-600 leading-relaxed">A: We review commercially important pages more often than evergreen explainers, especially when pricing, feature limits, or vendor positioning changes. When a recommendation meaningfully changes, we update the page rather than quietly redirecting readers to a different product.</p>
+                <p className="text-slate-600 leading-relaxed">A: Articles display their publication date. When an article is materially revised, its repository date can be updated to reflect that change.</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: Does StrongPasswordGenerator.dev use affiliate links?</h3>
@@ -215,7 +206,7 @@ export default function EditorialPolicyPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: What kind of content does StrongPasswordGenerator.dev avoid publishing?</h3>
-                <p className="text-slate-600 leading-relaxed">A: We avoid publishing filler pages, exaggerated scare tactics, fake urgency, or recommendations that exist only to monetize search traffic. If a product is not a good fit for the reader&apos;s situation, we would rather point them to a different guide than force a weak recommendation.</p>
+                <p className="text-slate-600 leading-relaxed">A: Our editorial standard is to publish practical security guidance in plain language and to distinguish sponsored links from ordinary editorial references.</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Q: How can I report corrections or updates to StrongPasswordGenerator.dev?</h3>

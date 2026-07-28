@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import AffiliateCTA from '../../components/AffiliateCTA';
 import MoneyNextStep from '../../components/MoneyNextStep';
-import NordPassCTA from '../../components/NordPassCTA';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import fs from 'fs';
@@ -67,9 +66,7 @@ const nordVpnRecommendedSlugs = new Set([
   'password-security-for-remote-workers',
 ]);
 
-function getAffiliateProduct(post: PostData): 'bitwarden' | 'nordpass' | 'nordvpn' | 'nordprotect' {
-  const topicText = `${post.slug} ${post.category} ${post.tags.join(' ')} ${post.title}`.toLowerCase();
-
+function getAffiliateProduct(post: PostData): 'nordpass' | 'nordvpn' | 'nordprotect' | null {
   if (nordVpnRecommendedSlugs.has(post.slug)) {
     return 'nordvpn';
   }
@@ -78,31 +75,11 @@ function getAffiliateProduct(post: PostData): 'bitwarden' | 'nordpass' | 'nordvp
     return 'nordprotect';
   }
 
-  if (topicText.includes('vpn') || topicText.includes('wifi') || topicText.includes('remote work')) {
-    return 'nordvpn';
-  }
-
-  if (
-    topicText.includes('identity') ||
-    topicText.includes('breach') ||
-    topicText.includes('dark web') ||
-    topicText.includes('credit') ||
-    topicText.includes('hacked')
-  ) {
-    return 'nordprotect';
-  }
-
-  if (
-    topicText.includes('nordpass') ||
-    topicText.includes('password manager') ||
-    topicText.includes('browser autofill') ||
-    topicText.includes('lastpass') ||
-    topicText.includes('dashlane')
-  ) {
+  if (nordPassRecommendedSlugs.has(post.slug)) {
     return 'nordpass';
   }
 
-  return 'nordpass';
+  return null;
 }
 
 export async function generateStaticParams() {
@@ -195,8 +172,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             "datePublished": post.date,
             "dateModified": post.date,
             "author": {
-              "@type": "Person",
+              "@type": "Organization",
               "name": "Strong Password Generator",
+              "url": SITE_URL,
             },
           })
         }}
@@ -221,20 +199,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         />
       )}
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://strongpasswordgenerator.dev" },
-              { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://strongpasswordgenerator.dev/blog" },
-              { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://strongpasswordgenerator.dev/blog/${slug}` },
-            ],
-          })
-        }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -286,14 +250,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     <h3 className="text-sm font-bold text-slate-800">{card.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">{card.body}</p>
                     {card.external ? (
-                      <a
-                        href={card.href}
-                        target="_blank"
-                        rel={card.monetized ? 'noopener noreferrer sponsored' : 'noopener noreferrer'}
-                        className="mt-4 inline-block text-sm font-semibold text-amber-700 hover:underline"
-                      >
-                        {card.cta} →
-                      </a>
+                      <>
+                        {card.monetized && (
+                          <p className="mt-4 text-xs leading-relaxed text-slate-500">
+                            Affiliate disclosure: we may earn a commission if you buy through this link, at no extra cost to you.
+                          </p>
+                        )}
+                        <a
+                          href={card.href}
+                          target="_blank"
+                          rel={card.monetized ? 'noopener noreferrer sponsored' : 'noopener noreferrer'}
+                          className="mt-2 inline-block text-sm font-semibold text-amber-700 hover:underline"
+                        >
+                          {card.cta} →
+                        </a>
+                      </>
                     ) : (
                       <Link href={card.href} className="mt-4 inline-block text-sm font-semibold text-amber-700 hover:underline">
                         {card.cta} →
@@ -305,22 +276,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </section>
           )}
 
-          {nordPassRecommendedSlugs.has(post.slug) && (
-            <div className="my-6">
-              <NordPassCTA />
-            </div>
-          )}
-
           {bitwardenRecommendedSlugs.has(post.slug) && (
             <blockquote className="bg-indigo-50 border-l-4 border-indigo-300 rounded-r-xl p-4 my-6 text-sm text-indigo-900">
-              <strong>Recommended:</strong> We use and recommend{' '}<a
+              <strong>Free option:</strong>{' '}<a
                 href="https://bitwarden.com/?utm_source=strongpasswordgenerator"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold underline hover:text-indigo-700"
               >
                 Bitwarden
-              </a>{' '}— free, open-source, and trusted by millions.
+              </a>{' '}is an open-source password manager with a free plan.
             </blockquote>
           )}
 
@@ -391,9 +356,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </Link>
         </div>
 
-        <div className="mt-8">
-          <AffiliateCTA product={affiliateProduct} />
-        </div>
+        {affiliateProduct && (
+          <div className="mt-8">
+            <p className="mb-2 text-xs leading-relaxed text-slate-500">
+              Affiliate disclosure: we may earn a commission if you buy through this link, at no extra cost to you.
+            </p>
+            <AffiliateCTA product={affiliateProduct} />
+          </div>
+        )}
 
         <div className="mt-4 text-center">
           <Link href="/blog" className="text-sm text-indigo-600 hover:underline">
