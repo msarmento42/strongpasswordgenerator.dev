@@ -9,7 +9,8 @@
     "test": "tsc --noEmit false --incremental false --esModuleInterop true --module commonjs --moduleResolution node --target es2020 --outDir /tmp/spg-issue-435-tests --types node src/lib/password-generator.test.ts src/lib/privacy.test.ts src/lib/analytics.test.ts && node --test /tmp/spg-issue-435-tests/*.test.js",
     "lint": "eslint",
     "check:adsense": "node scripts/check-adsense-readiness.mjs",
-    "audit:content": "node scripts/audit-content-quality.mjs"
+    "audit:content": "node scripts/audit-content-quality.mjs",
+    "audit:urls": "node scripts/audit-url-decisions.mjs"
   },
   "dependencies": {
     "next": "16.1.6",

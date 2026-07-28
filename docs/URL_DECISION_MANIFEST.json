@@ -1,0 +1,1740 @@
+{
+  "schemaVersion": 1,
+  "site": "https://strongpasswordgenerator.dev",
+  "notice": "Proposed classifications only. Production mutation requires a separate approved issue.",
+  "inventory": {
+    "staticSitemapRoutes": 12,
+    "articleRecords": 78,
+    "articleFiles": 78,
+    "totalUrls": 90
+  },
+  "decisionCounts": {
+    "keep": 12,
+    "rewrite": 30,
+    "consolidate-to": 28,
+    "remove": 20
+  },
+  "editorialShortlist": [
+    "/blog/best-password-manager-for-business-2026",
+    "/blog/best-password-manager-for-families-2026",
+    "/blog/best-password-manager-iphone-ios-2026",
+    "/blog/bitwarden-setup-guide",
+    "/blog/bitwarden-vs-1password-2026",
+    "/blog/browser-security-settings",
+    "/blog/credential-stuffing-explained",
+    "/blog/data-breach-what-to-do",
+    "/blog/free-vs-paid-password-managers-2026",
+    "/blog/google-password-manager-review",
+    "/blog/how-to-create-strong-password",
+    "/blog/how-to-share-passwords-safely",
+    "/blog/how-to-spot-fake-websites",
+    "/blog/lastpass-alternatives",
+    "/blog/nordpass-review-2026",
+    "/blog/nordpass-vs-dashlane-2026",
+    "/blog/passkeys-explained",
+    "/blog/passkeys-vs-passwords-2026",
+    "/blog/password-hygiene-for-families",
+    "/blog/password-manager-vs-browser-autofill",
+    "/blog/password-reuse-risks",
+    "/blog/password-security-for-remote-workers",
+    "/blog/password-security-for-seniors",
+    "/blog/public-wifi-security-tips",
+    "/blog/securing-apple-id",
+    "/blog/securing-online-banking",
+    "/blog/securing-social-media-accounts",
+    "/blog/securing-your-email-account",
+    "/blog/two-factor-authentication-guide",
+    "/blog/what-is-phishing-and-how-to-avoid-it"
+  ],
+  "consolidationClusters": [
+    {
+      "name": "business password managers",
+      "destination": "/blog/best-password-manager-for-business-2026",
+      "sources": [
+        "/blog/password-manager-for-business"
+      ]
+    },
+    {
+      "name": "authenticators and 2FA",
+      "destination": "/blog/two-factor-authentication-guide",
+      "sources": [
+        "/blog/google-authenticator-vs-authy",
+        "/blog/mfa-fatigue-attack-explained",
+        "/blog/microsoft-authenticator-guide",
+        "/blog/sim-swapping-protection",
+        "/blog/yubikey-setup-guide"
+      ]
+    },
+    {
+      "name": "breach and identity response",
+      "destination": "/blog/data-breach-what-to-do",
+      "sources": [
+        "/blog/dark-web-monitoring-explained",
+        "/blog/data-broker-opt-out-guide",
+        "/blog/how-to-check-if-youve-been-hacked",
+        "/blog/how-to-freeze-your-credit",
+        "/blog/how-to-recover-from-identity-theft",
+        "/blog/identity-theft-protection-guide",
+        "/blog/identity-theft-statistics-2026"
+      ]
+    },
+    {
+      "name": "VPN and public Wi-Fi",
+      "destination": "/blog/public-wifi-security-tips",
+      "sources": [
+        "/blog/how-to-use-a-vpn-for-privacy",
+        "/blog/vpn-for-remote-work",
+        "/blog/wifi-password-best-practices"
+      ]
+    },
+    {
+      "name": "account-specific security",
+      "destination": "multiple retained account guides",
+      "sources": [
+        "/blog/email-security-best-practices-2026",
+        "/blog/microsoft-account-security-guide",
+        "/blog/securing-facebook-account",
+        "/blog/securing-google-account",
+        "/blog/securing-linkedin-account",
+        "/blog/securing-venmo-cashapp-paypal"
+      ]
+    },
+    {
+      "name": "network and browser security",
+      "destination": "/blog/browser-security-settings",
+      "sources": [
+        "/blog/securing-home-network"
+      ]
+    }
+  ],
+  "stopLoss": {
+    "day30": {
+      "search": "At least 50 organic impressions across retained editorial URLs.",
+      "affiliate": "At least 3 tracked outbound affiliate clicks."
+    },
+    "day60": {
+      "search": "At least 150 organic impressions and 2 organic clicks across retained editorial URLs.",
+      "affiliate": "At least 10 tracked outbound affiliate clicks."
+    },
+    "day90": {
+      "search": "At least 300 organic impressions and 5 organic clicks across retained editorial URLs.",
+      "affiliate": "At least 20 tracked outbound affiliate clicks or 1 attributed conversion."
+    },
+    "action": "If a checkpoint misses both thresholds, stop publishing, diagnose indexing and intent fit, and consolidate or exit the underperforming cluster before investing further."
+  },
+  "urls": [
+    {
+      "url": "/",
+      "routeKind": "utility",
+      "title": "Strong Password Generator",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/about",
+      "routeKind": "trust",
+      "title": "About",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/blog",
+      "routeKind": "hub",
+      "title": "Blog",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/blog/ai-voice-cloning-scams",
+      "routeKind": "article",
+      "title": "AI Voice Cloning Scams: How to Protect Yourself and Your Family",
+      "date": "2026-07-17",
+      "category": "Best Practices",
+      "wordCount": 1363,
+      "internalLinks": 6,
+      "credibleSources": 0,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/android-password-tips",
+      "routeKind": "article",
+      "title": "Android Password Security Tips: How to Lock Down Your Phone and Accounts",
+      "date": "2026-05-17",
+      "category": "Best Practices",
+      "wordCount": 1522,
+      "internalLinks": 3,
+      "credibleSources": 3,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/how-to-create-strong-password",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/antivirus-software-guide",
+      "routeKind": "article",
+      "title": "Antivirus Software Guide 2026: Do You Need It, Which to Choose, and How to Configure It",
+      "date": "2026-06-16",
+      "category": "Best Practices",
+      "wordCount": 1413,
+      "internalLinks": 3,
+      "credibleSources": 5,
+      "affiliateLinks": 6,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/best-antivirus-software-2026",
+      "routeKind": "article",
+      "title": "Best Antivirus Software of 2026: How to Choose the Right Protection",
+      "date": "2026-05-24",
+      "category": "Best Practices",
+      "wordCount": 1473,
+      "internalLinks": 2,
+      "credibleSources": 5,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/best-identity-theft-protection-2026",
+      "routeKind": "article",
+      "title": "Best Identity Theft Protection Services (2026): Compared and Reviewed",
+      "date": "2026-06-12",
+      "category": "Best Practices",
+      "wordCount": 1232,
+      "internalLinks": 5,
+      "credibleSources": 0,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Remove because no retained URL is a genuinely equivalent redirect destination."
+    },
+    {
+      "url": "/blog/best-password-manager-for-business-2026",
+      "routeKind": "article",
+      "title": "Best Password Manager for Small Business and Teams (2026)",
+      "date": "2026-06-12",
+      "category": "Password Managers",
+      "wordCount": 1296,
+      "internalLinks": 6,
+      "credibleSources": 3,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/best-password-manager-for-families-2026",
+      "routeKind": "article",
+      "title": "Best Password Manager for Families in 2026: Shared Vaults, Emergency Access, and Kid-Safe Setup",
+      "date": "2026-07-03",
+      "category": "Password Managers",
+      "wordCount": 1220,
+      "internalLinks": 6,
+      "credibleSources": 4,
+      "affiliateLinks": 5,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/best-password-manager-iphone-ios-2026",
+      "routeKind": "article",
+      "title": "Best Password Manager for iPhone and iOS (2026): Top 5 Compared",
+      "date": "2026-06-16",
+      "category": "Password Managers",
+      "wordCount": 1217,
+      "internalLinks": 5,
+      "credibleSources": 3,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/bitwarden-setup-guide",
+      "routeKind": "article",
+      "title": "Bitwarden Setup Guide: How to Get Started with the Best Free Password Manager",
+      "date": "2026-04-15",
+      "category": "Password Managers",
+      "wordCount": 1616,
+      "internalLinks": 2,
+      "credibleSources": 2,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/bitwarden-vs-1password-2026",
+      "routeKind": "article",
+      "title": "Bitwarden vs 1Password (2026): Which Password Manager Should You Use?",
+      "date": "2026-06-10",
+      "category": "Password Managers",
+      "wordCount": 1310,
+      "internalLinks": 5,
+      "credibleSources": 6,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/browser-security-settings",
+      "routeKind": "article",
+      "title": "Browser Security Settings: The Complete Hardening Guide for Chrome, Firefox, and Safari",
+      "date": "2026-05-21",
+      "category": "Best Practices",
+      "wordCount": 1297,
+      "internalLinks": 5,
+      "credibleSources": 1,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/credential-stuffing-explained",
+      "routeKind": "article",
+      "title": "Credential Stuffing Explained: What It Is and How to Stop It",
+      "date": "2026-06-23",
+      "category": "Password Security",
+      "wordCount": 1534,
+      "internalLinks": 6,
+      "credibleSources": 1,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/dark-web-monitoring-explained",
+      "routeKind": "article",
+      "title": "Dark Web Monitoring Explained: What It Is, How It Works, and Do You Need It?",
+      "date": "2026-05-27",
+      "category": "Best Practices",
+      "wordCount": 1362,
+      "internalLinks": 3,
+      "credibleSources": 0,
+      "affiliateLinks": 5,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/data-breach-what-to-do",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/data-breach-what-to-do",
+      "routeKind": "article",
+      "title": "Data Breach: What to Do Immediately if Your Information Is Exposed",
+      "date": "2026-05-17",
+      "category": "Data Breaches",
+      "wordCount": 1765,
+      "internalLinks": 3,
+      "credibleSources": 4,
+      "affiliateLinks": 6,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/data-broker-opt-out-guide",
+      "routeKind": "article",
+      "title": "How to Remove Your Personal Information From Data Broker Sites",
+      "date": "2026-07-16",
+      "category": "Data Breaches",
+      "wordCount": 1447,
+      "internalLinks": 4,
+      "credibleSources": 0,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/data-breach-what-to-do",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/email-security-best-practices-2026",
+      "routeKind": "article",
+      "title": "Email Security Best Practices 2026: Protect Your Inbox from Hackers and Phishing",
+      "date": "2026-06-20",
+      "category": "Best Practices",
+      "wordCount": 1677,
+      "internalLinks": 5,
+      "credibleSources": 2,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/securing-your-email-account",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/encrypted-messaging-apps-guide",
+      "routeKind": "article",
+      "title": "Encrypted Messaging Apps Compared: Signal vs. WhatsApp vs. iMessage vs. Telegram",
+      "date": "2026-07-02",
+      "category": "Best Practices",
+      "wordCount": 1023,
+      "internalLinks": 4,
+      "credibleSources": 0,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/free-vs-paid-password-managers-2026",
+      "routeKind": "article",
+      "title": "Free vs Paid Password Managers in 2026: What You Actually Get for Your Money",
+      "date": "2026-06-19",
+      "category": "Password Managers",
+      "wordCount": 1364,
+      "internalLinks": 5,
+      "credibleSources": 3,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/github-security-best-practices",
+      "routeKind": "article",
+      "title": "GitHub Security Best Practices: Protect Your Code and Account",
+      "date": "2026-04-28",
+      "category": "Best Practices",
+      "wordCount": 1869,
+      "internalLinks": 6,
+      "credibleSources": 2,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/google-authenticator-vs-authy",
+      "routeKind": "article",
+      "title": "Google Authenticator vs. Authy: Which 2FA App Should You Use in 2026?",
+      "date": "2026-06-21",
+      "category": "2FA",
+      "wordCount": 1473,
+      "internalLinks": 5,
+      "credibleSources": 3,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/two-factor-authentication-guide",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/google-password-manager-review",
+      "routeKind": "article",
+      "title": "Google Password Manager Review 2026: Is It Good Enough for Your Security?",
+      "date": "2026-04-28",
+      "category": "Password Managers",
+      "wordCount": 1660,
+      "internalLinks": 6,
+      "credibleSources": 4,
+      "affiliateLinks": 7,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/how-to-check-if-youve-been-hacked",
+      "routeKind": "article",
+      "title": "How to Check If You've Been Hacked: Warning Signs and What to Do Next",
+      "date": "2026-06-17",
+      "category": "Best Practices",
+      "wordCount": 1653,
+      "internalLinks": 10,
+      "credibleSources": 0,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "no-credible-external-sources"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/data-breach-what-to-do",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/how-to-create-strong-password",
+      "routeKind": "article",
+      "title": "How to Create a Strong Password: The Complete Guide for 2026",
+      "date": "2026-06-18",
+      "category": "Password Security",
+      "wordCount": 1421,
+      "internalLinks": 7,
+      "credibleSources": 2,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/how-to-freeze-your-credit",
+      "routeKind": "article",
+      "title": "How to Freeze Your Credit: The Complete Step-by-Step Guide",
+      "date": "2026-05-28",
+      "category": "Best Practices",
+      "wordCount": 2079,
+      "internalLinks": 5,
+      "credibleSources": 0,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/data-breach-what-to-do",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/how-to-recover-from-identity-theft",
+      "routeKind": "article",
+      "title": "How to Recover from Identity Theft: A Complete Step-by-Step Action Plan",
+      "date": "2026-06-22",
+      "category": "Data Breaches",
+      "wordCount": 1877,
+      "internalLinks": 8,
+      "credibleSources": 4,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/data-breach-what-to-do",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/how-to-share-passwords-safely",
+      "routeKind": "article",
+      "title": "How to Share Passwords Safely (Without Texting or Emailing Them)",
+      "date": "2026-07-16",
+      "category": "Password Managers",
+      "wordCount": 1380,
+      "internalLinks": 10,
+      "credibleSources": 1,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/how-to-spot-fake-websites",
+      "routeKind": "article",
+      "title": "How to Spot Fake Websites: A Practical Guide to Avoiding Phishing and Scam Sites",
+      "date": "2026-05-25",
+      "category": "Best Practices",
+      "wordCount": 1462,
+      "internalLinks": 2,
+      "credibleSources": 2,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/how-to-use-a-vpn-for-privacy",
+      "routeKind": "article",
+      "title": "How to Use a VPN for Privacy: A Practical Guide (2026)",
+      "date": "2026-06-12",
+      "category": "Best Practices",
+      "wordCount": 1833,
+      "internalLinks": 8,
+      "credibleSources": 0,
+      "affiliateLinks": 7,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/public-wifi-security-tips",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/identity-theft-protection-guide",
+      "routeKind": "article",
+      "title": "Identity Theft Protection Guide: How to Secure Your Personal Data in 2026",
+      "date": "2026-05-23",
+      "category": "Best Practices",
+      "wordCount": 1473,
+      "internalLinks": 4,
+      "credibleSources": 4,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "consolidate-to",
+      "destination": "/blog/data-breach-what-to-do",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/identity-theft-statistics-2026",
+      "routeKind": "article",
+      "title": "Identity Theft Statistics 2026: What the Data Actually Shows",
+      "date": "2026-06-02",
+      "category": "Data Breaches",
+      "wordCount": 1891,
+      "internalLinks": 6,
+      "credibleSources": 2,
+      "affiliateLinks": 5,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/data-breach-what-to-do",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/iphone-password-security",
+      "routeKind": "article",
+      "title": "Complete iPhone Password Security Guide: Protecting Your Apple ID & Accounts",
+      "date": "2026-04-30",
+      "category": "Best Practices",
+      "wordCount": 2018,
+      "internalLinks": 3,
+      "credibleSources": 3,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/securing-apple-id",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/lastpass-alternatives",
+      "routeKind": "article",
+      "title": "The Best LastPass Alternatives in 2026: Safer, Cheaper, Better Options",
+      "date": "2026-05-05",
+      "category": "Password Managers",
+      "wordCount": 1247,
+      "internalLinks": 6,
+      "credibleSources": 2,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/mfa-fatigue-attack-explained",
+      "routeKind": "article",
+      "title": "MFA Fatigue Attacks: How Push Notification Abuse Bypasses Two-Factor Authentication",
+      "date": "2026-06-23",
+      "category": "2FA",
+      "wordCount": 1505,
+      "internalLinks": 7,
+      "credibleSources": 0,
+      "affiliateLinks": 6,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/two-factor-authentication-guide",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/microsoft-account-security-guide",
+      "routeKind": "article",
+      "title": "How to Secure Your Microsoft Account: Passwords, 2FA, and Recovery Options",
+      "date": "2026-06-19",
+      "category": "Best Practices",
+      "wordCount": 1534,
+      "internalLinks": 6,
+      "credibleSources": 2,
+      "affiliateLinks": 5,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/securing-your-email-account",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/microsoft-authenticator-guide",
+      "routeKind": "article",
+      "title": "Microsoft Authenticator Guide: Set Up Strong 2FA on Every Account",
+      "date": "2026-05-12",
+      "category": "2FA",
+      "wordCount": 1924,
+      "internalLinks": 4,
+      "credibleSources": 2,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/two-factor-authentication-guide",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/nordpass-review-2026",
+      "routeKind": "article",
+      "title": "NordPass Review 2026: Is This Password Manager Worth It?",
+      "date": "2026-06-29",
+      "category": "Password Managers",
+      "wordCount": 1461,
+      "internalLinks": 10,
+      "credibleSources": 1,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/nordpass-vs-dashlane-2026",
+      "routeKind": "article",
+      "title": "NordPass vs Dashlane (2026): Which Password Manager Is Better?",
+      "date": "2026-06-11",
+      "category": "Password Managers",
+      "wordCount": 1458,
+      "internalLinks": 8,
+      "credibleSources": 1,
+      "affiliateLinks": 7,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/nordprotect-review-2026",
+      "routeKind": "article",
+      "title": "NordProtect Review 2026: Is This Identity Protection Service Worth It?",
+      "date": "2026-06-11",
+      "category": "Data Breaches",
+      "wordCount": 1758,
+      "internalLinks": 4,
+      "credibleSources": 0,
+      "affiliateLinks": 11,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Remove because no retained URL is a genuinely equivalent redirect destination."
+    },
+    {
+      "url": "/blog/nordvpn-review-2026",
+      "routeKind": "article",
+      "title": "NordVPN Review 2026: Is It Still the Best VPN for Privacy and Security?",
+      "date": "2026-06-14",
+      "category": "Password Security",
+      "wordCount": 1245,
+      "internalLinks": 6,
+      "credibleSources": 1,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Remove because no retained URL is a genuinely equivalent redirect destination."
+    },
+    {
+      "url": "/blog/nordvpn-vs-expressvpn",
+      "routeKind": "article",
+      "title": "NordVPN vs ExpressVPN (2026): Which VPN Is Worth Your Money?",
+      "date": "2026-06-15",
+      "category": "Best Practices",
+      "wordCount": 1537,
+      "internalLinks": 4,
+      "credibleSources": 1,
+      "affiliateLinks": 7,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Remove because no retained URL is a genuinely equivalent redirect destination."
+    },
+    {
+      "url": "/blog/passkeys-explained",
+      "routeKind": "article",
+      "title": "Passkeys Explained: The Future of Passwordless Login and How to Use Them",
+      "date": "2026-05-17",
+      "category": "Best Practices",
+      "wordCount": 2024,
+      "internalLinks": 6,
+      "credibleSources": 5,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/passkeys-vs-passwords-2026",
+      "routeKind": "article",
+      "title": "Are Passkeys Replacing Passwords in 2026? The Complete Guide",
+      "date": "2026-06-14",
+      "category": "Security Trends",
+      "wordCount": 1804,
+      "internalLinks": 6,
+      "credibleSources": 5,
+      "affiliateLinks": 6,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/password-hygiene-for-families",
+      "routeKind": "article",
+      "title": "Password Hygiene for Families: How to Keep Every Household Account Secure",
+      "date": "2026-05-08",
+      "category": "Best Practices",
+      "wordCount": 2438,
+      "internalLinks": 6,
+      "credibleSources": 4,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/password-manager-for-business",
+      "routeKind": "article",
+      "title": "Password Manager for Business: How to Secure Your Team's Credentials in 2026",
+      "date": "2026-06-17",
+      "category": "Password Managers",
+      "wordCount": 1483,
+      "internalLinks": 4,
+      "credibleSources": 2,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/best-password-manager-for-business-2026",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/password-manager-for-college-students",
+      "routeKind": "article",
+      "title": "Best Password Manager Setup for College Students (Free Options Included)",
+      "date": "2026-07-17",
+      "category": "Password Managers",
+      "wordCount": 1306,
+      "internalLinks": 8,
+      "credibleSources": 0,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/free-vs-paid-password-managers-2026",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/password-manager-vs-browser-autofill",
+      "routeKind": "article",
+      "title": "Password Manager vs. Browser Autofill: Which Is Actually More Secure?",
+      "date": "2026-06-18",
+      "category": "Password Managers",
+      "wordCount": 1338,
+      "internalLinks": 4,
+      "credibleSources": 3,
+      "affiliateLinks": 5,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/password-managers",
+      "routeKind": "hub",
+      "title": "Blog/Password Managers",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/blog/password-reuse-risks",
+      "routeKind": "article",
+      "title": "The Dangers of Password Reuse: Why Using the Same Password Everywhere Is a Security Disaster",
+      "date": "2026-06-22",
+      "category": "Password Security",
+      "wordCount": 1869,
+      "internalLinks": 8,
+      "credibleSources": 3,
+      "affiliateLinks": 5,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/password-security",
+      "routeKind": "hub",
+      "title": "Blog/Password Security",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/blog/password-security-audit-checklist",
+      "routeKind": "article",
+      "title": "Password Security Audit Checklist: 20 Steps to Harden Every Account You Own",
+      "date": "2026-05-12",
+      "category": "Best Practices",
+      "wordCount": 1582,
+      "internalLinks": 6,
+      "credibleSources": 3,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/how-to-create-strong-password",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/password-security-for-remote-workers",
+      "routeKind": "article",
+      "title": "Password Security for Remote Workers: How to Stay Safe Outside the Office",
+      "date": "2026-04-16",
+      "category": "Best Practices",
+      "wordCount": 2064,
+      "internalLinks": 2,
+      "credibleSources": 2,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/password-security-for-seniors",
+      "routeKind": "article",
+      "title": "Password Security for Seniors: A Simple, Step-by-Step Guide",
+      "date": "2026-05-05",
+      "category": "Best Practices",
+      "wordCount": 2472,
+      "internalLinks": 6,
+      "credibleSources": 0,
+      "affiliateLinks": 6,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/phishing",
+      "routeKind": "hub",
+      "title": "Blog/Phishing",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/blog/protecting-kids-online",
+      "routeKind": "article",
+      "title": "Protecting Kids Online: A Parent's Complete Guide to Account Security",
+      "date": "2026-05-25",
+      "category": "Best Practices",
+      "wordCount": 1620,
+      "internalLinks": 4,
+      "credibleSources": 4,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/public-wifi-security-tips",
+      "routeKind": "article",
+      "title": "Public Wi-Fi Security: How to Stay Safe on Unsecured Networks",
+      "date": "2026-06-29",
+      "category": "Best Practices",
+      "wordCount": 1520,
+      "internalLinks": 6,
+      "credibleSources": 0,
+      "affiliateLinks": 5,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/qr-code-scam-quishing-guide",
+      "routeKind": "article",
+      "title": "QR Code Scams (\"Quishing\"): How They Work and How to Spot One",
+      "date": "2026-07-19",
+      "category": "Best Practices",
+      "wordCount": 1003,
+      "internalLinks": 3,
+      "credibleSources": 0,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/what-is-phishing-and-how-to-avoid-it",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/securing-apple-id",
+      "routeKind": "article",
+      "title": "How to Secure Your Apple ID: The Complete Protection Guide",
+      "date": "2026-05-18",
+      "category": "Best Practices",
+      "wordCount": 1857,
+      "internalLinks": 4,
+      "credibleSources": 2,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/securing-cloud-storage",
+      "routeKind": "article",
+      "title": "How to Secure Your Cloud Storage: Google Drive, iCloud, Dropbox, and OneDrive",
+      "date": "2026-06-15",
+      "category": "Best Practices",
+      "wordCount": 1295,
+      "internalLinks": 5,
+      "credibleSources": 4,
+      "affiliateLinks": 6,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/securing-crypto-wallets",
+      "routeKind": "article",
+      "title": "How to Secure Your Crypto Wallet: Passwords, Seed Phrases, and Account Protection",
+      "date": "2026-05-17",
+      "category": "Best Practices",
+      "wordCount": 1827,
+      "internalLinks": 7,
+      "credibleSources": 2,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/securing-facebook-account",
+      "routeKind": "article",
+      "title": "How to Secure Your Facebook Account: The Complete 2026 Guide",
+      "date": "2026-06-21",
+      "category": "Best Practices",
+      "wordCount": 1534,
+      "internalLinks": 5,
+      "credibleSources": 1,
+      "affiliateLinks": 8,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/securing-social-media-accounts",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/securing-google-account",
+      "routeKind": "article",
+      "title": "How to Secure Your Google Account: A Complete Checklist",
+      "date": "2026-07-19",
+      "category": "Best Practices",
+      "wordCount": 1008,
+      "internalLinks": 6,
+      "credibleSources": 0,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/securing-your-email-account",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/securing-home-network",
+      "routeKind": "article",
+      "title": "How to Secure Your Home Network: A Step-by-Step Guide to Router and Wi-Fi Security",
+      "date": "2026-05-17",
+      "category": "Best Practices",
+      "wordCount": 1568,
+      "internalLinks": 3,
+      "credibleSources": 2,
+      "affiliateLinks": 6,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/browser-security-settings",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/securing-linkedin-account",
+      "routeKind": "article",
+      "title": "How to Secure Your LinkedIn Account: Passwords, 2FA, and Privacy Settings",
+      "date": "2026-05-23",
+      "category": "Best Practices",
+      "wordCount": 1665,
+      "internalLinks": 6,
+      "credibleSources": 3,
+      "affiliateLinks": 6,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/securing-social-media-accounts",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/securing-online-banking",
+      "routeKind": "article",
+      "title": "Secure Online Banking: How to Protect Your Bank Account from Hacking",
+      "date": "2026-04-30",
+      "category": "Best Practices",
+      "wordCount": 1500,
+      "internalLinks": 9,
+      "credibleSources": 2,
+      "affiliateLinks": 6,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/securing-remote-desktop-rdp",
+      "routeKind": "article",
+      "title": "How to Secure Remote Desktop Access: RDP, VPNs, and Remote Work Security in 2026",
+      "date": "2026-06-20",
+      "category": "Best Practices",
+      "wordCount": 1734,
+      "internalLinks": 6,
+      "credibleSources": 3,
+      "affiliateLinks": 5,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/securing-smart-home-devices",
+      "routeKind": "article",
+      "title": "How to Secure Your Smart Home Devices in 2026",
+      "date": "2026-06-11",
+      "category": "Best Practices",
+      "wordCount": 1333,
+      "internalLinks": 4,
+      "credibleSources": 1,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/securing-social-media-accounts",
+      "routeKind": "article",
+      "title": "How to Secure Your Social Media Accounts: A Practical Guide",
+      "date": "2026-04-16",
+      "category": "Best Practices",
+      "wordCount": 1963,
+      "internalLinks": 3,
+      "credibleSources": 2,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/securing-venmo-cashapp-paypal",
+      "routeKind": "article",
+      "title": "How to Secure Your Venmo, Cash App, and PayPal Accounts",
+      "date": "2026-07-02",
+      "category": "Best Practices",
+      "wordCount": 1258,
+      "internalLinks": 8,
+      "credibleSources": 1,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/securing-online-banking",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/securing-your-amazon-account",
+      "routeKind": "article",
+      "title": "How to Secure Your Amazon Account: A Complete Security Guide",
+      "date": "2026-05-22",
+      "category": "Best Practices",
+      "wordCount": 1691,
+      "internalLinks": 9,
+      "credibleSources": 2,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Remove because no retained URL is a genuinely equivalent redirect destination."
+    },
+    {
+      "url": "/blog/securing-your-email-account",
+      "routeKind": "article",
+      "title": "How to Secure Your Email Account: The Complete Guide",
+      "date": "2026-04-15",
+      "category": "Best Practices",
+      "wordCount": 1752,
+      "internalLinks": 3,
+      "credibleSources": 4,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/sim-swapping-protection",
+      "routeKind": "article",
+      "title": "SIM Swapping Protection: How to Stop Attackers From Hijacking Your Phone Number",
+      "date": "2026-05-22",
+      "category": "Best Practices",
+      "wordCount": 1691,
+      "internalLinks": 6,
+      "credibleSources": 2,
+      "affiliateLinks": 7,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/two-factor-authentication-guide",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/two-factor-authentication-guide",
+      "routeKind": "article",
+      "title": "Two-Factor Authentication Guide: How to Enable 2FA on Every Important Account",
+      "date": "2026-05-17",
+      "category": "2FA",
+      "wordCount": 1339,
+      "internalLinks": 7,
+      "credibleSources": 3,
+      "affiliateLinks": 5,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/vpn-for-remote-work",
+      "routeKind": "article",
+      "title": "VPN for Remote Work: How to Stay Secure Working Outside the Office",
+      "date": "2026-05-18",
+      "category": "Best Practices",
+      "wordCount": 1921,
+      "internalLinks": 6,
+      "credibleSources": 2,
+      "affiliateLinks": 8,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/public-wifi-security-tips",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/vpn-vs-password-manager",
+      "routeKind": "article",
+      "title": "VPN vs Password Manager: Do You Need Both?",
+      "date": "2026-06-11",
+      "category": "Best Practices",
+      "wordCount": 1180,
+      "internalLinks": 6,
+      "credibleSources": 3,
+      "affiliateLinks": 8,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Remove because no retained URL is a genuinely equivalent redirect destination."
+    },
+    {
+      "url": "/blog/vpn-worth-it-2026",
+      "routeKind": "article",
+      "title": "Is a VPN Worth It in 2026? An Honest Look at What VPNs Do and Don't Protect",
+      "date": "2026-06-11",
+      "category": "Best Practices",
+      "wordCount": 1839,
+      "internalLinks": 6,
+      "credibleSources": 0,
+      "affiliateLinks": 7,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Remove because no retained URL is a genuinely equivalent redirect destination."
+    },
+    {
+      "url": "/blog/what-is-nordprotect",
+      "routeKind": "article",
+      "title": "What Is NordProtect? Identity Theft Protection Explained",
+      "date": "2026-06-14",
+      "category": "Password Security",
+      "wordCount": 1252,
+      "internalLinks": 6,
+      "credibleSources": 0,
+      "affiliateLinks": 7,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "no-credible-external-sources"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Remove because no retained URL is a genuinely equivalent redirect destination."
+    },
+    {
+      "url": "/blog/what-is-phishing-and-how-to-avoid-it",
+      "routeKind": "article",
+      "title": "What Is Phishing and How to Avoid It: A Practical Guide",
+      "date": "2026-04-21",
+      "category": "Best Practices",
+      "wordCount": 2177,
+      "internalLinks": 6,
+      "credibleSources": 3,
+      "affiliateLinks": 5,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "rewrite",
+      "destination": null,
+      "rationale": "Reviewed editorial shortlist aligned to core user intent."
+    },
+    {
+      "url": "/blog/wifi-password-best-practices",
+      "routeKind": "article",
+      "title": "Wi-Fi Password Best Practices: How to Secure Your Home and Office Network",
+      "date": "2026-04-21",
+      "category": "Best Practices",
+      "wordCount": 1885,
+      "internalLinks": 1,
+      "credibleSources": 3,
+      "affiliateLinks": 4,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "few-internal-links"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/public-wifi-security-tips",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/wordpress-security-passwords",
+      "routeKind": "article",
+      "title": "WordPress Security: How to Lock Down Passwords, Logins, and Admin Access",
+      "date": "2026-06-16",
+      "category": "Best Practices",
+      "wordCount": 1561,
+      "internalLinks": 4,
+      "credibleSources": 2,
+      "affiliateLinks": 3,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/blog/yubikey-setup-guide",
+      "routeKind": "article",
+      "title": "YubiKey Setup Guide: How to Use a Hardware Security Key for Maximum Protection",
+      "date": "2026-05-08",
+      "category": "2FA",
+      "wordCount": 1752,
+      "internalLinks": 2,
+      "credibleSources": 2,
+      "affiliateLinks": 2,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description"
+      ],
+      "decision": "consolidate-to",
+      "destination": "/blog/two-factor-authentication-guide",
+      "rationale": "Overlapping intent belongs in a stronger retained destination."
+    },
+    {
+      "url": "/blog/zero-trust-security-basics",
+      "routeKind": "article",
+      "title": "Zero Trust Security Explained: A Practical Guide for Individuals and Small Businesses",
+      "date": "2026-05-24",
+      "category": "Best Practices",
+      "wordCount": 1749,
+      "internalLinks": 8,
+      "credibleSources": 3,
+      "affiliateLinks": 6,
+      "sitemapPresent": true,
+      "qualityFlags": [
+        "missing-description",
+        "off-topic-reviewed-removal"
+      ],
+      "decision": "remove",
+      "destination": null,
+      "rationale": "Explicitly reviewed as off-topic for a focused password-generation site."
+    },
+    {
+      "url": "/contact",
+      "routeKind": "trust",
+      "title": "Contact",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/editorial-policy",
+      "routeKind": "trust",
+      "title": "Editorial Policy",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/password-safety-checklist",
+      "routeKind": "hub",
+      "title": "Password Safety Checklist",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/privacy",
+      "routeKind": "trust",
+      "title": "Privacy",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/recommended-tools",
+      "routeKind": "hub",
+      "title": "Recommended Tools",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    },
+    {
+      "url": "/terms",
+      "routeKind": "trust",
+      "title": "Terms",
+      "date": null,
+      "category": null,
+      "wordCount": null,
+      "internalLinks": null,
+      "credibleSources": null,
+      "affiliateLinks": null,
+      "sitemapPresent": true,
+      "qualityFlags": [],
+      "decision": "keep",
+      "destination": null,
+      "rationale": "Core utility, trust, or navigation route."
+    }
+  ]
+}
