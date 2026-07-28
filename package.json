@@ -10,7 +10,8 @@
     "lint": "eslint",
     "check:adsense": "node scripts/check-adsense-readiness.mjs",
     "audit:content": "node scripts/audit-content-quality.mjs",
-    "audit:urls": "node scripts/audit-url-decisions.mjs"
+    "audit:urls": "node scripts/audit-url-decisions.mjs",
+    "verify:urls": "node scripts/verify-url-consolidation.mjs"
   },
   "dependencies": {
     "next": "16.1.6",
