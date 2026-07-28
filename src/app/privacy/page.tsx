@@ -131,7 +131,7 @@ export default function PrivacyPage() {
                 <li>Page views and general site analytics (via Google Analytics or hosting-provider analytics)</li>
                 <li>Referring URLs and general geographic region (country-level)</li>
                 <li>Browser type and device type (for compatibility)</li>
-                <li>Generator success, copy, regenerate, recommendation view, affiliate click, and newsletter interaction events, with page and placement context</li>
+                <li>Generator success, copy, regenerate, recommendation view, affiliate click, and newsletter interaction events, with anonymous page, placement, page-intent, generator-type, or affiliate-partner categories where relevant</li>
               </ul>
               <p className="mt-3 text-sm">We do not collect names, email addresses, or any personally identifiable information unless you choose to contact us.</p>
             </section>
@@ -144,7 +144,7 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-3">Funnel Analytics</h2>
-              <p>We measure whether a generator succeeds and whether visitors copy, regenerate, view a recommendation, follow an affiliate link, or interact with the newsletter form. Event payloads include the action, page, placement, and—when relevant—the generator type or affiliate partner. They never include a generated password, passphrase, or password-checker input.</p>
+              <p>We measure whether a generator succeeds and whether visitors copy, regenerate, view a recommendation, follow an affiliate link, or interact with the newsletter form. Event payloads are limited to the action, page, placement, and—when relevant—anonymous categories for page intent, generator type, or affiliate partner. The event contract rejects generated passwords, passphrases, password-checker inputs, entropy inputs, email addresses, and other unapproved fields.</p>
             </section>
 
             <section>
