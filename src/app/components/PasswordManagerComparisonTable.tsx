@@ -1,16 +1,18 @@
 import React from 'react';
+import { affiliates } from '@/lib/affiliates';
 
 interface PasswordManager {
   name: string;
   tagline: string;
   freeTier: string;
-  startingPrice: string;
+  paidPlans: string;
   unlimitedDevices: string;
   openSource: string;
   hardware2FA: string;
   passkeys: string;
   familyPlan: string;
   url: string;
+  monetized: boolean;
   badge?: string;
   badgeColor?: string;
 }
@@ -20,13 +22,14 @@ const passwordManagers: PasswordManager[] = [
     name: 'NordPass',
     tagline: 'Zero-knowledge password manager with a generous free tier',
     freeTier: 'Yes',
-    startingPrice: '$2.99/mo',
+    paidPlans: 'Premium and Family',
     unlimitedDevices: 'Yes',
     openSource: 'No',
     hardware2FA: 'Yes',
     passkeys: 'Yes',
     familyPlan: 'Yes',
-    url: 'https://nordpass.com/a/strongpasswordgenerator',
+    url: affiliates.nordpass.url,
+    monetized: affiliates.nordpass.monetized,
     badge: 'Editor\'s Pick',
     badgeColor: 'bg-green-100 text-green-800',
   },
@@ -34,25 +37,27 @@ const passwordManagers: PasswordManager[] = [
     name: 'Bitwarden',
     tagline: 'The open-source password manager trusted by millions',
     freeTier: 'Yes',
-    startingPrice: 'Free (Premium $3.33/mo)',
+    paidPlans: 'Premium and Families',
     unlimitedDevices: 'Yes',
     openSource: 'Yes',
     hardware2FA: 'Yes',
     passkeys: 'Yes',
     familyPlan: 'Yes',
-    url: 'https://bitwarden.com/a/strongpasswordgenerator',
+    url: affiliates.bitwarden.url,
+    monetized: affiliates.bitwarden.monetized,
   },
   {
     name: '1Password',
     tagline: 'Best password manager for families and teams',
     freeTier: 'No',
-    startingPrice: '$2.99/mo',
+    paidPlans: 'Individual and Families',
     unlimitedDevices: 'Yes',
     openSource: 'No',
     hardware2FA: 'Yes',
     passkeys: 'Yes',
     familyPlan: 'Yes',
     url: 'https://1password.com',
+    monetized: false,
   },
 ];
 
@@ -97,10 +102,10 @@ const PasswordManagerComparisonTable: React.FC = () => {
               ))}
             </tr>
             <tr className="bg-white border-b">
-              <td className="px-4 py-3 font-medium text-gray-900">Starting price</td>
+              <td className="px-4 py-3 font-medium text-gray-900">Paid plans</td>
               {passwordManagers.map((manager) => (
                 <td key={manager.name} className="px-4 py-3 text-center">
-                  {manager.startingPrice}
+                  {manager.paidPlans}
                 </td>
               ))}
             </tr>
@@ -151,7 +156,7 @@ const PasswordManagerComparisonTable: React.FC = () => {
                   <a
                     href={manager.url}
                     target="_blank"
-                    rel="noopener noreferrer sponsored"
+                    rel={manager.monetized ? 'noopener noreferrer sponsored' : 'noopener noreferrer'}
                     className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition-colors duration-200"
                   >
                     Visit
