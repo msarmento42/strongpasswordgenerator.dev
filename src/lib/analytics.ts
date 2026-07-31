@@ -32,11 +32,27 @@ export interface FunnelEventContext {
 }
 
 export type FunnelEventPayload = Readonly<FunnelEventContext>;
-export type Gtag = (command: 'event', name: FunnelAction, payload: FunnelEventPayload) => void;
+export interface Gtag {
+  (command: 'event', name: FunnelAction, payload: FunnelEventPayload): void;
+  (command: 'js', initializedAt: Date): void;
+  (command: 'config', measurementId: string): void;
+}
 
 type AnalyticsTarget = { gtag?: Gtag };
 
 const categoricalValue = /^[a-z0-9][a-z0-9_-]*$/;
+
+export function isAffiliateUrl(href: string, rel = ''): boolean {
+  return /sponsored|affiliate/i.test(rel) || /awin1|kqzyfj|cj/i.test(href);
+}
+
+export function affiliatePartnerForUrl(href: string): string {
+  if (/kqzyfj/i.test(href)) return 'nordpass';
+  if (/awin1.*15132/i.test(href)) return 'nordvpn';
+  if (/awin1.*123620/i.test(href)) return 'nordprotect';
+  if (/awin1/i.test(href)) return 'awin';
+  return 'external';
+}
 
 function assertCategorical(name: string, value: unknown): asserts value is string {
   if (typeof value !== 'string' || value.length === 0 || value.length > 80 || !categoricalValue.test(value)) {
