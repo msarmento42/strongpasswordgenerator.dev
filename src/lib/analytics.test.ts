@@ -1,11 +1,22 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  affiliatePartnerForUrl,
   buildFunnelEvent,
   FUNNEL_ACTIONS,
+  isAffiliateUrl,
   trackFunnelEvent,
   type FunnelEventContext,
 } from './analytics';
+
+test('affiliate destinations are recognized and categorized without storing the URL', () => {
+  assert.equal(isAffiliateUrl('https://www.awin1.com/cread.php?awinmid=15132'), true);
+  assert.equal(isAffiliateUrl('https://example.com/product', 'nofollow sponsored'), true);
+  assert.equal(isAffiliateUrl('https://example.com/reference'), false);
+  assert.equal(affiliatePartnerForUrl('https://www.awin1.com/cread.php?awinmid=15132'), 'nordvpn');
+  assert.equal(affiliatePartnerForUrl('https://www.awin1.com/cread.php?awinmid=123620'), 'nordprotect');
+  assert.equal(affiliatePartnerForUrl('https://www.kqzyfj.com/click-123'), 'nordpass');
+});
 
 test('every supported action passes the shared event contract', () => {
   for (const action of FUNNEL_ACTIONS) {
