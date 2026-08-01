@@ -359,48 +359,6 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       },
     ],
   },
-  "nordvpn-review-2026": {
-    eyebrow: "Best fit at a glance",
-    title: "Who NordVPN is best for",
-    summary: "NordVPN is strongest when you need reliable privacy on public networks, travel-friendly coverage, and a clean path into a broader security stack.",
-    cards: [
-      {
-        title: "Choose NordVPN if you use public Wi-Fi often",
-        body: "Best for travelers, remote workers, and anyone who wants a simple, audited VPN with broad device support.",
-        href: affiliates.nordvpn.url,
-        cta: "Try NordVPN",
-        external: true,
-        monetized: affiliates.nordvpn.monetized,
-      },
-      {
-        title: "Add NordPass if password reuse is still the bigger risk",
-        body: "A VPN protects traffic, but it does not fix weak or reused credentials across your accounts.",
-        href: "/blog/password-manager-vs-browser-autofill",
-        cta: "Compare password managers",
-      },
-      {
-        title: "Add NordProtect if a breach is already part of the picture",
-        body: "Identity monitoring helps when your concern has shifted from privacy to active exposure and fraud cleanup.",
-        href: "/blog/best-identity-theft-protection-2026",
-        cta: "Review identity protection",
-      },
-    ],
-    followUpTitle: "Build the rest of the stack in order",
-    followUps: [
-      {
-        title: "Secure the accounts behind your VPN",
-        body: "Strong passwords and 2FA still matter more than the network layer once you sign in.",
-        href: "/blog/password-security",
-        cta: "Open the security hub",
-      },
-      {
-        title: "See the broader tools page",
-        body: "Useful if you want one place to compare managers, monitoring, and device-security options.",
-        href: "/recommended-tools",
-        cta: "See all recommendations",
-      },
-    ],
-  },
   "data-breach-what-to-do": {
     eyebrow: "Breach response stack",
     title: "Fix the exposed login first, then monitor the identity risk",
