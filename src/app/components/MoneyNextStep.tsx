@@ -29,8 +29,8 @@ export default function MoneyNextStep({ tags, category }: { tags: string[]; cate
           }
         : vpnMatchers.some((term) => topicText.includes(term))
           ? {
-              href: "/blog/nordvpn-review-2026",
-              label: "Review VPN protection",
+              href: "/blog/public-wifi-security-tips",
+              label: "Read the public Wi-Fi security guide",
               body: "A password manager protects accounts. A VPN protects traffic when you are on public or untrusted networks.",
             }
           : passwordManagerMatchers.some((term) => topicText.includes(term))

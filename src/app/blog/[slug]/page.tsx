@@ -57,11 +57,6 @@ const nordProtectRecommendedSlugs = new Set([
 ]);
 
 const nordVpnRecommendedSlugs = new Set([
-  'nordvpn-review-2026',
-  'nordvpn-vs-expressvpn',
-  'how-to-use-a-vpn-for-privacy',
-  'vpn-worth-it-2026',
-  'vpn-for-remote-work',
   'public-wifi-security-tips',
   'password-security-for-remote-workers',
 ]);

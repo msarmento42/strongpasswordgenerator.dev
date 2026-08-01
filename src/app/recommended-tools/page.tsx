@@ -357,7 +357,7 @@ export default function RecommendedToolsPage() {
           <h2 className="mb-3 text-lg font-bold text-slate-800">Related buying guides</h2>
           <ul className="grid gap-2 text-sm text-slate-600 md:grid-cols-2">
             <li><Link className="text-indigo-600 hover:underline" href="/blog/nordpass-review-2026">NordPass review</Link></li>
-            <li><Link className="text-indigo-600 hover:underline" href="/blog/nordvpn-review-2026">NordVPN review</Link></li>
+            <li><Link className="text-indigo-600 hover:underline" href="/blog/public-wifi-security-tips">Public Wi-Fi security guide</Link></li>
             <li><Link className="text-indigo-600 hover:underline" href="/blog/free-vs-paid-password-managers-2026">Free vs paid password managers</Link></li>
             <li><Link className="text-indigo-600 hover:underline" href="/blog/password-manager-vs-browser-autofill">Password manager vs browser autofill</Link></li>
           </ul>
