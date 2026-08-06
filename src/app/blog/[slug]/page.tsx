@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import AffiliateCTA from '../../components/AffiliateCTA';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure';
 import MoneyNextStep from '../../components/MoneyNextStep';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -230,9 +231,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {post.title}
           </h1>
 
+          <p className="mb-6 text-xs text-slate-400">
+            Editorially maintained by the Strong Password Generator team.
+          </p>
+
           <p className="text-slate-500 text-base leading-relaxed mb-6 border-l-4 border-indigo-200 pl-4 italic">
             {post.excerpt}
           </p>
+
+          <AffiliateDisclosure />
 
           {commerceGuide && (
             <section className="my-6 rounded-2xl border border-amber-200 bg-amber-50 p-5">

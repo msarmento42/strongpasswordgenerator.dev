@@ -3,11 +3,15 @@ import urlDecisionManifest from "./docs/URL_DECISION_MANIFEST.json";
 
 const consolidationRedirects = urlDecisionManifest.urls
   .filter((entry) => entry.decision === "consolidate-to")
-  .map((entry) => ({
-    source: entry.url,
-    destination: entry.destination as string,
-    permanent: true,
-  }));
+  .map((entry) => {
+    if (!entry.destination) return null;
+    return {
+      source: entry.url,
+      destination: entry.destination,
+      permanent: true,
+    };
+  })
+  .filter((entry): entry is { source: string; destination: string; permanent: boolean } => entry !== null);
 
 const nextConfig: NextConfig = {
   images: {
