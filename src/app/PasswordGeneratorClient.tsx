@@ -1,0 +1,583 @@
+'use client';
+
+import PassphraseGenerator from './components/PassphraseGenerator';
+import PasswordChecker from './components/PasswordChecker';
+import AffiliateCTA from './components/AffiliateCTA';
+import ShareConfig from './components/ShareConfig';
+
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import Script from 'next/script'; // Added Script import
+import { Suspense, useState, useEffect, useCallback } from 'react';
+import { generateSecurePassword } from '@/lib/password-generator';
+import { removeLegacyPasswordHistory } from '@/lib/privacy';
+import { trackFunnelEvent } from '@/lib/analytics';
+
+interface PasswordOptions {
+  length: number;
+  uppercase: boolean;
+  lowercase: boolean;
+  numbers: boolean;
+  symbols: boolean;
+}
+
+const DEFAULT_OPTIONS: PasswordOptions = {
+  length: 20,
+  uppercase: true,
+  lowercase: true,
+  numbers: true,
+  symbols: true,
+};
+
+const parseBooleanParam = (value: string | null): boolean | null => {
+  if (value === 'true') return true;
+  if (value === 'false') return false;
+  return null;
+};
+
+const getOptionsFromSearchParams = (
+  searchParams: URLSearchParams,
+  fallback: PasswordOptions,
+): PasswordOptions => {
+  const nextOptions = { ...fallback };
+  const lengthParam = searchParams.get('length');
+  const parsedLength = lengthParam ? Number.parseInt(lengthParam, 10) : Number.NaN;
+
+  if (Number.isInteger(parsedLength) && parsedLength >= 8 && parsedLength <= 128) {
+    nextOptions.length = parsedLength;
+  }
+
+  (['uppercase', 'lowercase', 'numbers', 'symbols'] as const).forEach((key) => {
+    const parsedValue = parseBooleanParam(searchParams.get(key));
+    if (parsedValue !== null) {
+      nextOptions[key] = parsedValue;
+    }
+  });
+
+  return nextOptions;
+};
+
+const tips = [
+  { title: "Use a Password Manager", text: "Don't memorize passwords - use a password manager like Bitwarden or NordPass to generate and store unique passwords for every site." },
+  { title: "Enable 2FA Wherever Possible", text: "Two-factor authentication adds an extra layer of security. Use an authenticator app instead of SMS when available." },
+  { title: "Never Reuse Passwords", text: "If one site gets breached, all your accounts are vulnerable. Use unique passwords for every account." },
+  { title: "Longer is Stronger", text: "A 20-character password with only lowercase letters is often stronger than an 8-character one with special characters." },
+  { title: "Passphrases Work Great", text: "Consider using random words like 'correct-horse-battery-staple' - they're easy to remember but hard to crack." },
+];
+
+const FAQ_ITEMS = [
+  {
+    question: "Is this password generator safe to use?",
+    answer: "Yes. Passwords are generated entirely in your browser using the Web Crypto API — nothing is ever sent to a server or stored anywhere."
+  },
+  {
+    question: "Does this tool log or store my generated passwords?",
+    answer: "No. This generator runs 100% client-side. We have no server-side code and no database. Your passwords exist only in your browser for the duration of your session."
+  },
+  {
+    question: "What makes a password strong?",
+    answer: "Prefer a long, unique password produced by a cryptographically secure random generator. Character variety helps only when the password is not based on a predictable word or pattern."
+  },
+  {
+    question: "How many passwords should I generate before using one?",
+    answer: "Generate until you find one you can memorise a hint for, or use a password manager like Bitwarden (free) to store it securely — then the length and complexity matter more than memorability."
+  },
+  {
+    question: "How often should I change my passwords?",
+    answer: "Change passwords immediately if a service is breached. Otherwise, for accounts with a password manager, there is no need to rotate regularly — focus on uniqueness per account instead."
+  },
+];
+
+function PasswordGeneratorPage() {
+  const searchParams = useSearchParams();
+  const [password, setPassword] = useState('');
+  const [options, setOptions] = useState<PasswordOptions>(() => {
+    let savedOptions = DEFAULT_OPTIONS;
+
+    try {
+      const saved = typeof window !== 'undefined' ? localStorage.getItem('pwOptions') : null;
+      savedOptions = saved ? (JSON.parse(saved) as PasswordOptions) : DEFAULT_OPTIONS;
+    } catch {
+      savedOptions = DEFAULT_OPTIONS;
+    }
+
+    return getOptionsFromSearchParams(searchParams, savedOptions);
+  });
+  const [strength, setStrength] = useState(0);
+  const [strengthLabel, setStrengthLabel] = useState('');
+  const [entropy, setEntropy] = useState(0);
+  const [crackTime, setCrackTime] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  // Effect to save options to localStorage whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem('pwOptions', JSON.stringify(options));
+    } catch (error) {
+      console.error("Failed to save password options to localStorage:", error);
+    }
+  }, [options]); // Runs whenever 'options' state changes
+
+  const calculateEntropy = useCallback((pwd: string): number => {
+    let charsetSize = 0;
+    if (/[a-z]/.test(pwd)) charsetSize += 26;
+    if (/[A-Z]/.test(pwd)) charsetSize += 26;
+    if (/[0-9]/.test(pwd)) charsetSize += 10;
+    if (/[^a-zA-Z0-9]/.test(pwd)) charsetSize += 32;
+    if (charsetSize === 0) return 0;
+    return pwd.length * Math.log2(charsetSize);
+  }, []);
+
+  const estimateCrackTime = useCallback((entropy: number): string => {
+    const guessesPerSecond = 1e10;
+    const combinations = Math.pow(2, entropy);
+    const seconds = combinations / guessesPerSecond / 2;
+
+    if (seconds < 1) return 'Instantly';
+    if (seconds < 60) return `${Math.round(seconds)} seconds`;
+    if (seconds < 3600) return `${Math.round(seconds / 60)} minutes`;
+    if (seconds < 86400) return `${Math.round(seconds / 3600)} hours`;
+    if (seconds < 31536000) return `${Math.round(seconds / 86400)} days`;
+    if (seconds < 31536000 * 1000) return `${Math.round(seconds / 31536000)} years`;
+    if (seconds < 31536000 * 1e6) return `${Math.round(seconds / 31536000 / 1000)} thousand years`;
+    if (seconds < 31536000 * 1e9) return `${Math.round(seconds / 31536000 / 1e6)} million years`;
+    if (seconds < 31536000 * 1e12) return `${Math.round(seconds / 31536000 / 1e9)} billion years`;
+    return 'Centuries+';
+  }, []);
+
+  const calculateStrength = useCallback((pwd: string): { score: number; label: string } => {
+    const entropy = calculateEntropy(pwd);
+
+    if (pwd.length === 0) return { score: 0, label: '' };
+    if (entropy < 28) return { score: 1, label: 'Very low estimate' };
+    if (entropy < 36) return { score: 2, label: 'Low estimate' };
+    if (entropy < 60) return { score: 3, label: 'Moderate estimate' };
+    if (entropy < 80) return { score: 4, label: 'High estimate' };
+    return { score: 5, label: 'Very high estimate' };
+  }, [calculateEntropy]);
+
+  const generatePassword = useCallback(() => {
+    const pwd = generateSecurePassword(options);
+
+    setPassword(pwd);
+
+    const entropy = calculateEntropy(pwd);
+    const strengthResult = calculateStrength(pwd);
+    setStrength(strengthResult.score);
+    setStrengthLabel(strengthResult.label);
+    setEntropy(Math.round(entropy));
+    setCrackTime(estimateCrackTime(entropy));
+    trackFunnelEvent({
+      action: 'generator_success',
+      page: '/',
+      placement: 'primary_generator',
+      generator: 'password',
+    });
+  }, [options, calculateEntropy, calculateStrength, estimateCrackTime]);
+
+  const copyToClipboard = async () => {
+    await navigator.clipboard.writeText(password);
+    trackFunnelEvent({ action: 'copy', page: '/', placement: 'primary_generator', generator: 'password' });
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const getStrengthColor = () => {
+    const colors = ['#ff6b6b', '#ff6b6b', '#feca57', '#feca57', '#26de81', '#26de81'];
+    return colors[strength] || '#8899a6';
+  };
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      removeLegacyPasswordHistory(localStorage);
+      generatePassword();
+    }, 0);
+
+    return () => window.clearTimeout(timer);
+  }, [generatePassword]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const activeTag = document.activeElement?.tagName;
+      const isInputFocused = activeTag === 'INPUT' || activeTag === 'SELECT' || activeTag === 'TEXTAREA';
+
+      if (isInputFocused) {
+        return; // Do nothing if an input is focused
+      }
+
+      if (event.code === 'Space') {
+        event.preventDefault(); // Prevent page scroll
+        trackFunnelEvent({ action: 'regenerate', page: '/', placement: 'keyboard_shortcut', generator: 'password' });
+        generatePassword();
+      } else if (
+        event.key.toLowerCase() === 'c' &&
+        (event.metaKey || event.ctrlKey)
+      ) {
+        event.preventDefault();
+        navigator.clipboard.writeText(password);
+        trackFunnelEvent({ action: 'copy', page: '/', placement: 'keyboard_shortcut', generator: 'password' });
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [password, generatePassword]);
+
+  const optionChanged = (key: keyof PasswordOptions, value: boolean | number) => {
+    setOptions(prev => ({ ...prev, [key]: value }));
+  };
+
+  // JSON-LD for FAQPage
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQ_ITEMS.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
+  // JSON-LD for HowTo
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Generate a Strong Password",
+    "description": "Use the free Strong Password Generator to create a secure, random password in seconds.",
+    "totalTime": "PT1M",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": "0"
+    },
+    "tool": [{
+      "@type": "HowToTool",
+      "name": "Strong Password Generator"
+    }],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Set your password length",
+        "text": "Use the length slider to choose how long your password should be. 16 or more characters is strongly recommended for maximum security."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Choose character types",
+        "text": "Check the boxes for uppercase letters, lowercase letters, numbers, and symbols to include in your password."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Generate your password",
+        "text": "Click the Generate button to create a new random password matching your settings. Click again to regenerate."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Copy your password",
+        "text": "Click the Copy button or press Cmd+C / Ctrl+C to copy the generated password to your clipboard, then paste it wherever needed."
+      }
+    ]
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+      <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-4 px-6 sticky top-0 z-10">
+        <div className="max-w-3xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-3"><div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg"><svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" /></svg></div><span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Strong Password Generator</span></div>
+          <div className="flex items-center gap-4">
+            <Link href="/password-safety-checklist" className="text-slate-500 hover:text-indigo-600 text-sm font-medium hidden sm:block">Checklist</Link>
+            <a href="/recommended-tools" className="text-slate-500 hover:text-indigo-600 text-sm font-medium hidden sm:block">🛡️ Tools</a>
+            <Link href="/blog" className="text-slate-500 hover:text-indigo-600 text-sm font-medium">Security Blog →</Link>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-3xl mx-auto p-6">
+        {/* Password Display */}
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+          <div className="flex items-center gap-4 mb-4">
+            <input
+              type="text"
+              value={password}
+              readOnly
+              className="flex-1 bg-slate-50 border border-[#2f3640] rounded-lg px-4 py-3 text-xl font-mono text-indigo-600"
+              onChange={(e) => {
+                setPassword(e.target.value);
+                const entropy = calculateEntropy(e.target.value);
+                const strengthResult = calculateStrength(e.target.value);
+                setStrength(strengthResult.score);
+                setStrengthLabel(strengthResult.label);
+                setEntropy(Math.round(entropy));
+                setCrackTime(estimateCrackTime(entropy));
+              }}
+            />
+            <button
+              onClick={copyToClipboard}
+              className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-6 py-3 rounded-lg transition"
+            >
+              {copied ? '✓ Copied' : '📋 Copy'}
+            </button>
+            <ShareConfig
+              length={options.length}
+              uppercase={options.uppercase}
+              lowercase={options.lowercase}
+              numbers={options.numbers}
+              symbols={options.symbols}
+            />
+            <button
+              onClick={() => {
+                trackFunnelEvent({ action: 'regenerate', page: '/', placement: 'primary_generator', generator: 'password' });
+                generatePassword();
+              }}
+              className="bg-[#00d4aa] hover:bg-[#00b894] text-black font-semibold px-6 py-3 rounded-lg transition"
+            >
+              🎲 Generate
+            </button>
+          </div>
+
+          <span className="mt-1 block text-xs text-slate-400">Press Cmd+C / Ctrl+C to copy, Space — regenerate</span>
+
+          {password && (
+            <div className="mb-2">
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-slate-500">Strength:</span>
+                <span>
+                  <span style={{ color: getStrengthColor() }}>{strengthLabel}</span>
+                  <span className="text-xs text-gray-500 ml-1">({entropy} bits)</span>
+                </span>
+              </div>
+              <div className="h-2 bg-slate-50 rounded-full overflow-hidden">
+                <div
+                  className="h-full transition-all duration-300"
+                  style={{ width: `${(strength / 5) * 100}%`, backgroundColor: getStrengthColor() }}
+                />
+              </div>
+            </div>
+          )}
+
+          {password && (
+            <div className="text-sm text-slate-500">
+              ⏱️ Rough theoretical crack-time estimate: <span className="text-slate-700">{crackTime}</span>
+              <span className="block text-xs text-slate-400">Assumes random generation and 10 billion guesses/second; patterns, reuse, breaches, and attacker knowledge can make a password much easier to guess.</span>
+            </div>
+          )}
+        </div>
+
+        {/* Options */}
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+          <h2 className="text-lg font-semibold mb-4">⚙️ Options</h2>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-slate-500 mb-2">Password Length: {options.length}</label>
+              <input
+                type="range"
+                min="8"
+                max="128"
+                value={options.length}
+                onChange={(e) => optionChanged('length', parseInt(e.target.value))}
+                className="w-full accent-[#00d4aa]"
+              />
+              <div className="flex justify-between text-xs text-slate-500 mt-1">
+                <span>8</span>
+                <span>128</span>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                { key: 'uppercase', label: 'Uppercase (A-Z)' },
+                { key: 'lowercase', label: 'Lowercase (a-z)' },
+                { key: 'numbers', label: 'Numbers (0-9)' },
+                { key: 'symbols', label: 'Symbols (!@#$%)' }
+              ].map(({ key, label }) => (
+                <label key={key} className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={options[key as keyof PasswordOptions] as boolean}
+                    onChange={(e) => optionChanged(key as keyof PasswordOptions, e.target.checked)}
+                    className="w-5 h-5 accent-[#00d4aa]"
+                  />
+                  <span>{label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Password Security Tips */}
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+          <h2 className="text-lg font-semibold mb-4">🛡️ Password Security Tips</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {tips.map((tip, i) => (
+              <div key={i} className="bg-slate-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-indigo-600 mb-2">💡 {tip.title}</h3>
+                <p className="text-sm text-slate-500">
+                  {tip.text}
+                  {tip.title === "Use a Password Manager" && (
+                    <>
+                      {' '}
+                      Learn more about our{' '}
+                      <Link href="/recommended-tools" className="text-indigo-600 underline hover:text-indigo-800">
+                        recommended password managers →
+                      </Link>
+                    </>
+                  )}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-5 rounded-2xl border border-indigo-100 bg-indigo-50 p-4">
+            <h3 className="font-semibold text-slate-800 mb-1">Need a step-by-step account security plan?</h3>
+            <p className="text-sm text-slate-600">
+              Use the <Link href="/password-safety-checklist" className="text-indigo-600 underline hover:text-indigo-800">password safety checklist</Link> to prioritize unique passwords, 2FA, recovery codes, and breach cleanup.
+            </p>
+          </div>
+        </div>
+
+        {/* What is Password Entropy */}
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+          <h2 className="text-lg font-semibold mb-4">📊 What is Password Entropy?</h2>
+          <div className="text-slate-500 space-y-3">
+            <p>This entropy display is a rough theoretical estimate for randomly generated passwords. It does not detect words, patterns, reuse, leaks, or personal information, so it must not be treated as a guarantee.</p>
+            <ul className="list-disc list-inside space-y-2 text-sm">
+              <li><span className="text-[#ff6b6b]">Less than 28 bits:</span> Very Weak - Can be cracked instantly</li>
+              <li><span className="text-[#feca57]">28-35 bits:</span> Weak - Vulnerable to fast attacks</li>
+              <li><span className="text-[#feca57]">36-59 bits:</span> Fair - Okay for low-risk accounts</li>
+              <li><span className="text-[#26de81]">60-79 bits:</span> Strong - Good for most accounts</li>
+              <li><span className="text-[#26de81]">80+ bits:</span> Very Strong - Excellent security</li>
+            </ul>
+            <p className="text-sm mt-4">Long, unique, randomly generated passwords are generally harder to guess. Store each one in a reputable password manager and enable multi-factor authentication where available.</p>
+          </div>
+        </div>
+
+        {/* About */}
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+          <h2 className="text-lg font-semibold mb-4">ℹ️ About This Tool</h2>
+          <div className="text-slate-500 text-sm space-y-2">
+            <p>This password generator creates cryptographically secure passwords using your browser&apos;s built-in <strong className="text-white">crypto.getRandomValues()</strong> API - the same technology used by password managers and security professionals.</p>
+            <p>Generation happens <strong>locally on your device</strong>. Generated passwords are not sent to us, saved to local storage, or retained in a password history.</p>
+            <p>Strength and crack-time labels are theoretical estimates, not security guarantees. They cannot recognize every predictable pattern or account for leaks and reuse.</p>
+          </div>
+        </div>
+
+        {/* Passphrase Generator */}
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+          <h2 className="text-lg font-semibold mb-2">🎲 Passphrase Generator</h2>
+          <p className="text-sm text-slate-500 mb-4">Random word combinations are easy to remember and very hard to crack. <em>correct-horse-battery-staple</em> style.</p>
+          <PassphraseGenerator />
+        </div>
+
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
+          <h2 className="text-lg font-semibold mb-2">🔍 Check Your Password</h2>
+          <p className="text-sm text-slate-500 mb-4">Already have a password? See how strong it really is.</p>
+          <PasswordChecker />
+        </div>
+
+        {/* New FAQ Section */}
+        <section className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100 dark:bg-slate-800 dark:border-slate-700">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">❓ Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {FAQ_ITEMS.map((item, index) => (
+              <details
+                key={index}
+                className="bg-slate-50 dark:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-600 p-4"
+              >
+                <summary className="font-medium text-slate-800 dark:text-slate-200 cursor-pointer">
+                  {item.question}
+                </summary>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* Newsletter */}
+        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-3xl border border-indigo-100 p-8 text-center">
+          <div className="text-3xl mb-3">🔐</div>
+          <h2 className="text-lg font-semibold text-slate-800 mb-2">Stay ahead of security threats</h2>
+          <p className="text-sm text-slate-500 mb-5 max-w-md mx-auto">
+            Weekly tips on password security, data breach alerts, and practical cybersecurity advice. No spam, unsubscribe anytime.
+          </p>
+          <iframe
+            src="https://monthly-newsletter-258d49.beehiiv.com/subscribe"
+            loading="lazy"
+            style={{ width: "100%", maxWidth: "480px", height: "320px", border: "none", borderRadius: "8px" }}
+            title="Security newsletter signup"
+          />
+        </div>
+      </main>
+
+      {copied && (
+        <div
+          aria-live="polite"
+          className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-green-600 px-4 py-2 text-sm text-white shadow-lg transition-opacity duration-300"
+        >
+          Password copied!
+        </div>
+      )}
+
+      <section className="max-w-3xl mx-auto px-4 py-8">
+        <h2 className="text-lg font-semibold text-slate-700 mb-4 text-center">Protect your passwords with a manager:</h2>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-[1.2fr_0.8fr]">
+          <AffiliateCTA product="nordpass" />
+          <div className="rounded-xl border border-slate-200 bg-white p-4">
+            <span className="inline-block text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
+              Editorial pick
+            </span>
+            <p className="text-sm text-slate-700 mb-3">
+              Want a strong free option first? Read the Bitwarden setup guide and compare it against paid managers before you switch.
+            </p>
+            <Link
+              href="/blog/bitwarden-setup-guide"
+              className="inline-block text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+            >
+              Read the Bitwarden guide →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <footer className="text-center py-8 text-slate-500 text-sm border-t border-slate-200 mt-4">
+        <div className="flex justify-center gap-6 mb-3 flex-wrap">
+          <Link href="/blog" className="hover:text-indigo-600">Security Blog</Link>
+          <Link href="/password-safety-checklist" className="hover:text-indigo-600">Safety Checklist</Link>
+          <a href="/recommended-tools" className="hover:text-indigo-600">Recommended Tools</a>
+          <a href="/about" className="hover:text-indigo-600">About</a>
+          <a href="/privacy" className="hover:text-indigo-600">Privacy Policy</a>
+          <a href="/terms" className="hover:text-indigo-600">Terms</a>
+          <a href="/contact" className="hover:text-indigo-600">Contact</a>
+        </div>
+        <p>🔒 Passwords generated locally — never sent to any server.</p>
+        <p className="mt-1 text-xs text-slate-400">© 2026 StrongPasswordGenerator.dev · Some links are affiliate links.</p>
+      </footer>
+
+      {/* JSON-LD Script */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+    </div>
+  );
+}
+
+export default function PasswordGeneratorClient() {
+  return (
+    <Suspense fallback={null}>
+      <PasswordGeneratorPage />
+    </Suspense>
+  );
+}
