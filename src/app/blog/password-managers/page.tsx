@@ -80,7 +80,7 @@ export default function PasswordManagersHub() {
                 <li>1. Pick <strong className="text-slate-900">Bitwarden</strong> if open source, auditability, or self-hosting matter most.</li>
                 <li>2. Pick <strong className="text-slate-900">NordPass</strong> if you want the cleanest mainstream setup with a strong free on-ramp.</li>
                 <li>3. Pick <strong className="text-slate-900">1Password</strong> if family sharing or team workflow is the main job.</li>
-                <li>4. Add <strong className="text-slate-900">NordProtect</strong> if your concern has moved from password hygiene to active breach exposure.</li>
+                <li>4. Add <strong className="text-slate-900">Coveron (formerly NordProtect)</strong> if your concern has moved from password hygiene to active breach exposure.</li>
               </ol>
               <div className="mt-4 flex flex-wrap gap-3 text-sm">
                 <Link href="/recommended-tools" className="font-semibold text-indigo-600 hover:underline">Open the full tools page</Link>

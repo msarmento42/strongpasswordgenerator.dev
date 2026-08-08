@@ -368,6 +368,31 @@ function PasswordGeneratorPage() {
           )}
         </div>
 
+        <section className="max-w-3xl rounded-2xl border border-indigo-100 bg-indigo-50 p-5 shadow-sm shadow-indigo-100/50">
+          <p className="mb-2 text-xs font-bold uppercase tracking-wide text-indigo-500">Next step after generating</p>
+          <h2 className="mb-2 text-lg font-bold text-slate-800">Store the password you just created safely</h2>
+          <p className="mb-4 text-sm leading-relaxed text-slate-600">
+            A strong password only helps if you can use it without reusing it. Put this credential in a password manager, then keep the generator for the next account.
+          </p>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-[1.2fr_0.8fr]">
+            <AffiliateCTA product="nordpass" />
+            <div className="rounded-xl border border-slate-200 bg-white p-4">
+              <span className="mb-1 inline-block text-xs font-bold uppercase tracking-wide text-slate-500">
+                Free editorial option
+              </span>
+              <p className="mb-3 text-sm text-slate-700">
+                Prefer a free starting point? Read the Bitwarden setup guide and compare it with paid managers before you switch.
+              </p>
+              <Link
+                href="/blog/bitwarden-setup-guide"
+                className="inline-block text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+              >
+                Read the Bitwarden guide →
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Options */}
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100">
           <h2 className="text-lg font-semibold mb-4">⚙️ Options</h2>
@@ -523,27 +548,6 @@ function PasswordGeneratorPage() {
           Password copied!
         </div>
       )}
-
-      <section className="max-w-3xl mx-auto px-4 py-8">
-        <h2 className="text-lg font-semibold text-slate-700 mb-4 text-center">Protect your passwords with a manager:</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-[1.2fr_0.8fr]">
-          <AffiliateCTA product="nordpass" />
-          <div className="rounded-xl border border-slate-200 bg-white p-4">
-            <span className="inline-block text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
-              Editorial pick
-            </span>
-            <p className="text-sm text-slate-700 mb-3">
-              Want a strong free option first? Read the Bitwarden setup guide and compare it against paid managers before you switch.
-            </p>
-            <Link
-              href="/blog/bitwarden-setup-guide"
-              className="inline-block text-sm font-semibold text-indigo-600 hover:text-indigo-700"
-            >
-              Read the Bitwarden guide →
-            </Link>
-          </div>
-        </div>
-      </section>
 
       <footer className="text-center py-8 text-slate-500 text-sm border-t border-slate-200 mt-4">
         <div className="flex justify-center gap-6 mb-3 flex-wrap">
