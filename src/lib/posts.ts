@@ -65,7 +65,7 @@ export const topicHubs: TopicHub[] = [
       {
         title: "Best if you had a breach",
         description: "Pair a password manager with breach monitoring so exposed logins do not turn into account takeover.",
-        href: "/blog/best-identity-theft-protection-2026",
+        href: "/recommended-tools#identity-protection",
         cta: "Add identity protection",
       },
     ],

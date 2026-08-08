@@ -255,7 +255,7 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "Add monitoring if a breach already happened",
         body: "Exposure is easier to contain when you also get alerts tied to identity and dark-web activity.",
-        href: "/blog/best-identity-theft-protection-2026",
+        href: "/recommended-tools#identity-protection",
         cta: "Review identity protection",
       },
     ],
@@ -281,10 +281,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
     summary: "Monitoring helps you catch damage earlier, but the highest-value setup combines breach alerts, credit freezes, and stronger account security.",
     cards: [
       {
-        title: "NordProtect for the best value bundle",
+        title: "Coveron for the best value bundle",
         body: "A strong fit if you want dark-web alerts, credit monitoring, and recovery coverage without paying premium-tier pricing.",
         href: affiliates.nordprotect.url,
-        cta: "Try NordProtect",
+        cta: "Try Coveron",
         external: true,
         monetized: affiliates.nordprotect.monetized,
       },
@@ -323,10 +323,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
     summary: "Recovery comes first, but the highest-value next step is building a setup that makes repeat fraud harder and easier to spot.",
     cards: [
       {
-        title: "Use NordProtect for ongoing monitoring",
+        title: "Use Coveron for ongoing monitoring",
         body: "Best if you want alerts, recovery support, and a simpler way to spot new exposure after the initial cleanup.",
         href: affiliates.nordprotect.url,
-        cta: "Try NordProtect",
+        cta: "Try Coveron",
         external: true,
         monetized: affiliates.nordprotect.monetized,
       },
@@ -339,7 +339,7 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "If this started with a breach, use the prevention guide next",
         body: "Helpful for turning a one-time cleanup into a longer-term identity defense routine.",
-        href: "/blog/best-identity-theft-protection-2026",
+        href: "/recommended-tools#identity-protection",
         cta: "See prevention tools",
       },
     ],
@@ -373,10 +373,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
         monetized: affiliates.nordpass.monetized,
       },
       {
-        title: "Add NordProtect if identity data was exposed",
+        title: "Add Coveron if identity data was exposed",
         body: "A stronger fit when the breach involved your SSN, address, phone number, credit data, or other personal information.",
         href: affiliates.nordprotect.url,
-        cta: "Try NordProtect",
+        cta: "Try Coveron",
         external: true,
         monetized: affiliates.nordprotect.monetized,
       },
@@ -398,7 +398,7 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "Review identity protection tools",
         body: "Use this if the breach involved more than just an email and password.",
-        href: "/blog/best-identity-theft-protection-2026",
+        href: "/recommended-tools#identity-protection",
         cta: "Compare monitoring options",
       },
     ],
@@ -409,10 +409,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
     summary: "The useful takeaway from identity-theft statistics is practical: reduce account takeover risk, block new-account fraud, and monitor for exposed personal data.",
     cards: [
       {
-        title: "Start with NordProtect for monitoring and recovery support",
+        title: "Start with Coveron for monitoring and recovery support",
         body: "Best fit if your main concern is exposed personal data, dark-web alerts, or help responding to identity fraud.",
         href: affiliates.nordprotect.url,
-        cta: "Try NordProtect",
+        cta: "Try Coveron",
         external: true,
         monetized: affiliates.nordprotect.monetized,
       },
@@ -459,10 +459,10 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
         cta: "Follow freeze steps",
       },
       {
-        title: "Use NordProtect for alerts and recovery support",
+        title: "Use Coveron for alerts and recovery support",
         body: "Best if you want ongoing monitoring after a breach or want help spotting new exposure quickly.",
         href: affiliates.nordprotect.url,
-        cta: "Try NordProtect",
+        cta: "Try Coveron",
         external: true,
         monetized: affiliates.nordprotect.monetized,
       },
@@ -480,7 +480,7 @@ export const articleCommerceGuides: Record<string, ArticleCommerceGuide> = {
       {
         title: "Review identity protection",
         body: "Compare monitoring and recovery options after the freeze is in place.",
-        href: "/blog/best-identity-theft-protection-2026",
+        href: "/recommended-tools#identity-protection",
         cta: "Compare tools",
       },
       {

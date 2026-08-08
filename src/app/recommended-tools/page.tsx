@@ -106,9 +106,9 @@ const tools = [
     category: 'Identity Protection',
     items: [
       {
-        name: 'NordProtect',
+        name: 'Coveron (formerly NordProtect)',
         tagline: 'Dark web monitoring and identity theft protection from Nord Security',
-        description: 'NordProtect monitors your personal data — email addresses, passwords, credit card numbers, and more — across the dark web and data breaches. Get instant alerts if your information is exposed, plus identity theft insurance and recovery support backed by Nord Security.',
+        description: 'Coveron (formerly NordProtect) monitors your personal data — email addresses, passwords, credit card numbers, and more — across the dark web and data breaches. Get instant alerts if your information is exposed, plus identity theft insurance and recovery support backed by Nord Security.',
         url: affiliates.nordprotect.url,
         badge: 'Top Pick',
         badgeColor: '#8b5cf6',
@@ -159,7 +159,7 @@ const paths = [
   {
     title: 'Reduce identity risk',
     description: 'Add breach monitoring, credit freeze basics, and recovery planning.',
-    href: '/blog/best-identity-theft-protection-2026',
+    href: '/recommended-tools#identity-protection',
     cta: 'Review protection tools',
   },
 ];
@@ -183,7 +183,7 @@ const firstMoveCards = [
     title: 'Monitor exposed identity data',
     description: 'Best fit if a breach, suspicious mail, leaked SSN, or fraud alert is already part of the situation.',
     href: affiliates.nordprotect.url,
-    cta: 'Try NordProtect',
+    cta: 'Try Coveron',
     monetized: affiliates.nordprotect.monetized,
   },
 ];
@@ -297,7 +297,7 @@ export default function RecommendedToolsPage() {
 
         <div className="space-y-10">
           {tools.map((section) => (
-            <section key={section.category}>
+            <section key={section.category} id={section.category === 'Identity Protection' ? 'identity-protection' : undefined}>
               <h2 className="text-xl font-bold text-slate-700 mb-4 pb-2 border-b border-slate-200">{section.category}</h2>
               <div className="space-y-6">
                 {section.items.map((tool) => (

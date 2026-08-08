@@ -23,7 +23,7 @@ export default function MoneyNextStep({ tags, category }: { tags: string[]; cate
         }
       : identityMatchers.some((term) => topicText.includes(term))
         ? {
-            href: "/blog/best-identity-theft-protection-2026",
+            href: "/recommended-tools#identity-protection",
             label: "Compare identity protection tools",
             body: "Breach alerts and recovery support are most useful before a leaked credential turns into account takeover.",
           }

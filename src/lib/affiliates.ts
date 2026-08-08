@@ -22,10 +22,11 @@ export const affiliates = {
     monetized: true,
   },
   nordprotect: {
+    name: "Coveron (formerly NordProtect)",
     url: process.env.NEXT_PUBLIC_NORDPROTECT_AFFILIATE_URL ?? "https://www.awin1.com/cread.php?awinmid=123620&awinaffid=2892161",
-    cta: "Try NordProtect",
+    cta: "Try Coveron",
     badge: "Identity protection",
-    description: "Monitor breach exposure and get alerts before leaked credentials turn into account takeover.",
+    description: "Coveron monitors breach exposure and helps you respond before leaked credentials turn into account takeover.",
     monetized: true,
   },
 };
