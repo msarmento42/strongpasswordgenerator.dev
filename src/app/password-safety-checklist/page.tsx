@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
+import AffiliateDisclosure from '../components/AffiliateDisclosure';
+import NordPassInContentCallout from '../components/NordPassInContentCallout';
 
 export const metadata: Metadata = {
   title: 'Password Safety Checklist | Strong Password Generator',
@@ -95,6 +97,11 @@ export default function PasswordSafetyChecklistPage() {
                 </div>
               </section>
             ))}
+          </div>
+
+          <div className="mt-8">
+            <AffiliateDisclosure />
+            <NordPassInContentCallout />
           </div>
 
           <section className="mt-8 rounded-2xl border border-indigo-200 bg-indigo-50 p-5">
