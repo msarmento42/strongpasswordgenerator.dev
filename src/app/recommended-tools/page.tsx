@@ -18,11 +18,13 @@ export const metadata: Metadata = {
     siteName: 'Strong Password Generator',
     title: 'Recommended Security Tools | Strong Password Generator',
     description: 'Our top picks for password managers, VPNs, antivirus, and identity protection.',
+    images: [{ url: '/og-image.svg' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Recommended Security Tools | Strong Password Generator',
     description: 'Our top picks for password managers, VPNs, antivirus, and identity protection.',
+    images: ['/og-image.svg'],
   },
 };
 

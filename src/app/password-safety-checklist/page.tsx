@@ -16,6 +16,13 @@ export const metadata: Metadata = {
     url: 'https://strongpasswordgenerator.dev/password-safety-checklist',
     siteName: 'Strong Password Generator',
     type: 'article',
+    images: [{ url: '/og-image.svg' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Password Safety Checklist | Strong Password Generator',
+    description: 'A practical password safety checklist for everyday account security.',
+    images: ['/og-image.svg'],
   },
 };
 
